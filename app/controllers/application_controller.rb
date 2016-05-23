@@ -11,13 +11,18 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       begin
         @user = User.find_by(id: session[:user_id])
+        Thread.current[:user_id] = session[:user_id]
       rescue ActiveRecord::RecordNotFound
         reset_session
       end
     end
-    redirect_to login_path unless @user
+    redirect_to login_path unless @current_user
   end
   def set_user
-    @user = session[:user_id]
+    @current_user = session[:user_id]
+  end
+
+  def current_user
+    @current_user
   end
 end

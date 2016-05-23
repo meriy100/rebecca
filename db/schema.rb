@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20160523104415) do
 
   create_table "tasks", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
     t.string   "name",        limit: 255
     t.datetime "deadline_at"
     t.datetime "deleted_at"
