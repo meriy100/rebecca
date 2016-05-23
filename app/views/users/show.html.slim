@@ -1,0 +1,21 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @user.name
+p
+  strong
+    | Password digest:
+  = @user.password_digest
+p
+  strong
+    | Email:
+  = @user.email
+p
+  strong
+    | Deleted at:
+  = @user.deleted_at
+= link_to 'Edit', edit_user_path(@user)
+|  | 
+= link_to 'Back', users_path
