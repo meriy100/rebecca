@@ -2,7 +2,7 @@ p#notice
   = notice
 h1
   | Listing Tasks
-table
+table.table
   thead
     tr
       th
@@ -21,8 +21,6 @@ table
           = task.deadline_at
         td
           = task.deleted_at
-        td
-          = link_to 'Show', task
         td
           = link_to 'Edit', edit_task_path(task)
         td
