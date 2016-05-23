@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'login', to: 'login#index', as: 'login'
+  get 'logout', to: 'login#logout'
+  post 'login/login'
+  get 'sign_up', to: "login#sign_up", as: "sign_up"
+  post 'create_user', to: "login#create_user", as: "create_user"
+  get '', to: 'tasks#index', as: 'top'
+  root 'tasks#index'
+
+  resources :tasks
+  namespace :admin do
+    resources :users
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
