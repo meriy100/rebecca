@@ -35,11 +35,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # テンプレートエンジン
 gem "slim"
+# ハッシュモデル
 gem "active_hash"
 # モデルにカラムコメント
 gem 'annotator'
+# 論理削除
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
+
 gem "bootstrap_form"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -56,6 +60,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 
+  # テスト関連
   gem "rspec"
   gem 'rspec-rails', '~> 3.3.2'
   gem 'factory_girl_rails', '~> 4.2.1'
