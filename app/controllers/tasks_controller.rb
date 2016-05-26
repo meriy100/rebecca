@@ -23,10 +23,6 @@ class TasksController < ApplicationController
     @tasks = Task.where(user: current_user, status: Task::DONE)
   end
 
-  def trushed
-    @tasks = Task.where(user: current_user, status: Task::TRUSH)
-  end
-
   def show
   end
 

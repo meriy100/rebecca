@@ -44,6 +44,8 @@ gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 
 gem "bootstrap_form"
 
+gem "ransack"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

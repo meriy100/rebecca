@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     end
     collection do
       get "doned"
-      get "trush"
     end
   end
 
@@ -24,7 +23,6 @@ Rails.application.routes.draw do
       end
       collection do
         get "doned"
-        get "trush"
       end
     end
   end

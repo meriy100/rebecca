@@ -15,7 +15,6 @@
 class Task < ActiveRecord::Base
   DOING = 1
   DONE = 2
-  TRUSH = 3
 
   # belongs_to :user
   include CurrentUser
