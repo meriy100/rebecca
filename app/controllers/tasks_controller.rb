@@ -16,7 +16,15 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :done]
 
   def index
-    @tasks = Task.where(user: current_user)
+    @tasks = Task.where(user: current_user, status: Task::DOING)
+  end
+
+  def doned
+    @tasks = Task.where(user: current_user, status: Task::DONE)
+  end
+
+  def trushed
+    @tasks = Task.where(user: current_user, status: Task::TRUSH)
   end
 
   def show

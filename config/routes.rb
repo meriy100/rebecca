@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   resources :tasks do
     member do
-      get "done"
+      post "done"
+    end
+    collection do
+      get "doned"
+      get "trush"
     end
   end
 
@@ -17,6 +21,10 @@ Rails.application.routes.draw do
     resources :tasks do
       member do
         post "done"
+      end
+      collection do
+        get "doned"
+        get "trush"
       end
     end
   end
