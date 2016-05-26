@@ -1,0 +1,22 @@
+@mixin center_beside_block(){
+  right: 0;
+  left: 0;
+  position: absolute;
+  margin: auto;
+}
+@mixin center_lenght_block(){
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  margin: auto;
+}
+@mixin center_block(){
+  @include center_beside_block;
+  @include center_lenght_block;
+}
+
+
+@mixin lower_gripping($bottom: 0){
+  position : absolute;
+  bottom : $bottom;
+}
