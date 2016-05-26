@@ -3,6 +3,11 @@ class Task < ActiveRecord::Base
   include CurrentUser
   acts_as_paranoid
 
+  def done
+
+  end
+
+  # TODO 仮 設計による
   def least_time
     deadline_at - Time.zone.now
   end
