@@ -31,9 +31,9 @@ class TasksController < ApplicationController
 
   def done
     if @task.done
-      redirect_to :index
+      redirect_to tasks_path
     else
-      redirect_to :index
+      redirect_to tasks_path
     end
   end
 

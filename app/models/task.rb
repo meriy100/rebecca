@@ -13,12 +13,20 @@
 #
 
 class Task < ActiveRecord::Base
+  DOING = 1
+  DONE = 2
+
   # belongs_to :user
   include CurrentUser
   acts_as_paranoid
 
-  def done
+  validates :status, presence: true, inclusion: {in: (DOING..DONE)}
+  before_validation :set_status
 
+  def done
+    if status == DOING
+      self.update(status: DONE)
+    end
   end
 
   # TODO 仮 設計による
@@ -34,4 +42,8 @@ class Task < ActiveRecord::Base
     (least_time / full_time * 100).to_i
   end
 
+  private
+  def set_status
+    self.status ||= DOING
+  end
 end
