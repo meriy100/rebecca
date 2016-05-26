@@ -54,8 +54,12 @@ group :development, :test do
   gem 'bcrypt-ruby'
   gem 'rails_best_practices'
   gem 'web-console', '~> 2.0'
-  gem 'rspec-rails', '~> 3.3.2'
   gem 'spring'
+
+  gem "rspec"
+  gem 'rspec-rails', '~> 3.3.2'
+  gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'capybara', '~> 2.1.0'
 end
 
 group :development do
