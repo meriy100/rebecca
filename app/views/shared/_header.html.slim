@@ -1,0 +1,18 @@
+.container
+  .row
+    .col-md-8
+      .form-group.search-tasks
+        .input-group
+          .input-group-addon
+            i.fa.fa-search
+          = text_field_tag :name, "", class: "form-control search-field"
+    .col-md-4
+      .header-contents
+        a
+          i.fa.fa-plus.fa-2x
+        a
+          i.fa.fa-thumbs-o-up.fa-2x
+        a
+          i.fa.fa-cog.fa-2x
+        = link_to logout_path, class: "logout" do
+          i.fa.fa-sign-out.fa-2x
