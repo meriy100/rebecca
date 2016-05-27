@@ -43,8 +43,11 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.save
-    redirect_to tasks_path
+    if @task.save
+      @tasks = Task.where(user: current_user, status: Task::DOING)
+    else
+      render :new
+    end
     # respond_to do |format|
     #   if @task.save
     #     format.html { redirect_to @task, notice: 'Task was successfully created.' }

@@ -1,0 +1,15 @@
+- @tasks.each do |task|
+  li.list-group-item
+    .row
+      .col-md-2
+        = link_to "Done", done_task_path(task), method: :post, class: "btn btn-success"
+      .col-md-4
+        = task.name
+      .col-md-4
+        .progress
+          .progress-bar[role="progressbar" aria-valuenow="#{task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{task.least_time_per}%;"]
+            span.sr-only 60% Complete
+      .col-md-2
+        = l task.deadline_at, format: :short
+      .col-md-2
+        = link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
