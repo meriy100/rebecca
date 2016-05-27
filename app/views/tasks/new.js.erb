@@ -1,2 +1,4 @@
 $("#new-task").html("<%= j(render "new_task_form") %>")
-console.log("hokk w")
+$("#task-new-form-cancel").on("click", function(){
+  $("#new-task").html("")
+})
