@@ -11,7 +11,7 @@ bundle exec rake db:create
 
 - DBマイグレート
 ```sh
-bundle exec rake db:migrate
+bundle exec rake db:migrate:reset # DBの構成が固まるまではこれで
 ```
 
 - localhost:3000
