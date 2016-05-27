@@ -11,7 +11,7 @@
       .col-md-4
         .progress
           .progress-bar[role="progressbar" aria-valuenow="#{task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{task.least_time_per}%;"]
-            span.sr-only 60% Complete
+            = task.least_time_per
       .col-md-2
         = l task.deadline_at, format: :short
       .col-md-2
