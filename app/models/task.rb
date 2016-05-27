@@ -6,6 +6,7 @@
 #  user_id     :integer
 #  name        :string(255)
 #  status      :integer
+#  weight      :integer
 #  deadline_at :datetime
 #  deleted_at  :datetime
 #  created_at  :datetime         not null
