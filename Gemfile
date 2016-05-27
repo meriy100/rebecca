@@ -43,7 +43,6 @@ gem 'annotator'
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 
 gem "bootstrap_form"
-
 gem "ransack"
 
 group :development, :test do

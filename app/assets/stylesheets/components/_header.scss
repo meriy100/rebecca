@@ -5,5 +5,14 @@
   top: 0;
   height: $header-height;
   width: 100%;
+  padding : 2px;
   background-color: $base-color;
+  .header-contents{
+    padding-top: 5px;
+    float: right;
+    a{
+      color: $white;
+      margin-left: 40px;
+    }
+  }
 }
