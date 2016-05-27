@@ -7,6 +7,12 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    = link_to "Logout", logout_path
-    .container
-      = yield
+    .container-fluid
+      .content
+        .col-md-8
+          = yield
+        .col-md-4
+    .header
+      = link_to "Logout", logout_path
+    .sidebar
+      == render "shared/sidebar"
