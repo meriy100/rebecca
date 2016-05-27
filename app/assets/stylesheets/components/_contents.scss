@@ -1,4 +1,15 @@
+@import "settings/variables/_position.scss";
 .content{
-  padding-top: 40px;
-  padding-left: 480px;
+  padding-top: $header-height;
+  padding-left: $sidebar-width;
+}
+@media screen and (min-width: 0px) and (max-width: 640px) {
+  .content{
+    padding-left: 0px;
+  }
+}
+@media screen and (min-width: 641px) and (max-width: 960px) {
+  .content{
+    padding-left: $sidebar-width-middle;
+  }
 }

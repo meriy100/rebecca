@@ -1,3 +1,6 @@
+@import "settings/variables/_color.scss";
+@import "settings/variables/_position.scss";
+@import "settings/variables/_media.scss";
 html{
   height: 100%;
   body{
@@ -5,12 +8,22 @@ html{
 
     .sidebar{
       float: left;
-      top: 40px;
+      top: $header-height;
       position: fixed;
-      width: 480px;
-      background-color: #eeeeee;
+      width: $sidebar-width;
+      background-color: $gley-2;
       height: 100%;
-      padding: 40px;
+      padding: $sidebar-padding;
+    }
+    @media screen and (min-width: 0px) and (max-width: 640px) {
+      .sidebar{
+        display: none;
+      }
+    }
+    @media screen and (min-width: 641px) and (max-width: 960px) {
+      .sidebar{
+        width: $sidebar-width-middle;
+      }
     }
   }
 }

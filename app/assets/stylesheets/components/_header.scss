@@ -1,7 +1,13 @@
+@import "settings/variables/_color.scss";
+@import "settings/variables/_position.scss";
 .header{
   position: fixed;
   top: 0;
-  height: 40px;
+  height: $header-height;
   width: 100%;
-  background-color: #aa0000;
+  background-color: $base-color;
+}
+@media screen and (min-width: 0px) and (max-device-width: 320px) {
+  .header{
+  }
 }
