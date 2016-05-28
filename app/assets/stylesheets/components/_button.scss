@@ -28,6 +28,11 @@
   background-color: transparent;
   transition: background-color 0.2s ;
 }
+.ice-button.base-color{
+  color: $white;
+  background-color: $base-color;
+  border: $ice-button-border solid $base-color;
+}
 .ice-button:hover{
   background-color: $white;
   color: $base-color;

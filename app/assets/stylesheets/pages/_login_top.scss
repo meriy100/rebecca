@@ -18,9 +18,38 @@
         }
       }
       .actions{
-        @include lower_gripping;
-        bottom: 0px;
+        @include lower_gripping(10px);
       }
+      img.mac-iPhone{
+        padding-top: 80px;
+        height: 480px;
+      }
+    }
+    .sub-content{
+      height: 400px;
+      position: relative;
+      .comment{
+        top: 120px;
+        h1{
+          color: $black;
+          font-size: 28px;
+        }
+        p{
+          color: $gley-1;
+          font-size: 18px;
+        }
+      }
+      img{
+        max-width: 100%;
+        padding: 20px;
+        padding-top: 40px;
+      }
+    }
+    .sub-content-white{
+      background-color: $white;
+    }
+    .sub-content-grey{
+      background-color: $gley-2;
     }
   }
 }
