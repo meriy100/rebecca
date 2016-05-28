@@ -12,7 +12,7 @@
         = link_to "", sign_up_path
       .ice-button.trans
         | サインイン
-        a[href="/"]
+        a[type="button" data-toggle="modal" data-target="#myModal"]
     .col-md-4.col-md-offset-2
       = image_tag "mac_and_iPhone.png", class: "mac-iPhone"
   .sub-content.sub-content-grey
@@ -39,20 +39,5 @@
       p
         |ToDo リストの内容が仕事関連でも、
         |遊びの計画でも、Rebecca を使えば期限日を忘れてしまうなんてことがなくなります。
-  .row
-    .col-md-4.col-md-offset-4
-      .well.text-center
-        legend
-        | ここモーダルで(それか クリックでここまでスクロール)
-        = form_tag login_login_path, :html => {:class => "form-horizontal"} do
-          .control-group
-            = text_field_tag :login_name, params[:login_name], {:class => "span3 form-control", 'placeholder' => 'ユーザー名を入力して下さい'}
-          br
-          .control-group
-            = password_field_tag :password, params[:password], {:class => 'span3 form-control'}
-          br
-          .control-group
-            = submit_tag "ログイン", {:class => 'btn-info btn'}
 
-        hr
-        = link_to "create account", sign_up_path
+

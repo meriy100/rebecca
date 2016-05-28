@@ -1,0 +1,25 @@
+#myModal.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h4#myModalLabel.modal-title.title.base-color
+          | Rebecca
+      .modal-body
+        = form_tag login_login_path, :html => {:class => "form-horizontal"} do
+          .control-group
+            = text_field_tag :login_name, params[:login_name], {:class => "span3 form-control", 'placeholder' => 'ユーザー名を入力してください'}
+          br
+          .control-group
+            = password_field_tag :password, params[:password], {:class => 'span3 form-control', placeholder: "パスワードを入力してください"}
+          br
+
+      .modal-footer
+        = submit_tag "ログイン", {:class => 'btn-info btn'}
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Close
+
+        hr
+        = link_to "create account", sign_up_path
