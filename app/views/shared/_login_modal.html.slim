@@ -16,10 +16,9 @@
             = password_field_tag :password, params[:password], {:class => 'span3 form-control', placeholder: "パスワードを入力してください"}
           br
 
-      .modal-footer
-        = submit_tag "ログイン", {:class => 'btn-info btn'}
-        button.btn.btn-default[type="button" data-dismiss="modal"]
-          | Close
+          = submit_tag "ログイン", {:class => 'btn-info btn'}
+          button.btn.btn-default[type="button" data-dismiss="modal"]
+            | Close
 
         hr
         = link_to "create account", sign_up_path

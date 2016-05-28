@@ -1,6 +1,7 @@
 @import "settings/variables/_color.scss";
 @import "settings/variables/_position.scss";
 @import "settings/mixins/_position.scss";
+@import "settings/mixins/_form.scss";
 .container-fluid-login{
   padding-left: 0px;
   padding-right: 0px;
@@ -39,10 +40,13 @@
           font-size: 18px;
         }
       }
-      img{
-        max-width: 100%;
-        padding: 20px;
-        padding-top: 40px;
+      .sub-content-image-cell{
+        position: relative;
+        height: 100%;
+        img{
+          @include center_block;
+          max-width: 95%;
+        }
       }
     }
     .sub-content-white{
@@ -50,6 +54,57 @@
     }
     .sub-content-grey{
       background-color: $gley-2;
+    }
+
+
+    .sign-up-main{
+      position: relative;
+      height: 480px;
+      .sign-up-form{
+        @include center_block;
+        height: 80%;
+        .form-row{
+          margin: 0px;
+          height: 64px;
+          border: 1px solid $gley-1;
+          border-top: 0px;
+          border-radius: 0px;
+          background-color: #fff;
+          position: relative;
+          i.fa{
+            width: 10%;
+            margin: 10px 0;
+          }
+          input:-webkit-autofill {
+              -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+          }
+          input{
+            @include none_outline;
+            position: absolute;
+            border: 0px;
+            background-color: transparent;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            width: 90%;
+          }
+        }
+        .form-action{
+          margin: 0px;
+          height: 64px;
+          border: 1px solid $gley-1;
+          border-top: 0px;
+          border-radius: 0px;
+          background-color: #fff;
+          position: relative;
+          input{
+            @include center_block;
+            width: 70%;
+            height: 70%;
+          }
+        }
+      }
     }
   }
 }
