@@ -1,11 +1,23 @@
-.container-fluid
+.login-top
+  .main-content
+    .col-md-2.col-md-offset-2.comment
+      h1.title 実行力のある人に
+      p
+        |Rebecca はあなたに重要なタスクを知らせます
+      p
+        |そちらは今どうしてもその談判帰りという事の時に云ったない。かつて朝を持通りもけっしてその応用でしんだけを知れとならうがも学習いうならたて、それだけにはきまったたですまい。秋刀魚を連れでのは恐らくほかが単にありたで。
+    .col-md-2.col-md-offset-2.actions
+      .button-div.new-account
+        a[href="/"]
+          | アカウント作成
+      .button-div.ios-start
+        a[href="/"]
+          | iOS ではじめる
   .row
     .col-md-4.col-md-offset-4
       .well.text-center
         legend
 
-        h1
-          | Rebecca
         = form_tag login_login_path, :html => {:class => "form-horizontal"} do
           .control-group
             = text_field_tag :login_name, params[:login_name], {:class => "span3 form-control", 'placeholder' => 'ユーザー名を入力して下さい'}

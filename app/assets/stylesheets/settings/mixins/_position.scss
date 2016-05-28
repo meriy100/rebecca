@@ -16,7 +16,9 @@
 }
 
 
+// 下寄せ 親要素に position: relative;
 @mixin lower_gripping($bottom: 0){
   position : absolute;
   bottom : $bottom;
 }
+

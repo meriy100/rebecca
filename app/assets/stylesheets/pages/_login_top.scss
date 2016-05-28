@@ -1,0 +1,67 @@
+@import "settings/variables/_color.scss";
+@import "settings/variables/_position.scss";
+@import "settings/mixins/_position.scss";
+.container-fluid-login{
+  padding-left: 0px;
+  padding-right: 0px;
+  .login-top{
+    padding-top: $header-height;
+    .main-content{
+      background-color: $base-color;
+      height: 480px;
+      position: relative;
+      .comment{
+        color: #fff;
+        top: 140px;
+        p{
+          font-size: 18px;
+        }
+      }
+      .actions{
+        @include lower_gripping;
+        bottom: 0px;
+        .button-div{
+          padding: 10px;
+          display: inline-block;
+          width: 45%;
+          height: 40px;
+          margin-right: 2%;
+          border: 2px solid #fff;
+          box-sizing: border-box;
+          position: relative;
+          a{
+            font-size: 16px;
+            border-radius: 0px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            padding: 10px;
+          }
+          a:hover{
+            background-color: transparent;
+            text-decoration: none;
+          }
+        }
+        .button-div.new-account{
+          background-color: #fff;
+          a{
+            color: $base-color;
+            border: 0px;
+          }
+        }
+        .button-div.ios-start{
+          a{
+            color: #fff;
+          }
+        }
+        .button-div:hover{
+          background-color: #fff;
+          color: $base-color;
+        }
+        .button-div:hover > a{
+          color: $base-color;
+        }
+      }
+    }
+  }
+}

@@ -10,12 +10,7 @@ html
     meta[name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=0.5,user-scalable=yes,initial-scale=1.0"]
     = csrf_meta_tags
   body
-    .container-fluid
-      .content
-        .col-md-8
-          = yield
-        .col-md-4
-    .header
-      == render "shared/header"
-    .sidebar
-      == render "shared/sidebar"
+    .container-fluid.container-fluid-login
+      = yield
+    .login-header
+      == render "shared/login_header"

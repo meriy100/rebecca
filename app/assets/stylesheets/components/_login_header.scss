@@ -1,0 +1,18 @@
+@import "settings/variables/_color.scss";
+@import "settings/variables/_position.scss";
+.login-header{
+  position: fixed;
+  top: 0;
+  height: $header-height;
+  width: 100%;
+  padding : 2px;
+  background-color: #fff;
+  .header-contents{
+    padding-top: 5px;
+    float: right;
+    a{
+      color: $white;
+      margin-left: 40px;
+    }
+  }
+}
