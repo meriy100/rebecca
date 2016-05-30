@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :done]
 
   def index
-    @tasks = Task.where(user: current_user, status: Task::DOING)
+    @tasks = Task.where(user: current_user, status: Task::DOING).sort_by{|task| task.least_time_per}
   end
 
   def doned
