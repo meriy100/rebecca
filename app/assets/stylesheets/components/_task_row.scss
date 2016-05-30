@@ -2,7 +2,7 @@
 @import "settings/variables/_position.scss";
 .task-row{
   border: $gley-2 solid 1px;
-  border-radius: 0px;
+  border-radius: 20px;
   height: $task-row-height;
   padding: 0px;
   margin-bottom: 10px;
@@ -10,6 +10,7 @@
   .task-content{
     position: relative;
     height: $done-button-area;
+    font-size: 28px;
     .done-button{
       display: inline-block;
       position: absolute;
@@ -48,7 +49,6 @@
           position: absolute;
           width: 100%;
           height: 100%;
-          font-size: 16px;
           input{
             position: absolute;
             width: 100%;
@@ -78,7 +78,7 @@
   }
   .progress{
     position: absolute;
-    border-radius: 0px;
+    border-radius: 20px 0 0 20px;
     margin-bottom: 0;
     width: 84%;
     height: $task-row-height;
