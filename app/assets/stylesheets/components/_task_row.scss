@@ -5,6 +5,8 @@
   border-radius: 0px;
   height: $task-row-height;
   padding: 0px;
+  margin-bottom: 10px;
+  position: relative;
   .task-content{
     position: relative;
     height: $done-button-area;
@@ -12,12 +14,14 @@
       display: inline-block;
       position: absolute;
       float: left;
+      left: 0;
       width: $done-button-size;
       height: $done-button-size;
       border: 1px $gley-1 solid;
       margin: $done-button-margin;
       border-radius: 100%;
       transition: background-color 0.2s ;
+      background-color: $white;
       a{
         position: absolute;
         top: 0;
@@ -34,10 +38,11 @@
       margin-left: $done-button-area;
       position: relative;
       height: $task-row-content;
+      color: $white;
       .task-name{
         position: absolute;
         float: left;
-        width: 80%;
+        width: 100%;
         height: 100%;
         div{
           position: absolute;
@@ -48,6 +53,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            background-color: transparent;
           }
         }
         .task-name-value{
@@ -55,24 +61,41 @@
           line-height: $task-row-content;
         }
       }
-      .deadline_at{
-        position: absolute;
-        float: right;
-        right: 0;
-        width: 20%;
-        height: 100%;
-        font-size: 16px;
-        .task-deadline_at-value{
-          padding-left: 4px;
-          line-height: $task-row-content;
-        }
-      }
+    }
+  }
+  .deadline_at{
+    position: absolute;
+    float: right;
+    right: 0;
+    width: 16%;
+    height: $task-row-height;
+    padding: 0px 4px;
+    .task-deadline_at-value{
+      padding-left: 4px;
+      text-align: right;
+      line-height: $task-row-content;
     }
   }
   .progress{
+    position: absolute;
     border-radius: 0px;
     margin-bottom: 0;
-    width: 100%;
-    height: $task-row-progress;
+    width: 84%;
+    height: $task-row-height;
+    // background-color: $gley-1;
+    .progress-bar{
+      height: $task-row-height;
+      position: relative;
+    }
   }
 }
+// .task-content:before{
+//   content: "";
+//   z-index: -1;
+//   -webkit-filter: blur(4px);
+//   -ms-filter: blur(4px);
+//   filter: blur(4px);
+//   height: 100%;
+//   width: 100%;
+//   position: absolute;
+// }
