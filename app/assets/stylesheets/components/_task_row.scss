@@ -2,6 +2,7 @@
 @import "settings/variables/_position.scss";
 .task-row{
   border: $gley-2 solid 1px;
+  border: 1px $light-color solid;
   border-radius: 20px;
   height: $task-row-height;
   padding: 0px;
@@ -39,7 +40,7 @@
       margin-left: $done-button-area;
       position: relative;
       height: $task-row-content;
-      color: $white;
+      color: $black;
       .task-name{
         position: absolute;
         float: left;
@@ -82,12 +83,19 @@
     margin-bottom: 0;
     width: 84%;
     height: $task-row-height;
-    // background-color: $gley-1;
+    background-color: transparent;
     .progress-bar{
       height: $task-row-height;
       position: relative;
+      opacity: 0.7;
     }
   }
+}
+
+body{
+  background: image-url("background.jpg");
+  background-attachment: fixed;
+  background-position: right bottom
 }
 // .task-content:before{
 //   content: "";
