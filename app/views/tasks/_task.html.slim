@@ -1,8 +1,8 @@
 .task-row
   .progress.task-content
     .progress-bar[class="progress-bar-#{%w{success info primary warning danger }.sample}" role="progressbar" aria-valuenow="#{task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{task.least_time_per}%;"]
-    .done-button[style="display: none"]
-      button.task-done[data-task="#{task.id}"]
+    .light-btn.done-button[style="display: none"]
+      button.light-btn.task-done[data-task="#{task.id}"]
     .task-info
       .task-name
         .task-name-value[data-task="#{task.id}"]
