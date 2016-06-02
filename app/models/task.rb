@@ -34,7 +34,11 @@ class Task < ActiveRecord::Base
 
   # TODO 仮 設計による
   def least_time
-    deadline_at - Time.zone.now
+    if deadline_at > Time.zone.now
+      deadline_at - Time.zone.now
+    else
+      0
+    end
   end
 
   def full_time
@@ -43,6 +47,15 @@ class Task < ActiveRecord::Base
 
   def least_time_per
     (least_time / full_time * 100).to_i
+  end
+
+  def deadline_at_to_s
+    today = Time.zone.now
+    if deadline_at.between? today, today.next_week
+      deadline_at.today? ? "今日" : I18n.l(deadline_at, format: :weekday)
+    else
+      I18n.l deadline_at, format: :short
+    end
   end
 
   private

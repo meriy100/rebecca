@@ -24,7 +24,23 @@ $(document).ready ->
     field.show()
     field.find("input").focus()
 
+  doneTask = (scope) ->
+    taskId = $(scope).data("task")
+    taskRow = $(scope).parents(".task-row")
+    $.ajax
+      url: "tasks/#{taskId}/done"
+      type: "POST"
+      dataType: "html"
+      success: (results) ->
+        taskRow.fadeOut()
+
   $(document).on "click", ".task-name-value", ->
     showNameField(this)
   $(document).on "blur", ".task-name-field", ->
     updateTask(this)
+  $(document).on "mouseenter", ".task-row", ->
+    $(this).find(".done-button").show()
+  $(document).on "mouseleave", ".task-row", ->
+    $(this).find(".done-button").hide()
+  $(document).on "click", "button.task-done", ->
+    doneTask(this)

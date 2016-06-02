@@ -9,11 +9,11 @@
     padding-top: $header-height;
     .main-content{
       background-color: $base-color;
-      height: 480px;
+      height: 640px;
       position: relative;
       .comment{
         color: #fff;
-        top: 140px;
+        top: 240px;
         p{
           font-size: 18px;
         }
@@ -21,9 +21,14 @@
       .actions{
         @include lower_gripping(10px);
       }
-      img.mac-iPhone{
-        padding-top: 80px;
-        height: 480px;
+      .main-content-image-cell{
+        height: 100%;
+        position: relative;
+        img.mac-iPhone{
+          @include lower_gripping;
+          max-height: 80%;
+          width: 100%;
+        }
       }
     }
     .sub-content{

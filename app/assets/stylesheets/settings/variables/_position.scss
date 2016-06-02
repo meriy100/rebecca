@@ -1,6 +1,7 @@
 // sidebar
 $sidebar-width : 480px;
 $sidebar-width-middle : 240px;
+$sidebar-width-lg-middle : 400px;
 $sidebar-padding: 40px;
 
 // header
@@ -8,6 +9,10 @@ $header-height : 40px;
 
 
 
+// task-row
+$task-row-height: 80px;
+$task-row-content: 80px;
+$task-row-progress: $task-row-height - $task-row-content;
 
 // button
 
@@ -15,4 +20,6 @@ $ice-button-border: 2px;
 $ice-button-padding: 10px;
 $ice-button-font-size: 20px;
 
-
+$done-button-area: $task-row-content;
+$done-button-size: 32px;
+$done-button-margin: ($done-button-area - $done-button-size) / 2 ;
