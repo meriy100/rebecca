@@ -32,3 +32,14 @@ $(document).ready ->
     $(this).find(".done-button").show()
   $(document).on "mouseleave", ".task-row", ->
     $(this).find(".done-button").hide()
+  $(document).on "click", "button.task-done", ->
+    taskId = $(this).data("task")
+    taskRow = $(this).parents(".task-row")
+    $.ajax
+      url: "tasks/#{taskId}/done"
+      type: "POST"
+      dataType: "html"
+      success: (results) ->
+        console.log taskRow
+        taskRow.fadeOut("slow")
+        console.log results

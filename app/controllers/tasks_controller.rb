@@ -19,11 +19,12 @@ class TasksController < ApplicationController
   def edit
   end
 
+  # TODO jQuery ajax で何をもらうかちゃんと考えんとですよ
   def done
     if @task.done
-      redirect_to tasks_path
+      head 200
     else
-      redirect_to tasks_path
+      head 300
     end
   end
 
