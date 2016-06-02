@@ -31,7 +31,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      @tasks = Task.where(user: current_user, status: Task::DOING)
+      @tasks = Task.where(user: current_user, status: Task::DOING).sort_by{|task| task.least_time_per}
     else
       render :new
     end

@@ -11,6 +11,7 @@
           = text_field_tag :name, task.name
   .deadline_at
     .task-deadline_at-value[data-task="#{task.id}"]
-      = l task.deadline_at, format: :short
+      /= l task.deadline_at, format: :short
+      = task.deadline_at_to_s
     .task-deadline_at-field[data-task="#{task.id}" style="display: none"]
       = datetime_field_tag :deadline_at, task.name
