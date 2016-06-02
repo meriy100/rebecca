@@ -1,8 +1,8 @@
 @import "settings/variables/_color.scss";
 @import "settings/variables/_position.scss";
 .task-row{
-  border: $gley-2 solid 1px;
-  border: 1px $light-color solid;
+  // border: $gley-2 solid 1px;
+  // border: 1px $gley-1 solid;
   border-radius: 20px;
   height: $task-row-height;
   padding: 0px;
@@ -19,11 +19,11 @@
       left: 0;
       width: $done-button-size;
       height: $done-button-size;
-      border: 1px $gley-1 solid;
       margin: $done-button-margin;
       border-radius: 100%;
       transition: background-color 0.2s ;
       background-color: $white;
+      box-shadow: 0px 0px 10px #20ee20;
       a{
         position: absolute;
         top: 0;
@@ -87,7 +87,7 @@
     .progress-bar{
       height: $task-row-height;
       position: relative;
-      opacity: 0.7;
+      opacity: 0.6;
     }
   }
 }

@@ -28,3 +28,7 @@ $(document).ready ->
     showNameField(this)
   $(document).on "blur", ".task-name-field", ->
     updateTask(this)
+  $(document).on "mouseenter", ".task-row", ->
+    $(this).find(".done-button").show()
+  $(document).on "mouseleave", ".task-row", ->
+    $(this).find(".done-button").hide()
