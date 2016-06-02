@@ -1,0 +1,16 @@
+.task-row
+  .progress.task-content
+    .progress-bar[class="progress-bar-#{%w{success info primary warning danger }.sample}" role="progressbar" aria-valuenow="#{task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{task.least_time_per}%;"]
+    .done-button[style="display: none"]
+      = link_to "", done_task_path(task), method: :post, class: ""
+    .task-info
+      .task-name
+        .task-name-value[data-task="#{task.id}"]
+          = task.name
+        .task-name-field[data-task="#{task.id}" style="display: none"]
+          = text_field_tag :name, task.name
+  .deadline_at
+    .task-deadline_at-value[data-task="#{task.id}"]
+      = l task.deadline_at, format: :short
+    .task-deadline_at-field[data-task="#{task.id}" style="display: none"]
+      = datetime_field_tag :deadline_at, task.name
