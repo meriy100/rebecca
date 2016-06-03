@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '', to: 'tasks#index', as: 'top'
   root 'tasks#index'
 
-  resources :tasks do
+  resources :tasks, only: [:index, :new, :create, :update, :destroy] do
     member do
       post "done"
     end
