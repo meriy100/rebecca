@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       begin
         @user = User.find(session[:user_id])
-        Thread.current[:user_id] = session[:user_id]
+        User.current_user = @user
       rescue ActiveRecord::RecordNotFound
         reset_session
       end
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless @current_user
   end
   def set_user
-    @current_user = session[:user_id]
+    @current_user = User.find session[:user_id]
   end
 
   def current_user

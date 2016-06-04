@@ -24,10 +24,10 @@ class User < ActiveRecord::Base
   acts_as_paranoid
 
   def self.current_user=(user)
-    Thread.current[:user_id] = user
+    Thread.current[:user_id] = user.id
   end
 
   def self.current_user
-    Thread.current[:user_id]
+    User.find Thread.current[:user_id]
   end
 end
