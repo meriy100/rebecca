@@ -1,9 +1,14 @@
 = bootstrap_form_for(@task, layout: :horizontal, remote: true) do |f|
   = f.hidden_field :user_id
   = f.hidden_field :status
-  .form-group
-    = f.text_field :name, label_col: "", controle_col: "col-md-12", hide_label: true, placeholder: "日曜に彼氏とデート♡ "
-    = f.datetime_select :deadline_at, label_col: "", controle_col: "col-md-12", hide_label: true
+  .form-group.form-inline
+    = f.text_field :name, label_col: "", control_col: "col-md-12", hide_label: true, placeholder: "日曜に彼氏とデート♡ ", class: "form-control"
+    .input-group.date.datepicker
+        = f.text_field :deadline_at, hide_label: true, placeholder: "deadline at...", class: "form-control"
+        .input-group-addon
+          i.fa.fa-calendar
+  .from-group
+    =f.text_field :weight, hide_label: true, class: "slider form-control"
   .form-group
     .actions
       = f.submit class: "btn btn-primary"

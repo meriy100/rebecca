@@ -25,5 +25,10 @@ html{
         width: $sidebar-width-middle;
       }
     }
+    @media screen and (min-width: 961px) and (max-width: 1400px) {
+      .sidebar{
+        width: $sidebar-width-lg-middle;
+      }
+    }
   }
 }
