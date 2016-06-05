@@ -45,10 +45,13 @@ gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 gem "bootstrap_form"
 gem "ransack"
 
+# カレンダー選択用
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 
 gem 'bootstrap-slider-rails'
+
+gem 'uuidtools'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
