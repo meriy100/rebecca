@@ -3,11 +3,12 @@ class Task < ActiveRecord::Base
   # belongs_to :user
   include CurrentUser
 
-  validates :deadline_at, presence: true
   before_validation :set_is_done
-  validates :sync_token, presence: true, uniqueness: true
   before_validation :deadline_at_orver_created_at
   before_validation :set_sync_token
+
+  validates :sync_token, presence: true, uniqueness: true
+  validates :deadline_at, presence: true
 
   def done
     unless is_done
@@ -44,6 +45,7 @@ class Task < ActiveRecord::Base
   private
   def set_is_done
     self.is_done ||= false
+    true
   end
 
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ

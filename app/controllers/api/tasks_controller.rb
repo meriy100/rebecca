@@ -6,7 +6,7 @@ class Api::TasksController < ApiController
   end
 
   def sync
-    tasks = Task.where(user: current_user, status: Task::DOING)
+    tasks = Task.where(user: current_user)
     params[:tasks].each do |ios_task|
         if ios_task[:sync_token].present?
             if sync_task = tasks.find_by(sync_token: ios_task[:sync_token]).presence
@@ -27,8 +27,8 @@ class Api::TasksController < ApiController
     {
       user_id: task_params[:user_id],
       sync_token: task_params[:sync_token],
-      name: task_params[:name],
-      status: task_params[:status],
+      title: task_params[:title],
+      is_done: task_params[:is_done],
       weight: task_params[:weight],
       deadline_at: Time.zone.parse(task_params[:deadline_at]),
       created_at: Time.zone.parse(task_params[:created_at]),
