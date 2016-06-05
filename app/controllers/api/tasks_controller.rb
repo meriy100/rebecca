@@ -14,6 +14,8 @@ class Api::TasksController < ApiController
                 if Time.zone.parse(ios_task[:updated_at]) > same_task.updated_at
                     same_task.update(name: ios_task[:name], status: ios_task[:status], weight: ios_task[:weight], deadline_at: Time.zone.parse(ios_task[:deadline_at]), updated_at: Time.zone.parse(ios_task[:updated_at]))
                 end
+            else
+                Task.create(user_id: ios_task[:user_id], sync_token: ios_task[:sync_token], name: ios_task[:name], status: ios_task[:status], weight: ios_task[:weight], deadline_at: Time.zone.parse(ios_task[:deadline_at]),  created_at: Time.zone.parse(ios_task[:created_at]), updated_at: Time.zone.parse(ios_task[:updated_at]))
             end
         end
     end
