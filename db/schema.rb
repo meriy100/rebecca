@@ -15,11 +15,10 @@ ActiveRecord::Schema.define(version: 20160523104415) do
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
-    t.string   "name",        limit: 255
-    t.integer  "status",      limit: 4
+    t.string   "title",       limit: 255
+    t.boolean  "is_done"
     t.integer  "weight",      limit: 4
     t.datetime "deadline_at"
-    t.datetime "deleted_at"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

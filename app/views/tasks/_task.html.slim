@@ -6,12 +6,12 @@
     .task-info
       .task-name
         .task-name-value[data-task="#{task.id}"]
-          = task.name
+          = task.title
         .task-name-field[data-task="#{task.id}" style="display: none"]
-          = text_field_tag :name, task.name
+          = text_field_tag :title, task.title
   .deadline_at
     .task-deadline_at-value[data-task="#{task.id}"]
       /= l task.deadline_at, format: :short
       = task.deadline_at_to_s
     .task-deadline_at-field[data-task="#{task.id}" style="display: none"]
-      = datetime_field_tag :deadline_at, task.name
+      = datetime_field_tag :deadline_at, task.title

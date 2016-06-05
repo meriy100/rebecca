@@ -1,34 +1,15 @@
-# == Schema Information
-#
-# Table name: tasks
-#
-#  id          :integer          not null, primary key
-#  user_id     :integer
-#  name        :string(255)
-#  status      :integer
-#  weight      :integer
-#  deadline_at :datetime
-#  deleted_at  :datetime
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#
-
 class Task < ActiveRecord::Base
-  DOING = 1
-  DONE = 2
 
   # belongs_to :user
   include CurrentUser
-  acts_as_paranoid
 
-  validates :status, presence: true, inclusion: {in: (DOING..DONE)}
   validates :deadline_at, presence: true
-  before_validation :set_status
+  before_validation :set_is_done
   before_validation :deadline_at_orver_created_at
 
   def done
-    if status == DOING
-      self.update(status: DONE)
+    unless is_done
+      self.update(is_done: true)
     end
   end
 
@@ -59,8 +40,8 @@ class Task < ActiveRecord::Base
   end
 
   private
-  def set_status
-    self.status ||= DOING
+  def set_is_done
+    self.is_done ||= false
   end
 
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ
