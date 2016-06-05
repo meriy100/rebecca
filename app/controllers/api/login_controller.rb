@@ -1,6 +1,6 @@
 class Api::LoginController < ApiController
   skip_before_filter :authenticated
- 
+
 
   def login
     user = User.find_by(name: params[:login_user])
@@ -22,7 +22,6 @@ class Api::LoginController < ApiController
 
   def create_user
     @user = User.new(user_params)
-    binding.pry
     if @user.save
       session[:user_id] = @user.id
       return redirect_to api_tasks_path
