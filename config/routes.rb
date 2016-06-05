@@ -8,12 +8,20 @@ Rails.application.routes.draw do
   root 'tasks#index'
 
 
-  namespace :api do
+  namespace :api, defaults: {format: :json} do
     scope module: :login do
-      get 'login', action: :login
+      post 'login', action: :login
       get 'logout', action: :logout
-      get 'create_user', action: :create_user
-      get 'sign_up', action: :sign_up
+      post 'create_user', action: :create_user
+    end
+
+    resources :tasks do
+      member do
+        post "done"
+      end
+      collection do
+        get "doned"
+      end
     end
   end
 
@@ -27,16 +35,6 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api do
-    resources :tasks do
-      member do
-        post "done"
-      end
-      collection do
-        get "doned"
-      end
-    end
-  end
 
   namespace :admin do
     resources :users
