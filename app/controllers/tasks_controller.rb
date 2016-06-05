@@ -2,21 +2,17 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :done]
 
   def index
-    @tasks = Task.where(user: current_user, status: Task::DOING).sort_by{|task| task.least_time_per}
+    @search = Task.search(params[:q])
+    @tasks = @search.result.where(user: current_user, status: Task::DOING).sort_by{|task| task.least_time_per}
   end
 
+  # post
   def doned
     @tasks = Task.where(user: current_user, status: Task::DONE)
   end
 
-  def show
-  end
-
   def new
     @task = Task.new
-  end
-
-  def edit
   end
 
   # TODO jQuery ajax で何をもらうかちゃんと考えんとですよ

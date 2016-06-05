@@ -2,10 +2,12 @@
   .row
     .col-md-6.col-md-offset-2.col-sm-7
       .form-group.search-tasks
-        .input-group
-          .input-group-addon
-            i.fa.fa-search
-          = text_field_tag :name, "", class: "form-control search-field"
+        = search_form_for(@search) do |f|
+          .input-group
+            .input-group-addon
+              i.fa.fa-search
+            = f.text_field :name_cont, class: "form-control search-field"
+          = f.submit class: "btn btn-info"
     .col-md-4.col-sm-5
       .header-contents
         a

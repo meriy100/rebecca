@@ -15,4 +15,14 @@
       margin-left: 40px;
     }
   }
+  form{
+    position: relative;
+    .btn.btn-info{
+      position: absolute;
+      float: right;
+      right: 0;
+      top: 0;
+      z-index: 10;
+    }
+  }
 }

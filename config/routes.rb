@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     scope module: :login do
-      get 'login', action: :login 
+      get 'login', action: :login
       get 'logout', action: :logout
       post 'create_user', action: :create_user
       get 'sign_up', action: :sign_up 
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :tasks do
+  resources :tasks, only: [:index, :new, :create, :update, :destroy] do
     member do
       post "done"
     end
