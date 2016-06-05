@@ -1,4 +1,5 @@
 class Api::TasksController < ApiController
+  include TasksAction
   before_action :set_task, only: [:done, :update, :destroy]
   def index
     @tasks = Task.where(user: current_user)
@@ -70,11 +71,7 @@ class Api::TasksController < ApiController
   end
 
   def set_task
-    @task = Task.find_by(sync_token: params[:sync_token])
-  end
-
-  def task_params
-    params.require(:task).permit(:user_id, :title, :is_done, :weight, :deadline_at, :deleted_at)
+    @task = Task.find_by(user: current_user, sync_token: params[:sync_token])
   end
 end
 
