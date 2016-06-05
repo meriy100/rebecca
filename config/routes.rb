@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     scope module: :login do
       get 'login', action: :login 
       get 'logout', action: :logout
-      get 'create_user', action: :create_user
+      post 'create_user', action: :create_user
       get 'sign_up', action: :sign_up 
     end
   end

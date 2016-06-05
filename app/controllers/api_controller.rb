@@ -1,5 +1,5 @@
 class ApiController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   before_action :set_user
   before_filter :authenticated
 

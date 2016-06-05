@@ -22,9 +22,10 @@ class Api::LoginController < ApiController
 
   def create_user
     @user = User.new(user_params)
+    binding.pry
     if @user.save
       session[:user_id] = @user.id
-      return redirect_to top_path
+      return redirect_to api_tasks_path
     else
       render :sign_up
     end
