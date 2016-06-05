@@ -9,18 +9,31 @@ class Api::TasksController < ApiController
     tasks = Task.where(user: current_user, status: Task::DOING)
     params[:tasks].each do |ios_task|
         if ios_task[:sync_token].present?
-            same_task = tasks.find_by(sync_token: ios_task[:sync_token])
-            if same_task.present?
-                if Time.zone.parse(ios_task[:updated_at]) > same_task.updated_at
-                    same_task.update(name: ios_task[:name], status: ios_task[:status], weight: ios_task[:weight], deadline_at: Time.zone.parse(ios_task[:deadline_at]), updated_at: Time.zone.parse(ios_task[:updated_at]))
-                end
+            if sync_task = tasks.find_by(sync_token: ios_task[:sync_token]).presence
+              if Time.zone.parse(ios_task[:updated_at]) > sync_task.updated_at
+                  sync_task.update(sync_params(ios_task))
+              end
             else
-                Task.create(user_id: ios_task[:user_id], sync_token: ios_task[:sync_token], name: ios_task[:name], status: ios_task[:status], weight: ios_task[:weight], deadline_at: Time.zone.parse(ios_task[:deadline_at]),  created_at: Time.zone.parse(ios_task[:created_at]), updated_at: Time.zone.parse(ios_task[:updated_at]))
+                Task.create(sync_params(ios_task))
             end
         end
     end
     redirect_to api_tasks_path
   end
 
+  private
+
+  def sync_params task_params = {}
+    {
+      user_id: task_params[:user_id],
+      sync_token: task_params[:sync_token],
+      name: task_params[:name],
+      status: task_params[:status],
+      weight: task_params[:weight],
+      deadline_at: Time.zone.parse(task_params[:deadline_at]),
+      created_at: Time.zone.parse(task_params[:created_at]),
+      updated_at: Time.zone.parse(task_params[:updated_at])
+    }
+  end
 end
 
