@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @tasks = @search.result.where(user: current_user, is_done: false).sort_by{|task| task.least_time_per}
   end
 
-  # post
+  # get
   def doned
     @tasks = Task.where(user: current_user, is_done: true)
   end

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160523104415) do
     t.integer  "user_id",     limit: 4
     t.string   "title",       limit: 255
     t.boolean  "is_done"
+    t.string   "sync_token",  limit: 255
     t.integer  "weight",      limit: 4
     t.datetime "deadline_at"
     t.datetime "created_at",              null: false

@@ -4,6 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.integer :user_id
       t.string :title
       t.boolean :is_done
+      t.string :sync_token
       t.integer :weight
       t.datetime :deadline_at
 

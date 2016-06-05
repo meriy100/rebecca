@@ -5,7 +5,9 @@ class Task < ActiveRecord::Base
 
   validates :deadline_at, presence: true
   before_validation :set_is_done
+  validates :sync_token, presence: true, uniqueness: true
   before_validation :deadline_at_orver_created_at
+  before_validation :set_sync_token
 
   def done
     unless is_done
@@ -49,6 +51,12 @@ class Task < ActiveRecord::Base
     if (created_at || Time.zone.now) > deadline_at
       self.errors[:deadline_at] << ("is over created_at ")
       false
+    end
+  end
+
+  def set_sync_token
+    if sync_token.nil?
+      self.sync_token = SecureRandom.uuid
     end
   end
 end
