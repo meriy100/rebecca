@@ -1,5 +1,5 @@
 json.tasks @tasks do |task|
-  json.extract! task, :id, :name, :deadline_at, :deleted_at
+  json.extract! task, :id, :name, :deadline_at, :created_at, :status, :weight
 end
 json.set! :user do
   json.set! :id, @current_user.id

@@ -26,7 +26,7 @@ class Api::LoginController < ApiController
       session[:user_id] = @user.id
       return redirect_to api_tasks_path
     else
-      render :sign_up
+      return redirect_to api_create_user_path
     end
   end
   private
