@@ -23,9 +23,10 @@ class Task < ActiveRecord::Base
 
   validates :status, presence: true, inclusion: {in: (DOING..DONE)}
   validates :deadline_at, presence: true
+  validates :sync_token, presence: true, uniqueness: true
   before_validation :set_status
   before_validation :deadline_at_orver_created_at
-  before_save :create_sync_token
+  before_validation :set_sync_token
 
   def done
     if status == DOING
@@ -72,7 +73,7 @@ class Task < ActiveRecord::Base
     end
   end
 
-  def create_sync_token
+  def set_sync_token
     if sync_token.nil?
       self.sync_token = SecureRandom.uuid
     end
