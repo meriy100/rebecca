@@ -7,12 +7,12 @@ class Api::TasksController < ApiController
 
   def sync
     tasks = Task.where(user: current_user, status: Task::DOING)
-    params.each |ios_task|
+    params[:tasks].each do |ios_task|
         if ios_task[:sync_token].present?
-            @same_task = tasks.find_by(sync_token: ios_task[:sync_token])
-            if @same_task.present?
-                if ios_task.updated_at > same_task.updated_at
-                    @same_task.update(ios_task)
+            same_task = tasks.find_by(sync_token: ios_task[:sync_token])
+            if same_task.present?
+                if Time.zone.parse(ios_task[:updated_at]) > same_task.updated_at
+                    same_task.update(name: ios_task[:name], status: ios_task[:status], weight: ios_task[:weight], deadline_at: Time.zone.parse(ios_task[:deadline_at]), updated_at: Time.zone.parse(ios_task[:updated_at]))
                 end
             end
         end
@@ -21,3 +21,4 @@ class Api::TasksController < ApiController
   end
 
 end
+

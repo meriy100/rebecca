@@ -73,8 +73,8 @@ class Task < ActiveRecord::Base
   end
 
   def create_sync_token
-    if sync_token.present?
-      sync_token = SecureRandom.uuid
+    if sync_token.nil?
+      self.sync_token = SecureRandom.uuid
     end
   end
 end
