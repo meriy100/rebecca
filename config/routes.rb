@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       post 'create_user', action: :create_user
     end
 
-    resources :tasks do
+    resources :tasks, param: :sync_token do
       member do
         post "done"
       end

@@ -1,8 +1,41 @@
 class Api::TasksController < ApiController
+  before_action :set_task, only: [:done, :update, :destroy]
   def index
-    @tasks = Task.where(user: current_user, is_done: false)
+    @tasks = Task.where(user: current_user)
     # @user = User.where(name: current_user)
     # @user = :current_user
+  end
+
+  def create
+    @task = Task.new(task_params)
+    if @task.save
+      render json: @task
+    else
+      render json: {create: false}
+    end
+  end
+
+  def done
+    if @task.done
+      render json: @task
+    else
+      render json: {done: false}
+    end
+  end
+
+  def update
+    if @task.update(task_params)
+      render json: @task
+    else
+      render json: {update: false}
+    end
+  end
+
+  def destroy
+    @task.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
   end
 
   def sync
@@ -34,6 +67,14 @@ class Api::TasksController < ApiController
       created_at: Time.zone.parse(task_params[:created_at]),
       updated_at: Time.zone.parse(task_params[:updated_at])
     }
+  end
+
+  def set_task
+    @task = Task.find_by(sync_token: params[:sync_token])
+  end
+
+  def task_params
+    params.require(:task).permit(:user_id, :title, :is_done, :weight, :deadline_at, :deleted_at)
   end
 end
 
