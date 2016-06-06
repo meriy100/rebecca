@@ -3,12 +3,12 @@ class TasksController < ApplicationController
 
   def index
     @search = Task.search(params[:q])
-    @tasks = @search.result.where(user: current_user, status: Task::DOING).sort_by{|task| task.least_time_per}
+    @tasks = @search.result.where(user: current_user, is_done: false).sort_by{|task| task.least_time_per}
   end
 
-  # post
+  # get
   def doned
-    @tasks = Task.where(user: current_user, status: Task::DONE)
+    @tasks = Task.where(user: current_user, is_done: true)
   end
 
   def new
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      @tasks = Task.where(user: current_user, status: Task::DOING).sort_by{|task| task.least_time_per}
+      @tasks = Task.where(user: current_user, is_done: false).sort_by{|task| task.least_time_per}
     else
       render :new
     end
@@ -52,6 +52,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:user_id, :name, :status, :weight, :deadline_at, :deleted_at)
+      params.require(:task).permit(:user_id, :title, :is_done, :weight, :deadline_at, :deleted_at)
     end
 end

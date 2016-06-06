@@ -11,7 +11,7 @@ $(document).ready ->
       dataType: "html"
       data: {
         id: task_id,
-        atr: "name",
+        atr: "title",
         value: value,
       }
       success: (results) ->
