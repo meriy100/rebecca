@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :done]
+  include TasksAction
+  before_action :set_task, only: [:update, :destroy, :done]
 
   def index
     @search = Task.search(params[:q])
@@ -48,10 +49,7 @@ class TasksController < ApplicationController
 
   private
     def set_task
-      @task = Task.where(user: current_user).find(params[:id])
+      @task = Task.find_by(user: current_user, id: params[:id])
     end
 
-    def task_params
-      params.require(:task).permit(:user_id, :title, :is_done, :weight, :deadline_at, :deleted_at)
-    end
 end

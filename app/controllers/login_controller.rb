@@ -1,4 +1,5 @@
 class LoginController < ApplicationController
+  include SessionAction
   skip_before_filter :authenticated
   layout "login_layout"
   def index
