@@ -1,17 +1,19 @@
 .task-row
-  .progress.task-content
-    .progress-bar[class="progress-bar-#{%w{success info primary warning danger }.sample}" role="progressbar" aria-valuenow="#{task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{task.least_time_per}%;"]
-    .light-btn.done-button[style="display: none"]
-      button.light-btn.task-done[data-task="#{task.id}"]
-    .task-info
-      .task-name
-        .task-name-value[data-task="#{task.id}"]
-          = task.title
-        .task-name-field[data-task="#{task.id}" style="display: none"]
-          = text_field_tag :title, task.title
+  .task-done[data-task="#{task.id}"]
+    .task-done-view
+  /.light-btn.done-button[style="display: none"]
+  /  button.light-btn.task-done[data-task="#{task.id}"]
+  .task-info
+    .task-name
+      .task-name-value[data-task="#{task.id}"]
+        = task.title
+      .task-name-field[data-task="#{task.id}" style="display: none"]
+        = text_field_tag :title, task.title
   .deadline_at
     .task-deadline_at-value[data-task="#{task.id}"]
       /= l task.deadline_at, format: :short
       = task.deadline_at_to_s
     .task-deadline_at-field[data-task="#{task.id}" style="display: none"]
       = datetime_field_tag :deadline_at, task.title
+  .progress.task-content
+    .progress-bar[class="progress-bar-#{%w{primary warning danger }.sample}" role="progressbar" aria-valuenow="#{task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{task.least_time_per}%;"]

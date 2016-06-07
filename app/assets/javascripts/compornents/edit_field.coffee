@@ -42,5 +42,5 @@ $(document).ready ->
     $(this).find(".done-button").show()
   $(document).on "mouseleave", ".task-row", ->
     $(this).find(".done-button").hide()
-  $(document).on "click", "button.task-done", ->
+  $(document).on "click", ".task-done", ->
     doneTask(this)

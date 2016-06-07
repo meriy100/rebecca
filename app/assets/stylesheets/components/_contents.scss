@@ -1,7 +1,11 @@
 @import "settings/variables/_position.scss";
+@import "settings/variables/_color.scss";
 .content{
   padding-top: $header-height;
   padding-left: $sidebar-width;
+}
+body{
+  background-color: $gley-2;
 }
 @media screen and (min-width: 0px) and (max-width: 640px) {
   .content{

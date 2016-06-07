@@ -10,8 +10,13 @@ $header-height : 40px;
 
 
 // task-row
-$task-row-height: 48px;
+$task-row-width: 500px;
+$task-row-height: 150px;
+
+$task-done-size: 40px;
+
 $task-row-content: 48px;
+
 $task-row-progress: $task-row-height - $task-row-content;
 
 // button
@@ -23,3 +28,8 @@ $ice-button-font-size: 20px;
 $done-button-area: $task-row-content;
 $done-button-size: 24px;
 $done-button-margin: ($done-button-area - $done-button-size) / 2 ;
+
+
+
+
+
