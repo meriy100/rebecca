@@ -8,6 +8,7 @@ class TasksController < ApplicationController
 
   # get
   def doned
+    @search = Task.search(params[:q])
     @tasks = Task.where(user: current_user, status: Task::DONE)
   end
 
