@@ -22,7 +22,7 @@
 .ice-button.trans{
   color: $white;
   background-color: transparent;
-  transition: background-color 0.2s ;
+  transition: background-color 400ms ease;
 }
 .ice-button.base-color{
   color: $white;
