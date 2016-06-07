@@ -9,6 +9,7 @@ class TasksController < ApplicationController
 
   # get
   def doned
+    @search = Task.search(params[:q])
     @tasks = Task.on_user.where(is_done: true)
   end
 
