@@ -9,7 +9,7 @@ class TasksController < ApplicationController
   # get
   def doned
     @search = Task.search(params[:q])
-    @tasks = Task.where(user: current_user, status: Task::DONE)
+    @tasks = @search.result.where(user: current_user, status: Task::DONE).sort_by{|task| task.least_time_per}
   end
 
   def new
