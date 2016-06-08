@@ -9,7 +9,7 @@ class Task < ActiveRecord::Base
   validates :sync_token, presence: true, uniqueness: true
   validates :deadline_at, presence: true
 
-  scope :on_user, -> { where(user: current_user) }
+  scope :on_user, -> { where(user: User.current_user) }
 
   def done
     update(is_done: true) unless is_done
