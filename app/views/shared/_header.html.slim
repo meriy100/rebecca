@@ -1,20 +1,42 @@
-.container
-  .row
-    .col-md-6.col-md-offset-2.col-sm-7
-      .form-group.search-tasks
-        = search_form_for(@search) do |f|
-          .input-group
-            .input-group-addon
-              i.fa.fa-search
-            = f.text_field :name_cont, class: "form-control search-field"
-          = f.submit class: "btn btn-info"
-    .col-md-4.col-sm-5
-      .header-contents
-        a
-          i.fa.fa-plus.fa-2x
-        a
-          i.fa.fa-thumbs-o-up.fa-2x
-        a
-          i.fa.fa-cog.fa-2x
-        = link_to logout_path, class: "logout" do
-          i.fa.fa-sign-out.fa-2x
+- if controller.action_name == "doned"
+  .container
+    .row
+      .col-md-6.col-md-offset-2.col-sm-7
+        .form-group.search-tasks
+          = search_form_for(@search, :url => doned_tasks_path) do |f|
+            .input-group
+              .input-group-addon
+                i.fa.fa-search
+              = f.text_field :name_cont, class: "form-control search-field"
+            = f.submit class: "btn btn-info"
+      .col-md-4.col-sm-5
+        .header-contents
+          a
+            i.fa.fa-plus.fa-2x
+          a
+            i.fa.fa-thumbs-o-up.fa-2x
+          a
+            i.fa.fa-cog.fa-2x
+          = link_to logout_path, class: "logout" do
+            i.fa.fa-sign-out.fa-2x
+- else
+  .container
+    .row
+      .col-md-6.col-md-offset-2.col-sm-7
+        .form-group.search-tasks
+          = search_form_for(@search) do |f|
+            .input-group
+              .input-group-addon
+                i.fa.fa-search
+              = f.text_field :name_cont, class: "form-control search-field"
+            = f.submit class: "btn btn-info"
+      .col-md-4.col-sm-5
+        .header-contents
+          a
+            i.fa.fa-plus.fa-2x
+          a
+            i.fa.fa-thumbs-o-up.fa-2x
+          a
+            i.fa.fa-cog.fa-2x
+          = link_to logout_path, class: "logout" do
+            i.fa.fa-sign-out.fa-2x
