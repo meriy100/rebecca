@@ -46,8 +46,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    annotator (0.0.10)
-      activerecord (>= 3.0)
     arel (6.0.3)
     awesome_print (1.6.1)
     bcrypt (3.1.11)
@@ -252,7 +250,6 @@ PLATFORMS
 DEPENDENCIES
   active_hash
   acts_as_paranoid!
-  annotator
   awesome_print
   bcrypt-ruby
   better_errors

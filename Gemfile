@@ -37,7 +37,7 @@ gem "slim"
 # ハッシュモデル
 gem "active_hash"
 # モデルにカラムコメント
-gem 'annotator'
+# gem 'annotator'
 # 論理削除
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 
