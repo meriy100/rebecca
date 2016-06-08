@@ -1,7 +1,7 @@
 .side-content
   ul
     li
-      = link_to '今日のタスク', tasks_path(:'q[deadline_at_eq]' => Time.zone.today)
+      = link_to '今日のタスク', tasks_path(:'q[deadline_at_eq]' => Time.zone.tomorrow)
     li
       | 重要度の高いタスク
     li
