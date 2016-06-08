@@ -16,6 +16,6 @@ html
           = yield
         .col-lg-4.col-md-2
     .header
-      == render "shared/header"
+      == render "shared/header", search: @search
     .sidebar
       == render "shared/sidebar"
