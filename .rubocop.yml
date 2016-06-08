@@ -4,6 +4,7 @@ AllCops:
     - "db/**/*"
     - "bin/**/*"
     - "spec/**/*"
+    - 'config/**/*'
   DisplayCopNames: true
 # 日本語でのコメントを許可
 AsciiComments:
@@ -34,7 +35,7 @@ Documentation:
   Enabled: false
 
 StringLiterals:
-  EnforcedStyle: double_quotes
+  Enabled: false
 FormatString:
   EnforcedStyle: percent
 
