@@ -23,7 +23,7 @@ class Api::TasksController < ApiController
     if @task.save
       render json: @task
     else
-      render json: {create: false}
+      render json: { create: false }
     end
   end
 
@@ -33,7 +33,7 @@ class Api::TasksController < ApiController
     if @task.done
       render json: @task
     else
-      render json: {done: false}
+      render json: { done: false }
     end
   end
 
@@ -48,7 +48,7 @@ class Api::TasksController < ApiController
     if @task.update(task_params)
       render json: @task
     else
-      render json: {update: false}
+      render json: { update: false }
     end
   end
 
@@ -78,15 +78,15 @@ class Api::TasksController < ApiController
   def sync
     tasks = Task.where(user: current_user)
     params[:tasks].each do |ios_task|
-        if ios_task[:sync_token].present?
-            if sync_task = tasks.find_by(sync_token: ios_task[:sync_token]).presence
-              if Time.zone.parse(ios_task[:updated_at]) > sync_task.updated_at
-                  sync_task.update(sync_params(ios_task))
-              end
-            else
-                Task.create(sync_params(ios_task))
-            end
+      if ios_task[:sync_token].present?
+        if sync_task = tasks.find_by(sync_token: ios_task[:sync_token]).presence
+          if Time.zone.parse(ios_task[:updated_at]) > sync_task.updated_at
+            sync_task.update(sync_params(ios_task))
+          end
+        else
+          Task.create(sync_params(ios_task))
         end
+      end
     end
     redirect_to api_tasks_path
   end
