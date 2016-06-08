@@ -4,19 +4,20 @@ class TasksController < ApplicationController
 
   def index
     @search = Task.search(params[:q])
-    @tasks = @search.result.where(user: current_user, is_done: false).sort_by{|task| task.least_time_per}
+    @tasks = @search.result.on_user.where(is_done: false).sort_by(&:least_time_per)
   end
 
   # get
   def doned
-    @tasks = Task.where(user: current_user, is_done: true)
+    @tasks = Task.on_user.where(is_done: true)
   end
 
   def new
     @task = Task.new
   end
 
-  # TODO jQuery ajax で何をもらうかちゃんと考えんとですよ
+  # TODO
+  # jQuery ajax で何をもらうかちゃんと考えんとですよ
   def done
     if @task.done
       head 200
@@ -28,28 +29,28 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      @tasks = Task.where(user: current_user, is_done: false).sort_by{|task| task.least_time_per}
+      @tasks = Task.on_user.where(is_done: false).sort_by(&:least_time_per)
     else
       render :new
     end
   end
 
   def update
-    @task.update(params["atr"] => params["value"])
-    head  200
+    @task.update(params[:atr] => params[:value])
+    head 200
   end
 
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_task
-      @task = Task.find_by(user: current_user, id: params[:id])
-    end
 
+  def set_task
+    @task = Task.on_user.find_by(id: params[:id])
+  end
 end

@@ -5,7 +5,7 @@ class Api::TasksController < ApiController
   # GET
   # api/tasks
   def index
-    @tasks = Task.where(user: current_user)
+    @tasks = Task.on_user
     # @user = User.where(name: current_user)
     # @user = :current_user
   end
@@ -23,7 +23,7 @@ class Api::TasksController < ApiController
     if @task.save
       render json: @task
     else
-      render json: {create: false}
+      render json: { create: false }
     end
   end
 
@@ -33,7 +33,7 @@ class Api::TasksController < ApiController
     if @task.done
       render json: @task
     else
-      render json: {done: false}
+      render json: { done: false }
     end
   end
 
@@ -48,7 +48,7 @@ class Api::TasksController < ApiController
     if @task.update(task_params)
       render json: @task
     else
-      render json: {update: false}
+      render json: { update: false }
     end
   end
 
@@ -76,24 +76,24 @@ class Api::TasksController < ApiController
   #   ]
   # }
   def sync
-    tasks = Task.where(user: current_user)
+    tasks = Task.on_user
     params[:tasks].each do |ios_task|
-        if ios_task[:sync_token].present?
-            if sync_task = tasks.find_by(sync_token: ios_task[:sync_token]).presence
-              if Time.zone.parse(ios_task[:updated_at]) > sync_task.updated_at
-                  sync_task.update(sync_params(ios_task))
-              end
-            else
-                Task.create(sync_params(ios_task))
-            end
+      tasks.find_by(sync_token: ios_task[:sync_token]).tap do |sync_task|
+        if sync_task
+          if Time.zone.parse(ios_task[:updated_at]) > sync_task.updated_at
+            sync_task.update(sync_params(ios_task))
+          end
+        else
+          Task.create(sync_params(ios_task))
         end
+      end
     end
     redirect_to api_tasks_path
   end
 
   private
 
-  def sync_params task_params = {}
+  def sync_params(task_params = {})
     {
       user_id: task_params[:user_id],
       sync_token: task_params[:sync_token],
@@ -107,7 +107,6 @@ class Api::TasksController < ApiController
   end
 
   def set_task
-    @task = Task.find_by(user: current_user, sync_token: params[:sync_token])
+    @task = Task.on_user.find_by(sync_token: params[:sync_token])
   end
 end
-

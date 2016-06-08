@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
@@ -38,7 +37,7 @@ gem "slim"
 # ハッシュモデル
 gem "active_hash"
 # モデルにカラムコメント
-gem 'annotator'
+# gem 'annotator'
 # 論理削除
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 
@@ -53,6 +52,7 @@ gem 'bootstrap-slider-rails'
 
 gem 'uuidtools'
 
+gem "rails_best_practices"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -83,4 +83,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
