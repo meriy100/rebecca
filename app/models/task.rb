@@ -12,7 +12,9 @@ class Task < ActiveRecord::Base
   scope :on_user, -> { where(user: User.current_user) }
 
   def done
-    update(is_done: true) unless is_done
+    unless is_done
+      update(is_done: true)
+    end
   end
 
   # TODO
