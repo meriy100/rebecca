@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
     tasks.max_by(&:updated_at).updated_at
   end
 
+  # TODO
+  # current_user_id にすべき
   def self.current_user=(user)
     Thread.current[:user_id] = user.id
   end
