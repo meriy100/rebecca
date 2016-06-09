@@ -47,6 +47,8 @@ Metrics/LineLength:
 Metrics/MethodLength:
   CountComments: false
   Max: 30
+Metrics/AbcSize:
+  Enabled: false
 
 # ネストが深すぎる
 BlockNesting:
