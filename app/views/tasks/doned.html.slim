@@ -2,5 +2,4 @@ h1.title.base-color Rebecca
 ul.list-group#tasks-list
   == render @tasks
 #new-task
-= link_to new_task_path, remote: true do
-  i.fa.fa-plus-square.fa-3x.new-button
+= link_to 'back', top_path
