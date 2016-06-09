@@ -69,14 +69,13 @@ group :development, :test do
   gem 'hirb-unicode'           # hirbの日本語対応
   gem 'bcrypt-ruby'
   gem 'rails_best_practices'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
 
   # テスト関連
   gem "rspec"
-  gem 'rspec-rails', '~> 3.3.2'
-  gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'capybara', '~> 2.1.0'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 group :development do
