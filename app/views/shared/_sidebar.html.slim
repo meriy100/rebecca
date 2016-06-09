@@ -1,11 +1,11 @@
 .side-content
   ul
     li
-      = link_to '今日のタスク', tasks_path(:'q[deadline_at_eq]' => Time.zone.tomorrow)
+      = link_to '今日のタスク', tasks_path(q: {deadline_at_eq: Time.zone.tomorrow})
     li
       | 重要度の高いタスク
     li
-      = link_to '今週のタスク', tasks_path(:'q[deadline_at_gt]' => Time.zone.today.beginning_of_week, :'q[deadline_at_lt]' => Time.zone.today.end_of_week)
+      = link_to '今週のタスク', tasks_path(q: {deadline_at_gt: Time.zone.today.beginning_of_week, deadline_at_lt: Time.zone.today.end_of_week})
     li
       = link_to '終了済みのタスク', doned_tasks_path
 
