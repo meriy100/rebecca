@@ -76,6 +76,17 @@ class Api::TasksController < ApiController
   #   ]
   # }
   def sync
+    if params[:task_updated_at] > params[:synced_at]
+      full_sync
+      @tasks = Task.on_user
+    else current_user.task_updated_at > params[:task_updated_at]
+      @tasks = Task.on_user
+    end
+  end
+
+  private
+
+  def full_sync
     tasks = Task.on_user
     params[:tasks].each do |ios_task|
       tasks.find_by(sync_token: ios_task[:sync_token]).tap do |sync_task|
@@ -88,10 +99,7 @@ class Api::TasksController < ApiController
         end
       end
     end
-    redirect_to api_tasks_path
   end
-
-  private
 
   def sync_params(task_params = {})
     {
