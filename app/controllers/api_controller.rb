@@ -11,11 +11,7 @@ class ApiController < ActionController::Base
         reset_session
       end
     end
-<<<<<<< 002f53a47b0e2ab02d6bc2c9326baa28a7e6ba3b
     render json: { errors: "session faild" } unless @current_user
-=======
-    render json: {errors: "session faild"} unless @current_user
->>>>>>> api session response
   end
 
   def current_user
