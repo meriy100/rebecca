@@ -7,12 +7,12 @@ class Api::LoginController < ApiController
       session[:user_id] = user.id
       return redirect_to api_tasks_path
     end
-    render json: {errors: "login faild"}
+    render json: { errors: "login faild" }
   end
 
   def logout
     reset_session
-    render json: {message: "success"}
+    render json: { message: "success" }
   end
 
   def create_user
@@ -21,7 +21,7 @@ class Api::LoginController < ApiController
       session[:user_id] = @user.id
       return redirect_to api_tasks_path
     else
-      render json: {errors: @user.errors.full_messages}
+      render json: { errors: @user.errors.full_messages }
     end
   end
 
