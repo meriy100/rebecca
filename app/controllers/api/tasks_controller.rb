@@ -21,20 +21,17 @@ class Api::TasksController < ApiController
   def create
     @task = Task.new(task_params)
     if @task.save
-      render json: @task
+      render :task
     else
-      render json: { create: false }
+      render :task
     end
   end
 
   # POST
   # api/tasks/:sync_token
   def done
-    if @task.done
-      render json: @task
-    else
-      render json: { done: false }
-    end
+    @task.done
+    render :task
   end
 
   # PATCH
@@ -46,9 +43,9 @@ class Api::TasksController < ApiController
   # }
   def update
     if @task.update(task_params)
-      render json: @task
+      render :task
     else
-      render json: { update: false }
+      render :task
     end
   end
 
