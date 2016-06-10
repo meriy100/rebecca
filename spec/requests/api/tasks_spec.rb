@@ -163,7 +163,7 @@ RSpec.describe "Api::Tasks", type: :request do
       it "include massage in task" do
         is_expected.to eq(200)
         body = response.body
-        expect(body).to be_json_eql("is over created_at").at_path("errors/messages/deadline_at")
+        expect(body).to be_json_eql(["Deadline atis over created_at "]).at_path("errors")
       end
     end
   end
@@ -214,8 +214,8 @@ RSpec.describe "Api::Tasks", type: :request do
   end
 
   describe "PATCH /api/tasks/:sync_token" do
-    let(:task) {create(:task)}
-    let(:sync_token) {task.sync_token}
+    let(:task) { create(:task) }
+    let(:sync_token) { task.sync_token }
     context "valid params" do
       let(:params) do
         { task: task_params(task).merge(title: "テストタスク2") }
@@ -235,8 +235,9 @@ RSpec.describe "Api::Tasks", type: :request do
       end
     end
     context "invalid params" do
+      let(:yesterday) { Time.zone.yesterday }
       let(:params) do
-        { task: task_params(task).merge(deadline_at: Time.zone.yesterday) }
+        { task: task_params(task).merge(deadline_at: yesterday) }
       end
       it "didnt updated task" do
         is_expected.to eq(200)
@@ -244,6 +245,7 @@ RSpec.describe "Api::Tasks", type: :request do
       end
       it "return params" do
         is_expected.to eq(200)
+        task.deadline_at = yesterday
         body = response.body
         be_json_eql_task(task, "").each do |_, matcher|
           expect(body).to matcher
@@ -252,7 +254,7 @@ RSpec.describe "Api::Tasks", type: :request do
       it "include massage in task" do
         is_expected.to eq(200)
         body = response.body
-        expect(body).to be_json_eql("is over created_at").at_path("errors/messages/deadline_at")
+        expect(body).to be_json_eql(["Deadline atis over created_at "]).at_path("errors")
       end
     end
     context "invalid sync_token" do
