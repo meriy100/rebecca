@@ -119,6 +119,6 @@ class Api::TasksController < ApiController
   end
 
   def set_task
-    @task = Task.on_user.find_by(sync_token: params[:sync_token])
+    @task = Task.on_user.find_by(sync_token: params[:sync_token]) || Task.create(task_params)
   end
 end
