@@ -10,11 +10,8 @@ class Api::TasksController < ApiController
   # POST api/tasks
   def create
     @task = Task.new(task_params)
-    if @task.save
-      render :task
-    else
-      render :task
-    end
+    @task.save
+    render :task
   end
 
   # POST
@@ -25,11 +22,8 @@ class Api::TasksController < ApiController
 
   # PATCH
   def update
-    if @task.update(task_params)
-      render :task
-    else
-      render :task
-    end
+    @task.update(task_params)
+    render :task
   end
 
   # DELETE
