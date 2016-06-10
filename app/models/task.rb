@@ -51,7 +51,9 @@ class Task < ActiveRecord::Base
 
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ
   def deadline_at_orver_created_at
-    if (created_at || Time.zone.now) > deadline_at
+    if deadline_at.nil?
+      true
+    elsif (created_at || Time.zone.now) > deadline_at
       errors[:deadline_at] << "is over created_at "
       false
     end
