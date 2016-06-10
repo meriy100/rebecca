@@ -71,6 +71,7 @@
         height: 100%;
         img{
           @include center_block;
+          max-height: 80%;
           max-width: 95%;
         }
       }
