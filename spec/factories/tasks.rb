@@ -10,5 +10,12 @@ FactoryGirl.define do
     factory :doned_task do
       is_done true
     end
+    factory :sync_task do
+      sync_token "aaaaaaaaaaaaaa"
+      title "テストタスク2"
+      is_done false
+      updated_at Time.zone.now
+      created_at Time.zone.now
+    end
   end
 end

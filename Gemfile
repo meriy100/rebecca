@@ -74,6 +74,8 @@ group :development, :test do
   # テスト関連
   gem "rspec"
   gem 'rspec-rails'
+  gem 'rspec-request_describer'
+  gem "json_spec"
   gem 'factory_girl_rails'
   gem 'capybara'
 end
