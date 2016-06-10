@@ -190,19 +190,21 @@ RSpec.describe "Api::Tasks", type: :request do
     context "invalid sync_token" do
       let(:task) {build(:sync_task)}
       let(:sync_token) { task.sync_token }
+      let(:params) do
+        { task: task_params(task) }
+      end
       it "create task" do
-        expect(Task.count).to eq(0)
         is_expected.to eq(200)
         expect(Task.count).to eq(1)
       end
       it "task done" do
         is_expected.to eq(200)
-        task.reload
+        task = Task.first
         expect(task.is_done).to eq(true)
       end
       it "include return params" do
         is_expected.to eq(200)
-        task.reload
+        task = Task.first
         body = response.body
         be_json_eql_task(task, "").each do |_, matcher|
           expect(body).to matcher
@@ -256,19 +258,17 @@ RSpec.describe "Api::Tasks", type: :request do
     context "invalid sync_token" do
       let(:task) {build(:sync_task)}
       let(:sync_token) { task.sync_token }
+      let(:params) do
+        { task: task_params(task).merge(title: "テストタスク2") }
+      end
       it "create task" do
         expect(Task.count).to eq(0)
         is_expected.to eq(200)
         expect(Task.count).to eq(1)
       end
-      it "task done" do
-        is_expected.to eq(200)
-        task.reload
-        expect(task.is_done).to eq(true)
-      end
       it "include return params" do
         is_expected.to eq(200)
-        task.reload
+        task = Task.first
         body = response.body
         be_json_eql_task(task, "").each do |_, matcher|
           expect(body).to matcher
