@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
@@ -38,7 +37,7 @@ gem "slim"
 # ハッシュモデル
 gem "active_hash"
 # モデルにカラムコメント
-gem 'annotator'
+# gem 'annotator'
 # 論理削除
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 
@@ -53,6 +52,10 @@ gem 'bootstrap-slider-rails'
 
 gem 'uuidtools'
 
+# コード解析
+gem "rubocop"
+gem "rails_best_practices"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -66,14 +69,15 @@ group :development, :test do
   gem 'hirb-unicode'           # hirbの日本語対応
   gem 'bcrypt-ruby'
   gem 'rails_best_practices'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
 
   # テスト関連
   gem "rspec"
-  gem 'rspec-rails', '~> 3.3.2'
-  gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'capybara', '~> 2.1.0'
+  gem 'rspec-rails'
+  gem 'rspec-request_describer'
+  gem "json_spec"
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 group :development do
@@ -83,4 +87,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

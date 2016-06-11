@@ -7,16 +7,16 @@ class LoginController < ApplicationController
 
   def login
     user = User.find_by(name: params[:login_name])
-    if user && user.authenticate(params[:password]) then
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       return redirect_to top_path
     end
-    render 'index'
+    render :index
   end
 
   def logout
     reset_session
-    return redirect_to login_path
+    redirect_to login_path
   end
 
   def sign_up
@@ -32,8 +32,10 @@ class LoginController < ApplicationController
       render :sign_up
     end
   end
+
   private
-    def user_params
-      params.require(:user).permit(:name, :password, :email, :deleted_at)
-    end
+
+  def user_params
+    params.require(:user).permit(:name, :password, :email, :deleted_at)
+  end
 end

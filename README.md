@@ -1,3 +1,5 @@
+## セットアップ
+
 - ライブラリのインストール
 
 ```sh
@@ -17,4 +19,11 @@ bundle exec rake db:migrate:reset # DBの構成が固まるまではこれで
 - localhost:3000
 ```sh
 bundle exec rails s
+```
+
+## コミットの前に
+
+```
+rubocop
+rails_best_practices
 ```

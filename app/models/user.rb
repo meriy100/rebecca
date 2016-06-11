@@ -23,11 +23,15 @@ class User < ActiveRecord::Base
   has_many :tasks
   acts_as_paranoid
 
+  def task_updated_at
+    tasks.max_by(&:updated_at).updated_at
+  end
+
   def self.current_user=(user)
     Thread.current[:user_id] = user.id
   end
 
   def self.current_user
-    User.find Thread.current[:user_id]
+    User.find_by id: Thread.current[:user_id]
   end
 end

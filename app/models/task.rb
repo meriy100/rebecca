@@ -1,5 +1,4 @@
 class Task < ActiveRecord::Base
-
   # belongs_to :user
   include CurrentUser
 
@@ -10,13 +9,14 @@ class Task < ActiveRecord::Base
   validates :sync_token, presence: true, uniqueness: true
   validates :deadline_at, presence: true
 
+  scope :on_user, -> { where(user: User.current_user) }
+
   def done
-    unless is_done
-      self.update(is_done: true)
-    end
+    update(is_done: true) unless is_done
   end
 
-  # TODO 仮 設計による
+  # TODO
+  # 仮 設計による
   def least_time
     if deadline_at > Time.zone.now
       deadline_at - Time.zone.now
@@ -43,6 +43,7 @@ class Task < ActiveRecord::Base
   end
 
   private
+
   def set_is_done
     self.is_done ||= false
     true
@@ -51,14 +52,12 @@ class Task < ActiveRecord::Base
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ
   def deadline_at_orver_created_at
     if (created_at || Time.zone.now) > deadline_at
-      self.errors[:deadline_at] << ("is over created_at ")
+      errors[:deadline_at] << "is over created_at "
       false
     end
   end
 
   def set_sync_token
-    if sync_token.nil?
-      self.sync_token = SecureRandom.uuid
-    end
+    self.sync_token = SecureRandom.uuid if sync_token.nil?
   end
 end
