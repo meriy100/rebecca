@@ -14,33 +14,40 @@
         .ice-button.trans
           | サインイン
           a[type="button" data-toggle="modal" data-target="#myModal"]
-    /.col-lg-6.col-md-6.col-sm-6.main-content-image-cell
-      /= image_tag "mac_and_iPhone.png", class: "mac-iPhone"
-  .row.sub-content.sub-content-grey
+  .row.sub-content.sub-content-white
     .col-lg-3.col-lg-offset-2.col-md-3.col-md-offset-2.col-sm-5.col-sm-offset-1.comment
-      h1.title どんな計画を立てる時も
+      h1.title
+        i.fa.fa-star-o
+        | お気に入りのプラットフォームで
       p
-        | 仕事、買い物、見たい映画、家事のToDoリストを共有し、整理しましょう。計画の内容や、大小に関わらず、
-        br
-        |Rebecca は本当に簡単にするべきことを整理し達成するお手伝いをします。
+        | Rebecca は Web ブラウザでも iPhone でもお使いいただけます.
     .col-lg-4.col-md-4.col-sm-5.sub-content-image-cell
       = image_tag "mac_and_iPhone.png"
-  .row.sub-content.sub-content-white
+  .row.sub-content.sub-content-gley
     .col-lg-4.col-lg-offset-2.col-md-4.col-md-offset-2.col-sm-5.col-sm-offset-1.sub-content-image-cell
       = image_tag "sub_content2.png"
     .col-lg-3.col-md-3.col-sm-5.comment
-      h1.title 今やるべきことがみれる
+      h1.title
+        i.fa.fa-lightbulb-o
+        | 今やるべきことがみれる
       p
-        |Rebecca は視覚的にあなたに必要なタスクを知らせます｡
+        |Rebecca はあなたが今すべきことを知っています.
       p
-        |今までのタスク管理にくらべ, かつてないほどにスムーズで簡単になります。
-  .row.sub-content.sub-content-grey
+        |今までのタスク管理にくらべ, かつてないほどにスムーズで簡単になります.
+  .row.sub-content.sub-content-white
     .col-lg-3.col-lg-offset-2.col-md-3.col-md-offset-2.col-sm-5.col-sm-offset-1.comment
-      h1.title いつでも知らせてくれる
+      h1.title
+        i.fa.fa-bell-o
+        | いつでも知らせてくれる
       p
-        |締め切りの設定、リマインダー、ToDo の割り当て機能がサポートします。
+        |締め切りの設定、リマインダー、ToDo の割り当て機能がサポートします.
       p
         |ToDo リストの内容が仕事関連でも、
-        |遊びの計画でも、Rebecca を使えば期限日を忘れてしまうなんてことがなくなります。
-
+        |遊びの計画でも、Rebecca を使えば期限日を忘れてしまうなんてことがなくなります.
+  .row.sub-content.sub-content-gley
+    .col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1.start-now
+      .button-group
+        .ice-button.base-color
+          | 今すぐ始める
+          = link_to "", sign_up_path
 

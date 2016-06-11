@@ -22,6 +22,9 @@
         width: 100%;
         height: 100%;
         background-color: rgba(0, 116, 188, 0.8);
+        // background-color: rgba(44, 62, 79, 0.8);
+        // background-color: rgba(255, 145, 168, 0.8);
+        // background-color: rgba(129, 220, 250, 0.8);
       }
       .comment{
         color: $white;
@@ -75,11 +78,18 @@
           max-width: 95%;
         }
       }
+      .start-now{
+        position: relative;
+        height: 100%;
+        @include center_block();
+        width: 300px;
+        height: 100px;
+      }
     }
     .sub-content-white{
       background-color: $white;
     }
-    .sub-content-grey{
+    .sub-content-gley{
       background-color: $gley-2;
     }
 
