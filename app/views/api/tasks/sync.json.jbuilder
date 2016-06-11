@@ -16,7 +16,5 @@ if @tasks.present?
     json.set! :name, @current_user.name
     json.set! :email, @current_user.email
   end
-else
 end
 json.set! :message, @message
-

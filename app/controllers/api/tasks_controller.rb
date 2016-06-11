@@ -3,57 +3,30 @@ class Api::TasksController < ApiController
   before_action :set_task, only: [:done, :update, :destroy]
 
   # GET
-  # api/tasks
   def index
     @tasks = Task.on_user
-    # @user = User.where(name: current_user)
-    # @user = :current_user
   end
 
   # POST api/tasks
-  # 期待されるparams = {
-  #   tasks: {
-  #     user_id: int, title: string,
-  #     id_done: false, weight: int,
-  #     deadline_at: "yyyy-mm-dd HH:MM:SS"
-  #   }
-  # }
   def create
     @task = Task.new(task_params)
-    if @task.save
-      render json: @task
-    else
-      render json: { create: false }
-    end
+    @task.save
+    render :task
   end
 
   # POST
-  # api/tasks/:sync_token
   def done
-    if @task.done
-      render json: @task
-    else
-      render json: { done: false }
-    end
+    @task.done
+    render :task
   end
 
   # PATCH
-  # api/tasks/:sync_token
-  # 期待されるparams = {
-  #   tasks:{
-  #     変更されるカラム: 値
-  #   }
-  # }
   def update
-    if @task.update(task_params)
-      render json: @task
-    else
-      render json: { update: false }
-    end
+    @task.update(task_params)
+    render :task
   end
 
   # DELETE
-  # api/tasks/:sync_token
   def destroy
     @task.destroy
     respond_to do |format|
@@ -62,20 +35,22 @@ class Api::TasksController < ApiController
   end
 
   # POST
-  # api/tasks/:sync_token
-  # 期待されるparams = {
-  #   tasks: [
-  #     {user_id: int, sync_token: string,
-  #      title: string, id_done: false,
-  #      weight: int, deadline_at: "yyyy-mm-dd HH:MM:SS",
-  #      updated_at: "yyyy-mm-dd HH:MM:SS"},
-  #     {...},
-  #     {...},
-  #     ....
-  #     {...}
-  #   ]
-  # }
   def sync
+    @message = if Time.zone.parse(params[:task_updated_at]) > Time.zone.parse(params[:synced_at])
+                 full_sync
+                 @tasks = Task.on_user
+                 "full_sync"
+               elsif current_user.task_updated_at > Time.zone.parse(params[:task_updated_at])
+                 @tasks = Task.on_user
+                 "sync"
+               else
+                 "no_sync"
+               end
+  end
+
+  private
+
+  def full_sync
     tasks = Task.on_user
     params[:tasks].each do |ios_task|
       tasks.find_by(sync_token: ios_task[:sync_token]).tap do |sync_task|
@@ -88,10 +63,7 @@ class Api::TasksController < ApiController
         end
       end
     end
-    redirect_to api_tasks_path
   end
-
-  private
 
   def sync_params(task_params = {})
     {
@@ -107,6 +79,6 @@ class Api::TasksController < ApiController
   end
 
   def set_task
-    @task = Task.on_user.find_by(sync_token: params[:sync_token])
+    @task = Task.on_user.find_by(sync_token: params[:sync_token]) || Task.create(task_params)
   end
 end
