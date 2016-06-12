@@ -7,6 +7,13 @@
   width: 100%;
   padding : 2px;
   background-color: $base-color;
+    a{
+      color: $white;
+    }
+    span.title{
+      font-size: 32px;
+      line-height: 1;
+    }
   .header-contents{
     padding-top: 5px;
     float: right;
