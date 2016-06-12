@@ -1,24 +1,28 @@
-.side-content
-  ul
-    li
-      = link_to '今日のタスク', today_tasks_path
-    li
-      | 重要度の高いタスク
-    li
-      = link_to '今週のタスク', weekly_tasks_path
-    li
-      = link_to '終了済みのタスク', doned_tasks_path
+.side-content-col
+  .side-content
+    ul
+      li
+        = link_to '今日のタスク', today_tasks_path
+      li
+        | 重要度の高いタスク
+      li
+        = link_to '今週のタスク', weekly_tasks_path
+      li
+        = link_to '終了済みのタスク', doned_tasks_path
 
-.categories
-  ul
-    li
-      | 個人
-    li
-      | 仕事
-    li
-      | 見たい映画
-    li
-      | 買い物
+  .categories
+    ul
+      li
+        .underbar カテゴリ
+        ul
+          li
+            | 個人
+          li
+            | 仕事
+          li
+            | 見たい映画
+          li
+            | 買い物
 
 javascript:
   $(function(){
