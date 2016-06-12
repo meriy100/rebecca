@@ -20,3 +20,16 @@
       | 見たい映画
     li
       | 買い物
+
+javascript:
+  $(function(){
+    $('a').each(function() {
+      console.log("func");
+      console.log(window.location.href)
+      if ($(this).prop('href') == window.location.href) {
+        console.log($(this).prop('href') == window.location.href);
+        $(this).parent().addClass('current');
+        $(this).addClass('current');
+      }
+    });
+  });
