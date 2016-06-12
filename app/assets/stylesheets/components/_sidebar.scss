@@ -11,11 +11,34 @@ html{
       top: $header-height;
       position: fixed;
       width: $sidebar-width;
-      background-color: #FEFFFF;
+      background-color: #22A7F0;
       color: $black;
       height: 100%;
       padding: $sidebar-padding;
+      padding-right: 0;
+      padding-left: $sidebar-width * 0.3;
     }
+
+    ul{
+      list-style: none;
+      font-size: 18px;
+      line-height: 200%;
+      color: $white;
+      box-sizing: border-box;
+    }
+
+    a{
+      color: $white;
+    }
+
+    li.current{
+      background-color: $gley-2;
+    }
+
+    a.current{
+      color: $base-color;
+    }
+
     @media screen and (min-width: 0px) and (max-width: 640px) {
       .sidebar{
         display: none;
