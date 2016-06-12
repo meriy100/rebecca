@@ -34,10 +34,19 @@ $(document).ready ->
       success: (results) ->
         taskRow.fadeOut()
 
+  showDeadlineAtField = (scope) ->
+    task_id = $(scope).data("task")
+    $(scope).hide()
+    field = $(scope).parent().find(".task-deadline_at-field")
+    field.show()
+    field.find("input").focus()
+
   $(document).on "click", ".task-name-value", ->
     showNameField(this)
   $(document).on "blur", ".task-name-field", ->
     updateTask(this)
+  $(document).on "click", ".task-deadline_at-value", ->
+    showDeadlineAtField(this)
   $(document).on "mouseenter", ".task-row", ->
     $(this).find(".done-button").show()
   $(document).on "mouseleave", ".task-row", ->
