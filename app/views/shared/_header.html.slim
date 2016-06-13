@@ -6,11 +6,11 @@
         = link_to "Rebecca", top_path
     .col-md-6.col-sm-7
       .form-group.search-tasks
-        = search_form_for(search, url: path) do |f|
-          .input-group
+        = search_form_for(search, class: "form-inline", url: path) do |f|
+          .input-group.non-focus
             .input-group-addon
               i.fa.fa-search
-            = f.text_field :title_cont, class: "form-control search-field"
+            = f.text_field :title_cont, placeholder: "クイックサーチ", class: "form-control search-field"
           = f.submit class: "btn btn-info"
     .col-md-4.col-sm-5
       .header-contents
