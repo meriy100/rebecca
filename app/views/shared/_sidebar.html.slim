@@ -1,14 +1,14 @@
-<<<<<<< 0b7fe35246b6fd911ada9570097a9876283b87ae
-.side-content
-  ul
-    li
-      = link_to '今日のタスク', tasks_path(q: {deadline_at_eq: Time.zone.tomorrow})
-    li
-      | 重要度の高いタスク
-    li
-      = link_to '今週のタスク', tasks_path(q: {deadline_at_gt: Time.zone.today.beginning_of_week, deadline_at_lt: Time.zone.today.end_of_week})
-    li
-      = link_to '終了済みのタスク', doned_tasks_path
+.side-content-col
+  .side-content
+    ul
+      li.filter-link
+        = link_to '今日のタスク', today_tasks_path
+      li
+        | 重要度の高いタスク
+      li
+        = link_to '今週のタスク', weekly_tasks_path
+      li
+        = link_to '終了済みのタスク', doned_tasks_path
 
   .categories
     ul
@@ -27,10 +27,7 @@
 javascript:
   $(function(){
     $('a').each(function() {
-      console.log("func");
-      console.log(window.location.href)
       if ($(this).prop('href') == window.location.href) {
-        console.log($(this).prop('href') == window.location.href);
         $(this).parent().addClass('current');
         $(this).addClass('current');
       }
