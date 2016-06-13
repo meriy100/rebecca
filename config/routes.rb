@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     end
     collection do
       get "doned"
+      get "today"
+      get "weekly"
     end
   end
 

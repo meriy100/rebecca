@@ -13,6 +13,16 @@ class TasksController < ApplicationController
     @tasks = @search.result.on_user.sort_by(&:least_time_per)
   end
 
+  def today
+    @search = Task.where(deadline_at: Time.zone.today..Time.zone.tomorrow).search(params[:q])
+    @tasks = @search.result.on_user.where(is_done: false).sort_by(&:least_time_per)
+  end
+
+  def weekly
+    @search = Task.where(deadline_at: Time.zone.today.beginning_of_week..Time.zone.today.end_of_week).search(params[:q])
+    @tasks = @search.result.on_user.where(is_done: false).sort_by(&:least_time_per)
+  end
+
   def new
     @task = Task.new
   end
