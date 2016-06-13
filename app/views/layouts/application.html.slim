@@ -19,3 +19,6 @@ html
       == render partial: "shared/header", locals: {search: @search, filter: @filter}
     .sidebar
       == render "shared/sidebar"
+
+    = link_to new_task_path, class: "new-button-sp", remote: true do
+      i.fa.fa-plus
