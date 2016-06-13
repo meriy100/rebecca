@@ -1,7 +1,7 @@
 .side-content-col
   .side-content
     ul
-      li
+      li.filter-link
         = link_to '今日のタスク', today_tasks_path
       li
         | 重要度の高いタスク
@@ -27,10 +27,7 @@
 javascript:
   $(function(){
     $('a').each(function() {
-      console.log("func");
-      console.log(window.location.href)
       if ($(this).prop('href') == window.location.href) {
-        console.log($(this).prop('href') == window.location.href);
         $(this).parent().addClass('current');
         $(this).addClass('current');
       }

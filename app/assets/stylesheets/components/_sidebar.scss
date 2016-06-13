@@ -35,6 +35,22 @@ html{
       border-color: $white;
     }
 
+    .filter-link{
+      display: inline;
+    }
+
+    .task-num::before{
+      content: "";
+      display: block;
+      position: relative;
+      float: left;
+      width: 20px;
+      height: 20px;
+      border-radius: 20px;
+      background-color: red;
+      z-index: -1;
+    }
+
     ul{
       list-style: none;
       font-size: 18px;
@@ -53,7 +69,8 @@ html{
       border-right: solid;
       border-width: 1ex;
       border-color: $gley-2;
-      box-shadow: 0 6px 6px -6px $gley-1, -6px 0 6px -6px $shadow, 0 -6px 6px -6px $shadow, -6px 6px 6px -6px $shadow, -6px -6px 6px -6px $shadow;
+      border-radius: 7px 0 0 7px / 7px 0 0 7px;
+      box-shadow: 0 6px 10px -8px $gley-1, -6px 0 10px -8px $shadow, 0 -6px 10px -8px $shadow, -6px 6px 10px -8px $shadow, -6px -6px 10px -8px $shadow;
     }
 
     a.current{
