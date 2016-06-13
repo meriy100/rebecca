@@ -39,16 +39,8 @@ html{
       display: inline;
     }
 
-    .task-num::before{
-      content: "";
-      display: block;
-      position: relative;
-      float: left;
-      width: 20px;
-      height: 20px;
-      border-radius: 20px;
-      background-color: red;
-      z-index: -1;
+    .task-num{
+      text-align: right;
     }
 
     ul{
