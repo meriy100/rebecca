@@ -42,6 +42,17 @@ class Task < ActiveRecord::Base
     end
   end
 
+  def progress_color
+    case least_time_per
+    when 0...30
+      "danger"
+    when 30...60
+      "warning"
+    when 60...100
+      "primary"
+    end
+  end
+
   private
 
   def set_is_done
