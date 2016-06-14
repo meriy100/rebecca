@@ -1,20 +1,19 @@
 -count_today = Task.on_user.where(deadline_at: Time.zone.today..Time.zone.tomorrow, is_done: false).count
 -count_weekly = Task.on_user.where(deadline_at: Time.zone.today.beginning_of_week..Time.zone.today.end_of_week, is_done: false).count
 -count_all = Task.on_user.where(is_done: false).count
-
 .side-content-col
   .side-content
     ul
-      li
-        = link_to 'タスク一覧 (' + count_all.to_s + ')', tasks_path, class: "current-cand"
-      li
-        = link_to '今日のタスク (' + count_today.to_s + ')', today_tasks_path, class: "current-cand"
-      li
-        = link_to '今週のタスク (' + count_weekly.to_s + ')', weekly_tasks_path, class: "current-cand"
+      li[class="#{sidebar_current(:index)}"]
+        = link_to 'タスク一覧 (' + count_all.to_s + ')', root_path, class: "current-cand #{sidebar_current(:index)}"
+      li[class="#{sidebar_current(:today)}"]
+        = link_to '今日のタスク (' + count_today.to_s + ')', today_tasks_path, class: "current-cand #{sidebar_current(:today)}"
+      li[class="#{sidebar_current(:weekly)}"]
+        = link_to '今週のタスク (' + count_weekly.to_s + ')', weekly_tasks_path, class: "current-cand #{sidebar_current(:weekly)}"
       li
         | 重要度の高いタスク (0)
-      li
-        = link_to '終了済みのタスク', completed_tasks_path, class: "current-cand"
+      li[class="#{sidebar_current(:completed)}"]
+        = link_to '終了済みのタスク', completed_tasks_path, class: "current-cand #{sidebar_current(:completed)}"
 
   .categories
     ul
@@ -30,12 +29,12 @@
           li
             | 買い物
 
-javascript:
-  $(function(){
-    $('a.current-cand').each(function() {
-      if ($(this).prop('href') == window.location.href) {
-        $(this).parent().addClass('current');
-        $(this).addClass('current');
-      }
-    });
-  });
+/javascript:
+/  $(function(){
+/    $('a.current-cand').each(function() {
+/      if ($(this).prop('href') == window.location.href) {
+/        $(this).parent().addClass('current');
+/        $(this).addClass('current');
+/      }
+/    });
+/  });
