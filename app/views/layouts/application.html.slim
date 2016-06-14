@@ -16,6 +16,6 @@ html
           = yield
         .col-lg-4.col-md-2
     .header
-      == render "shared/header", search: @search
+      == render partial: "shared/header", locals: {search: @search, filter: @filter}
     .sidebar
       == render "shared/sidebar"

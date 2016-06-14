@@ -5,7 +5,7 @@
         = link_to "Rebecca", tasks_path
     .col-md-6.col-sm-7
       .form-group.search-tasks
-        = search_form_for(search, id: "search-form", class: "form-inline", url: @filter[:path]) do |f|
+        = search_form_for(search, id: "search-form", class: "form-inline", url: filter[:path]) do |f|
           .input-group.non-focus
             .input-group-addon
               i.fa.fa-search
