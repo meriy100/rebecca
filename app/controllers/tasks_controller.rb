@@ -29,11 +29,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    if @task.save
-      @tasks = Task.on_user.where(is_done: false).sort_by(&:least_time_per)
-    else
-      render :new
-    end
+    render :new unless @task.save
   end
 
   def update

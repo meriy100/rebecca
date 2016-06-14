@@ -16,4 +16,4 @@
     .task-deadline_at-field[data-task="#{task.id}" style="display: none"]
       = datetime_field_tag :deadline_at, task.title
   .progress.task-content
-    .progress-bar[class="progress-bar-#{%w{primary warning danger }.sample}" role="progressbar" aria-valuenow="#{task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{task.least_time_per}%;"]
+    .progress-bar[class="progress-bar-#{task.progress_color}" role="progressbar" aria-valuenow="#{task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{task.least_time_per}%;"]

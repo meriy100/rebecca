@@ -8,18 +8,42 @@
   .login-top{
     padding-top: $header-height;
     .main-content{
-      background-color: $base-color;
-      height: 640px;
+      background: image-url("background3.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      // background-color: $base-color;
+      height: 480px;
       position: relative;
+      .main-content-colorcover{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 116, 188, 0.8);
+        // background-color: rgba(44, 62, 79, 0.8);
+        // background-color: rgba(255, 145, 168, 0.8);
+        // background-color: rgba(129, 220, 250, 0.8);
+      }
       .comment{
-        color: #fff;
-        top: 240px;
+        color: $white;
+        top: 140px;
+        text-align: center;
+        h1{
+          font-size: 64px;
+        }
         p{
           font-size: 18px;
         }
       }
       .actions{
-        @include lower_gripping(10px);
+        @include lower_gripping(40px);
+        height: 40px;
+        .button-group{
+          @include center_beside_block();
+          width: 300px;
+        }
       }
       .main-content-image-cell{
         height: 100%;
@@ -50,14 +74,22 @@
         height: 100%;
         img{
           @include center_block;
+          max-height: 80%;
           max-width: 95%;
         }
+      }
+      .start-now{
+        position: relative;
+        height: 100%;
+        @include center_block();
+        width: 300px;
+        height: 100px;
       }
     }
     .sub-content-white{
       background-color: $white;
     }
-    .sub-content-grey{
+    .sub-content-gley{
       background-color: $gley-2;
     }
 

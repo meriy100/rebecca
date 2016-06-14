@@ -36,11 +36,11 @@ class Api::TasksController < ApiController
 
   # POST
   def sync
-    @message = if Time.zone.parse(params[:task_updated_at]) > Time.zone.parse(params[:synced_at])
+    @message = if Time.zone.parse(params[:user][:task_updated_at]) > Time.zone.parse(params[:user][:synced_at])
                  full_sync
                  @tasks = Task.on_user
                  "full_sync"
-               elsif current_user.task_updated_at > Time.zone.parse(params[:task_updated_at])
+               elsif current_user.task_updated_at > Time.zone.parse(params[:user][:task_updated_at])
                  @tasks = Task.on_user
                  "sync"
                else

@@ -10,7 +10,7 @@
   padding: $ice-button-padding;
   font-size: $ice-button-font-size;
   background-color: $white;
-  color: $base-color;
+  color: $black;
   a{
     position: absolute;
     top: 0;
@@ -22,7 +22,7 @@
 .ice-button.trans{
   color: $white;
   background-color: transparent;
-  transition: background-color 0.2s ;
+  transition: background-color 400ms ease;
 }
 .ice-button.base-color{
   color: $white;

@@ -6,8 +6,9 @@
   height: $header-height;
   width: 100%;
   padding : 4px;
-  background-color: #fff;
+  background-color: $black;
   a{
+    color: $white;
 
   }
   span.title{

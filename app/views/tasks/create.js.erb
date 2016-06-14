@@ -1,2 +1,3 @@
-$("#tasks-list").html("<%= j(render @tasks) %>")
+var taskCard = $("<%= j(render @task) %>").hide().fadeIn(1000)
+$("#tasks-list").append(taskCard)
 $("#new-task").html("")

@@ -1,43 +1,53 @@
 .login-top
   .main-content
-    .col-lg-3.col-lg-offset-2.col-md-3.col-md-offset-2.col-sm-4.col-sm-offset-1.comment
-      h1.title 実行力のある人に
+    .main-content-colorcover
+    .col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3.comment
+      h1.title Rebecca
+      h2 実行力のある人に
       p
         |Rebecca はあなたに重要なタスクを知らせます
-      p
-        |そちらは今どうしてもその談判帰りという事の時に云ったない。かつて朝を持通りもけっしてその応用でしんだけを知れとならうがも学習いうならたて、それだけにはきまったたですまい。秋刀魚を連れでのは恐らくほかが単にありたで。
-    .col-lg-4.col-lg-offset-2.col-md-4.col-md-offset-2.col-sm-5.col-sm-offset-1.actions
-      .ice-button
-        | アカウント作成
-        = link_to "", sign_up_path
-      .ice-button.trans
-        | サインイン
-        a[type="button" data-toggle="modal" data-target="#myModal"]
-    .col-lg-6.col-md-6.col-sm-6.main-content-image-cell
-      = image_tag "mac_and_iPhone.png", class: "mac-iPhone"
-  .sub-content.sub-content-grey
+    .col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3.actions
+      .button-group
+        .ice-button
+          | アカウント作成
+          = link_to "", sign_up_path
+        .ice-button.trans
+          | サインイン
+          a[type="button" data-toggle="modal" data-target="#myModal"]
+  .row.sub-content.sub-content-white
     .col-lg-3.col-lg-offset-2.col-md-3.col-md-offset-2.col-sm-5.col-sm-offset-1.comment
-      h1.title どんな計画を立てる時も
+      h1.title
+        i.fa.fa-star-o
+        | お気に入りのプラットフォームで
       p
-        | 仕事、買い物、見たい映画、家事のToDoリストを共有し、整理しましょう。計画の内容や、大小に関わらず、
-        br
-        |Rebecca は本当に簡単にするべきことを整理し達成するお手伝いをします。
-  .sub-content.sub-content-white
+        | Rebecca は Web ブラウザでも iPhone でもお使いいただけます.
+    .col-lg-4.col-md-4.col-sm-5.sub-content-image-cell
+      = image_tag "mac_and_iPhone.png"
+  .row.sub-content.sub-content-gley
     .col-lg-4.col-lg-offset-2.col-md-4.col-md-offset-2.col-sm-5.col-sm-offset-1.sub-content-image-cell
       = image_tag "sub_content2.png"
     .col-lg-3.col-md-3.col-sm-5.comment
-      h1.title 今やるべきことがみれる
+      h1.title
+        i.fa.fa-lightbulb-o
+        | 今やるべきことがみれる
       p
-        |Rebecca は視覚的にあなたに必要なタスクを知らせます｡
+        |Rebecca はあなたが今すべきことを知っています.
       p
-        |今までのタスク管理にくらべ, かつてないほどにスムーズで簡単になります。
-  .sub-content.sub-content-grey
+        |今までのタスク管理にくらべ, かつてないほどにスムーズで簡単になります.
+  .row.sub-content.sub-content-white
     .col-lg-3.col-lg-offset-2.col-md-3.col-md-offset-2.col-sm-5.col-sm-offset-1.comment
-      h1.title いつでも知らせてくれる
+      h1.title
+        i.fa.fa-bell-o
+        | いつでも知らせてくれる
       p
-        |締め切りの設定、リマインダー、ToDo の割り当て機能がサポートします。
+        |締め切りの設定、リマインダー、ToDo の割り当て機能がサポートします.
       p
         |ToDo リストの内容が仕事関連でも、
-        |遊びの計画でも、Rebecca を使えば期限日を忘れてしまうなんてことがなくなります。
-
+        |遊びの計画でも、Rebecca を使えば期限日を忘れてしまうなんてことがなくなります.
+  .row.sub-content.sub-content-gley
+    .col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1.start-now
+      .button-group
+        .ice-button.base-color
+          | 今すぐ始める
+          = link_to "", sign_up_path
 
