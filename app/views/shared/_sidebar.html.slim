@@ -5,17 +5,17 @@
   .side-content
     ul
       li[class="#{sidebar_current(:index)}"]
-        = link_to 'タスク一覧', root_path, class: "current-cand #{sidebar_current(:index)}"
-        span.badge = count_all.to_s
+        = link_to root_path, class: "current-cand #{sidebar_current(:index)}" do
+          | タスク一覧
+          span.badge = count_all.to_s
       li[class="#{sidebar_current(:today)}"]
-        = link_to '今日のタスク', today_tasks_path, class: "current-cand #{sidebar_current(:today)}"
-        span.badge = count_today
+        = link_to today_tasks_path, class: "current-cand #{sidebar_current(:today)}" do
+          | 今日のタスク
+          span.badge = count_today
       li[class="#{sidebar_current(:weekly)}"]
-        = link_to '今週のタスク', weekly_tasks_path, class: "current-cand #{sidebar_current(:weekly)}"
-        span.badge = count_weekly
-      li
-        | 重要度の高いタスク
-        span.badge 0
+        = link_to weekly_tasks_path, class: "current-cand #{sidebar_current(:weekly)}" do
+          | 今週のタスク
+          span.badge = count_weekly
       li[class="#{sidebar_current(:completed)}"]
         = link_to '終了済みのタスク', completed_tasks_path, class: "current-cand #{sidebar_current(:completed)}"
 
