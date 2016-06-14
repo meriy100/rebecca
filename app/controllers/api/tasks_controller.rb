@@ -44,6 +44,7 @@ class Api::TasksController < ApiController
                  @tasks = Task.on_user
                  "sync"
                else
+                 @tasks = Task.on_user
                  "no_sync"
                end
   end
