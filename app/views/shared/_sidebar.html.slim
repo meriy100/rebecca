@@ -3,7 +3,7 @@
 
 .side-content-col
   .side-content
-    ul.side-list
+    ul
       li
         = link_to '今日のタスク (' + count_today.to_s + ')', today_tasks_path, class: "current-cand"
       li
@@ -13,31 +13,11 @@
       li
         = link_to '終了済みのタスク', doned_tasks_path, class: "current-cand"
 
-<<<<<<< HEAD
   .categories
-    ul.side-list
+    ul
       li
         .underbar カテゴリ
         ul.side-list
-=======
-.side-content-col
-  .side-content
-    ul
-      li
-        = link_to '今日のタスク (' + count_today.to_s + ')', today_tasks_path
-      li
-        | 重要度の高いタスク
-      li
-        = link_to '今週のタスク (' + count_weekly.to_s + ')', weekly_tasks_path
-      li
-        = link_to '終了済みのタスク', doned_tasks_path
-
-  .categories
-    ul
-      li
-        .underbar カテゴリ
-        ul
->>>>>>> 2b88dc42aebc6239d6a3026b6c9ef1e4528d6108
           li
             | 個人
           li
@@ -49,11 +29,7 @@
 
 javascript:
   $(function(){
-<<<<<<< HEAD
     $('a.current-cand').each(function() {
-=======
-    $('a').each(function() {
->>>>>>> 2b88dc42aebc6239d6a3026b6c9ef1e4528d6108
       if ($(this).prop('href') == window.location.href) {
         $(this).parent().addClass('current');
         $(this).addClass('current');
