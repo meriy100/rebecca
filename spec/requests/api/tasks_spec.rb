@@ -51,7 +51,7 @@ RSpec.describe "Api::Tasks", type: :request do
     let(:task) { create(:task) }
     context "sync" do
       let(:params) do
-        { task_updated_at: (task.updated_at - 1), synced_at: (task.updated_at - 1) }
+        { user: {task_updated_at: (task.updated_at - 1), synced_at: (task.updated_at - 1) }}
       end
       it "json include message" do
         is_expected.to eq(200)
@@ -71,7 +71,7 @@ RSpec.describe "Api::Tasks", type: :request do
 
     context "full sync" do
       let(:params) do
-        { task_updated_at: (task.updated_at + 1), synced_at: task.updated_at, tasks: [task_params(task)] }
+        { user: { task_updated_at: (task.updated_at + 1), synced_at: task.updated_at}, tasks: [task_params(task)]  }
       end
       let(:task) { create(:task) }
       it "json include message" do
@@ -108,7 +108,7 @@ RSpec.describe "Api::Tasks", type: :request do
 
     context "no sync" do
       let(:params) do
-        { task_updated_at: task.updated_at, synced_at: task.updated_at }
+        { user: { task_updated_at: task.updated_at, synced_at: task.updated_at } }
       end
       it "json include message" do
         is_expected.to eq(200)
