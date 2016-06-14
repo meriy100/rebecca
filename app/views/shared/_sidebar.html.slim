@@ -10,9 +10,9 @@
       li
         = link_to '今日のタスク (' + count_today.to_s + ')', today_tasks_path, class: "current-cand"
       li
-        | 重要度の高いタスク (0)
-      li
         = link_to '今週のタスク (' + count_weekly.to_s + ')', weekly_tasks_path, class: "current-cand"
+      li
+        | 重要度の高いタスク (0)
       li
         = link_to '終了済みのタスク', completed_tasks_path, class: "current-cand"
 
