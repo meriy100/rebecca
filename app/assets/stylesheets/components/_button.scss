@@ -75,6 +75,9 @@ a.new-button-sp{
 }
 
 @media screen and (min-width: 0px) and (max-width: 640px) {
+  div.content{
+    margin-bottom: 40px;
+  }
   a.new-button{
     display: none;
   }
@@ -83,7 +86,7 @@ a.new-button-sp{
     height: 40px;
     background-color: $sub-color;
     text-align: center;
-    line-height: 40px;
+    line-height: 50px;
     border-radius: 100px;
     display: block;
     right: 20px;
@@ -91,5 +94,16 @@ a.new-button-sp{
     position: fixed ;
     float: right;
     box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+    transition: all 200ms ease;
+    i{
+      transition: all 200ms ease;
+      color: $white;
+    }
+    &:hover{
+      background-color: $sub-color;
+      i{
+        transform: rotate(45deg);
+      }
+    }
   }
 }
