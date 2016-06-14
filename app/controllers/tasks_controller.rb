@@ -3,28 +3,28 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:update, :destroy, :done]
 
   def index
-    @filter = {title: "タスク一覧", path: tasks_path}
-    @search = Task.on_user.where(is_done:false).search(params[:q])
+    @filter = { title: "タスク一覧", path: tasks_path }
+    @search = Task.on_user.where(is_done: false).search(params[:q])
     @tasks = @search.result.sort_by(&:least_time_per)
   end
 
   # get
   def completed
-    @filter = {title: "終了済みのタスク", path: completed_tasks_path}
+    @filter = { title: "終了済みのタスク", path: completed_tasks_path }
     @search = Task.on_user.where(is_done: true).search(params[:q])
     @tasks = @search.result.sort_by(&:least_time_per)
     render 'filter'
   end
 
   def today
-    @filter = {title: "今日のタスク", path: today_tasks_path}
+    @filter = { title: "今日のタスク", path: today_tasks_path }
     @search = Task.on_user.where(deadline_at: Time.zone.today..Time.zone.tomorrow, is_done: false).search(params[:q])
     @tasks = @search.result.sort_by(&:least_time_per)
     render 'filter'
   end
 
   def weekly
-    @filter = {title: "今週のタスク", path: weekly_tasks_path}
+    @filter = { title: "今週のタスク", path: weekly_tasks_path }
     @search = Task.on_user.where(deadline_at: Time.zone.today.beginning_of_week..Time.zone.today.end_of_week, is_done: false).search(params[:q])
     @tasks = @search.result.sort_by(&:least_time_per)
     render 'filter'
