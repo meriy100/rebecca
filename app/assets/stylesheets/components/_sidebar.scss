@@ -22,6 +22,17 @@ html{
       width: 300px;
       margin-right: 0;
       margin-left: auto;
+      ul{
+          list-style: none;
+          font-size: 18px;
+          line-height: 200%;
+          color: $white;
+          box-sizing: border-box;
+          text-indent: 1em;
+      }
+      a{
+        color: $white;
+      }
     }
 
     .side-content{
@@ -41,19 +52,6 @@ html{
 
     .task-num{
       text-align: right;
-    }
-
-    ul{
-      list-style: none;
-      font-size: 18px;
-      line-height: 200%;
-      color: $white;
-      box-sizing: border-box;
-      text-indent: 1em;
-    }
-
-    a{
-      color: $white;
     }
 
     li.current{
