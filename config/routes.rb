@@ -19,7 +19,7 @@ Rails.application.routes.draw do
         post "done"
       end
       collection do
-        get "doned"
+        get "completed"
         post "sync"
       end
     end
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       post "done"
     end
     collection do
-      get "doned"
+      get "completed"
       get "today"
       get "weekly"
     end

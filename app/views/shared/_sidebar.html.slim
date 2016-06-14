@@ -1,17 +1,20 @@
 -count_today = Task.on_user.where(deadline_at: Time.zone.today..Time.zone.tomorrow, is_done: false).count
 -count_weekly = Task.on_user.where(deadline_at: Time.zone.today.beginning_of_week..Time.zone.today.end_of_week, is_done: false).count
+-count_all = Task.on_user.count
 
 .side-content-col
   .side-content
     ul
       li
+        = link_to 'タスク一覧 (' + count_all.to_s + ')', tasks_path, class: "current-cand"
+      li
         = link_to '今日のタスク (' + count_today.to_s + ')', today_tasks_path, class: "current-cand"
       li
-        | 重要度の高いタスク
+        | 重要度の高いタスク (0)
       li
         = link_to '今週のタスク (' + count_weekly.to_s + ')', weekly_tasks_path, class: "current-cand"
       li
-        = link_to '終了済みのタスク', doned_tasks_path, class: "current-cand"
+        = link_to '終了済みのタスク', completed_tasks_path, class: "current-cand"
 
   .categories
     ul

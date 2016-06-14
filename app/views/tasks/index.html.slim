@@ -1,4 +1,5 @@
-h1.title.base-color Rebecca
+h2.title
+  = @filter[:title]
 ul.list-group#tasks-list
   == render @tasks
 #new-task
