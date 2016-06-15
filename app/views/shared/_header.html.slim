@@ -1,6 +1,7 @@
-.container
+- path = (controller.action_name == "doned") ? doned_tasks_path : tasks_path
+.container.header-contents
   .row
-    .col-md-2
+    .col-md-3
       span.title
         = link_to "Rebecca", root_path
     .col-md-6.col-sm-7
@@ -10,8 +11,8 @@
             .input-group-addon
               i.fa.fa-search
             = f.text_field :title_cont, placeholder: "クイックサーチ", class: "form-control search-field"
-    .col-md-4.col-sm-5
-      .header-contents
+    .col-md-3.col-sm-5
+      .header-buttons
         a
           i.fa.fa-plus.fa-2x
         a
@@ -20,3 +21,6 @@
           i.fa.fa-cog.fa-2x
         = link_to logout_path, class: "logout" do
           i.fa.fa-sign-out.fa-2x
+.nav-button
+  a#nav-button
+    i.fa.fa-bars

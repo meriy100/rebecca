@@ -67,3 +67,43 @@ div.light-btn{
 .fa-button{
   color: $base-color
 }
+i.new-button{
+  color: $base-color
+}
+a.new-button-sp{
+  display: none;
+}
+
+@media screen and (min-width: 0px) and (max-width: 640px) {
+  div.content{
+    margin-bottom: 40px;
+  }
+  a.new-button{
+    display: none;
+  }
+  a.new-button-sp{
+    width: 40px;
+    height: 40px;
+    background-color: $sub-color;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 100px;
+    display: block;
+    right: 20px;
+    bottom: 20px;
+    position: fixed ;
+    float: right;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+    transition: all 200ms ease;
+    i{
+      transition: all 200ms ease;
+      color: $white;
+    }
+    &:hover{
+      background-color: $sub-color;
+      i{
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
