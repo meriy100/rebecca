@@ -1,12 +1,11 @@
-- path = (controller.action_name == "doned") ? doned_tasks_path : tasks_path
 .container
   .row
     .col-md-2
       span.title
-        = link_to "Rebecca", top_path
+        = link_to "Rebecca", root_path
     .col-md-6.col-sm-7
       .form-group.search-tasks
-        = search_form_for(search, id: "search-form", class: "form-inline", url: path) do |f|
+        = search_form_for(search, id: "search-form", class: "form-inline", url: filter[:path]) do |f|
           .input-group.non-focus
             .input-group-addon
               i.fa.fa-search
