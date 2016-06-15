@@ -1,0 +1,24 @@
+@import "settings/variables/_color.scss";
+@import "settings/variables/_position.scss";
+.nav-content{
+  height: 0;
+  position: fixed;
+  top: $header-height;
+  width: 100%;
+  overflow: hidden;
+  transition: all 200ms ease;
+  ul.nav-list{
+    .list-group-item{
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0px;
+    }
+  }
+}
+@media screen and (min-width: 0px) and (max-width: 640px) {
+  .nav-content-active{
+    height: 100%;
+  }
+}
