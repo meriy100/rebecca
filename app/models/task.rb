@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   include CurrentUser
 
   before_validation :set_is_done
+  before_validation :set_end_of_date
   before_validation :deadline_at_orver_created_at
   before_validation :set_sync_token
 
@@ -60,6 +61,10 @@ class Task < ActiveRecord::Base
     true
   end
 
+  def set_end_of_date
+    self.deadline_at = deadline_at.end_of_day
+  end
+
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ
   def deadline_at_orver_created_at
     if deadline_at.nil?
@@ -73,4 +78,5 @@ class Task < ActiveRecord::Base
   def set_sync_token
     self.sync_token = SecureRandom.uuid if sync_token.nil?
   end
+
 end
