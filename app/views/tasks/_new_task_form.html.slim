@@ -5,12 +5,10 @@
         span &times;
     = f.hidden_field :user_id
     = f.hidden_field :is_done
-    .form-group.form-inline
+    .form-group
       = f.text_field :title, label_col: "", control_col: "col-md-12", hide_label: true, placeholder: "日曜に彼氏とデート♡ ", class: "form-control", id: "title-input"
-      .input-group.date.datetimepicker
-          = f.text_field :deadline_at, hide_label: true, placeholder: "deadline at...", class: "form-control"
-          .input-group-addon
-            i.fa.fa-calendar
+      .datepicker
+      = f.hidden_field :deadline_at
     .from-group
       =f.text_field :weight, hide_label: true, class: "slider form-control"
     .form-group
