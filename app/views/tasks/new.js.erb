@@ -4,6 +4,7 @@ $(".task-new-form-cancel").on("click", function(){
 })
 $(function(){
   $('.datepicker').datetimepicker({
+    inline: true,
     format : "YYYY/MM/DD",
     icons: {
       previous: "fa fa-arrow-left",
@@ -11,6 +12,7 @@ $(function(){
     }
   });
   $('.datetimepicker').datetimepicker({
+    inline: true,
     format : "YYYY/MM/DD HH:mm",
     icons: {
       time: "fa fa-clock-o",
@@ -21,6 +23,7 @@ $(function(){
       next: "fa fa-arrow-right"
     }
   });
+  $('#task_deadline_at').val($('.datepicker').data("DateTimePicker").date());
 });
 $(".slider").slider({
     ticks: [1,2,3],
@@ -30,3 +33,9 @@ $(".slider").slider({
 });
 $("html,body").animate({scrollTop:$('#new-task').offset().top});
 $("#title-input").focus();
+$('.datepicker').on('dp.change', function(ev){
+  $('#task_deadline_at').val(ev.date.toDate());
+});
+
+var defaultDate = $('.datepicker').data("DateTimePicker").date();
+console.log(defaultDate.toDate());
