@@ -145,3 +145,43 @@
     }
   }
 }
+
+@media screen and (min-width: 0px) and (max-width: 640px) {
+  .container-fluid-login{
+    .login-top{
+      .main-content{
+        top: -20px;
+      }
+      .sub-content{
+        height: 400px;
+        width: 100%;
+        margin: 0;
+        .comment{
+          top: 120px;
+          h1{
+            color: $black;
+            font-size: 1.2em;
+          }
+          p{
+            color: $gley-1;
+            font-size: 1em;
+          }
+        }
+        .sub-content-image-cell{
+          height: 100%;
+          img{
+            @include center_block;
+            max-height: 80%;
+            max-width: 95%;
+          }
+        }
+        .start-now{
+          height: 100%;
+          @include center_block();
+          width: 300px;
+          height: 100px;
+        }
+      }
+    }
+  }
+}
