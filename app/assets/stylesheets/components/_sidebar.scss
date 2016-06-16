@@ -94,6 +94,13 @@ html{
     @media screen and (min-width: 641px) and (max-width: 960px) {
       .sidebar{
         width: $sidebar-width-middle;
+        .side-content-col{
+          width: 200px;
+          ul{
+            text-indent: 0.8em;
+            font-size: 16px;
+          }
+        }
       }
     }
     @media screen and (min-width: 961px) and (max-width: 1400px) {
