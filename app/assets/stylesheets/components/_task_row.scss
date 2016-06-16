@@ -119,7 +119,10 @@
   .task-row{
     width: 400px;
     .task-info{
-      width: 400px;
+      width: 380px;
+      input{
+        width: 100%;
+      }
     }
     .deadline_at{
       width: 380px;
