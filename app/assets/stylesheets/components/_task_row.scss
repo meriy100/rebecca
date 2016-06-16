@@ -114,3 +114,18 @@
     }
   }
 }
+
+@media screen and (min-width: 641px) and (max-width: 960px) {
+  .task-row{
+    width: 400px;
+    .task-info{
+      width: 400px;
+    }
+    .deadline_at{
+      width: 380px;
+    }
+    .progress{
+      width: 400px;
+    }
+  }
+}
