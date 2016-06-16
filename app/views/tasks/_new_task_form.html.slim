@@ -1,5 +1,8 @@
 .new-task-form
   = bootstrap_form_for(task, layout: :horizontal, remote: true) do |f|
+    .form-header
+      button.close.task-new-form-cancel[ type="button"]
+        span &times;
     = f.hidden_field :user_id
     = f.hidden_field :is_done
     .form-group.form-inline
@@ -13,4 +16,4 @@
     .form-group
       .actions
         = f.submit class: "btn btn-primary"
-        = button_tag "キャンセル", class: "btn btn-default", id: "task-new-form-cancel", type: "button"
+        = button_tag "キャンセル", class: "btn btn-default task-new-form-cancel", id: "task-new-cancel", type: "button"

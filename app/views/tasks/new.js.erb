@@ -1,5 +1,5 @@
 $("#new-task").html("<%= j(render "new_task_form", task: @task) %>")
-$("#task-new-form-cancel").on("click", function(){
+$(".task-new-form-cancel").on("click", function(){
   $("#new-task").html("")
 })
 $(function(){
