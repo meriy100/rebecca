@@ -78,5 +78,4 @@ class Task < ActiveRecord::Base
   def set_sync_token
     self.sync_token = SecureRandom.uuid if sync_token.nil?
   end
-
 end
