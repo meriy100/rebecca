@@ -62,7 +62,7 @@ class Task < ActiveRecord::Base
   end
 
   def set_end_of_date
-    self.deadline_at = deadline_at.end_of_day
+    self.deadline_at &&= deadline_at.end_of_day
   end
 
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ
