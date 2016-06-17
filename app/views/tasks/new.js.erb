@@ -9,9 +9,10 @@ $(function(){
     icons: {
       previous: "fa fa-arrow-left",
       next: "fa fa-arrow-right"
-    }
+    },
+    minDate: moment()
   });
-  $('.datetimepicker').datetimepicker({
+  /*$('.datetimepicker').datetimepicker({
     inline: true,
     format : "YYYY/MM/DD HH:mm",
     icons: {
@@ -22,7 +23,7 @@ $(function(){
       previous: "fa fa-arrow-left",
       next: "fa fa-arrow-right"
     }
-  });
+  });*/
   $('#task_deadline_at').val($('.datepicker').data("DateTimePicker").date());
 });
 $(".slider").slider({

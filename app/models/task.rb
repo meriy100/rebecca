@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   include CurrentUser
 
   before_validation :set_is_done
+  before_validation :set_end_of_date
   before_validation :deadline_at_orver_created_at
   before_validation :set_sync_token
 
@@ -58,6 +59,10 @@ class Task < ActiveRecord::Base
   def set_is_done
     self.is_done ||= false
     true
+  end
+
+  def set_end_of_date
+    self.deadline_at = deadline_at.end_of_day
   end
 
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ
