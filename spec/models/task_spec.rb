@@ -55,7 +55,7 @@ RSpec.describe Task, type: :model do
         User.current_user = user
         task = create(:task)
         User.current_user = create(:other_user)
-        expect(Task.on_user).to eq([])
+        expect(Task.on_user).not_to match_array(task)
       end
     end
     context "doings" do
@@ -65,7 +65,17 @@ RSpec.describe Task, type: :model do
       end
       it "invaild" do
         task.done
-        expect(Task.doings).to eq([])
+        expect(Task.doings).not_to match_array(task)
+      end
+    end
+    context "doings" do
+      let(:task) { create(:task) }
+      it "vaild" do
+        task.done
+        expect(Task.completeds).to match_array(task)
+      end
+      it "invaild" do
+        expect(Task.completeds).not_to match_array(task)
       end
     end
   end
