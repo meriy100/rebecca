@@ -1,0 +1,6 @@
+ul.list-group.nav-list
+  = link_to "タスク一覧", root_path, class: "list-group-item"
+  = link_to "今日のタスク", today_tasks_path, class: "list-group-item"
+  = link_to "今週のタスク", weekly_tasks_path, class: "list-group-item"
+  = link_to '終了済みのタスク', completed_tasks_path, class: "list-group-item"
+  = link_to "ログアウト", logout_path, class: "list-group-item"
