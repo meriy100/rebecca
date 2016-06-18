@@ -64,20 +64,20 @@ RSpec.describe TasksController, type: :controller do
     pending "done"
   end
 
-  describe "GET #doned" do
+  describe "GET #completed" do
     it "assigns all tasks as @tasks" do
-      get :doned, {}, valid_session
-      expect(response).to render_template :doned
+      get :completed, {}, valid_session
+      expect(response).to render_template :filter
     end
     it "return except doing tasks" do
       task = create(:doned_task)
-      get :doned, {}, valid_session
-      expect(assigns(:tasks)).to match([task])
+      get :completed, {}, valid_session
+      expect(assigns(:tasks)).to match_array(task)
     end
     it "return except doing tasks" do
       task = create(:task)
-      get :doned, {}, valid_session
-      expect(assigns(:tasks)).not_to match([task])
+      get :completed, {}, valid_session
+      expect(assigns(:tasks)).not_to match_array(task)
     end
   end
 
@@ -118,20 +118,33 @@ RSpec.describe TasksController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy" do
-    pending "destroy"
-    # it "destroys the requested task" do
-    #   task = Task.create! valid_attributes
-    #   expect {
-    #     delete :destroy, {:id => task.to_param}, valid_session
-    #   }.to change(Task, :count).by(-1)
-    # end
-    #
-    # it "redirects to the tasks list" do
-    #   task = Task.create! valid_attributes
-    #   delete :destroy, {:id => task.to_param}, valid_session
-    #   expect(response).to redirect_to(tasks_url)
-    # end
+  describe "GET #todays" do
+    it "assigns all tasks as @tasks" do
+      get :today, {}, valid_session
+      expect(response).to render_template :filter
+    end
+    it "return except todays tasks" do
+      task = create(:today_task)
+      get :today, {}, valid_session
+      expect(assigns(:tasks)).to match_array(task)
+    end
+    it "return not except tomorrows tasks" do
+      task = create(:task)
+      get :today, {}, valid_session
+      expect(assigns(:tasks)).not_to match_array(task)
+    end
+  end
+
+  describe "GET #weekly" do
+    it "assigns all tasks as @tasks" do
+      get :weekly, {}, valid_session
+      expect(response).to render_template :filter
+    end
+    it "return except todays tasks" do
+      task = create(:today_task)
+      get :today, {}, valid_session
+      expect(assigns(:tasks)).to match_array(task)
+    end
   end
 
 end
