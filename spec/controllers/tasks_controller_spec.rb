@@ -64,20 +64,20 @@ RSpec.describe TasksController, type: :controller do
     pending "done"
   end
 
-  describe "GET #doned" do
+  describe "GET #completed" do
     it "assigns all tasks as @tasks" do
-      get :doned, {}, valid_session
-      expect(response).to render_template :doned
+      get :completed, {}, valid_session
+      expect(response).to render_template :filter
     end
     it "return except doing tasks" do
       task = create(:doned_task)
-      get :doned, {}, valid_session
-      expect(assigns(:tasks)).to match([task])
+      get :completed, {}, valid_session
+      expect(assigns(:tasks)).to match_array(task)
     end
     it "return except doing tasks" do
       task = create(:task)
-      get :doned, {}, valid_session
-      expect(assigns(:tasks)).not_to match([task])
+      get :completed, {}, valid_session
+      expect(assigns(:tasks)).not_to match_array(task)
     end
   end
 
