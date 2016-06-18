@@ -78,5 +78,22 @@ RSpec.describe Task, type: :model do
         expect(Task.completeds).not_to match_array(task)
       end
     end
+    context "todays" do
+      it "un match tomorroy" do
+        task = create(:task)
+        expect(Task.todays).not_to match_array(task)
+      end
+      it "match today" do
+        task = create(:today_task)
+        expect(Task.todays).to match_array(task)
+      end
+    end
+    context "weekly" do
+      # spec 実行時の曜日とかどうしましょう
+      it "match today" do
+        task = create(:today_task)
+        expect(Task.todays).to match_array(task)
+      end
+    end
   end
 end

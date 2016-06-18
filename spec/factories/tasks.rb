@@ -18,5 +18,8 @@ FactoryGirl.define do
       updated_at Time.zone.now
       created_at Time.zone.now
     end
+    factory :today_task do
+      deadline_at Time.zone.today
+    end
   end
 end
