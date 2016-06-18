@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   include CurrentUser
 
   before_validation :set_is_done
+  before_validation :set_end_of_date
   before_validation :deadline_at_orver_created_at
   before_validation :set_sync_token
 
@@ -42,6 +43,17 @@ class Task < ActiveRecord::Base
     end
   end
 
+  def progress_color
+    case least_time_per
+    when 0...30
+      "danger"
+    when 30...60
+      "warning"
+    when 60...100
+      "primary"
+    end
+  end
+
   private
 
   def set_is_done
@@ -49,9 +61,15 @@ class Task < ActiveRecord::Base
     true
   end
 
+  def set_end_of_date
+    self.deadline_at &&= deadline_at.end_of_day
+  end
+
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ
   def deadline_at_orver_created_at
-    if (created_at || Time.zone.now) > deadline_at
+    if deadline_at.nil?
+      true
+    elsif (created_at || Time.zone.now) > deadline_at
       errors[:deadline_at] << "is over created_at "
       false
     end

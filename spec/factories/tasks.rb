@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :task do
     user_id 1
     title "テストタスク1"
+    is_done false
     weight 2
     deadline_at Time.zone.tomorrow
     factory :fail_task do

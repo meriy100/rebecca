@@ -1,0 +1,41 @@
+@import "settings/variables/_color.scss";
+@import "settings/variables/_position.scss";
+@import "settings/mixins/_position.scss";
+
+.form-header{
+  visibility: hidden;
+}
+
+@media screen and (min-width: 0px) and (max-width: 640px) {
+  .new-task-form{
+    position: fixed;
+    top: 0;
+    background: rgba(100, 100, 100, 0.6);
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    left: 0;
+    #task-new-cancel{
+      visibility: hidden;
+    }
+    form{
+      margin-top: 80px;
+      margin-left: 20px;
+      margin-right: 20px;
+      background-color: #fff;
+      padding: 5% 10%;
+      border: 1px solid $white;
+      border-radius: 4px;
+      .form-header{
+        visibility: visible;
+        padding-bottom: 10px;
+        .close{
+        padding-bottom: 10px;
+        }
+      }
+      input{
+        width: 90%;
+      }
+    }
+  }
+}
