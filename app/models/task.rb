@@ -11,6 +11,8 @@ class Task < ActiveRecord::Base
   validates :deadline_at, presence: true
 
   scope :on_user, -> { where(user: User.current_user) }
+  scope :doings, -> { where(is_done: false) }
+  scope :completeds, -> { where(is_done: true) }
 
   def done
     update(is_done: true) unless is_done
