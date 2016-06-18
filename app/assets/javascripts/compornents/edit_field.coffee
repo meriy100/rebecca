@@ -37,6 +37,9 @@ $(document).ready ->
         $(".undo-modal").fadeIn()
         $(".undo-link").attr("href", "tasks/#{taskId}/undo")
 
+  hideUndoModal = ->
+    $(".undo-modal").hide()
+
   $(document).on "click", ".task-name-value", ->
     showNameField(this)
   $(document).on "blur", ".task-name-field", ->
@@ -47,3 +50,5 @@ $(document).ready ->
     $(this).find(".done-button").hide()
   $(document).on "click", ".task-done", ->
     doneTask(this)
+  $(document).on "click", "span.modal-hide", ->
+    hideUndoModal()

@@ -2,13 +2,27 @@
 @import "settings/variables/_position.scss";
 .undo-modal{
   display: none;
-  background: rgba(50, 50, 50, 0.7);
+  background: rgba(0, 0, 0, 0.7);
   position: fixed;
-  width: 100px;
   height: 40px;
   bottom: 20px;
   margin-left: 100px;
   border-radius: 10px;
-  .undo{
+  line-height: 40px;
+  padding: 0px 10px;
+  span.message{
+    color: $white;
+    margin-right: 8px;
+  }
+  a.undo-link{
+    color: $sub-color;
+    margin-right: 8px;
+  }
+  span.modal-hide{
+    color: $gley-1;
+    cursor: pointer;
+    &:hover{
+      color: $gley-2;
+    }
   }
 }
