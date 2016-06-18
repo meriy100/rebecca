@@ -37,11 +37,7 @@ class TasksController < ApplicationController
   # TODO
   # jQuery ajax で何をもらうかちゃんと考えんとですよ
   def done
-    if @task.done
-      head 200
-    else
-      head 300
-    end
+    @task.done
   end
 
   def create

@@ -33,6 +33,10 @@ $(document).ready ->
       dataType: "html"
       success: (results) ->
         taskRow.fadeOut()
+        # ここで, id を指定して data に埋め込む
+        $(".undo-modal")
+        $(".undo-modal").fadeIn()
+
 
   $(document).on "click", ".task-name-value", ->
     showNameField(this)
