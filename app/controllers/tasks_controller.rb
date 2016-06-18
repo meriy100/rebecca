@@ -18,14 +18,14 @@ class TasksController < ApplicationController
 
   def today
     @filter = { title: "今日のタスク", path: today_tasks_path }
-    @search = Task.on_user.doings.where(deadline_at: Time.zone.today..Time.zone.tomorrow).search(params[:q])
+    @search = Task.on_user.doings.todays.search(params[:q])
     @tasks = @search.result.sort_by(&:least_time_per)
     render 'filter'
   end
 
   def weekly
     @filter = { title: "今週のタスク", path: weekly_tasks_path }
-    @search = Task.on_user.doings.where(deadline_at: Time.zone.today.beginning_of_week..Time.zone.today.end_of_week).search(params[:q])
+    @search = Task.on_user.doings.weeklys.search(params[:q])
     @tasks = @search.result.sort_by(&:least_time_per)
     render 'filter'
   end

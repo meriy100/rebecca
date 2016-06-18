@@ -1,5 +1,5 @@
--count_today = Task.on_user.doings.where(deadline_at: Time.zone.today..Time.zone.tomorrow).count
--count_weekly = Task.on_user.doings.where(deadline_at: Time.zone.today.beginning_of_week..Time.zone.today.end_of_week).count
+-count_today = Task.on_user.doings.todays.count
+-count_weekly = Task.on_user.doings.weeklys.count
 -count_all = Task.on_user.doings.count
 .side-content-col
   .side-content
