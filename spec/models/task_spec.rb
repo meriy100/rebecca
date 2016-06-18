@@ -29,6 +29,11 @@ RSpec.describe Task, type: :model do
       it "sync_token" do
         expect(task.sync_token).not_to eq(nil)
       end
+      it "deadline_at is end_of_day" do
+        expect(task.deadline_at.hour).to eq(23)
+        expect(task.deadline_at.min).to eq(59)
+        expect(task.deadline_at.sec).to eq(59)
+      end
     end
     context "with invaild params" do
       it "task dont created" do
