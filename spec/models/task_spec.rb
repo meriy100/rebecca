@@ -58,5 +58,15 @@ RSpec.describe Task, type: :model do
         expect(Task.on_user).to eq([])
       end
     end
+    context "doings" do
+      let(:task) { create(:task) }
+      it "vaild" do
+        expect(Task.doings).to match_array(task)
+      end
+      it "invaild" do
+        task.done
+        expect(Task.doings).to eq([])
+      end
+    end
   end
 end
