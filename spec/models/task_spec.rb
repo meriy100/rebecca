@@ -15,6 +15,7 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
+  let(:user) { create(:user) }
   describe "when create" do
     context "with vaild params" do
       let(:task) { create(:task) }
@@ -40,6 +41,22 @@ RSpec.describe Task, type: :model do
     let(:task) { create(:task) }
     it "least_time_per" do
       expect(task.least_time_per).to eq(((task.deadline_at - Time.zone.now)/ (task.deadline_at - task.created_at) * 100).to_i)
+    end
+  end
+
+  describe "scopes" do
+    context "on_user" do
+      it "vaild" do
+        User.current_user = user
+        task = create(:task)
+        expect(Task.on_user).to match_array(task)
+      end
+      it "invalid" do
+        User.current_user = user
+        task = create(:task)
+        User.current_user = create(:other_user)
+        expect(Task.on_user).to eq([])
+      end
     end
   end
 end
