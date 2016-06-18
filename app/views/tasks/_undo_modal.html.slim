@@ -1,2 +1,4 @@
 .undo-modal
   .undo
+    = link_to "元に戻す", undo_task_path(-1), class: "undo-link", method: :post, remote: true
+

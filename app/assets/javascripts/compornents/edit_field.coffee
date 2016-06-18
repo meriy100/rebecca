@@ -35,7 +35,7 @@ $(document).ready ->
         taskRow.fadeOut()
         # ここで, id を指定して data に埋め込む
         $(".undo-modal").fadeIn()
-
+        $(".undo-link").attr("href", "tasks/#{taskId}/undo")
 
   $(document).on "click", ".task-name-value", ->
     showNameField(this)
