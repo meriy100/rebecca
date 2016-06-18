@@ -34,7 +34,6 @@ $(document).ready ->
       success: (results) ->
         taskRow.fadeOut()
         # ここで, id を指定して data に埋め込む
-        $(".undo-modal")
         $(".undo-modal").fadeIn()
 
 

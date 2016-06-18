@@ -38,6 +38,7 @@ class TasksController < ApplicationController
   # jQuery ajax で何をもらうかちゃんと考えんとですよ
   def done
     @task.done
+    render json: @task.to_json
   end
 
   def create

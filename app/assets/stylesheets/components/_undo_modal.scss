@@ -1,0 +1,14 @@
+@import "settings/variables/_color.scss";
+@import "settings/variables/_position.scss";
+.undo-modal{
+  display: none;
+  background: rgba(50, 50, 50, 0.7);
+  position: fixed;
+  width: 100px;
+  height: 40px;
+  bottom: 20px;
+  margin-left: 100px;
+  border-radius: 10px;
+  .undo{
+  }
+}

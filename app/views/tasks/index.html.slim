@@ -5,3 +5,5 @@ ul.list-group#tasks-list
 #new-task
 = link_to new_task_path, class: "new-button", remote: true do
   i.fa.fa-plus-square.fa-3x.new-button
+
+== render "undo_modal"
