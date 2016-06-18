@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   include TasksAction
-  before_action :set_task, only: [:update, :destroy, :done]
+  before_action :set_task, only: [:update, :destroy, :done, :undo]
 
   def index
     @filter = { title: "タスク一覧", path: tasks_path }
@@ -39,6 +39,10 @@ class TasksController < ApplicationController
   def done
     @task.done
     render json: @task.to_json
+  end
+
+  def undo
+    @task.undo
   end
 
   def create

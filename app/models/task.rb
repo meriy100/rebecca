@@ -20,6 +20,10 @@ class Task < ActiveRecord::Base
     update(is_done: true) unless is_done
   end
 
+  def undo
+    update(is_done: false)
+  end
+
   # TODO
   # 仮 設計による
   def least_time
