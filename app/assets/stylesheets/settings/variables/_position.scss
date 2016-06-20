@@ -3,6 +3,9 @@ $breakpoint-middle: 1400px;
 $breakpoint-tablet: 960px;
 $breakpoint-mobile: 640px;
 
+// circle
+$circle-radius: 100px;
+
 // content
 
 $mobile-content-margin-bottom: 40px;
@@ -41,5 +44,12 @@ $done-button-margin: ($done-button-area - $done-button-size) / 2 ;
 
 
 
+// new-button-sp
+
+$new-button-sp-size: 40px;
+$new-button-sp-line-hight: 50px;
+
+$new-button-sp-right: 20px;
+$new-button-sp-bottom: 20px;
 
 
