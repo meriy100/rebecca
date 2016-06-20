@@ -22,3 +22,7 @@
   bottom : $bottom;
 }
 
+@mixin inline_center($height: 1){
+  line-height: $height;
+}
+
