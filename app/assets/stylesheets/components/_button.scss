@@ -34,7 +34,7 @@
   color: $base-color;
 }
 
-
+// light-btn は現在仕様していません
 div.light-btn{
   display: inline-block;
   position: absolute;
@@ -59,7 +59,6 @@ div.light-btn{
   }
 }
 
-
 .light-btn:hover{
   background-color: #a0eea0;
 }
@@ -75,9 +74,6 @@ a.new-button-sp{
 }
 
 @media screen and (min-width: 0px) and (max-width: 640px) {
-  div.content{
-    margin-bottom: 40px;
-  }
   a.new-button{
     display: none;
   }
