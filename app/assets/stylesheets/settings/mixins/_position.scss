@@ -23,6 +23,7 @@
 }
 
 @mixin inline_center($height: 1){
+  height: $height;
   line-height: $height;
 }
 
