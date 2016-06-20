@@ -57,20 +57,15 @@
     @include center_beside_block();
     height: 8px;
     width: $task-row-width - $task-padding;
-    border-radius: 0px;
-    border: 0px;
+    @include none_border;
     .progress-bar{
-      border-radius: 0px;
-      border: 0px;
+      @include none_border;
     }
-    .progress-bar-primary {
-      background-color: $primary;
+    @include max-screen($breakpoint-tablet){
+      width: $task-row-w-t - $task-padding;
     }
-    .progress-bar-danger {
-      background-color: $danger;
-    }
-    .progress-bar-warning {
-      background-color: $warning;
+    @include max-screen($breakpoint-mobile){
+      width: $task-row-w-m - $task-padding;
     }
   }
   @include max-screen($breakpoint-tablet){
@@ -84,17 +79,13 @@
     .deadline_at{
       width: $task-row-w-t - $task-padding;
     }
-    .progress{
-      width: $task-row-w-t - $task-padding;
-    }
   }
   @include max-screen($breakpoint-mobile){
-    width: 300px;
-    height: 100px;
+    width: $task-row-w-m;
+    height: $task-row-h-m;
     margin-bottom: 16px;
     .task-info{
-      @include center_beside_block();
-      width: 300px;
+      width: $task-row-w-m - $task-padding;
       height: 20px;
       padding-left: 20px;
       line-height: 20px;
@@ -103,34 +94,21 @@
       }
     }
     .deadline_at{
-      @include center_beside_block();
       @include lower_gripping(18px);
-      width: 260px;
+      width: $task-row-w-m - $task-padding;
       height: 16px;
       line-height: 16px;
       font-size: 12px;
     }
-    .progress{
-      @include lower_gripping(10px);
-      @include center_beside_block();
-      height: 8px;
-      width: 300px;
-      border-radius: 0px;
-      border: 0px;
-      .progress-bar{
-        border-radius: 0px;
-        border: 0px;
-      }
-    }
   }
 }
 
-@media screen and (min-width: 0px) and (max-width: 640px) {
-  .task-row{
-  }
+.progress-bar-primary {
+  background-color: $primary;
 }
-
-@media screen and (min-width: 641px) and (max-width: 960px) {
-  .task-row{
-  }
+.progress-bar-danger {
+  background-color: $danger;
+}
+.progress-bar-warning {
+  background-color: $warning;
 }
