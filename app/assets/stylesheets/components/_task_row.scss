@@ -40,6 +40,21 @@
       font-size: 32px;
       color: $black;
     }
+    @include max-screen($breakpoint-tablet){
+      width: $task-row-w-t - $task-padding;
+      input{
+        width: 100%;
+      }
+    }
+    @include max-screen($breakpoint-mobile){
+      width: $task-row-w-m - $task-padding;
+      height: 20px;
+      padding-left: 20px;
+      line-height: 20px;
+      .task-name{
+        font-size: 16px;
+      }
+    }
   }
 
   .deadline_at{
@@ -51,6 +66,16 @@
     font-size: 16px;
     text-align: right;
     color: $black;
+    @include max-screen($breakpoint-tablet){
+      width: $task-row-w-t - $task-padding;
+    }
+    @include max-screen($breakpoint-mobile){
+      @include lower_gripping(18px);
+      width: $task-row-w-m - $task-padding;
+      height: 16px;
+      @include inline_center(16px);
+      font-size: 12px;
+    }
   }
   .progress{
     @include lower_gripping(10px);
@@ -70,36 +95,11 @@
   }
   @include max-screen($breakpoint-tablet){
     width: $task-row-w-t;
-    .task-info{
-      width: $task-row-w-t - $task-padding;
-      input{
-        width: 100%;
-      }
-    }
-    .deadline_at{
-      width: $task-row-w-t - $task-padding;
-    }
   }
   @include max-screen($breakpoint-mobile){
     width: $task-row-w-m;
     height: $task-row-h-m;
     margin-bottom: 16px;
-    .task-info{
-      width: $task-row-w-m - $task-padding;
-      height: 20px;
-      padding-left: 20px;
-      line-height: 20px;
-      .task-name{
-        font-size: 16px;
-      }
-    }
-    .deadline_at{
-      @include lower_gripping(18px);
-      width: $task-row-w-m - $task-padding;
-      height: 16px;
-      line-height: 16px;
-      font-size: 12px;
-    }
   }
 }
 
