@@ -19,6 +19,14 @@ $sidebar-padding: 40px;
 
 $sidebar-content-col-wd: 300px;
 
+$sidebar-badge-mr: 10px;
+$sidebar-badge-ptb: 6px;
+$sidebar-badge-plr: 10px;
+$sidebar-badge-radius: 20px;
+$sidebar-badge-height: 24px;
+$sidebar-badge-mt: 6px;
+
+
 
 // header
 $header-height : 40px;
@@ -28,12 +36,15 @@ $header-height : 40px;
 // task-row
 $task-row-width: 500px;
 $task-row-height: 150px;
+$task-row-w-t: 400px;
+$task-row-mb: 16px;
+$task-info-width: $task-row-width - 20;
+$task-padding: 20px;
 
 $task-done-size: 40px;
 
 $task-row-content: 48px;
 
-$task-row-progress: $task-row-height - $task-row-content;
 
 // button
 
