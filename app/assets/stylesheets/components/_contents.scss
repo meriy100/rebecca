@@ -2,8 +2,12 @@
 @import "settings/mixins/_media.scss";
 @import "settings/variables/_color.scss";
 
-body{
-  background-color: $gley-2;
+html{
+  height: 100%;
+  body{
+    height: 100%;
+    background-color: $gley-2;
+  }
 }
 .content{
   padding-top: $header-height;

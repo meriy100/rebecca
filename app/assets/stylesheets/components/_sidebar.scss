@@ -1,111 +1,104 @@
-@import "settings/variables/_color.scss";
-@import "settings/variables/_position.scss";
-html{
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+.sidebar{
+  float: left;
+  top: $header-height;
+  position: fixed;
+  width: $sidebar-width;
+  background-color: $sidebar-color;
+  color: $black;
   height: 100%;
-  body{
-    height: 100%;
-
-    .sidebar{
-      float: left;
-      top: $header-height;
-      position: fixed;
-      width: $sidebar-width;
-      background-color: #22A7F0;
-      color: $black;
-      height: 100%;
-      padding-top: $sidebar-padding;
-      box-shadow: -6px 0 12px -5px $shadow inset;
-    }
-
-    .side-content-col{
-      width: 300px;
-      margin-right: 0;
-      margin-left: auto;
-      ul{
-          list-style: none;
-          font-size: 18px;
-          line-height: 200%;
-          color: $white;
-          box-sizing: border-box;
-          text-indent: 1em;
-          li{
-            a{
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              display: block;
-            }
-            span.badge{
-              margin-right: 10px;
-              padding: 6px 10px;
-              border-radius: 20px;
-              text-indent: 0;
-              float: right;
-              height: 24px;
-              margin-top: 6px;
-              right: 0;
-            }
-          }
-      }
-      a{
-        color: $white;
-      }
-    }
-
-    .side-content{
-      margin-bottom: 30px;
-    }
-
-    .underbar{
-      margin-right: 20px;
-      border-bottom: solid;
-      border-width: thin;
-      border-color: $white;
-    }
-
-    .filter-link{
-      display: inline;
-    }
-
-    .task-num{
-      text-align: right;
-    }
-
-    li.current{
-      background-color: $gley-2;
-      // border-right: solid;
-      border-width: 1ex;
-      border-color: $gley-2;
-      border-radius: 7px 0 0 7px / 7px 0 0 7px;
-      box-shadow: 0 6px 10px -8px $gley-1, -6px 0 10px -8px $shadow, 0 -6px 10px -8px $shadow, -6px 6px 10px -8px $shadow, -6px -6px 10px -8px $shadow;
-    }
-
-    a.current{
-      color: $base-color;
-    }
-
-    @media screen and (min-width: 0px) and (max-width: 640px) {
-      .sidebar{
-        display: none;
-      }
-    }
-    @media screen and (min-width: 641px) and (max-width: 960px) {
-      .sidebar{
-        width: $sidebar-width-middle;
-        .side-content-col{
-          width: 200px;
-          ul{
-            text-indent: 0.8em;
-            font-size: 16px;
+  padding-top: $sidebar-padding;
+  box-shadow: -6px 0 12px -5px $shadow inset;
+  .side-content-col{
+    width: $sidebar-content-col-wd;
+    margin-right: 0;
+    margin-left: auto;
+    ul{
+      list-style: none;
+      font-size: 18px;
+      line-height: 200%;
+      color: $white;
+      box-sizing: border-box;
+      text-indent: 1em;
+      li{
+        a{
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+          &.current{
+            color: $base-color;
           }
         }
+        span.badge{
+          margin-right: 10px;
+          padding: 6px 10px;
+          border-radius: 20px;
+          text-indent: 0;
+          float: right;
+          height: 24px;
+          margin-top: 6px;
+          right: 0;
+        }
+        &.current{
+          background-color: $gley-2;
+          // border-right: solid;
+          border-width: 1ex;
+          border-color: $gley-2;
+          border-radius: 7px 0 0 7px / 7px 0 0 7px;
+          box-shadow: 0 6px 10px -8px $gley-1, -6px 0 10px -8px $shadow, 0 -6px 10px -8px $shadow, -6px 6px 10px -8px $shadow, -6px -6px 10px -8px $shadow;
+        }
+      }
+
+    }
+    a{
+      color: $white;
+    }
+  }
+}
+
+.side-content{
+  margin-bottom: 30px;
+}
+
+.underbar{
+  margin-right: 20px;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: $white;
+}
+
+.filter-link{
+  display: inline;
+}
+
+.task-num{
+  text-align: right;
+}
+
+
+
+@media screen and (min-width: 0px) and (max-width: 640px) {
+  .sidebar{
+    display: none;
+  }
+}
+@media screen and (min-width: 641px) and (max-width: 960px) {
+  .sidebar{
+    width: $sidebar-width-middle;
+    .side-content-col{
+      width: 200px;
+      ul{
+        text-indent: 0.8em;
+        font-size: 16px;
       }
     }
-    @media screen and (min-width: 961px) and (max-width: 1400px) {
-      .sidebar{
-        width: $sidebar-width-lg-middle;
-      }
-    }
+  }
+}
+@media screen and (min-width: 961px) and (max-width: 1400px) {
+  .sidebar{
+    width: $sidebar-width-lg-middle;
   }
 }
