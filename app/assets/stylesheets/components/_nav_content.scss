@@ -1,5 +1,5 @@
-@import "settings/variables/_color.scss";
-@import "settings/variables/_position.scss";
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_media.scss";
 .nav-content{
   height: 0;
   position: fixed;
@@ -17,8 +17,8 @@
     }
   }
 }
-@media screen and (min-width: 0px) and (max-width: 640px) {
-  .nav-content-active{
+.nav-content-active{
+  @include max-screen($breakpoint-mobile){
     height: 100%;
   }
 }

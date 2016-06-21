@@ -1,25 +1,25 @@
 @import "settings/variables/_position.scss";
+@import "settings/mixins/_media.scss";
 @import "settings/variables/_color.scss";
+
+html{
+  height: 100%;
+  body{
+    height: 100%;
+    background-color: $gley-2;
+  }
+}
 .content{
   padding-top: $header-height;
   padding-left: $sidebar-width;
-}
-body{
-  background-color: $gley-2;
-}
-@media screen and (min-width: 0px) and (max-width: 640px) {
-  .content{
-    padding-left: 0px;
-  }
-}
-@media screen and (min-width: 641px) and (max-width: 960px) {
-  .content{
-    padding-left: $sidebar-width-middle;
-  }
-}
-
-@media screen and (min-width: 961px) and (max-width: 1400px) {
-  .content{
+  @include max-screen($breakpoint-middle){
     padding-left: $sidebar-width-lg-middle;
+  }
+  @include max-screen($breakpoint-tablet){
+    padding-left: $sidebar-width-tablet;
+  }
+  @include max-screen($breakpoint-mobile){
+    padding-left: 0px;
+    margin-bottom: $mobile-content-margin-bottom;
   }
 }

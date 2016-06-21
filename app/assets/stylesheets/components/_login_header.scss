@@ -1,5 +1,5 @@
-@import "settings/variables/_color.scss";
-@import "settings/variables/_position.scss";
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_position.scss";
 .login-header{
   position: fixed;
   top: 0;
@@ -12,11 +12,11 @@
 
   }
   span.title{
-    font-size: 32px;
-    line-height: 1;
+    font-size: $header-fs;
+    @include inline_center;
   }
   .ice-button{
-    font-size: 14px;
+    font-size: $login-header-ice-fs;
     padding: 4px;
   }
 }
