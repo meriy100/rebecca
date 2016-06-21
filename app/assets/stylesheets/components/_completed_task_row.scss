@@ -1,0 +1,121 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+
+.completed-task-row{
+  width: $task-row-width;
+  height: $task-row-height;
+  margin-bottom: $task-row-mb;
+  background-color: $gley-1;
+  box-shadow: 8px 8px 10px rgba($black,0.4);
+  position: relative;
+  .task-done{
+    top: 0;
+    left: 0;
+    height: $task-done-size * 2;
+    width: $task-done-size * 2;
+    .task-done-view {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: $task-done-size/$task-done-close-rate solid;
+      box-shadow: 4px 3px 4px rgba($black,0.4);
+      border-color: $gley-2 $white $white $gley-2;
+      transition: border 200ms ease;
+      transition-property: all;
+    }
+    @include max-screen($breakpoint-mobile){
+      height: $task-done-size-m * 2;
+      width: $task-done-size-m * 2;
+      .task-done-view {
+        border: $task-done-size-m/$task-done-close-rate solid;
+        border-color: $gley-2 $white $white $gley-2;
+      }
+    }
+  }
+  &:hover{
+    .task-done-view{
+      border: $task-done-size solid;
+      border-color: $gley-2 $white $white $gley-2;
+      @include max-screen($breakpoint-mobile){
+        border: $task-done-size-m solid;
+        border-color: $gley-2 $white $white $gley-2;
+      }
+    }
+  }
+  .task-info{
+    @include center_beside_block();
+    width: $task-row-width - $task-padding;
+    padding-left: 20px;
+    @include inline_center(50px);
+    .task-name{
+      font-size: $task-row-title-fs;
+      color: $black;
+    }
+    @include max-screen($breakpoint-tablet){
+      width: $task-row-w-t - $task-padding;
+      input{
+        width: 100%;
+      }
+    }
+    @include max-screen($breakpoint-mobile){
+      width: $task-row-w-m - $task-padding;
+      padding-left: 20px;
+      @include inline_center(20px);
+      .task-name{
+        font-size: $task-row-title-fs-m;
+      }
+    }
+  }
+
+  .deadline_at{
+    @include center_beside_block();
+    @include lower_gripping(18px);
+    width: $task-row-width - $task-padding;
+    @include inline_center(32px);
+    font-size: $task-row-deadline-fs;
+    text-align: right;
+    color: $black;
+    @include max-screen($breakpoint-tablet){
+      width: $task-row-w-t - $task-padding;
+    }
+    @include max-screen($breakpoint-mobile){
+      @include lower_gripping(18px);
+      width: $task-row-w-m - $task-padding;
+      @include inline_center(16px);
+      font-size: $task-row-deadline-fs-m;
+    }
+  }
+  .progress{
+    @include lower_gripping(10px);
+    @include center_beside_block();
+    height: 8px;
+    width: $task-row-width - $task-padding;
+    @include none_border;
+    .progress-bar{
+      @include none_border;
+    }
+    @include max-screen($breakpoint-tablet){
+      width: $task-row-w-t - $task-padding;
+    }
+    @include max-screen($breakpoint-mobile){
+      width: $task-row-w-m - $task-padding;
+    }
+  }
+  @include max-screen($breakpoint-tablet){
+    width: $task-row-w-t;
+  }
+  @include max-screen($breakpoint-mobile){
+    width: $task-row-w-m;
+    height: $task-row-h-m;
+  }
+}
+
+.progress-bar-primary {
+  background-color: $primary;
+}
+.progress-bar-danger {
+  background-color: $danger;
+}
+.progress-bar-warning {
+  background-color: $warning;
+}
