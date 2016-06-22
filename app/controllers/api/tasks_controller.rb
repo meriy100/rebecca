@@ -44,7 +44,7 @@ class Api::TasksController < ApiController
                  @tasks = Task.on_user
                  "sync"
                else
-                 "no_sync"
+                 render json: { errors: "no_sync"}, status: 300
                end
   end
 
