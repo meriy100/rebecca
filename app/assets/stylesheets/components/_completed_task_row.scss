@@ -8,21 +8,24 @@
   background-color: $gley-1;
   box-shadow: 8px 8px 10px rgba($black,0.4);
   position: relative;
-  transition: 0.5s;
+  transition: 0.4s;
   .task-return{
     top: 0;
     left: 0;
     height: $task-done-size * 2;
-    width: $task-done-size * 2;
-    .task-done-view {
+    width: $task-done-size * 4;
+    .task-return-view {
       position: absolute;
       top: 0;
       left: 0;
-      border: $task-done-size/$task-done-close-rate solid;
-      box-shadow: 4px 3px 4px rgba($black,0.4);
-      border-color: $gley-2 $white $white $gley-2;
-      transition: border 200ms ease;
-      transition-property: all;
+      height: $task-done-size * 2;
+      width: $task-done-size * 4;
+      line-height: $task-done-size * 2;
+      font-size: 18px;
+      text-align: center;
+      vertical-align: middle;
+      opacity: 0;
+      transition: 0.4s;
     }
     @include max-screen($breakpoint-mobile){
       height: $task-done-size-m * 2;
@@ -35,7 +38,11 @@
   }
   &:hover{
     background-color: $pure-white;
-    transition: 0.7s;
+    transition: 0.5s;
+    .task-return-view {
+        opacity: 1;
+        transition: 0.5s;
+    }
   }
   .task-info{
     @include center_beside_block();

@@ -26,8 +26,6 @@ $(document).ready ->
 
   doneTask = (scope) ->
     taskId = $(scope).data("task")
-    console.log($(scope))
-    console.log(taskId)
     taskRow = $(scope).parents(".task-row")
     $.ajax
       url: "tasks/#{taskId}/done"
@@ -41,8 +39,6 @@ $(document).ready ->
 
   undoTask = (scope) ->
     taskId = $(scope).data("task")
-    console.log($(scope))
-    console.log(taskId)
     taskRow = $(scope).parents(".completed-task-row")
     $.ajax
       url: "#{taskId}/undo"
