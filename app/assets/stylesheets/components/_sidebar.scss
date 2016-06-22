@@ -25,7 +25,7 @@
         a{
           @include a_full_size;
           &.current{
-            color: $base-color;
+            color: $emphasis;
           }
         }
         span.badge{
@@ -39,9 +39,9 @@
           right: 0;
         }
         &.current{
-          background-color: $gley-2;
+          background-color: $light-color;
           border-width: 1ex;
-          border-color: $gley-2;
+          border-color: $light-color;
           border-radius: 7px 0 0 7px / 7px 0 0 7px;
           box-shadow: 0 6px 10px -8px $gley-1, -6px 0 10px -8px $shadow, 0 -6px 10px -8px $shadow, -6px 6px 10px -8px $shadow, -6px -6px 10px -8px $shadow;
         }
