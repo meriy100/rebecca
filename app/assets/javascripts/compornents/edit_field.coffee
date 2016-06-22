@@ -26,6 +26,8 @@ $(document).ready ->
 
   doneTask = (scope) ->
     taskId = $(scope).data("task")
+    console.log($(scope))
+    console.log(taskId)
     taskRow = $(scope).parents(".task-row")
     $.ajax
       url: "tasks/#{taskId}/done"
@@ -36,6 +38,18 @@ $(document).ready ->
         # ここで, id を指定して data に埋め込む
         $(".undo-modal").fadeIn()
         $(".undo-link").attr("href", "tasks/#{taskId}/undo")
+
+  undoTask = (scope) ->
+    taskId = $(scope).data("task")
+    console.log($(scope))
+    console.log(taskId)
+    taskRow = $(scope).parents(".completed-task-row")
+    $.ajax
+      url: "#{taskId}/undo"
+      type: "POST"
+      dataType: "html"
+      success: (results) ->
+        taskRow.fadeOut()
 
   hideUndoModal = ->
     $(".undo-modal").hide()
@@ -52,3 +66,6 @@ $(document).ready ->
     doneTask(this)
   $(document).on "click", "span.modal-hide", ->
     hideUndoModal()
+  $(document).on "click", ".task-return", ->
+    undoTask(this)
+

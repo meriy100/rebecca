@@ -8,7 +8,8 @@
   background-color: $gley-1;
   box-shadow: 8px 8px 10px rgba($black,0.4);
   position: relative;
-  .task-done{
+  transition: 0.5s;
+  .task-return{
     top: 0;
     left: 0;
     height: $task-done-size * 2;
@@ -33,14 +34,8 @@
     }
   }
   &:hover{
-    .task-done-view{
-      border: $task-done-size solid;
-      border-color: $gley-2 $white $white $gley-2;
-      @include max-screen($breakpoint-mobile){
-        border: $task-done-size-m solid;
-        border-color: $gley-2 $white $white $gley-2;
-      }
-    }
+    background-color: $pure-white;
+    transition: 0.7s;
   }
   .task-info{
     @include center_beside_block();
