@@ -40,9 +40,9 @@
           background-color: $base-color;
         }
         &.current{
-          background-color: $light-color;
+          background-color: $background-color;
           border-width: 1ex;
-          border-color: $light-color;
+          border-color: $background-color;
           border-radius: 7px 0 0 7px / 7px 0 0 7px;
           box-shadow: 0 6px 10px -8px $shadow, -6px 0 10px -8px $shadow, 0 -6px 10px -8px $shadow, -6px 6px 10px -8px $shadow, -6px -6px 10px -8px $shadow;
         }
