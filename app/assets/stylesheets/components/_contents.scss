@@ -13,6 +13,7 @@ html{
 .content{
   padding-top: $header-height;
   padding-left: $sidebar-width;
+  padding-right: $right-side-width;
   @include max-screen($breakpoint-middle){
     padding-left: $sidebar-width-lg-middle;
   }

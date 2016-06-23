@@ -80,7 +80,9 @@
     }
   }
   .nav-button{
+    visibility: hidden;
     @include max-screen($breakpoint-mobile){
+      visibility: visible;
       right: 0;
       float: right;
       font-size: $nav-button-fs;
