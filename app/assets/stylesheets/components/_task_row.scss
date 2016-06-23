@@ -101,6 +101,7 @@
       border-color: $gley-2 $white $white $gley-2;
       transition: border 200ms ease;
       transition-property: all;
+      cursor: pointer;
     }
     @include max-screen($breakpoint-mobile){
       height: $task-done-size-m * 2;

@@ -21,6 +21,7 @@
       vertical-align: middle;
       opacity: 0;
       transition: 0.4s;
+      cursor: pointer;
     }
     @include max-screen($breakpoint-mobile){
       height: $task-done-size-m * 2;
