@@ -13,7 +13,6 @@ class TasksController < ApplicationController
     @filter = { title: "終了済みのタスク", path: completed_tasks_path }
     @search = Task.on_user.completeds.search(params[:q])
     @tasks = @search.result.sort_by(&:least_time_per)
-    render 'filter'
   end
 
   def today
