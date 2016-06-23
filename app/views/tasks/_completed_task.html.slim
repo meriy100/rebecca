@@ -1,0 +1,20 @@
+.task-row.task-row-completed
+  .task-return[data-task="#{completed_task.id}"]
+      i.fa.fa-arrow-left.fa-lg.task-return-view
+        |  戻す
+  /.light-btn.done-button[style="display: none"]
+  /  button.light-btn.task-done[data-task="#{completed_task.id}"]
+  .task-info
+    .task-name
+      .task-name-value-fixed[data-task="#{completed_task.id}"]
+        = completed_task.title
+      .task-name-field[data-task="#{completed_task.id}" style="display: none"]
+        = text_field_tag :title, completed_task.title
+  .deadline_at
+    .task-deadline_at-value-fixed[data-task="#{completed_task.id}"]
+      /= l task.deadline_at, format: :short
+      = completed_task.deadline_at_to_s
+    .task-deadline_at-field[data-task="#{completed_task.id}" style="display: none"]
+      = datetime_field_tag :deadline_at, completed_task.title
+  .progress.task-content
+    .progress-bar[class="progress-bar-#{completed_task.progress_color}" role="progressbar" aria-valuenow="#{completed_task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{completed_task.least_time_per}%;"]

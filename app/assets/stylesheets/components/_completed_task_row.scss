@@ -1,0 +1,39 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+
+.task-row-completed{
+  background-color: $completed-color;
+  transition: 0.4s;
+  .task-return{
+    top: 0;
+    left: 0;
+    height: $task-done-size * 2;
+    width: $task-done-size * 4;
+    .task-return-view {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: $task-done-size * 2;
+      width: $task-done-size * 4;
+      line-height: $task-done-size * 2;
+      font-size: 18px;
+      text-align: center;
+      vertical-align: middle;
+      opacity: 0;
+      transition: 0.4s;
+      cursor: pointer;
+    }
+    @include max-screen($breakpoint-mobile){
+      height: $task-done-size-m * 2;
+      width: $task-done-size-m * 4;
+    }
+  }
+  &:hover{
+    background-color: $pure-white;
+    transition: 0.5s;
+    .task-return-view {
+        opacity: 1;
+        transition: 0.5s;
+    }
+  }
+}
