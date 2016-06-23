@@ -98,9 +98,9 @@
       left: 0;
       border: $task-done-size/$task-done-close-rate solid;
       box-shadow: 4px 3px 4px rgba($black,0.4);
-      border-color: $gley-2 $white $white $gley-2;
       transition: border 200ms ease;
       transition-property: all;
+      border-color: $background-color $white $white $background-color;
       cursor: pointer;
     }
     @include max-screen($breakpoint-mobile){
@@ -108,17 +108,17 @@
       width: $task-done-size-m * 2;
       .task-done-view {
         border: $task-done-size-m/$task-done-close-rate solid;
-        border-color: $gley-2 $white $white $gley-2;
+        border-color: $background-color $white $white $background-color;
       }
     }
   }
   &:hover{
     .task-done-view{
       border: $task-done-size solid;
-      border-color: $gley-2 $white $white $gley-2;
+      border-color: $background-color $white $white $background-color;
       @include max-screen($breakpoint-mobile){
         border: $task-done-size-m solid;
-        border-color: $gley-2 $white $white $gley-2;
+        border-color: $background-color $white $white $background-color;
       }
     }
   }
