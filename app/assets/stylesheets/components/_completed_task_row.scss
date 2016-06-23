@@ -1,13 +1,8 @@
 @import "settings/variables/_variables.scss";
 @import "settings/mixins/_mixins.scss";
 
-.completed-task-row{
-  width: $task-row-width;
-  height: $task-row-height;
-  margin-bottom: $task-row-mb;
+.task-row-completed{
   background-color: $completed-color;
-  box-shadow: 8px 8px 10px rgba($black,0.4);
-  position: relative;
   transition: 0.4s;
   .task-return{
     top: 0;
@@ -29,11 +24,7 @@
     }
     @include max-screen($breakpoint-mobile){
       height: $task-done-size-m * 2;
-      width: $task-done-size-m * 2;
-      .task-done-view {
-        border: $task-done-size-m/$task-done-close-rate solid;
-        border-color: $gley-2 $white $white $gley-2;
-      }
+      width: $task-done-size-m * 4;
     }
   }
   &:hover{
@@ -44,80 +35,4 @@
         transition: 0.5s;
     }
   }
-  .task-info{
-    @include center_beside_block();
-    width: $task-row-width - $task-padding;
-    padding-left: 20px;
-    @include inline_center(50px);
-    .task-name{
-      font-size: $task-row-title-fs;
-      color: $black;
-    }
-    @include max-screen($breakpoint-tablet){
-      width: $task-row-w-t - $task-padding;
-      input{
-        width: 100%;
-      }
-    }
-    @include max-screen($breakpoint-mobile){
-      width: $task-row-w-m - $task-padding;
-      padding-left: 20px;
-      @include inline_center(20px);
-      .task-name{
-        font-size: $task-row-title-fs-m;
-      }
-    }
-  }
-
-  .deadline_at{
-    @include center_beside_block();
-    @include lower_gripping(18px);
-    width: $task-row-width - $task-padding;
-    @include inline_center(32px);
-    font-size: $task-row-deadline-fs;
-    text-align: right;
-    color: $black;
-    @include max-screen($breakpoint-tablet){
-      width: $task-row-w-t - $task-padding;
-    }
-    @include max-screen($breakpoint-mobile){
-      @include lower_gripping(18px);
-      width: $task-row-w-m - $task-padding;
-      @include inline_center(16px);
-      font-size: $task-row-deadline-fs-m;
-    }
-  }
-  .progress{
-    @include lower_gripping(10px);
-    @include center_beside_block();
-    height: 8px;
-    width: $task-row-width - $task-padding;
-    @include none_border;
-    .progress-bar{
-      @include none_border;
-    }
-    @include max-screen($breakpoint-tablet){
-      width: $task-row-w-t - $task-padding;
-    }
-    @include max-screen($breakpoint-mobile){
-      width: $task-row-w-m - $task-padding;
-    }
-  }
-  @include max-screen($breakpoint-tablet){
-    width: $task-row-w-t;
-  }
-  @include max-screen($breakpoint-mobile){
-    width: $task-row-w-m;
-    height: $task-row-h-m;
-  }
-}
-
-.progress-bar-primary {
-  background-color: $primary;
-}
-.progress-bar-danger {
-  background-color: $danger;
-}
-.progress-bar-warning {
-  background-color: $warning;
 }

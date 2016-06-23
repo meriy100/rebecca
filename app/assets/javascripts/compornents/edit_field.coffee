@@ -39,7 +39,7 @@ $(document).ready ->
 
   undoTask = (scope) ->
     taskId = $(scope).data("task")
-    taskRow = $(scope).parents(".completed-task-row")
+    taskRow = $(scope).parents(".task-row")
     $.ajax
       url: "/tasks/#{taskId}/undo"
       type: "POST"
