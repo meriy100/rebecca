@@ -74,7 +74,7 @@ i.new-button{
 }
 a.new-button-sp{
   display: none;
-  @include max-screen($breakpoint-mobile){
+  @include max-screen($breakpoint-small){
     width: $new-button-sp-size;
     height: $new-button-sp-size;
     background-color: $sub-color;

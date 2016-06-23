@@ -22,6 +22,12 @@
         width: 100%;
       }
     }
+    @include max-screen($breakpoint-small){
+      width: $task-row-width-sm - $task-padding;
+      input{
+        width: 100%;
+      }
+    }
     @include max-screen($breakpoint-tablet){
       width: $task-row-w-t - $task-padding;
       input{
@@ -49,6 +55,9 @@
     @include max-screen($breakpoint-middle){
       width: $task-row-width-middle - $task-padding
     }
+    @include max-screen($breakpoint-small){
+      width: $task-row-width-sm - $task-padding
+    }
     @include max-screen($breakpoint-tablet){
       width: $task-row-w-t - $task-padding;
     }
@@ -71,6 +80,9 @@
     @include max-screen($breakpoint-middle){
       width: $task-row-width-middle - $task-padding;
     }
+    @include max-screen($breakpoint-small){
+      width: $task-row-width-sm - $task-padding;
+    }
     @include max-screen($breakpoint-tablet){
       width: $task-row-w-t - $task-padding;
     }
@@ -81,6 +93,10 @@
   @include max-screen($breakpoint-middle){
     width: $task-row-width-middle;
     height: $task-row-height-middle;
+  }
+  @include max-screen($breakpoint-small){
+    width: $task-row-width-sm;
+    height: $task-row-height-sm;
   }
   @include max-screen($breakpoint-tablet){
     width: $task-row-w-t;

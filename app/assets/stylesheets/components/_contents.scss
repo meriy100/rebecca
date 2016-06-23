@@ -19,6 +19,11 @@ html{
     margin-left: $sidebar-width-lg-middle;
     width: $content-width-md;
   }
+  @include max-screen($breakpoint-small){
+    margin-left: 0;
+    padding-left: $sidebar-width-small + 40px;
+    width: 100%;
+  }
   @include max-screen($breakpoint-tablet){
     padding-left: $sidebar-width-tablet;
   }
