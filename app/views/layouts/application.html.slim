@@ -12,8 +12,10 @@ html
   body
     .container-fluid.height-100p
       .content.height-100p
-        .col-lg-8.col-md-10.col-sm-12
+        .col-lg-8.col-md-8.col-sm-12
           = yield
+        .col-lg-4.col-md-4.right-side
+          == render "tasks/new_task_form", task: @task
     .header
       == render partial: "shared/header", locals: {search: @search, filter: @filter}
     .sidebar
