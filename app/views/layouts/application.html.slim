@@ -13,9 +13,8 @@ html
     .right-side
       .right-side-content
         == render "tasks/new_task_form", task: @task
-    .container-fluid
-      .content
-        = yield
+    .content
+      = yield
     .sidebar
       == render "shared/sidebar"
     .header

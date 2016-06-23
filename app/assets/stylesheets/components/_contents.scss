@@ -6,14 +6,15 @@ html{
   height: 100%;
   body{
     height: 100%;
-    background-color: $background-color;
     color: $black;
   }
 }
 .content{
-  padding-top: $header-height;
-  padding-left: $sidebar-width;
-  padding-right: $right-side-width;
+  margin-top: $header-height;
+  margin-left: $sidebar-width;
+  padding: 20px 40px;
+  width: $content-width;
+  background-color: $background-color;
   @include max-screen($breakpoint-middle){
     padding-left: $sidebar-width-lg-middle;
   }

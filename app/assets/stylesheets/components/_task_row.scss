@@ -11,10 +11,16 @@
     @include center_beside_block();
     width: $task-row-width - $task-padding;
     padding-left: 20px;
-    @include inline_center(50px);
+    @include inline_center($task-name-height);
     .task-name{
       font-size: $task-row-title-fs;
       color: $black;
+    }
+    @include max-screen($breakpoint-middle){
+      width: $task-row-width-middle - $task-padding;
+      input{
+        width: 100%;
+      }
     }
     @include max-screen($breakpoint-tablet){
       width: $task-row-w-t - $task-padding;
@@ -34,9 +40,9 @@
 
   .deadline_at{
     @include center_beside_block();
-    @include lower_gripping(18px);
+    @include lower_gripping($task-progress-height + $task-progress-mb);
     width: $task-row-width - $task-padding;
-    @include inline_center(32px);
+    @include inline_center($task-deadline_at-height);
     font-size: $task-row-deadline-fs;
     text-align: right;
     color: $black;
@@ -51,9 +57,9 @@
     }
   }
   .progress{
-    @include lower_gripping(10px);
+    @include lower_gripping($task-progress-mb);
     @include center_beside_block();
-    height: 8px;
+    height: $task-progress-height;
     width: $task-row-width - $task-padding;
     @include none_border;
     .progress-bar{

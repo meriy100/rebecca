@@ -35,21 +35,40 @@ $header-height : 40px;
 
 
 // task-row
-$task-row-width: 500px;
-$task-row-height: 150px;
+// サイズ
+$task-row-width: 440px;
+$task-row-height: 100px;
+
+$task-row-width-middle: 500px;
+$task-row-height-middle: 150px;
+
 $task-row-w-t: 400px;
+
 $task-row-w-m: 300px;
 $task-row-h-m: 100px;
+
 $task-row-mb: 16px;
 $task-info-width: $task-row-width - 20;
 $task-padding: 20px;
 
-$task-done-size: 20px;
-$task-done-close-rate: 2;
+// done ボタン
+$task-done-size: 12px;
+$task-done-close-rate: 1.7;
+
+$task-done-close-rate-middle: 2;
+
 $task-done-size-m: 16px;
-$task-done-close-rate: 2;
 
 $task-row-content: 48px;
+
+// title deadline_at
+$task-name-height: 30px;
+$task-deadline_at-height: 20px;
+
+// progress
+$task-progress-height: 8px;
+$task-progress-mb: 10px;
+
 
 //content
 $content-width: $task-row-width + 120px;
