@@ -25,7 +25,7 @@ html{
     width: 100%;
   }
   @include max-screen($breakpoint-tablet){
-    padding-left: $sidebar-width-tablet;
+    padding-left: $sidebar-width-tablet + 20px;
   }
   @include max-screen($breakpoint-mobile){
     padding-left: 0px;
