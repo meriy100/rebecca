@@ -46,6 +46,9 @@
     font-size: $task-row-deadline-fs;
     text-align: right;
     color: $black;
+    @include max-screen($breakpoint-middle){
+      width: $task-row-width-middle - $task-padding
+    }
     @include max-screen($breakpoint-tablet){
       width: $task-row-w-t - $task-padding;
     }
@@ -65,12 +68,19 @@
     .progress-bar{
       @include none_border;
     }
+    @include max-screen($breakpoint-middle){
+      width: $task-row-width-middle - $task-padding;
+    }
     @include max-screen($breakpoint-tablet){
       width: $task-row-w-t - $task-padding;
     }
     @include max-screen($breakpoint-mobile){
       width: $task-row-w-m - $task-padding;
     }
+  }
+  @include max-screen($breakpoint-middle){
+    width: $task-row-width-middle;
+    height: $task-row-height-middle;
   }
   @include max-screen($breakpoint-tablet){
     width: $task-row-w-t;

@@ -16,7 +16,8 @@ html{
   width: $content-width;
   background-color: $background-color;
   @include max-screen($breakpoint-middle){
-    padding-left: $sidebar-width-lg-middle;
+    margin-left: $sidebar-width-lg-middle;
+    width: $content-width-md;
   }
   @include max-screen($breakpoint-tablet){
     padding-left: $sidebar-width-tablet;
