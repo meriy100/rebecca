@@ -16,7 +16,8 @@ html
     .sidebar
       == render "shared/sidebar"
     .right-side
-      == render "tasks/new_task_form", task: @task
+      .right-side-content
+        == render "tasks/new_task_form", task: @task
     .header
       == render partial: "shared/header", locals: {search: @search, filter: @filter}
     .nav-content#nav-content

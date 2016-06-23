@@ -7,7 +7,6 @@ $breakpoint-mobile: 640px;
 $circle-radius: 100px;
 
 // content
-
 $mobile-content-margin-bottom: 40px;
 
 // sidebar
@@ -52,6 +51,10 @@ $task-done-close-rate: 2;
 
 $task-row-content: 48px;
 
+//content
+$content-width: $task-row-width + 120px;
+$content-width-md: $task-row-w-m + 120px;
+$content-width-tb: $task-row-width + 120px;
 
 // button
 
