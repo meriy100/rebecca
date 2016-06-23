@@ -1,20 +1,21 @@
 // media
 $breakpoint-middle: 1400px;
-$breakpoint-tablet: 960px;
-$breakpoint-mobile: 640px;
+$breakpoint-small: 1200px; // 差 200
+$breakpoint-tablet: 960px; // 差 240
+$breakpoint-mobile: 640px; // 差 320
 
 // circle
 $circle-radius: 100px;
 
 // content
-
 $mobile-content-margin-bottom: 40px;
 
 // sidebar
 $sidebar-width : 480px;
-$sidebar-width-tablet : 240px;
+$sidebar-width-lg-middle : 360px;
+$sidebar-width-small : 360px;
 $sidebar-width-middle : 240px;
-$sidebar-width-lg-middle : 400px;
+$sidebar-width-tablet : 240px;
 $sidebar-padding: 40px;
 
 $sidebar-content-col-wd: 300px;
@@ -26,7 +27,9 @@ $sidebar-badge-radius: 20px;
 $sidebar-badge-height: 24px;
 $sidebar-badge-mt: 6px;
 
-
+// right-side
+$right-side-width: 28%;
+$right-side-width-md: 28%;
 
 // header
 $header-height : 40px;
@@ -34,22 +37,49 @@ $header-height : 40px;
 
 
 // task-row
-$task-row-width: 500px;
-$task-row-height: 150px;
-$task-row-w-t: 400px;
+// サイズ
+$task-row-width: 440px;
+$task-row-height: 100px;
+
+$task-row-width-middle: 400px;
+$task-row-height-middle: 100px;
+
+$task-row-width-sm: 440px;
+$task-row-height-sm: 100px;
+
+$task-row-w-t: 350px;
+
 $task-row-w-m: 300px;
 $task-row-h-m: 100px;
+
 $task-row-mb: 16px;
 $task-info-width: $task-row-width - 20;
 $task-padding: 20px;
 
-$task-done-size: 20px;
-$task-done-close-rate: 2;
+// done ボタン
+$task-done-size: 12px;
+$task-done-close-rate: 1.7;
+
+$task-done-close-rate-middle: 2;
+
 $task-done-size-m: 16px;
-$task-done-close-rate: 2;
 
 $task-row-content: 48px;
 
+// title deadline_at
+$task-name-height: 30px;
+$task-deadline_at-height: 20px;
+
+// progress
+$task-progress-height: 8px;
+$task-progress-mb: 10px;
+
+
+//content
+$content-width: $task-row-width + 120px;
+$content-width-md: $task-row-width-middle + 120px;
+$content-width-sm: $task-row-width-sm + 120px;
+$content-width-tb: $task-row-width + 120px;
 
 // button
 

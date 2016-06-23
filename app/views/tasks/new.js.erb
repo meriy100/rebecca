@@ -12,26 +12,14 @@ $(function(){
     },
     minDate: moment()
   });
-  /*$('.datetimepicker').datetimepicker({
-    inline: true,
-    format : "YYYY/MM/DD HH:mm",
-    icons: {
-      time: "fa fa-clock-o",
-      date: "fa fa-calendar",
-      up: "fa fa-arrow-up",
-      down: "fa fa-arrow-down",
-      previous: "fa fa-arrow-left",
-      next: "fa fa-arrow-right"
-    }
-  });*/
   $('#task_deadline_at').val($('.datepicker').data("DateTimePicker").date());
 });
-$(".slider").slider({
-    ticks: [1,2,3],
-    ticks_labels: ['Low', 'Normal', 'ASAP'],
-    tooltip: "hide",
-    value: 2
-});
+
+// weight 用のスライダー
+
+$(".slider").slider();
+
+// 新規追加フォームがよく見えるようにスクロール
 $("html,body").animate({scrollTop:$('#new-task').offset().top});
 $("#title-input").focus();
 $('.datepicker').on('dp.change', function(ev){

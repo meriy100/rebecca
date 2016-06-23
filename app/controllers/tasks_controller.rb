@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   include TasksAction
   before_action :set_task, only: [:update, :destroy, :done, :undo]
+  before_action :set_new_task, only: [:index, :completed, :today, :weekly]
 
   def index
     @filter = { title: "タスク一覧", path: tasks_path }
@@ -67,4 +68,9 @@ class TasksController < ApplicationController
   def set_task
     @task = Task.on_user.find_by(id: params[:id])
   end
+
+  def set_new_task
+    @task = Task.new
+  end
+
 end

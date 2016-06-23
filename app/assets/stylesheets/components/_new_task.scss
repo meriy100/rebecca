@@ -1,18 +1,88 @@
-@import "settings/variables/_color.scss";
-@import "settings/variables/_position.scss";
-@import "settings/mixins/_position.scss";
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+
+.right-side{
+  position: fixed;
+  right: 0;
+  top: $header-height;
+  height: 100%;
+  width: 100%;
+  padding-left: $sidebar-width + $content-width;
+  .right-side-content{
+    background-color: $sidebar-color;
+    box-shadow: 6px 0 12px -5px $shadow inset;
+    height: 100%;
+    width: 100%;
+    padding-top: 40px;
+    padding-left: 40px;
+  }
+  @include max-screen($breakpoint-middle){
+    padding-left: $sidebar-width-lg-middle + $content-width-md;
+  }
+  @include max-screen($breakpoint-small){
+    display: none;
+  }
+}
+
 
 .form-header{
   visibility: hidden;
 }
 
-@media screen and (min-width: 0px) and (max-width: 640px) {
-  .new-task-form{
+.new-task-form{
+  width: 260px;
+  padding-left: 10px;
+  padding-right: 10px;
+  .form-group{
+    margin: 0;
+    .col-md-12{
+      padding: 0;
+    }
+  }
+  input.title-input{
+    border-radius: 0;
+  }
+  .datetimepicker{
+    border: 1 $gley-1 solid;
+  }
+  .footer{
+    .actions{
+      display: inline;
+      position: absolute;
+    }
+  }
+  .ice-button{
+    margin: 0;
+  }
+  .ice-button.ice-submit{
+    padding-left: 20px;
+    padding-right: 20px;
+    .create-submit{
+      border: 0px;
+      background: transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .task-new-form-cancel{
+    border: 0px;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  @include max-screen($breakpoint-small){
     position: fixed;
     top: 0;
     background: rgba(100, 100, 100, 0.6);
     height: 100%;
     width: 100%;
+    padding-left: $sidebar-width-small;
     margin: 0px;
     left: 0;
     #task-new-cancel{
@@ -37,5 +107,20 @@
         width: 90%;
       }
     }
+  }
+  @include max-screen($breakpoint-mobile){
+    padding-left: 0;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: $breakpoint-small) {
+  .new-task-form{
+  }
+}
+
+.slider.slider-horizontal{
+  height: 40px;
+  width: 100%;
+  .slider-track{
   }
 }

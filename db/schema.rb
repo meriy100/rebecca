@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610055742) do
+ActiveRecord::Schema.define(version: 20160621090222) do
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.string   "title",       limit: 255
     t.boolean  "is_done"
     t.string   "sync_token",  limit: 255
-    t.integer  "weight",      limit: 4
+    t.float    "weight",      limit: 24
     t.datetime "deadline_at"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false

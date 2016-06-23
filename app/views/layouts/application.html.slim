@@ -10,15 +10,15 @@ html
     meta[name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=0.5,user-scalable=yes,initial-scale=1.0"]
     = csrf_meta_tags
   body
-    .container-fluid
-      .content
-        .col-lg-10.col-md-10.col-sm-12
-          = yield
-        .col-lg-4.col-md-2
-    .header
-      == render partial: "shared/header", locals: {search: @search, filter: @filter}
+    .right-side
+      .right-side-content
+        == render "tasks/new_task_form", task: @task
+    .content
+      = yield
     .sidebar
       == render "shared/sidebar"
+    .header
+      == render partial: "shared/header", locals: {search: @search, filter: @filter}
     .nav-content#nav-content
       == render partial: "shared/nav_list"
     = link_to new_task_path, class: "new-button-sp", remote: true do

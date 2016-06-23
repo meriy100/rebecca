@@ -1,18 +1,18 @@
 .new-task-form
-  = bootstrap_form_for(task, layout: :horizontal, remote: true) do |f|
+  = form_for(task, layout: :horizontal, remote: true) do |f|
     .form-header
       button.close.task-new-form-cancel[ type="button"]
         span &times;
     = f.hidden_field :user_id
     = f.hidden_field :is_done
-    .form-group
-      = f.text_field :title, label_col: "", control_col: "col-md-12", hide_label: true, placeholder: "日曜に彼氏とデート♡ ", class: "form-control", id: "title-input"
-      .datepicker
-      = f.hidden_field :deadline_at
-    .from-group
-      =f.text_field :weight, hide_label: true, class: "slider form-control"
-    .form-group
-      .actions
-        = f.submit class: "btn btn-primary"
-        = button_tag "キャンセル", class: "btn btn-default task-new-form-cancel", id: "task-new-cancel", type: "button"
+    = f.hidden_field :deadline_at
 
+    = f.text_field :title, placeholder: "日曜に彼氏とデート♡ ", class: "form-control title-input", id: "title-input"
+    .datepicker
+
+    = f.text_field :weight, class: "slider", data: {slider_min: 0.5, slider_max: 1.5, slider_step: 0.5, slider_tooltip: "hide", slider_value: 1}
+    .footer
+      .actions
+        .ice-button.base-color.trans.ice-submit
+          | 登録する
+          = f.submit "", class: "create-submit"

@@ -6,18 +6,26 @@ html{
   height: 100%;
   body{
     height: 100%;
-    background-color: $background-color;
     color: $black;
   }
 }
 .content{
-  padding-top: $header-height;
-  padding-left: $sidebar-width;
+  margin-top: $header-height;
+  margin-left: $sidebar-width;
+  padding: 20px 40px;
+  width: $content-width;
+  background-color: $background-color;
   @include max-screen($breakpoint-middle){
-    padding-left: $sidebar-width-lg-middle;
+    margin-left: $sidebar-width-lg-middle;
+    width: $content-width-md;
+  }
+  @include max-screen($breakpoint-small){
+    margin-left: 0;
+    padding-left: $sidebar-width-small + 40px;
+    width: 100%;
   }
   @include max-screen($breakpoint-tablet){
-    padding-left: $sidebar-width-tablet;
+    padding-left: $sidebar-width-tablet + 20px;
   }
   @include max-screen($breakpoint-mobile){
     padding-left: 0px;
