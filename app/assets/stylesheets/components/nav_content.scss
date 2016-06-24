@@ -9,6 +9,7 @@
   overflow: hidden;
   transition: all 200ms ease;
   background-color: $light-color;
+  padding-top: 40px;
   ul.nav-list{
     background-color: $light-color;
     width: 240px;
@@ -38,9 +39,7 @@
 }
 
 .nav-content-active{
-  @include max-screen($breakpoint-mobile){
-    width: 240px;
-  }
+  width: 240px;
 }
 
 
@@ -54,6 +53,5 @@
     position: fixed;
     top: $header-height;
     left: 0;
-    background-color: $black;
   }
 }
