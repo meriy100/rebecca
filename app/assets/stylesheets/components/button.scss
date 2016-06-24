@@ -31,6 +31,11 @@
   background-color: $base-color;
   border: $ice-button-border solid $base-color;
 }
+.ice-button.sub-color{
+  color: $white;
+  background-color: $sub-color;
+  border: $ice-button-border solid $sub-color;
+}
 .ice-button:hover{
   background-color: $white;
   color: $base-color;

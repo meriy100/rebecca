@@ -19,9 +19,9 @@ $(document).on "ready page:load", ->
   $(".slider").slider()
 
   $(document).on "click", "#new-button-sp", ->
-    $(".right-side").show()
+    $(".right-side").addClass("active")
   $(document).on "click", ".close", ->
-    $(".right-side").hide()
+    $(".right-side").removeClass("active")
 # 新規追加フォームがよく見えるようにスクロール
 # $("html,body").animate({scrollTop:$('#new-task').offset().top})
 # $("#title-input").focus()
