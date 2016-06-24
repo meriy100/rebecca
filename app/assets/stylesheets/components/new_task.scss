@@ -72,6 +72,9 @@
   }
   @include max-screen($breakpoint-mobile){
     padding-left: 0;
+    form{
+      margin: $header-height;
+    }
   }
 }
 
