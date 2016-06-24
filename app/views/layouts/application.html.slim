@@ -10,12 +10,13 @@ html
     meta[name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=0.5,user-scalable=yes,initial-scale=1.0"]
     = csrf_meta_tags
   body
+<<<<<<< c2fb1af751becac2259790991af900303c6276bf
     .right-side
       .right-side-content
         == render "tasks/new_task_form", task: @task
     .content
       = yield
-      == render "undo_modal"
+      == render "done_modal"
     .sidebar
       == render "shared/sidebar"
     .header
