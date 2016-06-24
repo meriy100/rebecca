@@ -35,7 +35,7 @@ $(document).ready ->
         taskRow.fadeOut()
         # ここで, id を指定して data に埋め込む
         $(".undo-modal").fadeIn()
-        $(".undo-link").attr("href", "tasks/#{taskId}/undo")
+        $(".undo-link").attr("href", "/tasks/#{taskId}/undo")
 
   undoTask = (scope) ->
     taskId = $(scope).data("task")
