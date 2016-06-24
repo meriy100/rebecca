@@ -1,0 +1,84 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+
+.form-header{
+  visibility: hidden;
+  @include max-screen($breakpoint-small){
+    visibility: visible;
+    height: 25px;
+    button{
+      margin-top: -5px;
+      margin-right: -15px;
+      @include inline-center(20px);
+    }
+  }
+}
+
+.new-task-form{
+  width: $new-task-form-width;
+  padding-left: $new-task-form-pl;
+  padding-right: $new-task-form-pr;
+  .form-group{
+    margin: 0;
+    .col-md-12{
+      padding: 0;
+    }
+  }
+  input.title-input{
+    border-radius: 0;
+  }
+  .datetimepicker{
+    border: 1 $gley-1 solid;
+  }
+  .footer{
+    .actions{
+      display: inline;
+      position: absolute;
+    }
+  }
+  .ice-button{
+    margin: 0;
+  }
+  .ice-button.ice-submit{
+    padding-left: 20px;
+    padding-right: 20px;
+    .create-submit{
+      border: 0px;
+      background: transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  @include max-screen($breakpoint-small){
+    width: $new-task-form-width-sm;
+    @include center_beside_block;
+    left: 0;
+    #task-new-cancel{
+      visibility: hidden;
+    }
+    form{
+      margin-top: $new-task-form-form-mt;
+      margin-left: $new-task-form-form-mlr;
+      margin-right: $new-task-form-form-mlr;
+      background-color: $white;
+      padding: 5% 10%;
+      padding-bottom: $new-task-form-form-pb;
+      border: 1px solid $white;
+      border-radius: 4px;
+    }
+  }
+  @include max-screen($breakpoint-mobile){
+    padding-left: 0;
+  }
+}
+
+
+.slider.slider-horizontal{
+  height: 40px;
+  width: 100%;
+  .slider-track{
+  }
+}

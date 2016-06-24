@@ -11,11 +11,13 @@ $circle-radius: 100px;
 $mobile-content-margin-bottom: 40px;
 
 // sidebar
-$sidebar-width : 480px;
-$sidebar-width-lg-middle : 360px;
-$sidebar-width-small : 360px;
-$sidebar-width-middle : 240px;
-$sidebar-width-tablet : 240px;
+$sidebar-width: 30;
+$sidebar-width-per: 0% + $sidebar-width;
+$sidebar-width-min: 240px;
+
+// sidebar が min の時要のbreakpoint
+$breakpoint-content-margin-left-min: 100 * $sidebar-width-min / $sidebar-width;
+
 $sidebar-padding: 40px;
 
 $sidebar-content-col-wd: 300px;
@@ -28,8 +30,9 @@ $sidebar-badge-height: 24px;
 $sidebar-badge-mt: 6px;
 
 // right-side
-$right-side-width: 28%;
-$right-side-width-md: 28%;
+
+$right-side-content-pt: 40px;
+$right-side-content-pl: 40px;
 
 // header
 $header-height : 40px;
@@ -55,6 +58,17 @@ $task-row-h-m: 100px;
 $task-row-mb: 16px;
 $task-info-width: $task-row-width - 20;
 $task-padding: 20px;
+
+
+// new-task-form
+
+$new-task-form-width: 260px;
+$new-task-form-pl: 10px;
+$new-task-form-pr: 10px;
+$new-task-form-width-sm: 350px;
+$new-task-form-form-mt: 80px;
+$new-task-form-form-mlr: 20px;
+$new-task-form-form-pb: 70px;
 
 // done ボタン
 $task-done-size: 12px;

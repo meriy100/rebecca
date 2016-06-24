@@ -1,0 +1,46 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+
+.right-side{
+  position: fixed;
+  right: 0;
+  top: $header-height;
+  height: 100%;
+  width: 100%;
+  padding-left: calc(#{$sidebar-width-per} + #{$content-width});
+  @include max-screen($breakpoint-middle){
+    padding-left: calc(#{$sidebar-width-per} + #{$content-width-md});
+  }
+  @include max-screen($breakpoint-small){
+    display: none;
+    padding-left: $sidebar-width-per;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  }
+  @include max-screen($breakpoint-content-margin-left-min){
+    padding-left: $sidebar-width-min;
+  }
+  @include max-screen($breakpoint-mobile){
+    padding-left: 0;
+  }
+  .right-side-content{
+    background-color: $sidebar-color;
+    box-shadow: 6px 0 12px -5px $shadow inset;
+    height: 100%;
+    width: 100%;
+    padding-top: $right-side-content-pt;
+    padding-left: $right-side-content-pl;
+    @include max-screen($breakpoint-small){
+      background: rgba($black, 0.6);
+      position: relative;
+      padding: 0;
+    }
+  }
+  &.active{
+    display: block;
+    @include max-screen($breakpoint-small){
+      display: block;
+    }
+  }
+}

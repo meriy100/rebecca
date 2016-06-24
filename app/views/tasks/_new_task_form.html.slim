@@ -2,7 +2,7 @@
   = form_for(task, layout: :horizontal, remote: true) do |f|
     .form-header
       button.close.task-new-form-cancel[ type="button"]
-        span &times;
+        i.fa.fa-close
     = f.hidden_field :user_id
     = f.hidden_field :is_done
     = f.hidden_field :deadline_at
@@ -13,6 +13,6 @@
     = f.text_field :weight, class: "slider", data: {slider_min: 0.5, slider_max: 1.5, slider_step: 0.5, slider_tooltip: "hide", slider_value: 1}
     .footer
       .actions
-        .ice-button.base-color.trans.ice-submit
+        .ice-button.sub-color.trans.ice-submit
           | 登録する
           = f.submit "", class: "create-submit"

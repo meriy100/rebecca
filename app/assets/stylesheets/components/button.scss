@@ -31,6 +31,11 @@
   background-color: $base-color;
   border: $ice-button-border solid $base-color;
 }
+.ice-button.sub-color{
+  color: $white;
+  background-color: $sub-color;
+  border: $ice-button-border solid $sub-color;
+}
 .ice-button:hover{
   background-color: $white;
   color: $base-color;
@@ -72,7 +77,7 @@ div.light-btn{
 i.new-button{
   color: $base-color
 }
-a.new-button-sp{
+.new-button-sp{
   display: none;
   @include max-screen($breakpoint-small){
     width: $new-button-sp-size;
@@ -100,7 +105,7 @@ a.new-button-sp{
     }
   }
 }
-a.new-button{
+.new-button{
   @include max-screen($breakpoint-mobile){
     display: none;
   }
