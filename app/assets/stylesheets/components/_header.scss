@@ -17,14 +17,6 @@
     @include inline_center();
   }
   .header-contents{
-    .header-buttons{
-      padding-top: 5px;
-      float: right;
-      a{
-        color: $white;
-        margin-left: 40px;
-      }
-    }
     form{
       .input-group{
         width: 70%;
@@ -77,6 +69,17 @@
     }
     @include max-screen($breakpoint-mobile){
       display: none;
+    }
+  }
+  .header-buttons{
+    position: absolute;
+    padding-top: 5px;
+    float: right;
+    right: 10px;
+    top: 0;
+    a{
+      color: $white;
+      margin-left: 40px;
     }
   }
   .nav-button{

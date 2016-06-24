@@ -11,16 +11,13 @@
             .input-group-addon
               i.fa.fa-search
             = f.text_field :title_cont, placeholder: "クイックサーチ", class: "form-control search-field"
-    .col-md-3.col-sm-5.col-xs-5
-      .header-buttons
-        a
-          i.fa.fa-plus.fa-2x
-        a
-          i.fa.fa-thumbs-o-up.fa-2x
-        a
-          i.fa.fa-cog.fa-2x
-        = link_to logout_path, class: "logout" do
-          i.fa.fa-sign-out.fa-2x
+.header-buttons
+  a
+    i.fa.fa-thumbs-o-up.fa-2x
+  a
+    i.fa.fa-cog.fa-2x
+  = link_to logout_path, class: "logout" do
+    i.fa.fa-sign-out.fa-2x
 .nav-button
   a#nav-button
     i.fa.fa-bars
