@@ -15,6 +15,9 @@
     width: $sidebar-content-col-wd;
     margin-right: 0;
     margin-left: auto;
+    @include max-screen($breakpoint-small){
+      width: $sidebar-width-min;
+    }
     ul{
       list-style: none;
       font-size: $sidebar-ul-fs;
