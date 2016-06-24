@@ -23,5 +23,5 @@ html
       == render partial: "shared/header", locals: {search: @search, filter: @filter}
     .nav-content#nav-content
       == render partial: "shared/nav_list"
-    = link_to new_task_path, class: "new-button-sp", remote: true do
+    .new-button-sp#new-button-sp
       i.fa.fa-plus.fa-2x
