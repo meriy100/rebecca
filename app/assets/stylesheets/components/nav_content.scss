@@ -42,3 +42,18 @@
     width: 240px;
   }
 }
+
+
+
+.nav-list-slide{
+  display: none;
+  @include max-screen($breakpoint-mobile){
+    display: block;
+    width: 30px;
+    height: 100%;
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    background-color: $black;
+  }
+}
