@@ -15,6 +15,7 @@ html
         == render "tasks/new_task_form", task: @task
     .content
       = yield
+      == render "done_modal"
     .sidebar
       == render "shared/sidebar"
     .header

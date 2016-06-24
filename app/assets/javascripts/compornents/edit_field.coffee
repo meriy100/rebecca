@@ -34,8 +34,8 @@ $(document).ready ->
       success: (results) ->
         taskRow.fadeOut()
         # ここで, id を指定して data に埋め込む
-        $(".undo-modal").fadeIn()
-        $(".undo-link").attr("href", "tasks/#{taskId}/undo")
+        $(".notify-modal.done").fadeIn()
+        $(".undo-link").attr("href", "/tasks/#{taskId}/undo")
 
   undoTask = (scope) ->
     taskId = $(scope).data("task")
@@ -46,9 +46,10 @@ $(document).ready ->
       dataType: "html"
       success: (results) ->
         taskRow.fadeOut()
+        $(".notify-modal.undo").fadeIn()
 
-  hideUndoModal = ->
-    $(".undo-modal").hide()
+  hideModal = ->
+    $(".notify-modal").hide()
 
   $(document).on "click", ".task-name-value", ->
     showNameField(this)
@@ -61,7 +62,9 @@ $(document).ready ->
   $(document).on "click", ".task-done", ->
     doneTask(this)
   $(document).on "click", "span.modal-hide", ->
-    hideUndoModal()
+    hideModal()
+  $(document).on "click", ".undo-link", ->
+    hideModal()
   $(document).on "click", ".task-return", ->
     undoTask(this)
 

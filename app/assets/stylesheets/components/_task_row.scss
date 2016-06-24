@@ -143,14 +143,14 @@
         border-color: $background-color $white $white $background-color;
       }
     }
-  }
-  &:hover{
-    .task-done-view{
-      border: $task-done-size solid;
-      border-color: $background-color $white $white $background-color;
-      @include max-screen($breakpoint-mobile){
-        border: $task-done-size-m solid;
+    &:hover{
+      .task-done-view{
+        border: $task-done-size solid;
         border-color: $background-color $white $white $background-color;
+        @include max-screen($breakpoint-mobile){
+          border: $task-done-size-m solid;
+          border-color: $background-color $white $white $background-color;
+        }
       }
     }
   }
