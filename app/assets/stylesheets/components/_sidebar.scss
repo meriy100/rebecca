@@ -4,7 +4,8 @@
   float: left;
   top: $header-height;
   position: fixed;
-  width: $sidebar-width;
+  width: $sidebar-width-per;
+  min-width: $sidebar-width-min;
   background-color: $sidebar-color;
   color: $black;
   height: 100%;
@@ -52,6 +53,19 @@
       color: $white;
     }
   }
+  @include max-screen($breakpoint-mobile){
+    display: none;
+  }
+  @include max-screen($breakpoint-tablet){
+    // width: $sidebar-width-middle;
+    .side-content-col{
+      width: 200px;
+      ul{
+        text-indent: 0.8em;
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 .side-content{
@@ -71,31 +85,6 @@
 
 .task-num{
   text-align: right;
-}
-
-
-
-@media screen and (min-width: 0px) and (max-width: 640px) {
-  .sidebar{
-    display: none;
-  }
-}
-@media screen and (min-width: 641px) and (max-width: 960px) {
-  .sidebar{
-    width: $sidebar-width-middle;
-    .side-content-col{
-      width: 200px;
-      ul{
-        text-indent: 0.8em;
-        font-size: 16px;
-      }
-    }
-  }
-}
-@media screen and (min-width: 961px) and (max-width: 1400px) {
-  .sidebar{
-    width: $sidebar-width-lg-middle;
-  }
 }
 
 @keyframes fade-slidein{

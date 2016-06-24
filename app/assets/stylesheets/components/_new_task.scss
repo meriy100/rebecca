@@ -7,7 +7,7 @@
   top: $header-height;
   height: 100%;
   width: 100%;
-  padding-left: $sidebar-width + $content-width;
+  padding-left: calc(#{$sidebar-width-per} + #{$content-width});
   .right-side-content{
     background-color: $sidebar-color;
     box-shadow: 6px 0 12px -5px $shadow inset;
@@ -17,7 +17,7 @@
     padding-left: 40px;
   }
   @include max-screen($breakpoint-middle){
-    padding-left: $sidebar-width-lg-middle + $content-width-md;
+    padding-left: calc(#{$sidebar-width-per} + #{$content-width-md});
   }
   @include max-screen($breakpoint-small){
     display: none;
@@ -82,7 +82,7 @@
     background: rgba(100, 100, 100, 0.6);
     height: 100%;
     width: 100%;
-    padding-left: $sidebar-width-small;
+    padding-left: $sidebar-width-per;
     margin: 0px;
     left: 0;
     #task-new-cancel{
