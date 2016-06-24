@@ -83,11 +83,10 @@
     visibility: hidden;
     @include max-screen($breakpoint-mobile){
       visibility: visible;
-      right: 0;
-      float: right;
+      float: left;
       font-size: $nav-button-fs;
       @include inline_center;
-      margin-right: $nav-button-margin-right;
+      margin-left: $nav-button-margin-right;
     }
   }
 }

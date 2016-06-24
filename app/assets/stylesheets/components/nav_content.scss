@@ -1,0 +1,44 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_media.scss";
+.nav-content{
+  height: 100%;
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  width: 0;
+  overflow: hidden;
+  transition: all 200ms ease;
+  background-color: $light-color;
+  ul.nav-list{
+    background-color: $light-color;
+    width: 240px;
+    padding-left: 40px;
+    .list-group-item{
+      background-color: $light-color;
+      color: $white;
+      border: 0 solid $white;
+      font-size: 16px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0px;
+      &.current{
+        background-color: $background-color;
+        color: $sub-color;
+        border-radius: 10px 0 0 10px ;
+      }
+      &:hover{
+        background-color: $background-color;
+        color: $sub-color;
+        border-radius: 10px 0 0 10px ;
+      }
+    }
+  }
+}
+
+.nav-content-active{
+  @include max-screen($breakpoint-mobile){
+    width: 240px;
+  }
+}
