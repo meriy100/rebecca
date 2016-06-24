@@ -8,13 +8,12 @@
     top: 0;
     left: 0;
     height: $task-done-size * 2;
-    width: $task-done-size * 4;
     .task-return-view {
       position: absolute;
       top: 0;
       left: 0;
+      color: $sub-color;
       height: $task-done-size * 2;
-      width: $task-done-size * 4;
       line-height: $task-done-size * 2;
       font-size: 18px;
       text-align: center;
@@ -25,7 +24,6 @@
     }
     @include max-screen($breakpoint-mobile){
       height: $task-done-size-m * 2;
-      width: $task-done-size-m * 4;
     }
   }
   &:hover{
