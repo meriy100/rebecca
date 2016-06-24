@@ -13,6 +13,9 @@ $(function(){
     minDate: moment()
   });
   $('#task_deadline_at').val($('.datepicker').data("DateTimePicker").date());
+  $(".datepicker-days .picker-switch").removeAttr('title').on('click', function (e) {
+            e.stopPropagation();
+  });
 });
 
 // weight 用のスライダー
@@ -27,4 +30,3 @@ $('.datepicker').on('dp.change', function(ev){
 });
 
 var defaultDate = $('.datepicker').data("DateTimePicker").date();
-console.log(defaultDate.toDate());
