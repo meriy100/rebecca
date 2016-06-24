@@ -7,28 +7,33 @@ html{
   body{
     height: 100%;
     color: $black;
+    background-color: $background-color;
   }
 }
 .content{
   margin-top: $header-height;
-  margin-left: $sidebar-width;
+  margin-left: $sidebar-width-per;
+  @include max-screen($breakpoint-content-margin-left-min){
+    margin-left: $sidebar-width-min;
+  }
+  @include max-screen($breakpoint-mobile){
+    margin-left: 0;
+  }
+}
+.content-tasks{
   padding: 20px 40px;
   width: $content-width;
   background-color: $background-color;
   @include max-screen($breakpoint-middle){
-    margin-left: $sidebar-width-lg-middle;
     width: $content-width-md;
   }
   @include max-screen($breakpoint-small){
-    margin-left: 0;
-    padding-left: $sidebar-width-small + 40px;
     width: 100%;
   }
   @include max-screen($breakpoint-tablet){
-    padding-left: $sidebar-width-tablet + 20px;
+    width: 100%;
   }
   @include max-screen($breakpoint-mobile){
-    padding-left: 0px;
-    margin-bottom: $mobile-content-margin-bottom;
+    padding-bottom: $mobile-content-margin-bottom;
   }
 }
