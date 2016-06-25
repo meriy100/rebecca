@@ -20,6 +20,8 @@ $sidebar-badge-radius: 20px;
 $sidebar-badge-height: 24px;
 $sidebar-badge-mt: 6px;
 
+// sidebar が min の時要のbreakpoint
+$breakpoint-content-margin-left-min: 100 * $sidebar-width-min / $sidebar-width;
 // right-side
 
 $right-side-content-pt: 40px;
