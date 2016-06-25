@@ -112,6 +112,14 @@ i.new-button{
   }
 }
 
+.btn{
+  border-radius: 0px;
+  &.btn-base{
+    background-color: $base-color;
+    color: $white;
+  }
+}
+
 @mixin plus(){
   width: $new-button-sp-size/2 - 10;
   height: $new-button-sp-size/2 - 10;

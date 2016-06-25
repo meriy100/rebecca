@@ -1,0 +1,34 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+
+.singin-modal{
+  background-color: $background-color;
+  border-radius: 0px;
+  .modal-header{
+    h4.modal-title{
+      font-size: 32px;
+      // text-align: center;
+      padding-left: 20px;
+    }
+  }
+  .modal-body{
+    i{
+      position: absolute;
+      color: $sub-color;
+      font-size: 32px;
+      padding-left: 10px;
+      @include inline-center($singin-modal-input-height)
+    }
+    .form-control{
+      border-radius: 0px;
+      height: $singin-modal-input-height;
+      padding-left: $singin-modal-input-height;
+    }
+    .actions{
+      text-align: center;
+    }
+  }
+}
+
+
+
