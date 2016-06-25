@@ -16,12 +16,18 @@ html
           == render "tasks/new_task_form", task: @task
       .content-tasks
         = yield
-        == render "done_modal"
     .sidebar
       == render "shared/sidebar"
     .header
       == render partial: "shared/header", locals: {search: @search, filter: @filter}
+    .nav-list-slide
     .nav-content#nav-content
       == render partial: "shared/nav_list"
     .new-button-sp#new-button-sp
-      i.fa.fa-plus.fa-2x
+      .plus
+        .up
+          .up-left
+          .up-right
+        .down
+          .down-left
+          .down-right

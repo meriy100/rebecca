@@ -12,6 +12,14 @@
       @include inline-center(20px);
     }
   }
+  @include max-screen($breakpoint-mobile){
+    button{
+      margin-top: 0;
+      margin-right: 20px;
+      margin-bottom: 10px;
+      @include inline-center(20px);
+    }
+  }
 }
 
 .new-task-form{
@@ -72,6 +80,23 @@
   }
   @include max-screen($breakpoint-mobile){
     padding-left: 0;
+    width: $new-task-form-width-mb;
+    width: 100%;
+    padding: 0;
+    @include center_beside_block;
+    form{
+      margin: 4px;
+      margin-top: $header-height;
+      padding-left: 0;
+      padding-right: 0;
+      input.title-input{
+        margin-left: 10%;
+        width: 80%;
+      }
+      .footer{
+        margin-left: 20%;
+      }
+    }
   }
 }
 
@@ -80,5 +105,9 @@
   height: 40px;
   width: 100%;
   .slider-track{
+  }
+  @include max-screen($breakpoint-mobile){
+    margin-left: 10%;
+    width: 80%;
   }
 }

@@ -17,14 +17,6 @@
     @include inline_center();
   }
   .header-contents{
-    .header-buttons{
-      padding-top: 5px;
-      float: right;
-      a{
-        color: $white;
-        margin-left: 40px;
-      }
-    }
     form{
       .input-group{
         width: 70%;
@@ -79,15 +71,25 @@
       display: none;
     }
   }
+  .header-buttons{
+    position: absolute;
+    padding-top: 5px;
+    float: right;
+    right: 10px;
+    top: 0;
+    a{
+      color: $white;
+      margin-left: 40px;
+    }
+  }
   .nav-button{
     visibility: hidden;
     @include max-screen($breakpoint-mobile){
       visibility: visible;
-      right: 0;
-      float: right;
+      float: left;
       font-size: $nav-button-fs;
       @include inline_center;
-      margin-right: $nav-button-margin-right;
+      margin-left: $nav-button-margin-right;
     }
   }
 }

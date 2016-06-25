@@ -1,15 +1,29 @@
-@import "settings/variables/_color.scss";
-@import "settings/variables/_position.scss";
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
 .notify-modal{
   display: none;
   background: rgba($black, 0.9);
   position: fixed;
-  height: 40px;
+  @include inline-center(40px);
   bottom: 20px;
-  margin-left: 100px;
+
   border-radius: 10px;
-  line-height: 40px;
   padding: 0px 10px;
+
+  margin-left: 100px;
+  @include max-screen($breakpoint-middle){
+    margin-left: 70px;
+  }
+  @include max-screen($breakpoint-small){
+    margin-left: 50px;
+  }
+  @include max-screen($breakpoint-tablet){
+    margin-left: 0px;
+    bottom: 65px;
+  }
+  @include max-screen($breakpoint-mobile){
+  }
+
   span.message{
     color: $white;
     margin-right: 8px;

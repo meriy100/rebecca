@@ -93,13 +93,13 @@ i.new-button{
     float: right;
     box-shadow: 4px 4px 4px rgba($black, 0.4);
     transition: all 200ms ease;
-    i{
-      transition: all 200ms ease;
-      color: $white;
-    }
+    // i{
+    //   transition: all 200ms ease;
+    //   color: $white;
+    // }
     &:hover{
       background-color: $sub-color;
-      i{
+      div.plus{
         transform: rotate(45deg);
       }
     }
@@ -108,5 +108,54 @@ i.new-button{
 .new-button{
   @include max-screen($breakpoint-mobile){
     display: none;
+  }
+}
+
+@mixin plus(){
+  width: $new-button-sp-size/2 - 10;
+  height: $new-button-sp-size/2 - 10;
+  border: 3px $white solid;
+  position: absolute;
+}
+
+.plus{
+  width: $new-button-sp-size;
+  height: $new-button-sp-size;
+  transition: all 200ms ease;
+  .up{
+    width: $new-button-sp-size;
+    height: $new-button-sp-size/2;
+    padding-top: 10px;
+    position: relative;
+    .up-left{
+      @include plus;
+      border-left: 0px;
+      border-top: 0px;
+      left: 10px;
+    }
+    .up-right{
+      @include plus;
+      border-right: 0px;
+      border-top: 0px;
+      right: 10px;
+    }
+  }
+  .down{
+    width: $new-button-sp-size;
+    height: $new-button-sp-size/2;
+    padding-bottom: 10px;
+    position: relative;
+    .down-left{
+      @include plus;
+      border-left: 0px;
+      border-bottom: 0px;
+      left: 10px;
+    }
+    .down-right{
+      @include plus;
+      border-right: 0px;
+      border-bottom: 0px;
+      right: 10px;
+    }
   }
 }
