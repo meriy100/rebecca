@@ -54,11 +54,22 @@ RSpec.describe LoginController, type: :controller do
   end
 
   describe "GET #logout" do
-    it "render index" do
+    it "redirect login_path" do
       create(:user)
       get :logout, {}, valid_session
       expect(response).to redirect_to login_path
       expect(session[:user_id]).to be_falsey
+    end
+  end
+
+  describe "GET #sign_up" do
+    it "render sign_up" do
+      get :sign_up, {}
+      expect(response).to render_template :sign_up
+    end
+    it "render sign_up" do
+      get :sign_up, {}
+      expect(assigns(:user)).to be_a_new(User)
     end
   end
 
