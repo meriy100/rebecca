@@ -78,6 +78,7 @@ group :development, :test do
   gem "json_spec"
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'timecop'
 end
 
 group :development do
