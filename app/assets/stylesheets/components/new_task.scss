@@ -105,6 +105,10 @@
   height: 40px;
   width: 100%;
   .slider-track{
+    .slider-handle.min-slider-handle.round{
+      background-image: url("");
+      background-color: $sub-color;
+    }
   }
   @include max-screen($breakpoint-mobile){
     margin-left: 10%;
