@@ -10,11 +10,40 @@
   position: absolute;
   margin: auto;
 }
+// center_lenght_block と同じだけど こっちのほうが良さそう
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 @mixin center_block(){
   @include center_beside_block;
   @include center_lenght_block;
 }
 
+
+@mixin absolute-top-left($top: 0, $left: 0) {
+  position: absolute;
+  top: $top + px;
+  left: $left + px;
+}
+@mixin absolute-top-right($top: 0, $right: 0) {
+  position: absolute;
+  top: $top + px;
+  right: $right + px;
+}
+@mixin absolute-bottom-left($bottom: 0, $left: 0) {
+  position: absolute;
+  bottom: $bottom + px;
+  left: $left + px;
+}
+@mixin absolute-bottom-right($bottom: 0, $right: 0) {
+  position: absolute;
+  bottom: $bottom + px;
+  right: $right + px;
+}
 
 // 下寄せ 親要素に position: relative;
 @mixin lower_gripping($bottom: 0){
@@ -38,4 +67,8 @@
 @mixin none_border(){
   border: 0px;
   border-radius: 0px;
+}
+
+@mixin circle(){
+  border-radius: 100%;
 }

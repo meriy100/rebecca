@@ -1,0 +1,9 @@
+@mixin gradient-top-lighten($color, $lighten:10){
+  background-color: $color;
+  @include background-image(linear-gradient(lighten($color, $lighten) 0%, $color 100%));
+}
+
+@mixin gradient-top-darken($color, $darken:10){
+  background-color: $color;
+  @include background-image(linear-gradient(darken($color, $darken) 0%, $color 100%));
+}
