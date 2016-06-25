@@ -73,4 +73,16 @@ RSpec.describe LoginController, type: :controller do
     end
   end
 
+  describe "POST create_user" do
+    context "with valid attributes" do
+      let(:attributes) { attributes_for(:user) }
+      before do
+        post :create_user, {attributes}
+      end
+      it "redirect_to top_path" do
+        expect(response).to redirect_to top_path
+      end
+    end
+  end
+
 end
