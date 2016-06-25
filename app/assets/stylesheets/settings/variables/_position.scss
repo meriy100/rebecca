@@ -1,9 +1,3 @@
-// media
-$breakpoint-middle: 1400px;
-$breakpoint-small: 1200px; // 差 200
-$breakpoint-tablet: 960px; // 差 240
-$breakpoint-mobile: 640px; // 差 320
-
 // circle
 $circle-radius: 100px;
 
@@ -14,9 +8,6 @@ $mobile-content-margin-bottom: 40px;
 $sidebar-width: 30;
 $sidebar-width-per: 0% + $sidebar-width;
 $sidebar-width-min: 240px;
-
-// sidebar が min の時要のbreakpoint
-$breakpoint-content-margin-left-min: 100 * $sidebar-width-min / $sidebar-width;
 
 $sidebar-padding: 40px;
 
