@@ -8,9 +8,8 @@
       .form-group.search-tasks
         = search_form_for(search, id: "search-form", class: "form-inline", url: filter[:path]) do |f|
           .input-group.non-focus
-            .input-group-addon
-              i.fa.fa-search
             = f.text_field :title_cont, placeholder: "クイックサーチ", class: "form-control search-field"
+            i.fa.fa-search
 .header-buttons
   a
     i.fa.fa-thumbs-o-up.fa-2x
