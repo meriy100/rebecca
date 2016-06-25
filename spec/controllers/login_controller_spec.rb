@@ -8,11 +8,11 @@ RSpec.describe LoginController, type: :controller do
 
   let(:invalid_attributes) {
   }
-  let(:valid_session) { {} }
+  let(:valid_session) { { user_id: 1 } }
 
   describe "GET #index" do
-    it "render insec" do
-      get :index, {}, valid_session
+    it "render index" do
+      get :index, {}
       expect(response).to render_template :index
     end
   end
@@ -50,6 +50,15 @@ RSpec.describe LoginController, type: :controller do
         expect(response).to render_template :index
         expect(session[:user_id]).to be_falsey
       end
+    end
+  end
+
+  describe "GET #logout" do
+    it "render index" do
+      create(:user)
+      get :logout, {}, valid_session
+      expect(response).to redirect_to login_path
+      expect(session[:user_id]).to be_falsey
     end
   end
 
