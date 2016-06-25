@@ -81,6 +81,7 @@
   }
   .nav-button{
     visibility: hidden;
+    cursor: pointer;
     @include max-screen($breakpoint-mobile){
       visibility: visible;
       float: left;
