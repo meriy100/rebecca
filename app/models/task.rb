@@ -4,9 +4,9 @@ class Task < ActiveRecord::Base
 
   before_validation :set_is_done
   before_validation :set_end_of_date
-  before_validation :deadline_at_orver_created_at
   before_validation :set_sync_token
 
+  validate :deadline_at_orver_created_at
   validates :sync_token, presence: true, uniqueness: true
   validates :deadline_at, presence: true
 
@@ -79,7 +79,6 @@ class Task < ActiveRecord::Base
       true
     elsif (created_at || Time.zone.now) > deadline_at
       errors[:deadline_at] << "is over created_at "
-      false
     end
   end
 

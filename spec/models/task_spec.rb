@@ -87,4 +87,20 @@ RSpec.describe Task, type: :model do
       end
     end
   end
+
+  describe "done" do
+    it "task.is_done is true" do
+      task = create(:task)
+      task.done
+      expect(Task.first.is_done).to be_truthy
+    end
+  end
+
+  describe "undo" do
+    it "task.is_done is false" do
+      task = create(:doned_task)
+      task.undo
+      expect(Task.first.is_done).to be_falsey
+    end
+  end
 end

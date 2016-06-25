@@ -43,6 +43,7 @@ class TasksController < ApplicationController
 
   def undo
     @task.undo
+    render json: @task.to_json
   end
 
   def create
@@ -51,8 +52,11 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task.update(params[:atr] => params[:value])
-    head 200
+    if @task.update(params[:atr] => params[:value])
+      render json: @task.to_json, status: 200
+    else
+      render json: @task.to_json, status: 501
+    end
   end
 
   def destroy
