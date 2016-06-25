@@ -1,7 +1,5 @@
-@import "settings/variables/_color.scss";
-@import "settings/variables/_position.scss";
-@import "settings/mixins/_position.scss";
-@import "settings/mixins/_media.scss";
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
 
 .ice-button{
   display: inline-block;
@@ -10,9 +8,12 @@
   position: relative;
   text-align: center;
   padding: $ice-button-padding;
-  font-size: $ice-button-font-size;
+  font-size: $ice-button-fs;
   background-color: $white;
   color: $black;
+  @include max-screen($breakpoint-mobile){
+    font-size: $ice-button-fs-mb;
+  }
   a{
     position: absolute;
     top: 0;

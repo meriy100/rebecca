@@ -1,5 +1,5 @@
 @import "settings/variables/_variables.scss";
-@import "settings/mixins/_position.scss";
+@import "settings/mixins/_mixins.scss";
 .login-header{
   position: fixed;
   top: 0;
@@ -18,5 +18,8 @@
   .ice-button{
     font-size: $login-header-ice-fs;
     padding: 4px;
+    @include max-screen($breakpoint-mobile){
+      font-size: $login-header-ice-fs-mb;
+    }
   }
 }
