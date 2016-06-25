@@ -24,6 +24,66 @@ RSpec.describe TasksController, type: :controller do
     end
   end
 
+  describe "GET #todays" do
+    let(:today_task) { create(:today_task) }
+    let(:tomorrow_task) { create(:task) }
+    let(:completed_task) { create(:doned_task) }
+    before do
+      today_task
+      tomorrow_task
+      completed_task
+      get :today, {}, valid_session
+    end
+    it "assigns all tasks as @tasks" do
+      expect(response).to render_template :filter
+    end
+    it "return except todays tasks" do
+      expect(assigns(:tasks)).to match_array(today_task)
+    end
+    it "return not except tomorrow tasks" do
+      expect(assigns(:tasks)).not_to match_array(tomorrow_task)
+    end
+    it "return not except completed tasks" do
+      expect(assigns(:tasks)).not_to match_array(completed_task)
+    end
+  end
+
+  describe "GET #weekly" do
+    let(:today_task) { create(:today_task) }
+    let(:completed_task) { create(:doned_task) }
+    before do
+      today_task
+      completed_task
+      get :weekly, {}, valid_session
+    end
+    it "assigns all tasks as @tasks" do
+      expect(response).to render_template :filter
+    end
+    it "return except todays tasks" do
+      expect(assigns(:tasks)).to match_array(today_task)
+    end
+    it "return not except completed tasks" do
+      expect(assigns(:tasks)).not_to match_array(completed_task)
+    end
+  end
+
+  describe "GET #completed" do
+    let(:tasks) { create_list(:task, 10) }
+    before do
+      tasks.sample(5).each(&:done)
+      get :completed, {}, valid_session
+    end
+    it "assigns all tasks as @tasks" do
+      expect(response).to render_template :completed
+    end
+    it "return except doing tasks" do
+      expect(assigns(:tasks)).to match_array(Task.completeds)
+    end
+    it "return except doing tasks" do
+      expect(assigns(:tasks)).not_to match_array(Task.doings)
+    end
+  end
+
   describe "POST #create" do
     context "with valid params" do
       let(:create_params) { { task: attributes_for(:task), format: :js } }
@@ -85,24 +145,6 @@ RSpec.describe TasksController, type: :controller do
       expect(json["id"]).to eq task.id
     end
   end
-
-  describe "GET #completed" do
-    let(:tasks) { create_list(:task, 10) }
-    before do
-      tasks.sample(5).each(&:done)
-      get :completed, {}, valid_session
-    end
-    it "assigns all tasks as @tasks" do
-      expect(response).to render_template :completed
-    end
-    it "return except doing tasks" do
-      expect(assigns(:tasks)).to match_array(Task.completeds)
-    end
-    it "return except doing tasks" do
-      expect(assigns(:tasks)).not_to match_array(Task.doings)
-    end
-  end
-
   describe "PUT #update" do
     let(:task) { create(:task) }
     context "with valid params" do
@@ -141,49 +183,6 @@ RSpec.describe TasksController, type: :controller do
       it "re-renders the 'edit' template" do
         expect(response.status).to eq(501)
       end
-    end
-  end
-
-  describe "GET #todays" do
-    let(:today_task) { create(:today_task) }
-    let(:tomorrow_task) { create(:task) }
-    let(:completed_task) { create(:doned_task) }
-    before do
-      today_task
-      tomorrow_task
-      completed_task
-      get :today, {}, valid_session
-    end
-    it "assigns all tasks as @tasks" do
-      expect(response).to render_template :filter
-    end
-    it "return except todays tasks" do
-      expect(assigns(:tasks)).to match_array(today_task)
-    end
-    it "return not except tomorrow tasks" do
-      expect(assigns(:tasks)).not_to match_array(tomorrow_task)
-    end
-    it "return not except completed tasks" do
-      expect(assigns(:tasks)).not_to match_array(completed_task)
-    end
-  end
-
-  describe "GET #weekly" do
-    let(:today_task) { create(:today_task) }
-    let(:completed_task) { create(:doned_task) }
-    before do
-      today_task
-      completed_task
-      get :weekly, {}, valid_session
-    end
-    it "assigns all tasks as @tasks" do
-      expect(response).to render_template :filter
-    end
-    it "return except todays tasks" do
-      expect(assigns(:tasks)).to match_array(today_task)
-    end
-    it "return not except completed tasks" do
-      expect(assigns(:tasks)).not_to match_array(completed_task)
     end
   end
 end
