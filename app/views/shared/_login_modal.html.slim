@@ -11,11 +11,11 @@
         = form_tag login_login_path do
           .control-group
             i.fa.fa-user
-            = text_field_tag :login_name, params[:login_name], {class: "span3 form-control", placeholder:  'ユーザー名を入力してください'}
+            = text_field_tag :email_or_name, params[:email_or_name], {class: "span3 form-control", placeholder:  'メールアドレスかユーザー名'}
           br
           .control-group
             i.fa.fa-lock
-            = password_field_tag :password, params[:password], {class: 'span3 form-control', placeholder: "パスワードを入力してください"}
+            = password_field_tag :password, params[:password], {class: 'span3 form-control', placeholder: "パスワード"}
           br
 
           .actions

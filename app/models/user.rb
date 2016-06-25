@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
   has_many :tasks
   acts_as_paranoid
 
+  def self.is_email?(string)
+    string =~ VALID_EMAIL_REGEX
+  end
+
   def task_updated_at
     tasks.max_by(&:updated_at).updated_at
   end

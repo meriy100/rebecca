@@ -6,7 +6,11 @@ class LoginController < ApplicationController
   end
 
   def login
-    user = User.find_by(name: params[:login_name])
+    user = if User.is_email?(params[:email_or_name])
+             User.find_by(email: params[:email_or_name])
+           else
+             User.find_by(name: params[:email_or_name])
+           end
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       return redirect_to top_path
