@@ -155,6 +155,7 @@ RSpec.describe "Api::Tasks", type: :request do
 
       it "return params" do
         is_expected.to eq(200)
+        task.deadline_at = task.deadline_at.end_of_day
         body = response.body
         be_json_eql_task(task, "", :sync_token, :created_at, :updated_at).each do |_, matcher|
           expect(body).to matcher
@@ -235,7 +236,7 @@ RSpec.describe "Api::Tasks", type: :request do
       end
     end
     context "invalid params" do
-      let(:yesterday) { Time.zone.yesterday }
+      let(:yesterday) { Time.zone.yesterday.end_of_day }
       let(:params) do
         { task: task_params(task).merge(deadline_at: yesterday) }
       end
