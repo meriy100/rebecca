@@ -24,7 +24,7 @@ RSpec.describe TasksController, type: :controller do
         expect(assigns(:tasks)).not_to match(Task.completeds)
       end
     end
-    context "with quick search params" do
+    context "with a quick search param" do
       let(:tasks) { create_list(:tasks, 10) }
       before do
         get :index, { q: { title_cont: tasks.second.title } }, valid_session
@@ -32,6 +32,22 @@ RSpec.describe TasksController, type: :controller do
       it "success search" do
         expect(assigns(:tasks).count).to eq 1
         expect(assigns(:tasks)).to match_array(tasks.second)
+      end
+      it "not include unmatch tasks" do
+        expect(assigns(:tasks)).not_to match_array(tasks.first)
+      end
+    end
+    context "with quick search params" do
+      let(:tasks) { create_list(:tasks, 10) }
+      before do
+        get :index,
+          { q: { title_cont: "#{tasks.second.title} #{tasks.second.title}" } },
+          valid_session
+      end
+      it "success search" do
+        expect(assigns(:tasks).count).to eq 2
+        expect(assigns(:tasks)).to match_array(tasks.second)
+        expect(assigns(:tasks)).to match_array(tasks.last)
       end
       it "not include unmatch tasks" do
         expect(assigns(:tasks)).not_to match_array(tasks.first)
@@ -63,7 +79,7 @@ RSpec.describe TasksController, type: :controller do
         expect(assigns(:tasks)).not_to match_array(completed_task)
       end
     end
-    context "with quick search params" do
+    context "with a quick search param" do
       let(:tasks) { tasks = create_list(:today_tasks, 10) }
       before do
         get :today, { q: { title_cont: tasks.second.title } }, valid_session
@@ -71,6 +87,22 @@ RSpec.describe TasksController, type: :controller do
       it "success search" do
         expect(assigns(:tasks).count).to eq 1
         expect(assigns(:tasks)).to match_array(tasks.second)
+      end
+      it "not include unmatch tasks" do
+        expect(assigns(:tasks)).not_to match_array(tasks.first)
+      end
+    end
+    context "with quick search params" do
+      let(:tasks) { create_list(:today_tasks, 10) }
+      before do
+        get :today,
+          { q: { title_cont: "#{tasks.second.title} #{tasks.second.title}" } },
+          valid_session
+      end
+      it "success search" do
+        expect(assigns(:tasks).count).to eq 2
+        expect(assigns(:tasks)).to match_array(tasks.second)
+        expect(assigns(:tasks)).to match_array(tasks.last)
       end
       it "not include unmatch tasks" do
         expect(assigns(:tasks)).not_to match_array(tasks.first)
@@ -97,7 +129,7 @@ RSpec.describe TasksController, type: :controller do
         expect(assigns(:tasks)).not_to match_array(completed_task)
       end
     end
-    context "with quick search params" do
+    context "with a quick search param" do
       let(:tasks) { tasks = create_list(:today_tasks, 10) }
       before do
         get :weekly, { q: { title_cont: tasks.second.title } }, valid_session
@@ -105,6 +137,22 @@ RSpec.describe TasksController, type: :controller do
       it "success search" do
         expect(assigns(:tasks).count).to eq 1
         expect(assigns(:tasks)).to match_array(tasks.second)
+      end
+      it "not include unmatch tasks" do
+        expect(assigns(:tasks)).not_to match_array(tasks.first)
+      end
+    end
+    context "with quick search params" do
+      let(:tasks) { create_list(:today_tasks, 10) }
+      before do
+        get :weekly,
+          { q: { title_cont: "#{tasks.second.title} #{tasks.second.title}" } },
+          valid_session
+      end
+      it "success search" do
+        expect(assigns(:tasks).count).to eq 2
+        expect(assigns(:tasks)).to match_array(tasks.second)
+        expect(assigns(:tasks)).to match_array(tasks.last)
       end
       it "not include unmatch tasks" do
         expect(assigns(:tasks)).not_to match_array(tasks.first)
@@ -127,6 +175,35 @@ RSpec.describe TasksController, type: :controller do
       end
       it "return except doing tasks" do
         expect(assigns(:tasks)).not_to match_array(Task.doings)
+      end
+    end
+    context "with a quick search param" do
+      let(:tasks) { tasks = create_list(:completed_tasks, 10) }
+      before do
+        get :completed, { q: { title_cont: tasks.second.title } }, valid_session
+      end
+      it "success search" do
+        expect(assigns(:tasks).count).to eq 1
+        expect(assigns(:tasks)).to match_array(tasks.second)
+      end
+      it "not include unmatch tasks" do
+        expect(assigns(:tasks)).not_to match_array(tasks.first)
+      end
+    end
+    context "with quick search params" do
+      let(:tasks) { create_list(:completed_tasks, 10) }
+      before do
+        get :completed,
+          { q: { title_cont: "#{tasks.second.title} #{tasks.second.title}" } },
+          valid_session
+      end
+      it "success search" do
+        expect(assigns(:tasks).count).to eq 2
+        expect(assigns(:tasks)).to match_array(tasks.second)
+        expect(assigns(:tasks)).to match_array(tasks.last)
+      end
+      it "not include unmatch tasks" do
+        expect(assigns(:tasks)).not_to match_array(tasks.first)
       end
     end
   end
