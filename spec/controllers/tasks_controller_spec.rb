@@ -135,14 +135,10 @@ RSpec.describe TasksController, type: :controller do
   describe "POST #undo" do
     let(:task) { create(:doned_task) }
     before do
-      post :undo, { id: task.id }, valid_session
+      post :undo, { id: task.id, format: :js}, valid_session
     end
     it "task.is_done is true" do
       expect(Task.first.is_done).to be_falsey
-    end
-    it "return task json" do
-      json = JSON.parse response.body
-      expect(json["id"]).to eq task.id
     end
   end
   describe "PUT #update" do

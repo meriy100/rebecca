@@ -41,9 +41,9 @@ class TasksController < ApplicationController
     render json: @task.to_json
   end
 
+  # render js
   def undo
     @task.undo
-    render json: @task.to_json
   end
 
   def create
