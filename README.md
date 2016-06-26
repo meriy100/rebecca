@@ -1,5 +1,9 @@
 ## セットアップ
 
+```
+cp config/database.yml.default config/database.yml
+```
+
 - ライブラリのインストール
 
 ```sh
