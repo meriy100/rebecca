@@ -26,4 +26,5 @@ test:
 
 production:
   <<: *default
+  password: <%= ENV['MY_SQL_ROOT_PASS'] %>
   database: rebecca_production
