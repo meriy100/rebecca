@@ -8,79 +8,126 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe "GET #index" do
-    let(:tasks) { create_list(:task, 10) }
-    before do
-      tasks.sample(5).each(&:done)
-      get :index, {}, valid_session
+    context "with out quick search params" do
+      let(:tasks) { create_list(:task, 10) }
+      before do
+        tasks.sample(5).each(&:done)
+        get :index, {}, valid_session
+      end
+      it "render index" do
+        expect(response).to render_template :index
+      end
+      it "assings doing tasks" do
+        expect(assigns(:tasks)).to match(Task.doings)
+      end
+      it "assigns dont include completeds tasks" do
+        expect(assigns(:tasks)).not_to match(Task.completeds)
+      end
     end
-    it "render index" do
-      expect(response).to render_template :index
-    end
-    it "assings doing tasks" do
-      expect(assigns(:tasks)).to match(Task.doings)
-    end
-    it "assigns dont include completeds tasks" do
-      expect(assigns(:tasks)).not_to match(Task.completeds)
+    context "with quick search params" do
+      let(:tasks) { create_list(:tasks, 10) }
+      before do
+        get :index, { q: { title_cont: tasks.second.title } }, valid_session
+      end
+      it "success search" do
+        expect(assigns(:tasks).count).to eq 1
+        expect(assigns(:tasks)).to match_array(tasks.second)
+      end
+      it "not include unmatch tasks" do
+        expect(assigns(:tasks)).not_to match_array(tasks.first)
+      end
     end
   end
 
   describe "GET #todays" do
-    let(:today_task) { create(:today_task) }
-    let(:tomorrow_task) { create(:task) }
-    let(:completed_task) { create(:doned_task) }
-    before do
-      today_task
-      tomorrow_task
-      completed_task
-      get :today, {}, valid_session
+    context "with out search params" do
+      let(:today_task) { create(:today_task) }
+      let(:tomorrow_task) { create(:task) }
+      let(:completed_task) { create(:doned_task) }
+      before do
+        today_task
+        tomorrow_task
+        completed_task
+        get :today, {}, valid_session
+      end
+      it "assigns all tasks as @tasks" do
+        expect(response).to render_template :filter
+      end
+      it "return except todays tasks" do
+        expect(assigns(:tasks)).to match_array(today_task)
+      end
+      it "return not except tomorrow tasks" do
+        expect(assigns(:tasks)).not_to match_array(tomorrow_task)
+      end
+      it "return not except completed tasks" do
+        expect(assigns(:tasks)).not_to match_array(completed_task)
+      end
     end
-    it "assigns all tasks as @tasks" do
-      expect(response).to render_template :filter
-    end
-    it "return except todays tasks" do
-      expect(assigns(:tasks)).to match_array(today_task)
-    end
-    it "return not except tomorrow tasks" do
-      expect(assigns(:tasks)).not_to match_array(tomorrow_task)
-    end
-    it "return not except completed tasks" do
-      expect(assigns(:tasks)).not_to match_array(completed_task)
+    context "with quick search params" do
+      let(:tasks) { tasks = create_list(:today_tasks, 10) }
+      before do
+        get :today, { q: { title_cont: tasks.second.title } }, valid_session
+      end
+      it "success search" do
+        expect(assigns(:tasks).count).to eq 1
+        expect(assigns(:tasks)).to match_array(tasks.second)
+      end
+      it "not include unmatch tasks" do
+        expect(assigns(:tasks)).not_to match_array(tasks.first)
+      end
     end
   end
 
   describe "GET #weekly" do
-    let(:today_task) { create(:today_task) }
-    let(:completed_task) { create(:doned_task) }
-    before do
-      today_task
-      completed_task
-      get :weekly, {}, valid_session
+    context "without search params" do
+      let(:today_task) { create(:today_task) }
+      let(:completed_task) { create(:doned_task) }
+      before do
+        today_task
+        completed_task
+        get :weekly, {}, valid_session
+      end
+      it "assigns all tasks as @tasks" do
+        expect(response).to render_template :filter
+      end
+      it "return except todays tasks" do
+        expect(assigns(:tasks)).to match_array(today_task)
+      end
+      it "return not except completed tasks" do
+        expect(assigns(:tasks)).not_to match_array(completed_task)
+      end
     end
-    it "assigns all tasks as @tasks" do
-      expect(response).to render_template :filter
-    end
-    it "return except todays tasks" do
-      expect(assigns(:tasks)).to match_array(today_task)
-    end
-    it "return not except completed tasks" do
-      expect(assigns(:tasks)).not_to match_array(completed_task)
+    context "with quick search params" do
+      let(:tasks) { tasks = create_list(:today_tasks, 10) }
+      before do
+        get :weekly, { q: { title_cont: tasks.second.title } }, valid_session
+      end
+      it "success search" do
+        expect(assigns(:tasks).count).to eq 1
+        expect(assigns(:tasks)).to match_array(tasks.second)
+      end
+      it "not include unmatch tasks" do
+        expect(assigns(:tasks)).not_to match_array(tasks.first)
+      end
     end
   end
 
   describe "GET #completed" do
-    let(:tasks) { create_list(:task, 10) }
-    before do
-      tasks.sample(5).each(&:done)
-      get :completed, {}, valid_session
-    end
-    it "assigns all tasks as @tasks" do
-      expect(response).to render_template :completed
-    end
-    it "return except doing tasks" do
-      expect(assigns(:tasks)).to match_array(Task.completeds)
-    end
-    it "return except doing tasks" do
-      expect(assigns(:tasks)).not_to match_array(Task.doings)
+    context "without search params" do
+      let(:tasks) { create_list(:task, 10) }
+      before do
+        tasks.sample(5).each(&:done)
+        get :completed, {}, valid_session
+      end
+      it "assigns all tasks as @tasks" do
+        expect(response).to render_template :completed
+      end
+      it "return except doing tasks" do
+        expect(assigns(:tasks)).to match_array(Task.completeds)
+      end
+      it "return except doing tasks" do
+        expect(assigns(:tasks)).not_to match_array(Task.doings)
+      end
     end
   end
 
@@ -114,6 +161,19 @@ RSpec.describe TasksController, type: :controller do
       end
       it "re-renders the 'new' template" do
         expect(response).to render_template :new
+      end
+    end
+    context "with quick search params" do
+      let(:tasks) { tasks = create_list(:completed_tasks, 10) }
+      before do
+        get :completed, { q: { title_cont: tasks.second.title } }, valid_session
+      end
+      it "success search" do
+        expect(assigns(:tasks).count).to eq 1
+        expect(assigns(:tasks)).to match_array(tasks.second)
+      end
+      it "not include unmatch tasks" do
+        expect(assigns(:tasks)).not_to match_array(tasks.first)
       end
     end
   end
