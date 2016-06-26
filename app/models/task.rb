@@ -39,7 +39,7 @@ class Task < ActiveRecord::Base
   end
 
   def least_time_per
-    (least_time / full_time * 100).to_i
+    (least_time / full_time * 100).to_i / weight
   end
 
   def deadline_at_to_s
@@ -58,6 +58,8 @@ class Task < ActiveRecord::Base
     when 30...60
       "warning"
     when 60...100
+      "primary"
+    else
       "primary"
     end
   end
