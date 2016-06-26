@@ -52,6 +52,9 @@ gem 'bootstrap-slider-rails'
 
 gem 'uuidtools'
 
+# turbolinks progress bar
+gem 'nprogress-rails'
+
 # コード解析
 gem "rubocop"
 gem "rails_best_practices"

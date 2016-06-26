@@ -128,6 +128,7 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    nprogress-rails (0.1.6.7)
     parser (2.3.1.2)
       ast (~> 2.2)
     pkg-config (1.1.7)
@@ -287,6 +288,7 @@ DEPENDENCIES
   json_spec
   momentjs-rails
   mysql2
+  nprogress-rails
   pry-byebug
   pry-rails
   rails (= 4.2.6)
