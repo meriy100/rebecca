@@ -10,7 +10,7 @@ default: &default
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  socket: /var/lib/mysql/mysql.sock
   timeout: 5000
 
 development:
@@ -26,4 +26,5 @@ test:
 
 production:
   <<: *default
+  password: <%= ENV['MY_SQL_ROOT_PASS'] %>
   database: rebecca_production
