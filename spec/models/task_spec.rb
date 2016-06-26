@@ -31,7 +31,7 @@ RSpec.describe Task, type: :model do
   describe "deadline_at" do
     let(:task) { create(:task) }
     it "least_time_per" do
-      expect(task.least_time_per).to eq(((task.deadline_at - Time.zone.now)/ (task.deadline_at - task.created_at) * 100).to_i)
+      expect(task.least_time_per).to eq ( (task.deadline_at - Time.zone.now) / (task.deadline_at - task.created_at) * 100).to_i / task.weight
     end
   end
 
