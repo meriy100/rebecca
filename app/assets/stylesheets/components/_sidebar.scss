@@ -1,0 +1,108 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+.sidebar{
+  float: left;
+  top: $header-height;
+  position: fixed;
+  width: $sidebar-width-per;
+  min-width: $sidebar-width-min;
+  background-color: $sidebar-color;
+  color: $black;
+  height: 100%;
+  padding-top: $sidebar-padding;
+  box-shadow: -6px 0 12px -5px $shadow inset;
+  .side-content-col{
+    width: $sidebar-content-col-wd;
+    margin-right: 0;
+    margin-left: auto;
+    @include max-screen($breakpoint-small){
+      width: $sidebar-width-min;
+    }
+    ul{
+      list-style: none;
+      font-size: $sidebar-ul-fs;
+      line-height: 200%;
+      color: $white;
+      box-sizing: border-box;
+      text-indent: 1em;
+      li{
+        a{
+          @include a_full_size;
+          &.current{
+            color: $emphasis;
+          }
+        }
+        span.badge{
+          height: $sidebar-badge-height;
+          margin-top: $sidebar-badge-mt;
+          margin-right: $sidebar-badge-mr;
+          padding: $sidebar-badge-ptb $sidebar-badge-plr;
+          border-radius: $sidebar-badge-radius;
+          text-indent: 0;
+          float: right;
+          right: 0;
+          background-color: $base-color;
+        }
+        &.current{
+          background-color: $background-color;
+          border-width: 1ex;
+          border-color: $background-color;
+          border-radius: 7px 0 0 7px / 7px 0 0 7px;
+          box-shadow: 0 6px 10px -8px $shadow, -6px 0 10px -8px $shadow, 0 -6px 10px -8px $shadow, -6px 6px 10px -8px $shadow, -6px -6px 10px -8px $shadow;
+        }
+        &:not(.current):hover{
+          background-color: rgba(255,247,242,0.3);
+          border-radius: 7px 0 0 7px / 7px 0 0 7px;
+          transition: 0.5s;
+        }
+      }
+    }
+    a{
+      color: $white;
+    }
+  }
+  @include max-screen($breakpoint-mobile){
+    display: none;
+  }
+  @include max-screen($breakpoint-tablet){
+    // width: $sidebar-width-middle;
+    .side-content-col{
+      width: 200px;
+      ul{
+        text-indent: 0.8em;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.side-content{
+  margin-bottom: 30px;
+}
+
+.underbar{
+  margin-right: 20px;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: $white;
+}
+
+.filter-link{
+  display: inline;
+}
+
+.task-num{
+  text-align: right;
+}
+
+@keyframes fade-slidein{
+  0% {
+    width: 0;
+    background-color: $sidebar-color;
+    }
+  100% {
+    width: 100%;
+    background-color: $background-color;
+    box-shadow: 0 6px 10px -8px $shadow, -6px 0 10px -8px $shadow, 0 -6px 10px -8px $shadow, -6px 6px 10px -8px $shadow, -6px -6px 10px -8px $shadow;
+  }
+}
