@@ -1,5 +1,5 @@
 class Api::LoginController < ApiController
-  skip_before_filter :authenticated
+  skip_before_action :authenticated
 
   def login
     user = User.find_by(name: params[:login_user])
