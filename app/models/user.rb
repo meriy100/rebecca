@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
+  before_create :set_setting
   has_secure_password
   has_many :tasks
   has_one :setting
@@ -41,5 +42,11 @@ class User < ActiveRecord::Base
 
   def self.current_user
     User.find_by id: Thread.current[:user_id]
+  end
+
+  private
+
+  def set_setting
+    self.setting = Setting.new
   end
 end
