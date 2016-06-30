@@ -15,9 +15,9 @@ ul.nav.nav-tabs[role="tablist"]
       = collection_select :setting, :start_week_day_id, StartWeekDay.all, :id, :name, {}, class: "form-control"
     .form
       label スタートページ
-      = select :setting, :start_page, [["すべてのタスク", 1], ["今日のタスク", 2]], {}, class: "form-control"
+      = select :setting, :start_page, @setting.start_pages, {}, class: "form-control"
     .form
       label 日付の書式
-      = collection_select :setting, :time_format_id, TimeFormat.all, :id, :format, {}, class: "form-control"
+      = collection_select :setting, :time_format_id, TimeFormat.all, :id, :show, {}, class: "form-control"
   / アカウント
   #account.tab-pane[role="tabpanel"]

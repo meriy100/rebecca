@@ -3,4 +3,12 @@ class Setting < ActiveRecord::Base
   include CurrentUser
   belongs_to_active_hash :start_week_day
   belongs_to_active_hash :time_format
+
+  def start_pages
+    [
+      ["すべてのタスク", 1],
+      ["今日のタスク", 2],
+      ["今週のタスク", 3]
+    ]
+  end
 end
