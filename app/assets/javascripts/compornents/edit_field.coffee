@@ -27,12 +27,14 @@ $(document).ready ->
   doneTask = (scope) ->
     taskId = $(scope).data("task")
     taskRow = $(scope).parents(".task-row")
+    shadow = taskRow.parents(".trello-shadow")
     $.ajax
       url: "/tasks/#{taskId}/done"
       type: "POST"
       dataType: "html"
       success: (results) ->
         taskRow.fadeOut()
+        shadow.fadeOut("")
         # ここで, id を指定して data に埋め込む
         $(".notify-modal.done").fadeIn()
         $(".undo-link").attr("href", "/tasks/#{taskId}/undo")
