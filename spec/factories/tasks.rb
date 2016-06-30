@@ -21,5 +21,14 @@ FactoryGirl.define do
     factory :today_task do
       deadline_at Time.zone.today
     end
+    factory :tasks do
+      sequence(:title) { |n| "テストタスク#{n}_#{n}" }
+      factory :today_tasks do
+        deadline_at Time.zone.today
+      end
+      factory :completed_tasks do
+        is_done true
+      end
+    end
   end
 end
