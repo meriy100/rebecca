@@ -1,0 +1,23 @@
+h1.title.base-color 設定
+/ Nav tabs
+ul.nav.nav-tabs[role="tablist"]
+  li.active[role="presentation"]
+    a[href="#general" aria-controls="general" role="tab" data-toggle="tab"]
+      | 一般
+  li[role="presentation"]
+    a[href="#account" aria-controls="account" role="tab" data-toggle="tab"]
+      | アカウント
+.tab-content
+  / 一般
+  #general.tab-pane.active[role="tabpanel"]
+    .form
+      label 週の開始曜日
+      = collection_select :setting, :start_week_day_id, StartWeekDay.all, :id, :name, {}, class: "form-control"
+    .form
+      label スタートページ
+      = collection_select :setting, :start_week_day_id, StartWeekDay.all, :id, :name, {}, class: "form-control"
+    .form
+      label 日付の書式
+      = collection_select :setting, :time_format_id, TimeFormat.all, :id, :format, {}, class: "form-control"
+  / アカウント
+  #account.tab-pane[role="tabpanel"]
