@@ -27,13 +27,17 @@ $(document).on "ready page:load", ->
 # $("#title-input").focus()
 
 $(document).on "keyup", "input[id='title-input']", ->
-  if $(this).val() != ""
-    $("input[name='commit']").prop('disabled', false)
-    $(".ice-submit").removeClass("disabled")
-  else
+  if isBlank($(this).val())
     $("input[name='commit']").prop('disabled', true)
     $(".ice-submit").addClass("disabled")
+  else
+    $("input[name='commit']").prop('disabled', false)
+    $(".ice-submit").removeClass("disabled")
 
 $(document).on "submit", "form.new_task", ->
   $("input[name='commit']").prop('disabled', true)
   $(".ice-submit").addClass("disabled")
+
+# '==='が使えない理由がワカラナイ
+isBlank = (obj) ->
+  !obj || $.trim(obj) == ""
