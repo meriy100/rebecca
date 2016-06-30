@@ -13,7 +13,7 @@
 .header-buttons
   a
     i.fa.fa-thumbs-o-up.fa-2x
-  a
+  = link_to setting_path, class: "setting" do
     i.fa.fa-cog.fa-2x
   = link_to logout_path, class: "logout" do
     i.fa.fa-sign-out.fa-2x
