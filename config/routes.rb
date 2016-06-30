@@ -37,6 +37,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get "settings", to: "settings#show", as: "setting"
+  patch "settings", to: "settings#update"
+
   namespace :admin do
     resources :users
   end
