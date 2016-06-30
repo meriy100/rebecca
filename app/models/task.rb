@@ -9,6 +9,7 @@ class Task < ActiveRecord::Base
   validate :deadline_at_orver_created_at
   validates :sync_token, presence: true, uniqueness: true
   validates :deadline_at, presence: true
+  validates :title, presence: true
 
   scope :on_user, -> { where(user: User.current_user) }
   scope :doings, -> { where(is_done: false) }

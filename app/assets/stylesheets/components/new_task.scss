@@ -60,6 +60,11 @@
       height: 100%;
     }
   }
+  .ice-button.disabled{
+    background-color: $completed-color;
+    border-color: $gley-1;
+    transition: 0.5s;
+  }
   @include max-screen($breakpoint-small){
     width: $new-task-form-width-sm;
     @include center_beside_block;
@@ -99,7 +104,6 @@
     }
   }
 }
-
 
 .slider.slider-horizontal{
   height: 40px;

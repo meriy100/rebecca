@@ -26,3 +26,14 @@ $(document).on "ready page:load", ->
 # $("html,body").animate({scrollTop:$('#new-task').offset().top})
 # $("#title-input").focus()
 
+$(document).on "keyup", "input[id='title-input']", ->
+  if $(this).val() != ""
+    $("input[name='commit']").prop('disabled', false)
+    $(".ice-submit").removeClass("disabled")
+  else
+    $("input[name='commit']").prop('disabled', true)
+    $(".ice-submit").addClass("disabled")
+
+$(document).on "submit", "form.new_task", ->
+  $("input[name='commit']").prop('disabled', true)
+  $(".ice-submit").addClass("disabled")
