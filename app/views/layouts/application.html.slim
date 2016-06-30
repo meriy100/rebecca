@@ -11,11 +11,7 @@ html
     = csrf_meta_tags
   body
     .content
-      .right-side
-        .right-side-content
-          == render "tasks/new_task_form", task: @task
-      .content-tasks
-        = yield
+      = yield
     .sidebar
       == render "shared/sidebar"
     .header
