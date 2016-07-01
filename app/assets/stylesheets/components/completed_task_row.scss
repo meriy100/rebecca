@@ -4,7 +4,7 @@
 .task-row-completed{
   background-color: $completed-color;
   transition: 0.4s;
-  box-shadow: 5px 3px 6px 0px $shadow;
+  @include box-shadow(5px, 3px, 6px, 0px, $shadow);
   .task-return{
     top: 0;
     left: 0;

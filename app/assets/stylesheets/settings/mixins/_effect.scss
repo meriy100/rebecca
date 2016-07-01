@@ -3,6 +3,11 @@
   -moz-box-shadow: $h $v $b $s $c;
   box-shadow: $h $v $b $s $c;
 }
+@mixin box-shadow-inset( $h: 10px , $v: 10px , $b: 0px , $s: 0px , $c: #000000) {
+  -webkit-box-shadow: $h $v $b $s $c inset;
+  -moz-box-shadow: $h $v $b $s $c inset;
+  box-shadow: $h $v $b $s $c inset;
+}
 // ブロック要素につかえるね
 @mixin ghost-button($font, $font-size, $font-color, $border-size, $border-color, $padding, $transition-speed, $hover-color){
   display:inline-block;
