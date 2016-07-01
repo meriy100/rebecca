@@ -5,7 +5,6 @@
   width: $task-row-width;
   height: $task-row-height;
   margin-bottom: $task-row-mb;
-  /*box-shadow: 8px 8px 10px rgba($black,0.4);*/
   position: relative;
   .task-info{
     @include center_beside_block();
@@ -170,7 +169,6 @@
   width: 50%;
   top: 80%;
   max-width:300px;
-  /*background: $shadow; */
   -webkit-box-shadow: 0 15px 10px #777;
   -moz-box-shadow: 0 15px 10px #777;
   box-shadow: 0 15px 10px #777;

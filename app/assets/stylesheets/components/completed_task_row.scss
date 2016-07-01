@@ -4,18 +4,21 @@
 .task-row-completed{
   background-color: $completed-color;
   transition: 0.4s;
+  box-shadow: 5px 3px 6px 0px $shadow;
   .task-return{
     top: 0;
     left: 0;
+    width: $task-done-size * 5;
     height: $task-done-size * 2;
+    margin-left: auto;
     .task-return-view {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 3px;
+      right: 3px;
       color: $sub-color;
       height: $task-done-size * 2;
       line-height: $task-done-size * 2;
-      font-size: 18px;
+      font-size: 16px;
       text-align: center;
       vertical-align: middle;
       opacity: 0;
@@ -35,3 +38,4 @@
     }
   }
 }
+
