@@ -62,6 +62,18 @@ RSpec.describe Setting, type: :model do
       end
     end
   end
+  describe "time_format" do
+    let(:user) { create(:user) }
+    before do
+      User.current_user = user
+    end
+    it "task.deadline_at_to_s is format" do
+      Timecop.freeze(Time.zone.now.sunday)
+      task = create(:task, deadline_at: Time.zone.today.since(10.day))
+      user.setting.update time_format: TimeFormat.find_by(show: "1/1(月)")
+      expect(task.deadline_at_to_s).to eq task.deadline_at.strftime("%-m/%-d(%a)")
+    end
+  end
 end
 
 def days_tasks today, range
