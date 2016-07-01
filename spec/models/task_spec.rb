@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Task, type: :model do
   let(:user) { create(:user) }
+  before do
+    User.current_user = user
+  end
   describe "when create" do
     context "with vaild params" do
       let(:task) { create(:task) }
@@ -72,11 +75,11 @@ RSpec.describe Task, type: :model do
     context "todays" do
       it "un match tomorroy" do
         task = create(:task)
-        expect(Task.todays).not_to match_array(task)
+        expect(Task.todays).not_to include(task)
       end
       it "match today" do
         task = create(:today_task)
-        expect(Task.todays).to match_array(task)
+        expect(Task.todays).to include(task)
       end
     end
     context "weekly" do

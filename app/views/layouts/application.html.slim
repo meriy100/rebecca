@@ -15,7 +15,7 @@ html
     .sidebar
       == render "shared/sidebar"
     .header
-      == render partial: "shared/header", locals: {search: @search, filter: @filter}
+      == render "shared/header", search: @search
     .nav-list-slide
     .nav-content#nav-content
       == render partial: "shared/nav_list"

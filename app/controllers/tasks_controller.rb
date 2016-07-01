@@ -2,32 +2,24 @@ class TasksController < ApplicationController
   include TasksAction
   before_action :set_task, only: [:update, :destroy, :done, :undo]
   before_action :set_new_task, only: [:index, :completed, :today, :weekly]
+  before_action :set_search, only: [:index, :completed, :today, :weekly]
 
   def index
-    @filter = { title: "タスク一覧", path: tasks_path }
-    @search = Task.search(params[:q])
     @tasks = @search.result.on_user.doings.sort_by(&:least_time_per)
   end
 
-  # get
   def completed
-    @filter = { title: "終了済みのタスク", path: completed_tasks_path }
-    @search = Task.search(params[:q])
     @tasks = @search.result.on_user.completeds.sort_by(&:least_time_per)
   end
 
   def today
-    @filter = { title: "今日のタスク", path: today_tasks_path }
-    @search = Task.search(params[:q])
     @tasks = @search.result.on_user.doings.todays.sort_by(&:least_time_per)
-    render 'filter'
+    render :filter
   end
 
   def weekly
-    @filter = { title: "今週のタスク", path: weekly_tasks_path }
-    @search = Task.search(params[:q])
     @tasks = @search.result.on_user.doings.weeklys.sort_by(&:least_time_per)
-    render 'filter'
+    render :filter
   end
 
   def new
@@ -77,4 +69,7 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def set_search
+    @search = Task.search(params[:q])
+  end
 end

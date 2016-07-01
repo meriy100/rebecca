@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  after do
+    Timecop.return
+  end
   describe "when create" do
     let(:attributes) { attributes_for(:user) }
     context "with vaild attributes" do
@@ -60,6 +63,7 @@ RSpec.describe User, type: :model do
   describe "task_updated_at" do
     let(:user) { create(:user) }
     it "get last task_updated_at" do
+      User.current_user = user
       tasks = create_list(:task, 5)
       Timecop.freeze(Time.zone.tomorrow)
       tasks.third.done

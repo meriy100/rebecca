@@ -2,8 +2,7 @@
   .right-side-content
     == render "tasks/new_task_form", task: @task
 .content-tasks
-  h2.title
-    = @filter[:title]
+  h2.title 終了済のタスク
   ul.list-group#tasks-list
     == render partial: 'completed_task', collection: @tasks
   #new-task

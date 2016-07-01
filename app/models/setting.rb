@@ -6,7 +6,7 @@ class Setting < ActiveRecord::Base
 
   def start_pages
     [
-      ["すべてのタスク", 1],
+      ["タスク一覧", 1],
       ["今日のタスク", 2],
       ["今週のタスク", 3]
     ]

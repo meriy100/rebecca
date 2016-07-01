@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Setting, type: :model do
+  after do
+    Timecop.return
+  end
   describe "setting create on user create" do
     let(:user) { create(:user) }
     it "create setting" do

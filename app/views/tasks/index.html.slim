@@ -2,8 +2,7 @@
   .right-side-content
     == render "tasks/new_task_form", task: @task
 .content-tasks
-  h2.title
-    = @filter[:title]
+  h2.title タスク一覧
   ul.list-group#tasks-list
     == render @tasks
 
