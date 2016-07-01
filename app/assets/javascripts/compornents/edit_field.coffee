@@ -33,8 +33,8 @@ $(document).ready ->
       type: "POST"
       dataType: "html"
       success: (results) ->
-        taskRow.fadeOut()
-        shadow.fadeOut("")
+        shadow.addClass("fadeout")
+        shadow.fadeOut("slow")
         # ここで, id を指定して data に埋め込む
         $(".notify-modal.done").fadeIn()
         $(".undo-link").attr("href", "/tasks/#{taskId}/undo")

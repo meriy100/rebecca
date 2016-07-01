@@ -176,3 +176,7 @@
   -ms-transform: rotate(3deg);
   transform: rotate(3deg);
 }
+
+.trello-shadow.fadeout:before{
+  @include box-shadow(0, 15px, 10px, 0, rgba($shadow, 0.8));
+}
