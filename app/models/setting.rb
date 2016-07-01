@@ -3,6 +3,7 @@ class Setting < ActiveRecord::Base
   include CurrentUser
   belongs_to_active_hash :start_week_day
   belongs_to_active_hash :time_format
+  delegate :format, to: :time_format
 
   def start_pages
     [

@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
   # belongs_to :user
   include CurrentUser
+  has_one :setting, through: :user
 
   before_validation :set_is_done
   before_validation :set_end_of_date
@@ -45,11 +46,12 @@ class Task < ActiveRecord::Base
 
   def deadline_at_to_s
     today = Time.zone.now
-    if deadline_at.between? today, today.next_week
-      deadline_at.today? ? "今日" : I18n.l(deadline_at, format: :weekday)
-    else
-      I18n.l deadline_at, format: :short
-    end
+    format = if deadline_at.between? today, today.next_week
+               deadline_at.today? ? :today : :weekday
+             else
+               setting.format
+             end
+    I18n.l deadline_at, format: format
   end
 
   def progress_color

@@ -9,7 +9,7 @@ class TasksController < ApplicationController
   end
 
   def completed
-    @tasks = @search.result.on_user.completeds.sort_by(&:least_time_per)
+    @completed_tasks = @search.result.on_user.completeds.sort_by(&:least_time_per)
   end
 
   def today
