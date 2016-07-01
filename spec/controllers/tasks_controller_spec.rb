@@ -88,10 +88,10 @@ RSpec.describe TasksController, type: :controller do
       expect(response).to render_template :completed
     end
     it "return except doing tasks" do
-      expect(assigns(:tasks)).to match_array(Task.completeds)
+      expect(assigns(:completed_tasks)).to match_array(Task.completeds)
     end
     it "return except doing tasks" do
-      expect(assigns(:tasks)).not_to match_array(Task.doings)
+      expect(assigns(:completed_tasks)).not_to match_array(Task.doings)
     end
   end
 
