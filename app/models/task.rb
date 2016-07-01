@@ -12,11 +12,15 @@ class Task < ActiveRecord::Base
   validates :deadline_at, presence: true
   validates :title, presence: true
 
-  scope :on_user, -> { where(user: User.current_user) }
-  scope :doings, -> { where(is_done: false) }
-  scope :completeds, -> { where(is_done: true) }
-  scope :todays, -> { where(deadline_at: Time.zone.today..Time.zone.today.end_of_day) }
-  scope :weeklys, -> { where(deadline_at: Time.zone.today.beginning_of_week..Time.zone.today.end_of_week.end_of_day) }
+  scope :on_user, -> { where user: User.current_user }
+  scope :doings, -> { where is_done: false }
+  scope :completeds, -> { where is_done: true }
+  scope :todays, -> { where deadline_at: Time.zone.today..Time.zone.today.end_of_day }
+  scope :weeklys, -> { where deadline_at: setting.week_range(Time.zone.today) }
+
+  def self.setting
+    User.current_user.setting
+  end
 
   def done
     update(is_done: true) unless is_done

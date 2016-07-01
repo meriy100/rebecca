@@ -3,7 +3,9 @@ class Setting < ActiveRecord::Base
   include CurrentUser
   belongs_to_active_hash :start_week_day
   belongs_to_active_hash :time_format
+  validates :user_id, presence: true, uniqueness: true
   delegate :format, to: :time_format
+  delegate :week_range, to: :start_week_day
 
   def start_pages
     [
@@ -11,5 +13,9 @@ class Setting < ActiveRecord::Base
       ["今日のタスク", 2],
       ["今週のタスク", 3]
     ]
+  end
+
+  def sunday_start?
+    start_week_day.is_sunday
   end
 end
