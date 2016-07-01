@@ -10,7 +10,7 @@
   color: $black;
   height: 100%;
   padding-top: $sidebar-padding;
-  box-shadow: -6px 0 12px -5px $shadow inset;
+  box-shadow: -1px 0 12px -5px $shadow inset;
   .side-content-col{
     width: $sidebar-content-col-wd;
     margin-right: 0;
@@ -48,7 +48,7 @@
           border-width: 1ex;
           border-color: $background-color;
           border-radius: 7px 0 0 7px / 7px 0 0 7px;
-          box-shadow: 0 6px 10px -8px $shadow, -6px 0 10px -8px $shadow, 0 -6px 10px -8px $shadow, -6px 6px 10px -8px $shadow, -6px -6px 10px -8px $shadow;
+          box-shadow: 0px 6px 10px -8px $shadow;
         }
       }
     }
