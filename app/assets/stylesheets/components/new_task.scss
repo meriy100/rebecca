@@ -36,7 +36,7 @@
     border-radius: 0;
   }
   .datetimepicker{
-    border: 1 $gley-1 solid;
+    border: 1 $gray-1 solid;
   }
   .footer{
     .actions{
@@ -62,9 +62,9 @@
   }
   .ice-button.disabled{
     background-color: $completed-color;
-    border-color: $gley-1;
+    border-color: $gray-1;
     transition: 1s;
-    color: $gley-1;
+    color: $gray-1;
   }
   @include max-screen($breakpoint-small){
     width: $new-task-form-width-sm;
