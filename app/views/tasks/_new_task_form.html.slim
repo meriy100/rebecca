@@ -13,7 +13,7 @@
     = f.text_field :weight, class: "slider", data: {slider_min: 0.5, slider_max: 1.5, slider_step: 0.5, slider_tooltip: "hide", slider_value: 1}
     .footer
       .actions
-        .ice-button.sub-color.trans.ice-submit.disabled
+        #new-task-submit-ice.ice-button.sub-color.trans.ice-submit.disabled
           | 登録する
-          = f.submit "", class: "create-submit", disabled: true
+          = f.submit "", id: "new-task-submit", class: "create-submit", disabled: true
 
