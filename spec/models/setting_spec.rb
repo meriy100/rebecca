@@ -30,10 +30,7 @@ RSpec.describe Setting, type: :model do
       end
       it "when sunday" do
         today = Date.today.prev_week(:sunday)
-        Timecop.freeze(Time.zone.today.ago(1.month))
-        tasks = ((today - 1) .. (today + 7)).map do |day|
-          create(:task, deadline_at: day)
-        end
+        tasks = days_tasks(today, (-1..7))
         # 現在日を日曜に固定
         Timecop.freeze(today)
         expect(Task.on_user.weeklys.count).to eq 7
@@ -42,10 +39,7 @@ RSpec.describe Setting, type: :model do
       end
       it "when monday" do
         today = Date.today.prev_week(:monday)
-        Timecop.freeze(Time.zone.today.ago(1.month))
-        tasks = ((today - 2) .. (today + 6)).map do |day|
-          create(:task, deadline_at: day)
-        end
+        tasks = days_tasks(today, (-2..6))
         # 現在日を月曜に固定
         Timecop.freeze(today)
         expect(Task.on_user.weeklys.count).to eq 7
@@ -59,11 +53,7 @@ RSpec.describe Setting, type: :model do
       end
       it "when monday" do
         today = Date.today.prev_week(:monday)
-        Timecop.freeze(Time.zone.today.ago(1.month))
-        # 日 月 火 ... 土 日
-        tasks = ((today - 1) .. (today + 7)).map do |day|
-          create(:task, deadline_at: day)
-        end
+        tasks = days_tasks(today, (-1..7))
         # 現在日を月曜に固定
         Timecop.freeze(today)
         expect(Task.on_user.weeklys.count).to eq 7
@@ -71,5 +61,12 @@ RSpec.describe Setting, type: :model do
         expect(Task.on_user.weeklys).not_to include tasks.last
       end
     end
+  end
+end
+
+def days_tasks today, range
+  Timecop.freeze(Time.zone.today.ago(1.month))
+  ((today + range.first) .. (today + range.last)).map do |day|
+    create(:task, deadline_at: day)
   end
 end
