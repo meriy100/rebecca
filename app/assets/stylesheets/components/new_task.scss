@@ -59,11 +59,15 @@
       width: 100%;
       height: 100%;
     }
+    &:active{
+      @include box-shadow-inset(0, 3px, 5px, 0, $shadow);
+      @include box-shadow(0, 0, 0, 0, none);
+    }
   }
   .ice-button.disabled{
     background-color: $completed-color;
     border-color: $gray-1;
-    transition: 1s;
+    transition: 0.7s;
     color: $gray-1;
   }
   @include max-screen($breakpoint-small){
