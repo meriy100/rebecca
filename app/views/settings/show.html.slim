@@ -19,3 +19,18 @@
         = collection_select :setting, :time_format_id, TimeFormat.all, :id, :show, {}, class: "form-control setting-select", data: {attr: :time_format_id}
     / アカウント
     #account.tab-pane[role="tabpanel"]
+      .form
+        label.setting-label ユーザネーム
+        span.user-info
+          = @current_user.name
+        = button_tag "編集", type: :button, class: "user-edit-button"
+      .form
+        label.setting-label メールアドレス
+        span.user-info
+          = @current_user.email
+        = button_tag "編集", type: :button, class: "user-edit-button"
+      .form
+        label.setting-label パスワード
+        span.user-info
+          | ******
+        = button_tag "編集", type: :button, class: "user-edit-button"

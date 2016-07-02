@@ -43,7 +43,7 @@ ul.tab-list{
 }
 
 .setting-tab-content{
-  width: 400px;
+  width: 800px;
   max-width: 80%;
   padding: 20px 40px;
   @include max-screen($breakpoint-small){
@@ -55,18 +55,35 @@ ul.tab-list{
     padding-bottom: 10px;
     // border-bottom: 1px $gley-1 solid;
     label.setting-label{
-      width: 50%;
+      // width: 50%;
       font-size: 22px;
       font-weight: normal;
+      margin-right:20px;
       @include max-screen($breakpoint-small){
         font-size: 16px;
       }
     }
     .form-control{
       width: 50%;
+      max-width: 200px;
       display: inline;
       border-radius: 0px;
       border-color: $gley-1;
+    }
+    span.user-info{
+      font-size: 18px;
+      @include max-screen($breakpoint-small){
+        font-size: 14px;
+      }
+    }
+    button.user-edit-button{
+      font-size: 14px;
+      background: transparent;
+      border: 0px;
+      color: $sub-color;
+      @include max-screen($breakpoint-small){
+        font-size: 12px;
+      }
     }
   }
 }
