@@ -9,11 +9,11 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    @user = if User.is_email?(user_params[:email_or_name])
-             User.find_by(email: user_params[:email_or_name])
-           else
-             User.find_by(name: user_params[:email_or_name])
-           end
+    @user = if User.email?(user_params[:email_or_name])
+              User.find_by(email: user_params[:email_or_name])
+            else
+              User.find_by(name: user_params[:email_or_name])
+            end
     if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
       return redirect_to tasks_path

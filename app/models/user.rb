@@ -14,8 +14,7 @@
 class User < ActiveRecord::Base
   attr_accessor :email_or_name
   before_save { self.email = email.downcase }
-  validates :name, presence: true, length: { maximum: 50 },
-                    uniqueness: true
+  validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
@@ -27,7 +26,7 @@ class User < ActiveRecord::Base
   has_one :setting
   acts_as_paranoid
 
-  def self.is_email?(string)
+  def self.email?(string)
     string =~ VALID_EMAIL_REGEX
   end
 

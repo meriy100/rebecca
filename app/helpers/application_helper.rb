@@ -14,7 +14,7 @@ module ApplicationHelper
   def filter_title
     {
       "today" => "今日のタスク",
-      "weekly" => "今週のタスク",
+      "weekly" => "今週のタスク"
     }[action_name]
   end
 end

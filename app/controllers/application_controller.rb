@@ -22,15 +22,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def set_current_user
     if session[:user_id]
-      begin
-        current_user = User.find(session[:user_id])
-        User.current_user = current_user
-      rescue ActiveRecord::RecordNotFound
-        User.reset_current_user
-        reset_session
-      end
+      current_user = User.find(session[:user_id])
+      User.current_user = current_user
     end
+  rescue ActiveRecord::RecordNotFound
+    User.reset_current_user
+    reset_session
   end
 end

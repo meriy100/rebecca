@@ -8,7 +8,7 @@
         h4#myModalLabel.modal-title.title.base-color
           | Rebecca
       .modal-body
-        = form_for @user, url: user_session_path do |f|
+        = form_for user, url: user_session_path do |f|
           .control-group
             i.fa.fa-user
             = f.text_field :email_or_name, {class: "span3 form-control", placeholder:  'メールアドレスかユーザー名'}

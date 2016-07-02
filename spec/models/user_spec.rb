@@ -51,12 +51,12 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "is_email?" do
+  describe "email?" do
     it "vaild string" do
-      expect(User.is_email?("test@test.com")).to be_truthy
+      expect(User.email?("test@test.com")).to be_truthy
     end
     it "invaild string" do
-      expect(User.is_email?("test@testcom")).to be_falsey
+      expect(User.email?("test@testcom")).to be_falsey
     end
   end
 
