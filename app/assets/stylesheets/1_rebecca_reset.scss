@@ -1,7 +1,11 @@
 @import "settings/variables/_variables.scss";
 @import "settings/mixins/_mixins.scss";
+
 a:hover{
   background-color: transparent;
+  text-decoration: none;
+}
+a:focus{
   text-decoration: none;
 }
 body{
