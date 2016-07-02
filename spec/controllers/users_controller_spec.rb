@@ -47,4 +47,38 @@ RSpec.describe UsersController, type: :controller do
       end
     end
   end
+
+  describe "PATCH #update" do
+    let(:user) { create(:user) }
+    before { user }
+    context "with valid attributes" do
+      let(:attributes) { attributes_for(:update_user) }
+      before do
+        patch :update, { user: attributes }, valid_session
+      end
+      it "return user json" do
+        json = JSON.parse response.body
+        expect(json["name"]).not_to eq user.name
+        expect(json["name"]).to eq build(:update_user).name
+      end
+      it "return user json expect password_digest" do
+        json = JSON.parse response.body
+        expect(json["password_digest"]).not_to eq build(:update_user).password_digest
+      end
+      it "update user attribute" do
+        user.reload
+        expect(user.name).to eq build(:update_user).name
+      end
+    end
+    context "with invalid attributes" do
+      let(:attributes) { attributes_for(:invalid_user) }
+      before do
+        patch :update, { user: attributes }, valid_session
+      end
+      it "return user error json" do
+        json = JSON.parse response.body
+        expect(json["error"]["email"]).to eq ["は不正な値です"]
+      end
+    end
+  end
 end

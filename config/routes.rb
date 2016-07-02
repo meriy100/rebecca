@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "user_sessions#new", as: "top"
 
   resource :user_session, only: [:new, :create, :destroy]
-  resource :user, only: [:new, :create, :destroy]
+  resource :user, only: [:new, :create, :update, :destroy]
 
   namespace :api, defaults: { format: :json } do
     scope module: :login do
@@ -36,12 +36,4 @@ Rails.application.routes.draw do
   end
 
   resource :setting, only: [:show, :update]
-
-  # namespace :user do
-  #   resource :name, only: [:update]
-  #   resource :email, only: [:update]
-  #   resource :password, only: [:update]
-  #   resource :reset_password
-  # end
-
 end
