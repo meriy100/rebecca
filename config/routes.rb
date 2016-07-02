@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get "", to: "tasks#index", as: "top"
-  root "tasks#index"
+  # get "", to: "tasks#index", as: "top"
+  root "user_sessions#new", as: "top"
 
-  resource :user_session
+  resource :user_session, only: [:new, :create, :destroy]
   resource :user, only: [:new, :create, :destroy]
 
   namespace :api, defaults: { format: :json } do

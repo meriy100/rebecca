@@ -7,7 +7,7 @@ module ApplicationHelper
     if controller_name == "tasks"
       url_for
     else
-      top_path
+      tasks_path
     end
   end
 

@@ -2,7 +2,7 @@
   .row
     .col-md-3.col-sm-2.col-xs-2
       span.title
-        = link_to "Rebecca", root_path
+        = link_to "Rebecca", tasks_path
     .col-md-6.col-sm-7.col-xs-5
       .form-group.search-tasks
         = search_form_for(search, id: "search-form", class: "form-inline", url: current_path) do |f|

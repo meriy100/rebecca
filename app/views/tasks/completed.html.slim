@@ -6,7 +6,6 @@
   ul.list-group#tasks-list
     == render @completed_tasks
   #new-task
-  = link_to root_path do
-    i.fa.fa-caret-square-o-left.fa-3x.fa-button
-
+  /= link_to tasks_path, class: "square" do
+  /  i.fa.fa-caret-square-o-left.fa-3x.fa-button
   == render "undo_modal"

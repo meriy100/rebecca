@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
         @current_user = User.find(session[:user_id])
         User.current_user = @current_user
       rescue ActiveRecord::RecordNotFound
+        User.reset_current_user
         reset_session
       end
     end
@@ -17,6 +18,19 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.current_user
+    User.current_user || set_current_user
+  end
+
+  private
+  def set_current_user
+    if session[:user_id]
+      begin
+        current_user = User.find(session[:user_id])
+        User.current_user = current_user
+      rescue ActiveRecord::RecordNotFound
+        User.reset_current_user
+        reset_session
+      end
+    end
   end
 end

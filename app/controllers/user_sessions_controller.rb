@@ -4,6 +4,7 @@ class UserSessionsController < ApplicationController
   layout "user_sessions_layout"
 
   def new
+    redirect_to tasks_path if current_user
     @user = User.new
   end
 
@@ -15,15 +16,16 @@ class UserSessionsController < ApplicationController
            end
     if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
-      return redirect_to top_path
+      return redirect_to tasks_path
     end
-    @user = User.new
+    @user = User.new user_params
     render :new
   end
 
   def destroy
+    User.reset_current_user
     reset_session
-    redirect_to new_user_session_path
+    redirect_to top_path
   end
 
   private

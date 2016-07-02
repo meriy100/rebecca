@@ -21,8 +21,8 @@ RSpec.describe UsersController, type: :controller do
       before do
         post :create, user: attributes
       end
-      it "redirect_to top_path" do
-        expect(response).to redirect_to top_path
+      it "redirect_to tasks_path" do
+        expect(response).to redirect_to tasks_path
       end
       it "created user" do
         expect(User.count).to eq 1

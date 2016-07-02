@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
     User.find_by id: Thread.current[:user_id]
   end
 
+  def self.reset_current_user
+    Thread.current[:user_id] = nil
+  end
+
   private
 
   def set_setting

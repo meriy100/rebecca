@@ -5,7 +5,7 @@
   .side-content
     ul
       li[class="#{sidebar_current(:index)}"]
-        = link_to root_path, class: "current-cand #{sidebar_current(:index)}" do
+        = link_to tasks_path, class: "current-cand #{sidebar_current(:index)}" do
           | タスク一覧
           span.badge = count_all.to_s
       li[class="#{sidebar_current(:today)}"]
