@@ -14,7 +14,7 @@ RSpec.describe SettingsController, type: :controller do
     end
   end
   describe "PATCH update" do
-    let(:setting) { create(:setting) }
+    let(:setting) { user.setting }
     context "start_week_day" do
       it "is changed" do
         patch :update, { setting: { start_week_day_id: 2 } }, valid_session
