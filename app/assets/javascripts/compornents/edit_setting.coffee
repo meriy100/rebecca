@@ -1,8 +1,19 @@
 $(document).ready ->
-  selectUpdate = (scope) ->
-    ajax_state = $(scope).parent().find(".ajax-state")
+  ajaxStateOn = (ajax_state) ->
     ajax_state.addClass("fa-spinner fa-spin")
     ajax_state.addClass("active")
+
+  ajaxStateSuccess = (ajax_state) ->
+    ajax_state.removeClass("fa-spinner fa-spin")
+    ajax_state.addClass("fa-check")
+
+  ajaxStateFail = (ajax_state) ->
+    ajax_state.removeClass("fa-spinner fa-spin")
+    ajax_state.addClass("fa-remove")
+
+  selectUpdate = (scope) ->
+    ajax_state = $(scope).parent().find(".ajax-state")
+    ajaxStateOn(ajax_state)
     target_attr = $(scope).data("attr")
     value = $(scope).val()
     $.ajax
@@ -16,12 +27,9 @@ $(document).ready ->
         }
       }
       success: (results) ->
-        ajax_state.removeClass("fa-spinner fa-spin")
-        ajax_state.addClass("fa-check")
+        ajaxStateSuccess(ajax_state)
       error: (results) ->
-        console.log
-        ajax_state.removeClass("fa-spinner fa-spin")
-        ajax_state.addClass("fa-remove")
+        ajaxStateFail(ajax_state)
 
   editUserInfo = (scope) ->
     span = $(scope).data("span")
@@ -33,6 +41,8 @@ $(document).ready ->
     $(scope).html("登録")
 
   submitUserInfo = (scope) ->
+    ajax_state = $(scope).parent().find(".ajax-state")
+    ajaxStateOn(ajax_state)
     span = $(scope).data("span")
     input = $(scope).data("input")
     value = $(input).val()
@@ -48,11 +58,15 @@ $(document).ready ->
         }
       }
       success: (results) ->
+        ajaxStateSuccess(ajax_state)
         $(input).removeClass("active")
         $(span).show()
         $(scope).removeClass("user-submit-button")
         $(scope).addClass("user-edit-button")
         $(scope).html("編集")
+      error: (results) ->
+        ajaxStateFail(ajax_state)
+        # ここでエラーの内容を表示
 
   $(document).on "change", ".setting-select", ->
     selectUpdate(this)
