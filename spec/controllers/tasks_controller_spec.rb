@@ -11,14 +11,8 @@ RSpec.describe TasksController, type: :controller do
     let(:tasks) { create_list(:task, 10) }
     context "render or redirect for setting" do
       it "render index" do
-        user.setting.update start_page: 1
         get :index, {}, valid_session
         expect(response).to render_template :index
-      end
-      it "redirect to other filter" do
-        user.setting.update start_page: 2
-        get :index, {}, valid_session
-        expect(response).to redirect_to today_tasks_path
       end
     end
     context "assings" do

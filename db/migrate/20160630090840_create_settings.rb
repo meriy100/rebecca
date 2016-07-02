@@ -3,7 +3,6 @@ class CreateSettings < ActiveRecord::Migration
     create_table :settings do |t|
       t.integer :user_id, null: false
       t.integer :start_week_day_id, default: 1
-      t.integer :start_page, default: 1
       t.integer :time_format_id, default: 1
       t.timestamps null: false
     end

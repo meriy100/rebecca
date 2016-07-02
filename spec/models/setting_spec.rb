@@ -17,9 +17,6 @@ RSpec.describe Setting, type: :model do
       it "for time_format_id" do
         expect(user.setting.time_format_id).to eq 1
       end
-      it "for start_page" do
-        expect(user.setting.start_page).to eq 1
-      end
     end
   end
   describe "start_week_day" do
