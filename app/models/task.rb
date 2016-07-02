@@ -50,7 +50,7 @@ class Task < ActiveRecord::Base
 
   def deadline_at_to_s
     today = Time.zone.now
-    format = if deadline_at.between? today, today.next_week
+    format = if deadline_at.between? today, setting.week_range(today).last
                deadline_at.today? ? :today : :weekday
              else
                setting.format

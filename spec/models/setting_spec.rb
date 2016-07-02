@@ -46,6 +46,15 @@ RSpec.describe Setting, type: :model do
         expect(Task.on_user.weeklys).not_to include tasks.first
         expect(Task.on_user.weeklys).not_to include tasks.last
       end
+      it "when saturday" do
+        today = Date.today.prev_week(:saturday)
+        tasks = days_tasks(today, (0..7))
+        # 現在日を日曜に固定
+        Timecop.freeze(today)
+        expect(Task.on_user.weeklys.count).to eq 1
+        expect(Task.on_user.weeklys).to include tasks.first
+        expect(Task.on_user.weeklys).not_to include tasks.second
+      end
     end
     context "is monday" do
       before do
