@@ -17,7 +17,7 @@ $(document).ready ->
     target_attr = $(scope).data("attr")
     value = $(scope).val()
     $.ajax
-      url: "settings"
+      url: "/settings"
       type: "PATCH"
       dataType: "json"
       data: {
@@ -40,7 +40,7 @@ $(document).ready ->
     $(scope).addClass("user-submit-button")
     $(scope).html("登録")
 
-  submitUserInfo = (scope) ->
+  submitUserName = (scope) ->
     ajax_state = $(scope).parent().find(".ajax-state")
     ajaxStateOn(ajax_state)
     span = $(scope).data("span")
@@ -48,29 +48,30 @@ $(document).ready ->
     value = $(input).val()
     target_attr = $(scope).data("attr")
     $.ajax
-      url: "/"
+      url: "/user/name"
       type: "PATCH"
       dataType: "json"
       data: {
         user: {
-          attr: target_attr,
-          value: value
+          name : value
         }
       }
       success: (results) ->
         ajaxStateSuccess(ajax_state)
         $(input).removeClass("active")
         $(span).show()
+          .html(results["name"])
         $(scope).removeClass("user-submit-button")
         $(scope).addClass("user-edit-button")
         $(scope).html("編集")
       error: (results) ->
         ajaxStateFail(ajax_state)
+        console.log results
         # ここでエラーの内容を表示
 
   $(document).on "change", ".setting-select", ->
     selectUpdate(this)
   $(document).on "click", ".user-edit-button", ->
     editUserInfo(this)
-  $(document).on "click", ".user-submit-button", ->
-    submitUserInfo(this)
+  $(document).on "click", "#user-name-submit.user-submit-button", ->
+    submitUserName(this)

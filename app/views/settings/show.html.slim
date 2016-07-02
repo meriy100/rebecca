@@ -26,14 +26,14 @@
         span.user-info#user-name
           = @current_user.name
         = text_field :current_user, :name, class: "form-control user-edit-input", id: "user-name-input"
-        = button_tag "編集", type: :button, class: "user-button user-edit-button", data: {input: "#user-name-input", span: "#user-name"}
+        = button_tag "編集", type: :button, class: "user-button user-edit-button", id: "user-name-submit", data: {input: "#user-name-input", span: "#user-name"}
         i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
       .form
         label.setting-label メールアドレス
         span.user-info#user-email
           = @current_user.email
         = text_field :current_user, :email, class: "form-control user-edit-input", id: "user-email-input"
-        = button_tag "編集", type: :button, class: "user-button user-edit-button", data: {input: "#user-email-input", span: "#user-email"}
+        = button_tag "編集", type: :button, class: "user-button user-edit-button", id: "user-email-submit", data: {input: "#user-email-input", span: "#user-email"}
         i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
       .form
         label.setting-label パスワード
