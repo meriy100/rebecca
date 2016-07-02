@@ -69,6 +69,12 @@ ul.tab-list{
       display: inline;
       border-radius: 0px;
       border-color: $gley-1;
+      &.user-edit-input{
+        display: none;
+        &.active{
+          display: inline;
+        }
+      }
     }
     span.user-info{
       font-size: 18px;
@@ -76,7 +82,7 @@ ul.tab-list{
         font-size: 14px;
       }
     }
-    button.user-edit-button{
+    button.user-button{
       font-size: 14px;
       background: transparent;
       border: 0px;

@@ -1,0 +1,10 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+
+.ajax-state{
+  visibility: hidden;
+  color: $sub-color;
+  &.active{
+    visibility: visible;
+  }
+}
