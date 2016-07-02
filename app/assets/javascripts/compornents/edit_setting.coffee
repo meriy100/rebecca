@@ -17,13 +17,12 @@ $(document).ready ->
     target_attr = $(scope).data("attr")
     value = $(scope).val()
     $.ajax
-      url: "/settings"
+      url: "/setting"
       type: "PATCH"
       dataType: "json"
       data: {
         setting: {
-          attr: target_attr,
-          value: value
+          "#{target_attr}": value
         }
       }
       success: (results) ->

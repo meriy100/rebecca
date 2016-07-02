@@ -37,12 +37,13 @@ Rails.application.routes.draw do
     end
   end
 
-  get "settings", to: "settings#show", as: "setting"
-  patch "settings", to: "settings#update"
+  resource :setting, only: [:show, :update]
 
-  patch "user/name", to: "user#name", as: "name_user"
+  namespace :user do
+    resource :name, only: [:update]
+    resource :email, only: [:update]
+    resource :password, only: [:update]
+    resource :reset_password
+  end
 
-  # namespace :admin do
-  #   resources :users
-  # end
 end
