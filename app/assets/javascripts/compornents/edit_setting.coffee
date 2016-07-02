@@ -1,5 +1,8 @@
 $(document).ready ->
   selectUpdate = (scope) ->
+    ajax_state = $(scope).parent().find(".ajax-state")
+    ajax_state.addClass("fa-spinner fa-spin")
+    ajax_state.addClass("active")
     target_attr = $(scope).data("attr")
     value = $(scope).val()
     $.ajax
@@ -13,9 +16,12 @@ $(document).ready ->
         }
       }
       success: (results) ->
-        console.log results
+        ajax_state.removeClass("fa-spinner fa-spin")
+        ajax_state.addClass("fa-check")
       error: (results) ->
-        console.log results
+        console.log
+        ajax_state.removeClass("fa-spinner fa-spin")
+        ajax_state.addClass("fa-remove")
 
 
   $(document).on "change", ".setting-select", ->
