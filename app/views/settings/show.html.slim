@@ -13,9 +13,9 @@
     #general.tab-pane.active[role="tabpanel"]
       .form
         label.setting-label 週の開始曜日
-        = collection_select :setting, :start_week_day_id, StartWeekDay.all, :id, :name, {}, class: "form-control"
+        = collection_select :setting, :start_week_day_id, StartWeekDay.all, :id, :name, {}, class: "form-control setting-select", data: {attr: :start_week_day_id}
       .form
         label.setting-label 日付の書式
-        = collection_select :setting, :time_format_id, TimeFormat.all, :id, :show, {}, class: "form-control"
+        = collection_select :setting, :time_format_id, TimeFormat.all, :id, :show, {}, class: "form-control setting-select", data: {attr: :time_format_id}
     / アカウント
     #account.tab-pane[role="tabpanel"]

@@ -6,7 +6,7 @@ class SettingsController < ApplicationController
     @filter = { title: "タスク一覧", path: tasks_path }
   end
   def update
-    @setting.update(setting_params)
+    @setting.update(setting_params[:attr] => setting_params[:value])
     render json: :setting
   end
   private
@@ -14,6 +14,6 @@ class SettingsController < ApplicationController
     @setting = current_user.setting
   end
   def setting_params
-    params.require(:setting).permit(:start_week_day_id, :time_format_id)
+    params.require(:setting).permit(:attr, :value)
   end
 end
