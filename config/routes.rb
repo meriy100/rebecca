@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get "login", to: "login#index", as: "login"
-  get "logout", to: "login#logout"
-  post "login/login"
-  get "sign_up", to: "login#sign_up", as: "sign_up"
-  post "create_user", to: "login#create_user", as: "create_user"
   get "", to: "tasks#index", as: "top"
   root "tasks#index"
+
+  resource :user_session
+  resource :user, only: [:new, :create, :destroy]
 
   namespace :api, defaults: { format: :json } do
     scope module: :login do
@@ -39,11 +37,11 @@ Rails.application.routes.draw do
 
   resource :setting, only: [:show, :update]
 
-  namespace :user do
-    resource :name, only: [:update]
-    resource :email, only: [:update]
-    resource :password, only: [:update]
-    resource :reset_password
-  end
+  # namespace :user do
+  #   resource :name, only: [:update]
+  #   resource :email, only: [:update]
+  #   resource :password, only: [:update]
+  #   resource :reset_password
+  # end
 
 end

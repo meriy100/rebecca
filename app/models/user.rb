@@ -12,6 +12,7 @@
 #
 
 class User < ActiveRecord::Base
+  attr_accessor :email_or_name
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 },
                     uniqueness: true
