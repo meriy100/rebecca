@@ -6,9 +6,10 @@ class Task < ActiveRecord::Base
   before_validation :set_end_of_date
   before_validation :set_sync_token
 
-  validate :deadline_at_orver_created_at
+  validate :deadline_at_over_created_at
   validates :sync_token, presence: true, uniqueness: true
   validates :deadline_at, presence: true
+  validates :title, presence: true
 
   scope :on_user, -> { where(user: User.current_user) }
   scope :doings, -> { where(is_done: false) }
@@ -76,7 +77,7 @@ class Task < ActiveRecord::Base
   end
 
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ
-  def deadline_at_orver_created_at
+  def deadline_at_over_created_at
     if deadline_at.nil?
       true
     elsif (created_at || Time.zone.now) > deadline_at

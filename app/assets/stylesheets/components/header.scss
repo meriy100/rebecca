@@ -19,7 +19,7 @@
     form{
       .input-group{
         width: 40%;
-        color: $gley-1;
+        color: $gray-1;
         transition: all 200ms ease;
         i.fa{
           position: absolute;
@@ -35,8 +35,7 @@
           border-right: 0px;
           transition: all 200ms ease;
           border-radius: 0px;
-          -webkit-box-shadow: inset 0 0px 0px rgba($black,.075);
-          box-shadow: inset 0 0px 0px rgba($black,.075);
+          @include box-shadow-inset(0, 0px, 0px, 0, rgba($black,.075));
         }
         &.non-focus{
           &:hover{

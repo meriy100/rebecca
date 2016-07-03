@@ -54,7 +54,7 @@ div.light-btn{
   border-radius: 100%;
   transition: background-color 0.2s ;
   background-color: $white;
-  box-shadow: 0px 0px 10px #20ee20;
+  @include box-shadow(0px, 0px, 10px, 0, #20ee20);
   button.light-btn{
     background: transparent;
     border: 0px;
@@ -94,7 +94,7 @@ i.new-button{
     bottom: $new-button-sp-bottom;
     position: fixed ;
     float: right;
-    box-shadow: 4px 4px 4px rgba($black, 0.4);
+    @include box-shadow(4px, 4px, 4px, 0, rgba($black, 0.4));
     transition: all 200ms ease;
     // i{
     //   transition: all 200ms ease;

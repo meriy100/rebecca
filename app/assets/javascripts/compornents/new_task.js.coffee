@@ -22,7 +22,29 @@ $(document).on "ready page:load", ->
     $(".right-side").addClass("active")
   $(document).on "click", ".close", ->
     $(".right-side").removeClass("active")
+
 # 新規追加フォームがよく見えるようにスクロール
 # $("html,body").animate({scrollTop:$('#new-task').offset().top})
 # $("#title-input").focus()
+chageTitleInput = (scope) ->
+  if isBlank($(scope).val())
+    $("#new-task-submit").prop('disabled', true)
+    $("#new-task-submit-ice").addClass("disabled")
+  else
+    $("#new-task-submit").prop('disabled', false)
+    $("#new-task-submit-ice").removeClass("disabled")
 
+$(document).on "change", "#title-input", ->
+  chageTitleInput(this)
+$(document).on "keypress", "#title-input", ->
+  chageTitleInput(this)
+$(document).on "keyup", "#title-input", ->
+  chageTitleInput(this)
+
+$(document).on "submit", "form.new_task", ->
+  $("input[name='commit']").prop('disabled', true)
+  $(".ice-submit").addClass("disabled")
+
+# '==='が使えない理由がワカラナイ
+isBlank = (obj) ->
+  !obj || $.trim(obj) == ""
