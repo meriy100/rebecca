@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @current_user.update(user_update_params)
       render json: @current_user.to_json(except: :password_digest)
     else
-      render json: { error: @current_user.errors }
+      render json: { error: @current_user.errors }, status: 501
     end
   end
 
