@@ -4,7 +4,7 @@
 .content-tasks
   h2.title 終了済のタスク
   ul.list-group#tasks-list
-    == render @completed_tasks
+    == render partial: "completed_task", collection: @completed_tasks
   #new-task
   /= link_to tasks_path, class: "square" do
   /  i.fa.fa-caret-square-o-left.fa-3x.fa-button
