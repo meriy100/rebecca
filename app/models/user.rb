@@ -12,19 +12,21 @@
 #
 
 class User < ActiveRecord::Base
+  attr_accessor :email_or_name
   before_save { self.email = email.downcase }
-  validates :name, presence: true, length: { maximum: 50 },
-                    uniqueness: true
+  validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, on: :create
+  before_create :set_setting
   has_secure_password
   has_many :tasks
+  has_one :setting
   acts_as_paranoid
 
-  def self.is_email?(string)
+  def self.email?(string)
     string =~ VALID_EMAIL_REGEX
   end
 
@@ -40,5 +42,15 @@ class User < ActiveRecord::Base
 
   def self.current_user
     User.find_by id: Thread.current[:user_id]
+  end
+
+  def self.reset_current_user
+    Thread.current[:user_id] = nil
+  end
+
+  private
+
+  def set_setting
+    self.setting = Setting.new
   end
 end

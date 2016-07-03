@@ -1,9 +1,11 @@
-h2.title
-  = @filter[:title]
-ul.list-group#tasks-list
-  == render partial: 'completed_task', collection: @tasks
-#new-task
-= link_to root_path do
-  i.fa.fa-caret-square-o-left.fa-3x.fa-button
-
-== render "undo_modal"
+.right-side
+  .right-side-content
+    == render "tasks/new_task_form", task: @task
+.content-tasks
+  h2.title 終了済のタスク
+  ul.list-group#tasks-list
+    == render partial: "completed_task", collection: @completed_tasks
+  #new-task
+  /= link_to tasks_path, class: "square" do
+  /  i.fa.fa-caret-square-o-left.fa-3x.fa-button
+  == render "undo_modal"

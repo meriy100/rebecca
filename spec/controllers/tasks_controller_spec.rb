@@ -2,25 +2,30 @@ require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
   let(:valid_session) { { user_id: 1 } }
-
+  let(:user) { create(:user) }
   before do
-    create(:user)
+    user
   end
 
   describe "GET #index" do
     let(:tasks) { create_list(:task, 10) }
-    before do
-      tasks.sample(5).each(&:done)
-      get :index, {}, valid_session
+    context "render or redirect for setting" do
+      it "render index" do
+        get :index, {}, valid_session
+        expect(response).to render_template :index
+      end
     end
-    it "render index" do
-      expect(response).to render_template :index
-    end
-    it "assings doing tasks" do
-      expect(assigns(:tasks)).to match(Task.doings)
-    end
-    it "assigns dont include completeds tasks" do
-      expect(assigns(:tasks)).not_to match(Task.completeds)
+    context "assings" do
+      before do
+        tasks.sample(5).each(&:done)
+        get :index, {}, valid_session
+      end
+      it "doing tasks" do
+        expect(assigns(:tasks)).to match(Task.doings)
+      end
+      it "dont include completeds tasks" do
+        expect(assigns(:tasks)).not_to match(Task.completeds)
+      end
     end
   end
 
@@ -77,10 +82,10 @@ RSpec.describe TasksController, type: :controller do
       expect(response).to render_template :completed
     end
     it "return except doing tasks" do
-      expect(assigns(:tasks)).to match_array(Task.completeds)
+      expect(assigns(:completed_tasks)).to match_array(Task.completeds)
     end
     it "return except doing tasks" do
-      expect(assigns(:tasks)).not_to match_array(Task.doings)
+      expect(assigns(:completed_tasks)).not_to match_array(Task.doings)
     end
   end
 

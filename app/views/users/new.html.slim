@@ -3,7 +3,7 @@
     .main-content-colorcover
       .col-md-4.col-md-offset-4.sign-up-main
         .sign-up-form
-          = form_for(@user, url: create_user_path) do |f|
+          = form_for(@user, url: user_path) do |f|
             .form-row.name
               i.fa.fa-user.fa-3x.fa-fw
               = f.text_field :name, placeholder: "ユーザー名", hide_label: true

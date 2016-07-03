@@ -1,0 +1,102 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+ul.tab-list{
+  border-bottom: 1px $black solid;
+  border-color: $black;
+  li{
+    display: inline-block;
+    @include inline-center(48px);
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: -3px;
+    @include max-screen($breakpoint-small){
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-bottom: -2px;
+    }
+    a{
+      background-color: transparent;
+      border: 0px;
+      color: $black;
+      font-size: 28px;
+      @include max-screen($breakpoint-small){
+        font-size: 20px;
+      }
+    }
+    &.active{
+      border-bottom: 6px $sub-color solid;
+      @include max-screen($breakpoint-small){
+        border-bottom: 3px $sub-color solid;
+      }
+      a{
+        color: $sub-color;
+      }
+    }
+  }
+}
+
+.setting-content{
+  padding: 10px 40px;
+  @include max-screen($breakpoint-mobile){
+    padding: 10px 20px;
+  }
+}
+
+.setting-tab-content{
+  width: 800px;
+  max-width: 80%;
+  padding: 20px 40px;
+  @include max-screen($breakpoint-small){
+    max-width: 90%;
+    padding: 20px 20px;
+  }
+  .form{
+    margin-bottom: 80px;
+    padding-bottom: 10px;
+    // border-bottom: 1px $gley-1 solid;
+    label.setting-label{
+      // width: 50%;
+      font-size: 22px;
+      font-weight: normal;
+      margin-right:20px;
+      @include max-screen($breakpoint-small){
+        font-size: 16px;
+      }
+    }
+    .form-control{
+      width: 50%;
+      max-width: 200px;
+      display: inline;
+      border-radius: 0px;
+      border-color: $gray-1;
+      &.user-edit-input{
+        display: none;
+        &.active{
+          display: inline;
+        }
+      }
+    }
+    span.user-info{
+      font-size: 18px;
+      @include max-screen($breakpoint-small){
+        font-size: 14px;
+      }
+    }
+    button.user-button{
+      font-size: 14px;
+      background: transparent;
+      border: 0px;
+      color: $sub-color;
+      @include max-screen($breakpoint-small){
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.nav-tabs{
+  li{
+    background-color: transparent;
+    border: 0px;
+  }
+}

@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  after do
+    Timecop.return
+  end
   describe "when create" do
     let(:attributes) { attributes_for(:user) }
     context "with vaild attributes" do
@@ -48,18 +51,19 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "is_email?" do
+  describe "email?" do
     it "vaild string" do
-      expect(User.is_email?("test@test.com")).to be_truthy
+      expect(User.email?("test@test.com")).to be_truthy
     end
     it "invaild string" do
-      expect(User.is_email?("test@testcom")).to be_falsey
+      expect(User.email?("test@testcom")).to be_falsey
     end
   end
 
   describe "task_updated_at" do
     let(:user) { create(:user) }
     it "get last task_updated_at" do
+      User.current_user = user
       tasks = create_list(:task, 5)
       Timecop.freeze(Time.zone.tomorrow)
       tasks.third.done

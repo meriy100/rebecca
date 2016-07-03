@@ -1,8 +1,19 @@
 @import "settings/variables/_variables.scss";
 @import "settings/mixins/_mixins.scss";
+
 a:hover{
   background-color: transparent;
   text-decoration: none;
+}
+a:focus{
+  text-decoration: none;
+}
+
+input:focus {
+  outline: none
+}
+button:focus {
+  outline: none
 }
 body{
   font-family: "Helvetica Neue", Helvetica, Arial, "游ゴシック体", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
