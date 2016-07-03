@@ -32,11 +32,14 @@ RSpec.describe Categories::TasksController, type: :controller do
         get :index, { category_id: category.id }, valid_session
         tasks.reload
       end
-      it "doing tasks" do
-        expect(assigns(:tasks)).to match(tasks.doings)
+      it "doing tasks on category" do
+        expect(assigns(:tasks)).to include category.tasks.doings
       end
-      it "dont include completeds tasks" do
-        expect(assigns(:tasks)).not_to match(tasks.completeds)
+      it "dont include doing tasks on other_category" do
+        expect(assigns(:tasks)).not_to include other_category.tasks.doings
+      end
+      it "dont include completeds tasks on category" do
+        expect(assigns(:tasks)).not_to include category.tasks.completeds
       end
     end
   end
