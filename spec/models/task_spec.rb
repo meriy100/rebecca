@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
-  let(:user) { create(:user) }
+  let(:user) { create :user }
+  let(:category) { create :category }
   before do
     User.current_user = user
   end
@@ -22,6 +23,9 @@ RSpec.describe Task, type: :model do
         expect(task.deadline_at.hour).to eq(23)
         expect(task.deadline_at.min).to eq(59)
         expect(task.deadline_at.sec).to eq(59)
+      end
+      it "category is top category" do
+        expect(task.category).to eq category
       end
     end
     context "with invaild params" do
