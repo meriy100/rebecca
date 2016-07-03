@@ -11,8 +11,9 @@ $(document).ready ->
       dataType: "html"
       data: {
         id: task_id,
-        atr: "title",
-        value: value,
+        task: {
+          title: value,
+        }
       }
       success: (results) ->
         value_span.html(value)

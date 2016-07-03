@@ -44,7 +44,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(params[:atr] => params[:value])
+    if @task.update(task_params)
       render json: @task.to_json, status: 200
     else
       render json: @task.to_json, status: 501

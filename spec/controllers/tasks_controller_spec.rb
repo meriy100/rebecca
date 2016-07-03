@@ -149,7 +149,7 @@ RSpec.describe TasksController, type: :controller do
   describe "PUT #update" do
     let(:task) { create(:task) }
     context "with valid params" do
-      let(:new_attributes) { { atr: "title", value: "テストタスク2", format: :js } }
+      let(:new_attributes) { { task: { title: "テストタスク2" }, format: :js } }
       before do
         new_attributes[:id] = task.id
         put :update, new_attributes, valid_session
@@ -175,7 +175,7 @@ RSpec.describe TasksController, type: :controller do
 
     context "with invalid params" do
       before do
-        put :update, { id: task.to_param, atr: "deadline_at", value: Time.zone.yesterday, format: :js }, valid_session
+        put :update, { id: task.to_param, task: { deadline_at: Time.zone.yesterday }, format: :js }, valid_session
       end
       it "assigns the task as @task" do
         expect(assigns(:task)).to eq(task)
