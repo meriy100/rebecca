@@ -35,5 +35,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories, only: [:create, :update, :destroy] do
+    resources :tasks, module: :categories, only: [:index]
+  end
+
   resource :setting, only: [:show, :update]
 end

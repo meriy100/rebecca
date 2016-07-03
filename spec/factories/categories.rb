@@ -6,5 +6,10 @@ FactoryGirl.define do
     factory :invaild_category do
       icon_id nil
     end
+    factory :other_category do
+      name "個人"
+      icon_id 2
+      color_id 2
+    end
   end
 end
