@@ -55,4 +55,8 @@ Rails.application.routes.draw do
     get "oath"
     get "google_callback"
   end
+
+  resources :categories, only: [:create, :update, :destroy] do
+    resources :tasks, module: :categories, only: [:index]
+  end
 end
