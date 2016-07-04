@@ -3,7 +3,7 @@
     == render "tasks/new_task_form", task: @task
 .content-tasks
   h2.title 終了済のタスク
-  ul.list-group#tasks-list
+  ul.list-group#tasks-conplited-list
     == render partial: "completed_task", collection: @completed_tasks
   #new-task
   /= link_to tasks_path, class: "square" do

@@ -4,7 +4,7 @@
 .content-tasks
   h2.title
     = filter_title
-  ul.list-group#tasks-list
+  ul.list-group#tasks-doing-list
     == render @tasks
   / 使うなら position: relative にしておかなきゃダメ(right-side のpadding-left が上にくるので)
   /= link_to tasks_path do
