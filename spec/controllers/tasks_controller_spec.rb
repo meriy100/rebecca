@@ -133,7 +133,11 @@ RSpec.describe TasksController, type: :controller do
     end
     it "return task json" do
       json = JSON.parse response.body
-      expect(json["id"]).to eq task.id
+      expect(json["task"]["id"]).to eq task.id
+    end
+    it "return tasks count json" do
+      json = JSON.parse response.body
+      expect(json["counts"]["tasks"]).to eq 0
     end
   end
 
@@ -144,6 +148,14 @@ RSpec.describe TasksController, type: :controller do
     end
     it "task.is_done is true" do
       expect(Task.first.is_done).to be_falsey
+    end
+    it "return task json" do
+      json = JSON.parse response.body
+      expect(json["task"]["id"]).to eq task.id
+    end
+    it "return tasks count json" do
+      json = JSON.parse response.body
+      expect(json["counts"]["tasks"]).to eq 1
     end
   end
   describe "PUT #update" do

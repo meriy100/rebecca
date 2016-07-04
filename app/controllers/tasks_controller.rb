@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     @task.done
     @tasks = Task.on_user.doings
     render json: {
-      task:  @task.to_json,
+      task:  @task,
       counts: {
         tasks: @tasks.count,
         today: @tasks.todays.count,
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
     @task.undo
     @tasks = Task.on_user.doings
     render json: {
-      task:  @task.to_json,
+      task:  @task,
       counts: {
         tasks: @tasks.count,
         today: @tasks.todays.count,
