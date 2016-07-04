@@ -1,4 +1,3 @@
-var taskCard = $("<%= j(render @task) %>").hide().fadeIn(1000)
-$("#tasks-list").append(taskCard)
+var taskCard = $("#task-<%= @task.id %>").fadeIn(1000)
 $(".undo-modal").hide()
 $("html,body").animate({scrollTop:taskCard.offset().top});
