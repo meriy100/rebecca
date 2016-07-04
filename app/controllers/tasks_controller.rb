@@ -33,11 +33,7 @@ class TasksController < ApplicationController
     @tasks = Task.on_user.doings
     render json: {
       task:  @task,
-      counts: {
-        tasks: @tasks.count,
-        today: @tasks.todays.count,
-        weekly: @tasks.weeklys.count
-      }
+      counts: Task.doing_counts
     }
   end
 
@@ -47,11 +43,7 @@ class TasksController < ApplicationController
     @tasks = Task.on_user.doings
     render json: {
       task:  @task,
-      counts: {
-        tasks: @tasks.count,
-        today: @tasks.todays.count,
-        weekly: @tasks.weeklys.count
-      }
+      counts: Task.doing_counts
     }
   end
 
