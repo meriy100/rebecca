@@ -30,17 +30,38 @@ class TasksController < ApplicationController
   # jQuery ajax で何をもらうかちゃんと考えんとですよ
   def done
     @task.done
-    render json: @task.to_json
+    @tasks = Task.on_user.doings
+    render json: {
+      task:  @task.to_json,
+      counts: {
+        tasks: @tasks.count,
+        today: @tasks.todays.count,
+        weekly: @tasks.weeklys.count
+      }
+    }
   end
 
   # render js
   def undo
     @task.undo
+    @tasks = Task.on_user.doings
+    render json: {
+      task:  @task.to_json,
+      counts: {
+        tasks: @tasks.count,
+        today: @tasks.todays.count,
+        weekly: @tasks.weeklys.count
+      }
+    }
   end
 
   def create
     @task = Task.new(task_params)
-    render :new unless @task.save
+    if @task.save
+      @tasks = Task.on_user.doings
+    else
+      render :new
+    end
   end
 
   def update

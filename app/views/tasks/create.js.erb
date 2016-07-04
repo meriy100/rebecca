@@ -1,4 +1,8 @@
 var taskCard = $("<%= j(render @task) %>").hide().fadeIn(1000)
+$("#tasks-badge").html("<%= @tasks.count %>")
+$("#today-badge").html("<%= @tasks.todays.count %>")
+$("#weekly-badge").html("<%= @tasks.weeklys.count %>")
+
 $("#tasks-doing-list").append(taskCard)
 $("html,body").animate({scrollTop:taskCard.offset().top});
 $("#title-input").val("")

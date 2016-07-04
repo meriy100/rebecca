@@ -1,6 +1,6 @@
 .notify-modal.done
   span.message
     | 一つのタスクを完了しました
-  = link_to "元に戻す", undo_task_path(-1), class: "undo-link", method: :post, remote: true
+  = button_tag "元に戻す", class: "undo-link task-return", type: :button, data: { task: -1 }
   span.modal-hide
     | 非表示
