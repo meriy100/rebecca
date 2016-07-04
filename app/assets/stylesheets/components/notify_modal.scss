@@ -28,9 +28,12 @@
     color: $white;
     margin-right: 8px;
   }
-  a.undo-link{
+ .undo-link{
     color: $emphasis;
     margin-right: 8px;
+    background-color: transparent;
+    border: 0px;
+    display: inline;
   }
   span.modal-hide{
     color: $gray-1;

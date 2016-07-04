@@ -22,6 +22,15 @@ class Task < ActiveRecord::Base
     User.current_user.setting
   end
 
+  def self.doing_counts
+    tasks = on_user.doings
+    {
+      tasks: tasks.count,
+      today: tasks.todays.count,
+      weekly: tasks.weeklys.count
+    }
+  end
+
   def done
     update(is_done: true) unless is_done
   end

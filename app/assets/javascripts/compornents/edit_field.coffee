@@ -32,13 +32,16 @@ $(document).ready ->
     $.ajax
       url: "/tasks/#{taskId}/done"
       type: "POST"
-      dataType: "html"
+      dataType: "json"
       success: (results) ->
+        $("#tasks-badge").html(results["counts"]["tasks"])
+        $("#today-badge").html(results["counts"]["today"])
+        $("#weekly-badge").html(results["counts"]["weekly"])
         shadow.addClass("fadeout")
         shadow.fadeOut("slow")
         # ここで, id を指定して data に埋め込む
         $(".notify-modal.done").fadeIn()
-        $(".undo-link").attr("href", "/tasks/#{taskId}/undo")
+        $(".undo-link").data("task", taskId)
 
   undoTask = (scope) ->
     taskId = $(scope).data("task")
@@ -46,9 +49,15 @@ $(document).ready ->
     $.ajax
       url: "/tasks/#{taskId}/undo"
       type: "POST"
-      dataType: "html"
+      dataType: "json"
       success: (results) ->
+        $("#tasks-badge").html(results["counts"]["tasks"])
+        $("#today-badge").html(results["counts"]["today"])
+        $("#weekly-badge").html(results["counts"]["weekly"])
+        $("#task-#{taskId}").fadeIn(1000)
         taskRow.fadeOut()
+        $(".undo-modal").hide()
+        # $("html,body").animate({scrollTop:taskCard.offset().top})
         $(".notify-modal.undo").fadeIn()
 
   hideModal = ->

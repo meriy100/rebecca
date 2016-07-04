@@ -19,7 +19,7 @@
     form{
       .input-group{
         width: 40%;
-        color: $gray-1;
+        color: $black;
         transition: all 200ms ease;
         i.fa{
           position: absolute;
@@ -29,6 +29,7 @@
           @include inline-center($header-height - 4)
         }
         input{
+          @include placeholderColor($black);
           padding-left: 40px;
           background-color: transparent;
           border-color: transparent;
@@ -49,6 +50,7 @@
         &.input-group-focus{
           width: 100%;
           input{
+            @include placeholderColor($gray-1);
             background-color: $white;
             border-color: $white;
             border-radius: 4px;
