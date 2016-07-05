@@ -36,5 +36,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :setting, only: [:show, :update]
+  resource :setting, only: [:show, :update] do
+    get "oath"
+    get "callback"
+  end
 end
