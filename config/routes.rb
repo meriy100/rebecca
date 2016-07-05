@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get "completed"
       get "today"
       get "weekly"
+      post "import"
     end
   end
 
