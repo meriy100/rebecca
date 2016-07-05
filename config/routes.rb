@@ -38,6 +38,6 @@ Rails.application.routes.draw do
 
   resource :setting, only: [:show, :update] do
     get "oath"
-    get "callback"
+    get "google_callback"
   end
 end
