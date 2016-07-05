@@ -22,6 +22,14 @@ class TasksController < ApplicationController
     render :filter
   end
 
+  # TODO
+  # createの際のエラー対処
+  def import
+    tasks_imported = "Importer::#{service_params[:service_name].capitalize}".constantize.import(service_params[:token])
+    Task.create(tasks_imported)
+    redirect_to tasks_path, notice: tasks_imported.count
+  end
+
   def new
     @task = Task.new
   end
@@ -73,6 +81,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def service_params
+    params.require(:service).permit(:service_name, :token)
+  end
 
   def set_task
     @task = Task.on_user.find_by(id: params[:id])

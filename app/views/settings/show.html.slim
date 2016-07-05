@@ -8,6 +8,9 @@
     li[role="presentation"]
       a[href="#account" aria-controls="account" role="tab" data-toggle="tab"]
         | アカウント
+    li[role="presentation"]
+      a[href="#sync" aria-controls="sync" role="tab" data-toggle="tab"]
+        | 同期
   .tab-content.setting-tab-content
     / 一般
     #general.tab-pane.active[role="tabpanel"]
@@ -41,3 +44,14 @@
           | ******
         = button_tag "編集", type: :button, class: "user-button user-edit-button"
         i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
+    / 同期
+    #sync.tab-pane[role="tabpanel"]
+      =form_tag import_tasks_path, method: :post do
+        label.setting-label Todoistトークン
+        
+        = hidden_field :service, :service_name, value: "todoist"
+
+        = text_field :service, :token, class: "form-control user-edit-input"
+
+        = submit_tag "同期", class: "user-button user-edit-button"
+        

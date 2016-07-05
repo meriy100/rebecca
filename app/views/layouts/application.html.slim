@@ -11,6 +11,8 @@ html
     = csrf_meta_tags
   body
     .content
+      - flash.each do |key, value|
+        = content_tag :div, value, class: "alert alert-success", role: "alert"
       = yield
     .sidebar
       == render "shared/sidebar"

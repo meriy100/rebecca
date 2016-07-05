@@ -32,8 +32,9 @@ Rails.application.routes.draw do
       get "completed"
       get "today"
       get "weekly"
+      post "import"
     end
   end
 
-  resource :setting, only: [:show, :update]
+  resource :settings, only: [:show, :update]
 end
