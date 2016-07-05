@@ -48,10 +48,9 @@
     #sync.tab-pane[role="tabpanel"]
       =form_tag import_tasks_path, method: :post do
         label.setting-label Todoistトークン
-        
+
         = hidden_field :service, :service_name, value: "todoist"
 
         = text_field :service, :token, class: "form-control user-edit-input"
 
         = submit_tag "同期", class: "user-button user-edit-button"
-        
