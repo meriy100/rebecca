@@ -36,5 +36,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :settings, only: [:show, :update]
+  resource :setting, only: [:show, :update]
 end
