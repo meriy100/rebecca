@@ -1,6 +1,6 @@
 class ApiController < ActionController::Base
   # protect_from_forgery with: :null_session
-  before_filter :authenticated
+  before_action :authenticated
 
   def authenticated
     if session[:user_id]

@@ -16,6 +16,9 @@
 !/log/.keep
 /tmp
 vendor/bundle/
+public/assets/
 app/assets/stylesheets/.git/
 config/database.yml
 .DS_Store
+.env
+

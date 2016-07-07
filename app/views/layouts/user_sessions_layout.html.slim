@@ -14,4 +14,4 @@ html
       = yield
     .login-header
       == render "shared/login_header"
-    == render "shared/login_modal"
+    == render "user_sessions/form", user: @user

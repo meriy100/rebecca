@@ -5,7 +5,6 @@
   width: $task-row-width;
   height: $task-row-height;
   margin-bottom: $task-row-mb;
-  box-shadow: 8px 8px 10px rgba($black,0.4);
   position: relative;
   .task-info{
     @include center_beside_block();
@@ -124,15 +123,16 @@
     left: 0;
     height: $task-done-size * 2;
     width: $task-done-size * 2;
+    margin-left: auto;
     .task-done-view {
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
       border: $task-done-size/$task-done-close-rate solid;
-      box-shadow: 4px 3px 4px rgba($black,0.4);
+      @include box-shadow(-4px, 3px, 4px, 0, rgba($black,0.4));
       transition: border 200ms ease;
       transition-property: all;
-      border-color: $background-color $white $white $background-color;
+      border-color: $background-color $background-color $white $white;
       cursor: pointer;
     }
     @include max-screen($breakpoint-mobile){
@@ -140,18 +140,43 @@
       width: $task-done-size-m * 2;
       .task-done-view {
         border: $task-done-size-m/$task-done-close-rate solid;
-        border-color: $background-color $white $white $background-color;
+        border-color: $background-color $background-color $white $white;
       }
     }
     &:hover{
       .task-done-view{
         border: $task-done-size solid;
-        border-color: $background-color $white $white $background-color;
+        border-color: $background-color $background-color $white $white;
         @include max-screen($breakpoint-mobile){
           border: $task-done-size-m solid;
-          border-color: $background-color $white $white $background-color;
+          border-color: $background-color $background-color $white $white;
         }
       }
     }
   }
+}
+
+.trello-shadow{
+  position: relative;
+}
+.trello-shadow:before{
+  z-index: 0;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  right: 50px;
+  left: auto;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  @include box-shadow(0, 15px, 10px, 0, $shadow);
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+
+.trello-shadow.fadeout:before{
+  @include box-shadow(0, 15px, 10px, 0, rgba($shadow, 0.8));
 }

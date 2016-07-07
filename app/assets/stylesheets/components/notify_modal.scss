@@ -28,15 +28,18 @@
     color: $white;
     margin-right: 8px;
   }
-  a.undo-link{
+ .undo-link{
     color: $emphasis;
     margin-right: 8px;
+    background-color: transparent;
+    border: 0px;
+    display: inline;
   }
   span.modal-hide{
-    color: $gley-1;
+    color: $gray-1;
     cursor: pointer;
     &:hover{
-      color: $gley-2;
+      color: $gray-2;
     }
   }
 }

@@ -7,3 +7,22 @@
   background-color: $color;
   @include background-image(linear-gradient(darken($color, $darken) 0%, $color 100%));
 }
+@mixin placeholderColor($color) {
+    &::-webkit-input-placeholder {
+        color:$color;
+    }
+    &:-moz-placeholder {
+        color:$color;
+        opacity: 1;
+    }
+    &::-moz-placeholder {
+        color:$color;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        color:$color;
+    }
+    &:placeholder-shown {
+        color: $color;
+    }
+}

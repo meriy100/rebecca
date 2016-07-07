@@ -1,5 +1,5 @@
 ul.list-group.nav-list
-  = link_to "タスク一覧", root_path, class: "list-group-item nav-list #{sidebar_current(:index)}"
+  = link_to "タスク一覧", tasks_path, class: "list-group-item nav-list #{sidebar_current(:index)}"
   = link_to "今日のタスク", today_tasks_path, class: "list-group-item nav-list #{sidebar_current(:today)}"
   = link_to "今週のタスク", weekly_tasks_path, class: "list-group-item nav-list #{sidebar_current(:weekly)}"
   = link_to '終了済みのタスク', completed_tasks_path, class: "list-group-item nav-list #{sidebar_current(:completed)}"

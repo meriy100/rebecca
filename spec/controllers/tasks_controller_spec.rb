@@ -2,25 +2,30 @@ require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
   let(:valid_session) { { user_id: 1 } }
-
+  let(:user) { create(:user) }
   before do
-    create(:user)
+    user
   end
 
   describe "GET #index" do
     let(:tasks) { create_list(:task, 10) }
-    before do
-      tasks.sample(5).each(&:done)
-      get :index, {}, valid_session
+    context "render or redirect for setting" do
+      it "render index" do
+        get :index, {}, valid_session
+        expect(response).to render_template :index
+      end
     end
-    it "render index" do
-      expect(response).to render_template :index
-    end
-    it "assings doing tasks" do
-      expect(assigns(:tasks)).to match(Task.doings)
-    end
-    it "assigns dont include completeds tasks" do
-      expect(assigns(:tasks)).not_to match(Task.completeds)
+    context "assings" do
+      before do
+        tasks.sample(5).each(&:done)
+        get :index, {}, valid_session
+      end
+      it "doing tasks" do
+        expect(assigns(:tasks)).to match(Task.doings)
+      end
+      it "dont include completeds tasks" do
+        expect(assigns(:tasks)).not_to match(Task.completeds)
+      end
     end
   end
 
@@ -77,10 +82,10 @@ RSpec.describe TasksController, type: :controller do
       expect(response).to render_template :completed
     end
     it "return except doing tasks" do
-      expect(assigns(:tasks)).to match_array(Task.completeds)
+      expect(assigns(:completed_tasks)).to match_array(Task.completeds)
     end
     it "return except doing tasks" do
-      expect(assigns(:tasks)).not_to match_array(Task.doings)
+      expect(assigns(:completed_tasks)).not_to match_array(Task.doings)
     end
   end
 
@@ -128,7 +133,11 @@ RSpec.describe TasksController, type: :controller do
     end
     it "return task json" do
       json = JSON.parse response.body
-      expect(json["id"]).to eq task.id
+      expect(json["task"]["id"]).to eq task.id
+    end
+    it "return tasks count json" do
+      json = JSON.parse response.body
+      expect(json["counts"]["tasks"]).to eq 0
     end
   end
 
@@ -140,11 +149,19 @@ RSpec.describe TasksController, type: :controller do
     it "task.is_done is true" do
       expect(Task.first.is_done).to be_falsey
     end
+    it "return task json" do
+      json = JSON.parse response.body
+      expect(json["task"]["id"]).to eq task.id
+    end
+    it "return tasks count json" do
+      json = JSON.parse response.body
+      expect(json["counts"]["tasks"]).to eq 1
+    end
   end
   describe "PUT #update" do
     let(:task) { create(:task) }
     context "with valid params" do
-      let(:new_attributes) { { atr: "title", value: "テストタスク2", format: :js } }
+      let(:new_attributes) { { task: { title: "テストタスク2" }, format: :js } }
       before do
         new_attributes[:id] = task.id
         put :update, new_attributes, valid_session
@@ -170,7 +187,7 @@ RSpec.describe TasksController, type: :controller do
 
     context "with invalid params" do
       before do
-        put :update, { id: task.to_param, atr: "deadline_at", value: Time.zone.yesterday, format: :js }, valid_session
+        put :update, { id: task.to_param, task: { deadline_at: Time.zone.yesterday }, format: :js }, valid_session
       end
       it "assigns the task as @task" do
         expect(assigns(:task)).to eq(task)

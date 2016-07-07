@@ -2,32 +2,32 @@ class TasksController < ApplicationController
   include TasksAction
   before_action :set_task, only: [:update, :destroy, :done, :undo]
   before_action :set_new_task, only: [:index, :completed, :today, :weekly]
+  before_action :set_search, only: [:index, :completed, :today, :weekly]
 
   def index
-    @filter = { title: "タスク一覧", path: tasks_path }
-    @search = Task.on_user.doings.search(params[:q])
-    @tasks = @search.result.sort_by(&:least_time_per)
+    @tasks = @search.result.on_user.doings.sort_by(&:least_time_per)
   end
 
-  # get
   def completed
-    @filter = { title: "終了済みのタスク", path: completed_tasks_path }
-    @search = Task.on_user.completeds.search(params[:q])
-    @tasks = @search.result.sort_by(&:least_time_per)
+    @completed_tasks = @search.result.on_user.completeds.sort_by(&:least_time_per)
   end
 
   def today
-    @filter = { title: "今日のタスク", path: today_tasks_path }
-    @search = Task.on_user.doings.todays.search(params[:q])
-    @tasks = @search.result.sort_by(&:least_time_per)
-    render 'filter'
+    @tasks = @search.result.on_user.doings.todays.sort_by(&:least_time_per)
+    render :filter
   end
 
   def weekly
-    @filter = { title: "今週のタスク", path: weekly_tasks_path }
-    @search = Task.on_user.doings.weeklys.search(params[:q])
-    @tasks = @search.result.sort_by(&:least_time_per)
-    render 'filter'
+    @tasks = @search.result.on_user.doings.weeklys.sort_by(&:least_time_per)
+    render :filter
+  end
+
+  # TODO
+  # createの際のエラー対処
+  def import
+    tasks_imported = "Importer::#{service_params[:service_name].capitalize}".constantize.import(service_params[:token])
+    tasks = Task.create(tasks_imported)
+    render json: { message:  "#{tasks.count}件のタスクが同期されました" }
   end
 
   def new
@@ -38,21 +38,34 @@ class TasksController < ApplicationController
   # jQuery ajax で何をもらうかちゃんと考えんとですよ
   def done
     @task.done
-    render json: @task.to_json
+    @tasks = Task.on_user.doings
+    render json: {
+      task:  @task,
+      counts: Task.doing_counts
+    }
   end
 
   # render js
   def undo
     @task.undo
+    @tasks = Task.on_user.doings
+    render json: {
+      task:  @task,
+      counts: Task.doing_counts
+    }
   end
 
   def create
     @task = Task.new(task_params)
-    render :new unless @task.save
+    if @task.save
+      @tasks = Task.on_user.doings
+    else
+      render :new
+    end
   end
 
   def update
-    if @task.update(params[:atr] => params[:value])
+    if @task.update(task_params)
       render json: @task.to_json, status: 200
     else
       render json: @task.to_json, status: 501
@@ -69,6 +82,10 @@ class TasksController < ApplicationController
 
   private
 
+  def service_params
+    params.require(:service).permit(:service_name, :token)
+  end
+
   def set_task
     @task = Task.on_user.find_by(id: params[:id])
   end
@@ -77,4 +94,7 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def set_search
+    @search = Task.search(params[:q])
+  end
 end

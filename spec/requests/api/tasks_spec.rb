@@ -21,7 +21,7 @@ RSpec.describe "Api::Tasks", type: :request do
     }
   end
   before do
-    create(:user)
+    User.current_user = create(:user)
     post "/api/login", login_user: "test_user", password: "testpass"
   end
   describe "GET /api/tasks" do
@@ -154,10 +154,10 @@ RSpec.describe "Api::Tasks", type: :request do
       end
 
       it "return params" do
-        is_expected.to eq(200)
         task.deadline_at = task.deadline_at.end_of_day
+        is_expected.to eq(200)
         body = response.body
-        be_json_eql_task(task, "", :sync_token, :created_at, :updated_at).each do |_, matcher|
+        be_json_eql_task(task, "", :user_id, :sync_token, :created_at, :updated_at).each do |_, matcher|
           expect(body).to matcher
         end
       end
@@ -273,7 +273,7 @@ RSpec.describe "Api::Tasks", type: :request do
         is_expected.to eq(200)
         task = Task.first
         body = response.body
-        be_json_eql_task(task, "").each do |_, matcher|
+        be_json_eql_task(task, "", :user_id).each do |_, matcher|
           expect(body).to matcher
         end
       end

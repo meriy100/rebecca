@@ -1,27 +1,25 @@
--count_today = Task.on_user.doings.todays.count
--count_weekly = Task.on_user.doings.weeklys.count
--count_all = Task.on_user.doings.count
+-counts = Task.doing_counts
 .side-content-col
   .side-content
     ul
       li[class="#{sidebar_current(:index)}"]
-        = link_to root_path, class: "current-cand #{sidebar_current(:index)}" do
+        = link_to tasks_path, class: "current-cand #{sidebar_current(:index)}" do
           | タスク一覧
-          span.badge = count_all.to_s
+          span#tasks-badge.badge = counts[:tasks]
       li[class="#{sidebar_current(:today)}"]
         = link_to today_tasks_path, class: "current-cand #{sidebar_current(:today)}" do
           | 今日のタスク
-          span.badge = count_today
+          span#today-badge.badge = counts[:today]
       li[class="#{sidebar_current(:weekly)}"]
         = link_to weekly_tasks_path, class: "current-cand #{sidebar_current(:weekly)}" do
           | 今週のタスク
-          span.badge = count_weekly
+          span#weekly-badge.badge = counts[:weekly]
       li[class="#{sidebar_current(:completed)}"]
         = link_to '終了済みのタスク', completed_tasks_path, class: "current-cand #{sidebar_current(:completed)}"
 
   .categories
     ul
-      li
+      li.no-hover
         .underbar カテゴリ
         ul.side-list
           li
@@ -33,12 +31,3 @@
           li
             | 買い物
 
-/javascript:
-/  $(function(){
-/    $('a.current-cand').each(function() {
-/      if ($(this).prop('href') == window.location.href) {
-/        $(this).parent().addClass('current');
-/        $(this).addClass('current');
-/      }
-/    });
-/  });

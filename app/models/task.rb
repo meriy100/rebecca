@@ -1,20 +1,35 @@
 class Task < ActiveRecord::Base
   # belongs_to :user
   include CurrentUser
+  has_one :setting, through: :user
 
   before_validation :set_is_done
   before_validation :set_end_of_date
   before_validation :set_sync_token
 
-  validate :deadline_at_orver_created_at
+  validate :deadline_at_over_created_at
   validates :sync_token, presence: true, uniqueness: true
   validates :deadline_at, presence: true
+  validates :title, presence: true
 
-  scope :on_user, -> { where(user: User.current_user) }
-  scope :doings, -> { where(is_done: false) }
-  scope :completeds, -> { where(is_done: true) }
-  scope :todays, -> { where(deadline_at: Time.zone.today..Time.zone.today.end_of_day) }
-  scope :weeklys, -> { where(deadline_at: Time.zone.today.beginning_of_week..Time.zone.today.end_of_week.end_of_day) }
+  scope :on_user, -> { where user: User.current_user }
+  scope :doings, -> { where is_done: false }
+  scope :completeds, -> { where is_done: true }
+  scope :todays, -> { where deadline_at: Time.zone.today..Time.zone.today.end_of_day }
+  scope :weeklys, -> { where deadline_at: setting.week_range(Time.zone.today) }
+
+  def self.setting
+    User.current_user.setting
+  end
+
+  def self.doing_counts
+    tasks = on_user.doings
+    {
+      tasks: tasks.count,
+      today: tasks.todays.count,
+      weekly: tasks.weeklys.count
+    }
+  end
 
   def done
     update(is_done: true) unless is_done
@@ -44,11 +59,12 @@ class Task < ActiveRecord::Base
 
   def deadline_at_to_s
     today = Time.zone.now
-    if deadline_at.between? today, today.next_week
-      deadline_at.today? ? "今日" : I18n.l(deadline_at, format: :weekday)
-    else
-      I18n.l deadline_at, format: :short
-    end
+    format = if deadline_at.between? today, setting.week_range(today).last
+               deadline_at.today? ? :today : :weekday
+             else
+               setting.format
+             end
+    I18n.l deadline_at, format: format
   end
 
   def progress_color
@@ -76,7 +92,7 @@ class Task < ActiveRecord::Base
   end
 
   # 本当は自作バリデータを作成すべき あとメソッド名がキモイ
-  def deadline_at_orver_created_at
+  def deadline_at_over_created_at
     if deadline_at.nil?
       true
     elsif (created_at || Time.zone.now) > deadline_at
