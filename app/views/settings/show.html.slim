@@ -24,33 +24,36 @@
         i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
     / アカウント
     #account.tab-pane[role="tabpanel"]
-      .form
-        label.setting-label ユーザネーム
-        span.user-info#user-name
-          = @current_user.name
-        = text_field :current_user, :name, class: "form-control user-edit-input", id: "user-name-input"
-        = button_tag "編集", type: :button, class: "user-button user-edit-button", data: { input: "#user-name-input", span: "#user-name", attr: "name" }
-        i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
-      .form
-        label.setting-label メールアドレス
-        span.user-info#user-email
-          = @current_user.email
-        = text_field :current_user, :email, class: "form-control user-edit-input", id: "user-email-input"
-        = button_tag "編集", type: :button, class: "user-button user-edit-button", data: { input: "#user-email-input", span: "#user-email", attr: "email" }
-        i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
-      .form
-        label.setting-label パスワード
-        span.user-info#user-pass
-          | ******
-        = button_tag "編集", type: :button, class: "user-button user-edit-button"
-        i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
+      = form_for(@current_user, remote: true) do |f|
+        .form
+          label.setting-label ユーザネーム
+          span.user-info#user-name
+            = @current_user.name
+          = f.text_field :name, class: "form-control user-edit-input", id: "user-name-input"
+          = button_tag "編集", type: :button, class: "user-button user-edit-button", data: { input: "#user-name-input", span: "#user-name" }
+          i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
+      = form_for(@current_user, remote: true) do |f|
+        .form
+          label.setting-label メールアドレス
+          span.user-info#user-email
+            = @current_user.email
+          = f.text_field :email, class: "form-control user-edit-input", id: "user-email-input"
+          = button_tag "編集", type: :button, class: "user-button user-edit-button", data: { input: "#user-email-input", span: "#user-email" }
+          i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
+      = form_for(@current_user, remote: true) do |f|
+        .form
+          label.setting-label パスワード
+          span.user-info#user-pass
+            | ******
+          = button_tag "編集", type: :button, class: "user-button user-edit-button"
+          i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
     / 同期
     #sync.tab-pane[role="tabpanel"]
       =form_tag import_tasks_path, method: :post do
-        label.setting-label Todoistトークン
+        .form
+          label.setting-label Todoistトークン
+          = hidden_field :service, :service_name, value: "todoist"
+          = text_field :service, :token, class: "form-control"
+          = button_tag "同期", type: :button, id: "todoist-button"
+          i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
 
-        = hidden_field :service, :service_name, value: "todoist"
-
-        = text_field :service, :token, class: "form-control user-edit-input"
-
-        = submit_tag "同期", class: "user-button user-edit-button"

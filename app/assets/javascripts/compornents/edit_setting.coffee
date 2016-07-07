@@ -47,22 +47,17 @@ $(document).ready ->
     ajaxStateOn(ajax_state)
     span = $(scope).data("span")
     input = $(scope).data("input")
-    value = $(input).val()
-    target_attr = $(scope).data("attr")
+    f = $(scope).parents("form")
     $.ajax
       url: "/user"
       type: "PATCH"
       dataType: "json"
-      data: {
-        user: {
-          "#{target_attr}" : value
-        }
-      }
+      data: f.serialize()
       success: (results) ->
         ajaxStateSuccess(ajax_state)
         $(input).removeClass("active")
         $(span).show()
-          .html(results[target_attr])
+          .html($(input).val())
         $(scope).removeClass("user-submit-button")
         $(scope).addClass("user-edit-button")
         $(scope).html("編集")
@@ -70,8 +65,26 @@ $(document).ready ->
         ajaxStateFail(ajax_state)
         console.log results
         # ここでエラーの内容を表示
-
   $(document).on "click", ".user-edit-button", ->
     editUserInfo(this)
   $(document).on "click", ".user-submit-button", ->
     submitUserInfo(this)
+
+  todoistSubmit = (scope) ->
+    ajax_state = $(scope).parent().find(".ajax-state")
+    ajaxStateOn(ajax_state)
+    f = $(scope).parents("form")
+    $.ajax
+      url: "/tasks/import"
+      type: "POST"
+      dataType: "json"
+      data: f.serialize()
+      success: (results) ->
+        ajaxStateSuccess(ajax_state)
+        console.log results["count"]
+      error: (results) ->
+        ajaxStateFail(ajax_state)
+        console.log results
+        # ここでエラーの内容を表示
+  $(document).on "click", "#todoist-button", ->
+    todoistSubmit(this)

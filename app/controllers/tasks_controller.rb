@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   def import
     tasks_imported = "Importer::#{service_params[:service_name].capitalize}".constantize.import(service_params[:token])
     Task.create(tasks_imported)
-    redirect_to tasks_path, notice: tasks_imported.count
+    render json: { count:  tasks_imported.count }
   end
 
   def new
