@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, on: :create
-  before_create :set_setting
+  after_create :set_setting
   has_secure_password
   has_many :tasks
   has_one :setting
@@ -52,5 +52,6 @@ class User < ActiveRecord::Base
 
   def set_setting
     self.setting = Setting.new
+    self.setting.save
   end
 end
