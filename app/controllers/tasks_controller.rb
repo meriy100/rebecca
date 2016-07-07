@@ -5,6 +5,9 @@ class TasksController < ApplicationController
   before_action :set_new_task, only: [:index, :completed, :today, :weekly]
   before_action :set_search, only: [:index, :completed, :today, :weekly]
   before_action :check_events, only: :index
+  before_action :set_new_category, only: [:index, :completed, :today, :weekly]
+  before_action :set_colors, only: [:index, :completed, :today, :weekly]
+  before_action :set_icons, only: [:index, :completed, :today, :weekly]
 
   def index
     @tasks = @search.result.on_user.doings.sort_by(&:least_time_per)
@@ -90,5 +93,17 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.on_user.find_by(id: params[:id])
+  end
+
+  def set_new_category
+    @category = Category.new
+  end
+
+  def set_colors
+    @colors = CategoryColor.all
+  end
+
+  def set_icons
+    @icons = CategoryIcon.all
   end
 end

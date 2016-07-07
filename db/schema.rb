@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< d189bdcb1ad099bb6d9ca5d5b8427fa2b9719be9
 ActiveRecord::Schema.define(version: 20160709144851) do
 
   create_table "events", force: :cascade do |t|
@@ -52,6 +53,20 @@ ActiveRecord::Schema.define(version: 20160709144851) do
 
   add_index "google_calendars", ["google_account_id"], name: "index_google_calendars_on_google_account_id", using: :btree
   add_index "google_calendars", ["user_id"], name: "index_google_calendars_on_user_id", using: :btree
+=======
+ActiveRecord::Schema.define(version: 20160706073143) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "category_name",     limit: 255
+    t.integer  "row_order",         limit: 4
+    t.integer  "user_id",           limit: 4
+    t.integer  "category_color_id", limit: 4
+    t.integer  "category_icon_id",  limit: 4
+    t.string   "sync_token",        limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+>>>>>>> categoryテーブル作成、サイドバーに新規カテゴリ試作版作成途中
 
   create_table "settings", force: :cascade do |t|
     t.integer  "user_id",           limit: 4,             null: false
@@ -70,7 +85,11 @@ ActiveRecord::Schema.define(version: 20160709144851) do
     t.datetime "deadline_at"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+<<<<<<< d189bdcb1ad099bb6d9ca5d5b8427fa2b9719be9
     t.integer  "event_id",    limit: 4
+=======
+    t.integer  "category_id", limit: 4,   null: false
+>>>>>>> categoryテーブル作成、サイドバーに新規カテゴリ試作版作成途中
   end
 
   add_index "tasks", ["event_id"], name: "index_tasks_on_event_id", using: :btree
