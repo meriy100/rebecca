@@ -82,7 +82,7 @@ ul.tab-list{
         font-size: 14px;
       }
     }
-    button.user-button{
+    button{
       font-size: 14px;
       background: transparent;
       border: 0px;
@@ -90,6 +90,10 @@ ul.tab-list{
       @include max-screen($breakpoint-small){
         font-size: 12px;
       }
+    }
+    span.message{
+      font-size: 14px;
+      color: $sub-color;
     }
   }
 }
