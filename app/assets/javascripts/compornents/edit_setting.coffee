@@ -81,7 +81,7 @@ $(document).ready ->
       data: f.serialize()
       success: (results) ->
         ajaxStateSuccess(ajax_state)
-        console.log results["count"]
+        $(scope).parent().find("span.message").html results["message"]
       error: (results) ->
         ajaxStateFail(ajax_state)
         console.log results

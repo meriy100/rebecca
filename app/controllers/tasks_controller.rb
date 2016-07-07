@@ -26,8 +26,8 @@ class TasksController < ApplicationController
   # createの際のエラー対処
   def import
     tasks_imported = "Importer::#{service_params[:service_name].capitalize}".constantize.import(service_params[:token])
-    Task.create(tasks_imported)
-    render json: { count:  tasks_imported.count }
+    tasks = Task.create(tasks_imported)
+    render json: { message:  "#{tasks.count}件のタスクが同期されました" }
   end
 
   def new
