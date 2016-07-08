@@ -9,7 +9,7 @@ class Importer::GoogleCalendar
     events(calendar.calendar_id, calendar.google_account.access_token, Time.zone.now).map do |event|
       {
         title: event.summary,
-        deadline_at: event.start.date_time,
+        deadline_at: (event.start.date_time || event.start.date),
         weight: 1,
         sync_token: event.id,
         created_at: event.created
