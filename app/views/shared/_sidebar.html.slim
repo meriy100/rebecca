@@ -4,8 +4,8 @@
 -count_all = Task.on_user.doings.count
 -category = Category.new
 -category_list = Category.all
--category_colors = CategoryColor.all
--category_icons = CategoryIcon.all
+-category_colors = Color.all
+-category_icons = Icon.all
 
 .side-content-col
   .side-content
@@ -53,7 +53,7 @@
                   a.btn.btn-primary.dropdown-toggle data-toggle = "dropdown"
                     span.fa.fa-caret-down title = "Toggle dropdown menu"
                   ul.dropdown-menu
-                    = CategoryIcon.all.each do |ci|
+                    = Icon.all.each do |ci|
                       li
                         a
                           = content_tag(:i, ci.name, class: "fa fa-fw " + ci.class_name)
@@ -63,10 +63,11 @@
                   a.btn.btn-primary.dropdown-toggle data-toggle = "dropdown"
                     span.fa.fa-caret-down title = "Toggle dropdown menu"
                   ul.dropdown-menu
-                    = CategoryColor.all.each do |cc|
+                    = Color.all.each do |cc|
                       li
                         a
-                         = content_tag(:font, cc.name, color: cc.code)
+                          = content_tag(:font, cc.name, color: cc.code)
+
                 .actions
                   .ice-button.sub-color.trans.ice-submit
                     | 作成する

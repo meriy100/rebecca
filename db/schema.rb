@@ -57,14 +57,14 @@ ActiveRecord::Schema.define(version: 20160709144851) do
 ActiveRecord::Schema.define(version: 20160706073143) do
 
   create_table "categories", force: :cascade do |t|
-    t.string   "category_name", limit: 255
-    t.integer  "row_order",     limit: 4
-    t.integer  "user_id",       limit: 4
-    t.integer  "color_id",      limit: 4
-    t.integer  "icon_id",       limit: 4
-    t.string   "sync_token",    limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "name",       limit: 255
+    t.integer  "row_order",  limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "color_id",   limit: 4
+    t.integer  "icon_id",    limit: 4
+    t.string   "sync_token", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 >>>>>>> categoryテーブル作成、サイドバーに新規カテゴリ試作版作成途中
 

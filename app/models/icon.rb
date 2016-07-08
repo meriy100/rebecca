@@ -1,4 +1,4 @@
-class CategoryIcon < ActiveHash::Base
+class Icon < ActiveHash::Base
   self.data = [
     { id: 1, name: "graduation-cap", class_name: "fa-graduation-cap" },
     { id: 2, name: "car", class_name: "fa-car" },

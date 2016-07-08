@@ -1,7 +1,7 @@
 class MakeCategoryTable < ActiveRecord::Migration
   def change
     create_table :categories do |t|
-      t.string :category_name
+      t.string :name
       t.integer :row_order
       t.integer :user_id
       t.integer :color_id

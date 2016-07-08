@@ -2,8 +2,8 @@ class Category < ActiveRecord::Base
   extend ActiveHash::Associations::ActiveRecordExtensions
   include CurrentUser
 
-  belongs_to_active_hash :category_color
-  belongs_to_active_hash :category_icon
+  belongs_to_active_hash :color
+  belongs_to_active_hash :icon
 
   before_validation :set_sync_token
 

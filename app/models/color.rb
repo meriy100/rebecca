@@ -1,4 +1,4 @@
-class CategoryColor < ActiveHash::Base
+class Color < ActiveHash::Base
   self.data = [
     { id: 1, name: "red", code: "#e74c3c" },
     { id: 2, name: "blue", code: "#3498db" },
