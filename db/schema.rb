@@ -11,7 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705093259) do
+ActiveRecord::Schema.define(version: 20160708051812) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "category_name",     limit: 255
+    t.integer  "row_order",         limit: 4
+    t.integer  "user_id",           limit: 4
+    t.integer  "category_color_id", limit: 4
+    t.integer  "category_icon_id",  limit: 4
+    t.string   "sync_token",        limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "google_accounts", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4
+    t.string   "email",         limit: 255
+    t.string   "access_token",  limit: 255
+    t.string   "refresh_token", limit: 255
+    t.integer  "expires_in",    limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "google_accounts", ["user_id"], name: "index_google_accounts_on_user_id", using: :btree
+
+  create_table "google_calendars", force: :cascade do |t|
+    t.integer  "user_id",           limit: 4
+    t.integer  "google_account_id", limit: 4
+    t.string   "summary",           limit: 255
+    t.integer  "status",            limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "google_calendars", ["google_account_id"], name: "index_google_calendars_on_google_account_id", using: :btree
+  add_index "google_calendars", ["user_id"], name: "index_google_calendars_on_user_id", using: :btree
 
   create_table "settings", force: :cascade do |t|
     t.integer  "user_id",           limit: 4,               null: false
@@ -31,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160705093259) do
     t.datetime "deadline_at"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "category_id", limit: 4,   null: false
   end
 
   add_index "tasks", ["sync_token"], name: "index_tasks_on_sync_token", unique: true, using: :btree
