@@ -6,7 +6,7 @@ require 'fileutils'
 
 class Importer::GoogleCalendar
   def self.import calendar
-    events(calendar.calendar_id, calendar.google_account.access_token, Time.zone.now).map do |event|
+    events(calendar.calendar_id, calendar.google_account.access_token, calendar.google_account.refresh_token, Time.zone.now).map do |event|
       {
         title: event.summary,
         deadline_at: (event.start.date_time || event.start.date),
@@ -45,11 +45,12 @@ class Importer::GoogleCalendar
       token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
       token_credential_uri: "https://accounts.google.com/o/oauth2/token",
       expires_in: 3600,
+      refresh_token: option[:refresh_token]
     })
   end
 
-  def self.events(calendar_id, access_token, time_min)
-    events = service(access_token).list_events(calendar_id, time_min: time_min.iso8601, single_events: true).items
+  def self.events(calendar_id, access_token, refresh_token, time_min)
+    events = service(access_token, refresh_token).list_events(calendar_id, time_min: time_min.iso8601, single_events: true).items
     # task_list = events.map do |event|
     #   {
     #     title: event.summary,
@@ -60,14 +61,17 @@ class Importer::GoogleCalendar
     # end
     # Task.create(task_list)
   end
-  def self.service(access_token)
+  def self.service(access_token, refresh_token = nil)
     service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = client(access_token: access_token)
+    service.authorization = client(access_token: access_token, refresh_token: refresh_token)
+    service.authorization.fetch_access_token if refresh_token.present?
     service
   end
   def self.calendar_list(token)
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client(access_token: token)
     service.list_calendar_lists
+  end
+  def self.generate_access_token_request
   end
 end
