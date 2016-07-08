@@ -4,8 +4,8 @@ class SettingsController < ApplicationController
     @task = Task.new
     @search = Task.search(params[:q])
     @filter = { title: "タスク一覧", path: tasks_path }
-    if current_user.setting.google_token
-      @calendar_list = OathOtherService::GoogleCalendar.calendar_list(current_user.setting.google_token)
+    if google_account = current_user.google_accounts.first.presence
+      @google_calendars = google_account.google_calendars
     end
   end
   # 4/DXokFdX68ztB8InKxenf2zw0aDNb9W8mqBA-1SwHHWY
@@ -21,11 +21,16 @@ class SettingsController < ApplicationController
   def google_callback
     client = OathOtherService::GoogleCalendar.client_on_code(params[:code])
     response = client.fetch_access_token!
-    current_user.setting.update google_token: response['access_token']
+    google_account = current_user.google_accounts.create(access_token: response['access_token'], refresh_token: response["refresh_token"], expires_in: response["expires_in"])
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client
-
-    @calendar_list = service.list_calendar_lists
+    calendar_hashs = service.list_calendar_lists.items.map do |item|
+      {
+        calendar_id: item.id,
+        summary: item.summary
+      }
+    end
+    google_account.google_calendars.create(calendar_hashs)
     redirect_to setting_path
   end
 

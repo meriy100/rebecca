@@ -3,6 +3,7 @@ class CreateGoogleCalendars < ActiveRecord::Migration
     create_table :google_calendars do |t|
       t.integer :user_id
       t.integer :google_account_id
+      t.string :calendar_id
       t.string :summary
       t.integer :status
 

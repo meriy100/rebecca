@@ -59,8 +59,12 @@
           span.message
       h3 Google カレンダー
       = link_to "google", oath_setting_path(oath_name: "google_calendar"), class: "btn btn-primariy"
-      - if @calendar_list.present?
-        table
-          - @calendar_list.items.each do |calendar|
-            tr
-              td = calendar.id
+      table.table
+        tr
+          th カレンダー
+          th ステータス
+        - @google_calendars.each do |calendar|
+          tr
+            td = calendar.summary
+            td = calendar.status
+            td = link_to "同期", import_tasks_path(service: { service_name: "google_calendar", account: calendar.google_account, calendar: calendar }), method: :post

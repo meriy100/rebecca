@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160708051812) do
   create_table "google_calendars", force: :cascade do |t|
     t.integer  "user_id",           limit: 4
     t.integer  "google_account_id", limit: 4
+    t.string   "calendar_id",       limit: 255
     t.string   "summary",           limit: 255
     t.integer  "status",            limit: 4
     t.datetime "created_at",                    null: false
