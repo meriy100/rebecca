@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   has_one :setting
   has_many :google_accounts
   has_many :events
+  has_many :categories
   acts_as_paranoid
 
   def self.email?(string)

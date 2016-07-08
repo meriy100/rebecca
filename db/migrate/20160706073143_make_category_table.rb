@@ -4,8 +4,8 @@ class MakeCategoryTable < ActiveRecord::Migration
       t.string :category_name
       t.integer :row_order
       t.integer :user_id
-      t.integer :category_color_id
-      t.integer :category_icon_id
+      t.integer :color_id
+      t.integer :icon_id
       t.string :sync_token
 
       t.timestamps null: false

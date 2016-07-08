@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   include CurrentUser
   has_one :setting, through: :user
   belongs_to :event
+  belongs_to :category
 
   before_validation :set_is_done
   before_validation :set_end_of_date
