@@ -9,9 +9,10 @@ class Importer::GoogleCalendar
     events(calendar.calendar_id, calendar.google_account.access_token, Time.zone.now).map do |event|
       {
         title: event.summary,
-        deadline_at: event.end.date_time,
+        deadline_at: event.start.date_time,
         weight: 1,
-        sync_token: event.id
+        sync_token: event.id,
+        created_at: event.created
       }
     end
   end
@@ -48,7 +49,7 @@ class Importer::GoogleCalendar
   end
 
   def self.events(calendar_id, access_token, time_min)
-    events = service(access_token).list_events(calendar_id, time_min: time_min.iso8601).items
+    events = service(access_token).list_events(calendar_id, time_min: time_min.iso8601, single_events: true).items
     # task_list = events.map do |event|
     #   {
     #     title: event.summary,

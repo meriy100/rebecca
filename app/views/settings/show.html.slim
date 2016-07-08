@@ -63,8 +63,9 @@
         tr
           th カレンダー
           th ステータス
-        - @google_calendars.each do |calendar|
-          tr
-            td = calendar.summary
-            td = calendar.status
-            td = link_to "同期", import_tasks_path(service: { service_name: "google_calendar", account: calendar.google_account, calendar: calendar }), method: :post
+        - if @google_calendars.present?
+          - @google_calendars.each do |calendar|
+            tr
+              td = calendar.summary
+              td = calendar.status
+              td = link_to "同期", import_tasks_path(service: { service_name: "google_calendar", account: calendar.google_account, calendar: calendar }), method: :post
