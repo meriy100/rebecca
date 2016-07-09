@@ -71,5 +71,7 @@
               td = google_account.email
               td = calendar.summary
               td = calendar.status
-              td = link_to "同期", import_events_path(calendar: calendar), method: :post
-              td = link_to "同期中止"
+              td = link_to "同期", import_events_path(calendar: calendar), class: "btn btn-base", method: :post
+              td
+                = link_to "同期中止", class: "btn btn-warning"
+                = link_to "削除", google_calendar_path(calendar), method: :delete, class: "btn btn-danger"

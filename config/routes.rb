@@ -49,6 +49,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :google_calendars, only: [:update, :destroy]
+
   resource :setting, only: [:show, :update] do
     get "oath"
     get "google_callback"
