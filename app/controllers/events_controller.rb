@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 
   def import
     google_calendar = GoogleCalendar.find(params[:calendar])
-    events_imported = Importer::GoogleCalendar.import(google_calendar)
+    events_imported = OauthOtherService::GoogleCalendar.import(google_calendar)
     if events_imported
       google_calendar.events.create(events_imported)
       redirect_to tasks_path, notice: "#{events_imported.count}件のイベントを取り込みました"
