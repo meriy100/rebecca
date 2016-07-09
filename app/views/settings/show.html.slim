@@ -58,7 +58,7 @@
           i.ajax-state.fa.fa-lg.fa-spinner.fa-spin
           span.message
       h3 Google カレンダー
-      = link_to "google", oath_setting_path(oath_name: "google_calendar"), class: "btn btn-primariy"
+      = link_to "google カレンダーと連携", oath_setting_path(oath_name: "google_calendar"), class: "btn btn-primary"
       table.table
         tr
           th アカウント
@@ -72,3 +72,4 @@
               td = calendar.summary
               td = calendar.status
               td = link_to "同期", import_events_path(calendar: calendar), method: :post
+              td = link_to "同期中止"

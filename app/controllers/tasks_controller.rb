@@ -25,15 +25,9 @@ class TasksController < ApplicationController
   # TODO
   # createの際のエラー対処
   def import
-    if service_params[:service_name] == "google_calendar"
-      google_calendar = GoogleCalendar.find(params[:service][:calendar])
-      tasks_imported = Importer::GoogleCalendar.import(google_calendar)
-    else
-      tasks_imported = "Importer::#{service_params[:service_name].capitalize}".constantize.import(service_params[:token])
-    end
+    tasks_imported = "Importer::#{service_params[:service_name].capitalize}".constantize.import(service_params[:token])
     tasks = Task.create(tasks_imported)
     render json: { message:  "#{tasks.count}件のタスクが同期されました" }
->>>>>>> いい感じ
   end
 
   def new
