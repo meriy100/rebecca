@@ -1,3 +1,8 @@
+require 'google/apis/calendar_v3'
+require 'googleauth'
+require 'googleauth/stores/file_token_store'
+require 'fileutils'
+
 class OauthOtherService::GoogleCalendar
   AuthorizationURI = "https://accounts.google.com/o/oauth2/auth".freeze
   def self.import(calendar)
@@ -20,7 +25,7 @@ class OauthOtherService::GoogleCalendar
       client_secret: ENV.fetch('GOOGLE_API_CLIENT_SECRET'),
       authorization_uri: AuthorizationURI,
       scope: Google::Apis::CalendarV3::AUTH_CALENDAR_READONLY,
-      redirect_uri: "http://localhost:3000/setting/google_callback"
+      redirect_uri: "http://localhost:3000/google_accounts/google_callback"
     ).authorization_uri.to_s
   end
 
@@ -29,7 +34,7 @@ class OauthOtherService::GoogleCalendar
       client_id: ENV.fetch('GOOGLE_API_CLIENT_ID'),
       client_secret: ENV.fetch('GOOGLE_API_CLIENT_SECRET'),
       token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
-      redirect_uri: "http://localhost:3000/setting/google_callback",
+      redirect_uri: "http://localhost:3000/google_accounts/google_callback",
       code: code
     )
   end
