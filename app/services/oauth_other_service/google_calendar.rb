@@ -1,12 +1,7 @@
-require 'google/apis/calendar_v3'
-require 'googleauth'
-require 'googleauth/stores/file_token_store'
-
-require 'fileutils'
-
 class OauthOtherService::GoogleCalendar
+  AuthorizationURI = "https://accounts.google.com/o/oauth2/auth".freeze
   def self.import(calendar)
-    events(calendar.calendar_id, calendar.google_account.access_token, calendar.google_account.refresh_token, Time.zone.now).map do |event|
+    events(calendar.calendar_id, calendar.access_token, calendar.refresh_token, Time.zone.now).map do |event|
       {
         summary: event.summary,
         date: (event.start.date_time || event.start.date),
@@ -19,11 +14,11 @@ class OauthOtherService::GoogleCalendar
     false
   end
 
-  def self.oath_path
+  def self.oauth_path
     Signet::OAuth2::Client.new(
       client_id: ENV.fetch('GOOGLE_API_CLIENT_ID'),
       client_secret: ENV.fetch('GOOGLE_API_CLIENT_SECRET'),
-      authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
+      authorization_uri: AuthorizationURI,
       scope: Google::Apis::CalendarV3::AUTH_CALENDAR_READONLY,
       redirect_uri: "http://localhost:3000/setting/google_callback"
     ).authorization_uri.to_s
@@ -52,15 +47,6 @@ class OauthOtherService::GoogleCalendar
 
   def self.events(calendar_id, access_token, refresh_token, time_min)
     service(access_token, refresh_token).list_events(calendar_id, time_min: time_min.iso8601, single_events: true).items
-    # task_list = events.map do |event|
-    #   {
-    #     title: event.summary,
-    #     deadline_at: event.end.date_time,
-    #     weight: 1,
-    #     created_at: event.created
-    #   }
-    # end
-    # Task.create(task_list)
   end
 
   def self.service(access_token, refresh_token = nil)
@@ -71,8 +57,6 @@ class OauthOtherService::GoogleCalendar
   end
 
   def self.calendar_list(token)
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = client(access_token: token)
-    service.list_calendar_lists
+    service(token).list_calendar_lists
   end
 end

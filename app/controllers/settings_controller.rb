@@ -13,7 +13,7 @@ class SettingsController < ApplicationController
   end
 
   def oath
-    redirect_to "OathOtherService::#{params[:oath_name].camelize}".constantize.oath_path
+    redirect_to "OauthOtherService::#{params[:oath_name].camelize}".constantize.oauth_path
   end
 
   def google_callback
