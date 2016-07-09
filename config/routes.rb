@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :events, only: [:update] do
+    resources :tasks, only: [:index], module: :events
+  end
+
   resource :setting, only: [:show, :update] do
     get "oath"
     get "google_callback"

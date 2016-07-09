@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708051812) do
+ActiveRecord::Schema.define(version: 20160709144851) do
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "user_id",            limit: 4
+    t.integer  "google_calendar_id", limit: 4
+    t.string   "summary",            limit: 255
+    t.string   "sync_token",         limit: 255
+    t.datetime "date"
+    t.string   "description",        limit: 255
+    t.integer  "status",             limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "evnets", force: :cascade do |t|
+    t.integer  "user_id",            limit: 4
+    t.integer  "google_calendar_id", limit: 4
+    t.string   "summary",            limit: 255
+    t.string   "sync_token",         limit: 255
+    t.datetime "date"
+    t.string   "description",        limit: 255
+    t.integer  "status",             limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "evnets", ["google_calendar_id"], name: "index_evnets_on_google_calendar_id", using: :btree
 
   create_table "google_accounts", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
@@ -55,8 +83,10 @@ ActiveRecord::Schema.define(version: 20160708051812) do
     t.datetime "deadline_at"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "event_id",    limit: 4
   end
 
+  add_index "tasks", ["event_id"], name: "index_tasks_on_event_id", using: :btree
   add_index "tasks", ["sync_token"], name: "index_tasks_on_sync_token", unique: true, using: :btree
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
