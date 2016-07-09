@@ -4,9 +4,7 @@ class SettingsController < ApplicationController
     @task = Task.new
     @search = Task.search(params[:q])
     @filter = { title: "タスク一覧", path: tasks_path }
-    if google_account = current_user.google_accounts.first.presence
-      @google_calendars = google_account.google_calendars
-    end
+    @google_accounts = current_user.google_accounts
   end
   # 4/DXokFdX68ztB8InKxenf2zw0aDNb9W8mqBA-1SwHHWY
   def update

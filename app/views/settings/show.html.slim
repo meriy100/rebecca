@@ -61,11 +61,14 @@
       = link_to "google", oath_setting_path(oath_name: "google_calendar"), class: "btn btn-primariy"
       table.table
         tr
+          th アカウント
           th カレンダー
           th ステータス
-        - if @google_calendars.present?
-          - @google_calendars.each do |calendar|
+          th
+        - @google_accounts.each do |google_account|
+          - google_account.google_calendars.each do |calendar|
             tr
+              td = google_account.email
               td = calendar.summary
               td = calendar.status
               td = link_to "同期", import_events_path(calendar: calendar), method: :post
