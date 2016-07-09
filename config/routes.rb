@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   end
 
   resources :events, only: [:update] do
+    collection do
+      post :import
+    end
     resources :tasks, only: [:index], module: :events
   end
 

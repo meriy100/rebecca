@@ -1,17 +1,21 @@
 class Event::TasksController < ApplicationController
   include TasksAction
-  before_action :set_task, only: [:update, :destroy, :done, :undo]
-  before_action :set_new_task, only: [:index, :completed, :today, :weekly]
-  before_action :set_search, only: [:index, :completed, :today, :weekly]
+  before_action :set_event, only: [:index]
+  before_action :set_new_task, only: [:index]
+  before_action :set_search, only: [:index]
 
   def index
-    @tasks = @search.result.on_user.doings.sort_by(&:least_time_per)
+    @tasks = @event.tasks.on_user.doings.sort_by(&:least_time_per)
   end
 
   private
 
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
+
   def set_new_task
-    @task = Task.new
+    @task = @event.tasks.new
   end
 
   def set_search

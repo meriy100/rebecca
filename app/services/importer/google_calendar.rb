@@ -8,11 +8,10 @@ class Importer::GoogleCalendar
   def self.import calendar
     events(calendar.calendar_id, calendar.google_account.access_token, calendar.google_account.refresh_token, Time.zone.now).map do |event|
       {
-        title: event.summary,
-        deadline_at: (event.start.date_time || event.start.date),
-        weight: 1,
-        sync_token: event.id,
-        created_at: event.created
+        summary: event.summary,
+        date: (event.start.date_time || event.start.date),
+        description: event.description,
+        sync_token: event.id
       }
     end
   end
@@ -64,7 +63,7 @@ class Importer::GoogleCalendar
   def self.service(access_token, refresh_token = nil)
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client(access_token: access_token, refresh_token: refresh_token)
-    service.authorization.fetch_access_token if refresh_token.present?
+    service.authorization.fetch_access_token! if refresh_token.present?
     service
   end
   def self.calendar_list(token)

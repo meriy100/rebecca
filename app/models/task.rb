@@ -2,6 +2,7 @@ class Task < ActiveRecord::Base
   # belongs_to :user
   include CurrentUser
   has_one :setting, through: :user
+  belongs_to :event
 
   before_validation :set_is_done
   before_validation :set_end_of_date

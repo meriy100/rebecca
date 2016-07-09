@@ -1,0 +1,9 @@
+.right-side
+  .right-side-content
+    == render "tasks/new_task_form", task: @task
+.content-tasks
+  h2.title タスク一覧
+  ul.list-group#tasks-doing-list
+    == render partial: "tasks/task", collection: @tasks
+
+  == render "tasks/done_modal"
