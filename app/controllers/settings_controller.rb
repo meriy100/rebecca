@@ -6,7 +6,7 @@ class SettingsController < ApplicationController
     @filter = { title: "タスク一覧", path: tasks_path }
     @google_accounts = current_user.google_accounts
   end
-  # 4/DXokFdX68ztB8InKxenf2zw0aDNb9W8mqBA-1SwHHWY
+
   def update
     @setting.update(setting_params)
     render json: :setting
