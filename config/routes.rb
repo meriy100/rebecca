@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index], module: :events
   end
 
-  resources :google_accounts do
+  resources :google_accounts, only: [:update, :destroy] do
     collection do
       get "google_callback"
     end

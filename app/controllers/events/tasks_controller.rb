@@ -17,8 +17,4 @@ class Event::TasksController < ApplicationController
   def set_new_task
     @task = @event.tasks.new
   end
-
-  def set_search
-    @search = Task.search(params[:q])
-  end
 end

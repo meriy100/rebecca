@@ -32,4 +32,16 @@ class ApplicationController < ActionController::Base
     User.reset_current_user
     reset_session
   end
+
+  def set_events
+    @events = Event.on_user
+  end
+
+  def set_new_task
+    @task = Task.new
+  end
+
+  def set_search
+    @search = Task.search(params[:q])
+  end
 end

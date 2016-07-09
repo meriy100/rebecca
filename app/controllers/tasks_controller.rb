@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   include TasksAction
+  before_action :set_events, only: [:index, :completed, :today, :weekly]
   before_action :set_task, only: [:update, :destroy, :done, :undo]
   before_action :set_new_task, only: [:index, :completed, :today, :weekly]
   before_action :set_search, only: [:index, :completed, :today, :weekly]
@@ -88,13 +89,5 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.on_user.find_by(id: params[:id])
-  end
-
-  def set_new_task
-    @task = Task.new
-  end
-
-  def set_search
-    @search = Task.search(params[:q])
   end
 end
