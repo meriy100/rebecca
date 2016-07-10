@@ -1,8 +1,6 @@
-.right-side
-  .right-side-content
-    == render "tasks/new_task_form", task: @task
+== render partial: "shared/right_side", locals: { task: @task }
 .content-tasks
-  h2.title タスク一覧
+  h2.title = @event.summary
   ul.list-group#tasks-doing-list
     == render partial: "tasks/task", collection: @tasks
 

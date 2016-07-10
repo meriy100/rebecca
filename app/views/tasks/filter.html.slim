@@ -1,6 +1,4 @@
-.right-side
-  .right-side-content
-    == render "tasks/new_task_form", task: @task
+== render partial: "shared/right_side", locals: { task: @task }
 .content-tasks
   h2.title
     = filter_title

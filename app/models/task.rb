@@ -7,6 +7,8 @@ class Task < ActiveRecord::Base
   before_validation :set_is_done
   before_validation :set_end_of_date
   before_validation :set_sync_token
+  before_validation :set_weight
+  after_initialize :set_deadline_at
 
   validate :deadline_at_over_created_at
   validates :sync_token, presence: true, uniqueness: true
@@ -103,5 +105,13 @@ class Task < ActiveRecord::Base
 
   def set_sync_token
     self.sync_token = SecureRandom.uuid if sync_token.nil?
+  end
+
+  def set_weight
+    self.weight ||= 1.0
+  end
+
+  def set_deadline_at
+    self.deadline_at ||= Time.zone.now.end_of_day
   end
 end

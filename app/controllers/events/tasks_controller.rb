@@ -1,5 +1,6 @@
-class Event::TasksController < ApplicationController
+class Events::TasksController < ApplicationController
   include TasksAction
+  before_action :set_events, only: [:index]
   before_action :set_event, only: [:index]
   before_action :set_new_task, only: [:index]
   before_action :set_search, only: [:index]
@@ -15,6 +16,6 @@ class Event::TasksController < ApplicationController
   end
 
   def set_new_task
-    @task = @event.tasks.new
+    @task = @event.tasks.new(deadline_at: @event.date)
   end
 end

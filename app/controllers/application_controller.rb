@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_events
-    @events = Event.on_user
+    @events = Event.on_user.order(date: :asc).limit(10)
   end
 
   def set_new_task
