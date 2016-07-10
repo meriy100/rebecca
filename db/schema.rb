@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20160709144851) do
     t.string   "sync_token",         limit: 255
     t.datetime "date"
     t.string   "description",        limit: 255
-    t.integer  "status",             limit: 4
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "status",             limit: 4,   default: 1
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   add_index "events", ["google_calendar_id"], name: "index_events_on_google_calendar_id", using: :btree

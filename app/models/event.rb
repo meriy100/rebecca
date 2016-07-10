@@ -4,4 +4,5 @@ class Event < ActiveRecord::Base
   has_many :tasks
 
   scope :on_user, -> { where user: User.current_user }
+  enum status: { show: 1, hidden: 2 }
 end

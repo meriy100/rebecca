@@ -2,6 +2,11 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:update]
 
   def update
+    if @event.update(event_params)
+      redirect_to tasks_path
+    else
+      redirect_to tasks_path
+    end
   end
 
   def import
@@ -22,6 +27,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params[:event].premit
+    params[:event].permit(:id, :user_id, :google_calendar_id, :summary, :synk_token, :date, :description, :status)
   end
 end

@@ -7,7 +7,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :sync_token
       t.datetime :date
       t.string :description
-      t.integer :status
+      t.integer :status, default: 1
 
       t.timestamps null: false
     end
