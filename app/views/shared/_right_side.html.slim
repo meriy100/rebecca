@@ -2,11 +2,13 @@
   .right-side-content
     == render "tasks/new_task_form", task: task
     ul.events-list.list-group
-      - @events.each do |event|
-        li.list-group-item
-          = link_to event.summary, event_tasks_path(event)
-          = l event.date
-          = form_for event do |f|
-            = f.hidden_field :status, value: :hidden
-            = f.submit "削除"
-
+      - if @events.present?
+        - @events.each do |event|
+          li.list-group-item
+            = link_to event.summary, event_tasks_path(event)
+            = l event.date
+            = form_for event do |f|
+              = f.hidden_field :status, value: :hidden
+              = f.submit "削除"
+      - else
+        = link_to "google カレンダーと連携", oath_setting_path(oath_name: "google_calendar"), class: "btn btn-primary"
