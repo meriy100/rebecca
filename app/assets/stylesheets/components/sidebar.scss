@@ -75,6 +75,63 @@
       }
     }
   }
+  .categories{
+    .new-category-form:before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      margin-left: -10px;
+      width: 0;
+      height: 0;
+      border-bottom: 10px solid $white;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+    }
+    .new-category-form {
+      display: none;
+      position: absolute;
+      right: 61px;
+      background-color: $white;
+      padding:3px;
+      color:$black;
+      border-radius: 4px;
+      @include box-shadow(5px, 5px, 8px, -5px);
+      .actions{
+        display: inline;
+        position: relative;
+      }
+      .ice-button{
+        margin: 0;
+      }
+      .ice-button.ice-submit{
+        padding-left: 20px;
+        padding-right: 20px;
+        .create-submit{
+          border: 0px;
+          background: transparent;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+        &:active{
+          @include box-shadow-inset(0, 3px, 5px, 0, $shadow);
+          @include box-shadow(0, 0, 0, 0, none);
+        }
+      }
+      .ice-button.disabled{
+        background-color: $completed-color;
+        border-color: $gray-1;
+        transition: 0.7s;
+        color: $gray-1;
+      }
+      ul{
+        color: $black;
+      }
+    }
+  }
 }
 
 .side-content{
@@ -94,60 +151,6 @@
 
 .task-num{
   text-align: right;
-}
-
-.new-category-form {
-  display: none;
-  position: absolute;
-  right: 61px;
-  background-color: $white;
-  padding:3px;
-  color:$black;
-  border-radius: 4px;
-  @include box-shadow(5px, 5px, 8px, -5px);
-  .actions{
-    display: inline;
-    position: relative;
-  }
-  .ice-button{
-    margin: 0;
-  }
-  .ice-button.ice-submit{
-    padding-left: 20px;
-    padding-right: 20px;
-    .create-submit{
-      border: 0px;
-      background: transparent;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    &:active{
-      @include box-shadow-inset(0, 3px, 5px, 0, $shadow);
-      @include box-shadow(0, 0, 0, 0, none);
-    }
-  }
-  .ice-button.disabled{
-    background-color: $completed-color;
-    border-color: $gray-1;
-    transition: 0.7s;
-    color: $gray-1;
-  }
-}
-
-.new-category-form:before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  margin-left: -10px;
-  width: 0;
-  height: 0;
-  border-bottom: 10px solid $white;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
 }
 
 @keyframes fade-slidein{

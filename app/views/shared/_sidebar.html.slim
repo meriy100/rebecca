@@ -46,28 +46,23 @@
                 = f.hidden_field :user_id
                 = f.hidden_field :color_id
                 = f.hidden_field :icon_id
-                = f.text_field :category_name, placeholder: "カテゴリ名", class: "form-control"
-                .btn-group
-                  a.btn.btn-primary
-                   | アイコンを選択
-                  a.btn.btn-primary.dropdown-toggle data-toggle = "dropdown"
-                    span.fa.fa-caret-down title = "Toggle dropdown menu"
-                  ul.dropdown-menu
-                    = Icon.all.each do |ci|
-                      li
-                        a
-                          = content_tag(:i, ci.name, class: "fa fa-fw " + ci.class_name)
-                .btn-group
-                  a.btn.btn-primary
-                    | colorを選択
-                  a.btn.btn-primary.dropdown-toggle data-toggle = "dropdown"
-                    span.fa.fa-caret-down title = "Toggle dropdown menu"
-                  ul.dropdown-menu
-                    = Color.all.each do |cc|
-                      li
-                        a
-                          = content_tag(:font, cc.name, color: cc.code)
-
+                = f.text_field :name, placeholder: "カテゴリ名", class: "form-control"
+                .dropdown
+                  btn.btn-default.dropdown-toggle#icon-dropdown data-toggle = "dropdown" type = "button"
+                    | アイコンを選択
+                    span.fa.fa-caret-down
+                  ul.dropdown-menu aria-labelled-by = "icon-dropdown"
+                    = category_icons.each do |ci|
+                      li.icon-cand
+                        = content_tag(:i, ci.name, class: "fa fa-fw " + ci.class_name, value: ci.id)
+                .dropdown
+                  btn.btn-default.dropdown-toggle#color-dropdown data-toggle = "dropdown" type = "button"
+                    | 色を選択
+                    span.fa.fa-caret-down
+                  ul.dropdown-menu aria-labelled-by = "color-dropdown"
+                    = category_colors.each do |cc|
+                      li.color-cand
+                        = content_tag(:font, cc.name, color: cc.code, value: cc.id)
                 .actions
                   .ice-button.sub-color.trans.ice-submit
                     | 作成する
