@@ -31,14 +31,10 @@
         .underbar
           | カテゴリ
         ul.side-list
-          li
-            | 個人
-          li
-            | 仕事
-          li
-            | 見たい映画
-          li
-            | 買い物
+          - category_list.each do |c|
+            li
+              i[class="fa fa-fw #{c.icon.class_name}", style="color:#{c.color.code}"]
+                span[style="color:$white"] #{c.name}
           li.new-category
             | + 新しいカテゴリ
             .new-category-form
@@ -48,7 +44,6 @@
                 = f.hidden_field :icon_id
                 = f.text_field :name, placeholder: "カテゴリ名", class: "form-control"
                 = f.collection_select :icon_id, category_icons, :id, :class_name
-                = f.collection_select :color_id, category_colors, :id, :name
                 = f.select :color_id, options_for_select(Color.all.map { |color| [color.name, color.id, {style:"background-color:#{color.code}"} ] } )
                 .actions
                   .ice-button.sub-color.trans.ice-submit

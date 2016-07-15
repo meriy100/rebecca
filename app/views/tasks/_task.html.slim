@@ -8,9 +8,10 @@
           = task.event.try :summary
     .task-info
       .task-name
-        .task-name-value[data-task="#{task.id}"]
+        i[class="fa fa-fw #{task.category.icon.class_name}", style="color:#{task.category.color.code}"]
+        span.task-name-value[data-task="#{task.id}"]
           = task.title
-        .task-name-field[data-task="#{task.id}" style="display: none"]
+        span.task-name-field[data-task="#{task.id}" style="display: none"]
           = text_field_tag :title, task.title
     .deadline_at
       .task-deadline_at-value[data-task="#{task.id}"]
