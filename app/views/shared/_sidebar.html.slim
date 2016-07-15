@@ -47,22 +47,9 @@
                 = f.hidden_field :color_id
                 = f.hidden_field :icon_id
                 = f.text_field :name, placeholder: "カテゴリ名", class: "form-control"
-                .dropdown
-                  btn.btn-default.dropdown-toggle#icon-dropdown data-toggle = "dropdown" type = "button"
-                    | アイコンを選択
-                    span.fa.fa-caret-down
-                  ul.dropdown-menu aria-labelled-by = "icon-dropdown"
-                    = category_icons.each do |ci|
-                      li.icon-cand
-                        = content_tag(:i, ci.name, class: "fa fa-fw " + ci.class_name, value: ci.id)
-                .dropdown
-                  btn.btn-default.dropdown-toggle#color-dropdown data-toggle = "dropdown" type = "button"
-                    | 色を選択
-                    span.fa.fa-caret-down
-                  ul.dropdown-menu aria-labelled-by = "color-dropdown"
-                    = category_colors.each do |cc|
-                      li.color-cand
-                        = content_tag(:font, cc.name, color: cc.code, value: cc.id)
+                = f.collection_select :icon_id, category_icons, :id, :class_name
+                = f.collection_select :color_id, category_colors, :id, :name
+                = f.select :color_id, options_for_select(Color.all.map { |color| [color.name, color.id, {style:"background-color:#{color.code}"} ] } )
                 .actions
                   .ice-button.sub-color.trans.ice-submit
                     | 作成する

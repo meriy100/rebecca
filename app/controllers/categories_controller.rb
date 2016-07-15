@@ -1,4 +1,4 @@
-class CategoriesController < ApplicatinController
+class CategoriesController < ApplicationController
   before_action :set_category, only: [:update, :destroy]
 
   def create
@@ -6,6 +6,8 @@ class CategoriesController < ApplicatinController
     @category.save
     render nothing: true
   end
+
+  private
 
   def set_category
     @category = Category.on_user.find(params[:id])

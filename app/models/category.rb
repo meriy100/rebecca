@@ -8,7 +8,7 @@ class Category < ActiveRecord::Base
   before_validation :set_sync_token
 
   validates :sync_token, presence: true, uniqueness: true
-  validates :category_name, presence: true
+  validates :name, presence: true
 
   belongs_to :user
   has_many :tasks

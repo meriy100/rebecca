@@ -7,10 +7,11 @@
     = f.hidden_field :event_id
     = f.hidden_field :is_done
     = f.hidden_field :deadline_at
+    = f.hidden_field :category_id
 
     = f.text_field :title, placeholder: "日曜に彼氏とデート♡ ", class: "form-control title-input", id: "title-input"
     .datepicker
-
+    = f.collection_select :category_id, Category.all, :id, :name
     /= f.text_field :weight, class: "slider", data: {slider_min: 0.5, slider_max: 1.5, slider_step: 0.5, slider_tooltip: "hide", slider_value: 1}
     .footer
       = f.submit "登録する", id: "new-task-submit", class: "btn btn-sub create-submit", disabled: true
