@@ -23,9 +23,12 @@
 }
 
 .new-task-form{
+  @include box-shadow(1px, 1px, 8px, 1px, rgba($black, 0.5));
+  background-color: $background-color;
   width: $new-task-form-width;
-  padding-left: $new-task-form-pl;
-  padding-right: $new-task-form-pr;
+  padding-left: $new-task-form-pl + 20;
+  padding-right: $new-task-form-pr + 20;
+  padding-bottom: $new-task-form-pr ;
   .form-group{
     margin: 0;
     .col-md-12{

@@ -43,4 +43,31 @@
       display: block;
     }
   }
+
+  .events-manager{
+    @include box-shadow-inset(1px, 1px, 8px, 1px, rgba($black, 0.5));
+    width: $new-task-form-width;
+    padding-left: $new-task-form-pl;
+    padding-right: $new-task-form-pr;
+    background-color: $background-color;
+    margin-top: 20px;
+    height: 50%;
+    overflow: scroll;
+    h3 {
+      padding-top: 20px;
+      margin-top: 0px;
+      text-align: center;
+    }
+    ul.events-list{
+      margin-top: 0px;
+      padding-left: 0px;
+      li{
+        height: $task-row-height;
+        background-color: $gray-2;
+        list-style-type: none;
+        margin-bottom: 4px;
+        @include box-shadow(1px, 1px, 8px, 1px, rgba($black, 0.5));
+      }
+    }
+  }
 }
