@@ -20,6 +20,7 @@ class EventsController < ApplicationController
           google_calendar.events.create(event_imported)
         end
       end
+      google_calendar.update(updated_at: Time.zone.now)
       redirect_to tasks_path, notice: "#{events_imported.count}件のイベントを取り込みました"
     else
       redirect_to setting_path, notice: "カレンダーと同期出来ませんでした. もう一度連携してください"
