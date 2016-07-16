@@ -70,8 +70,15 @@
             tr
               td = google_account.email
               td = calendar.summary
-              td = calendar.status
+              td = calendar.sync? ? "同期中" : "同期中止中"
               td = link_to "同期", import_events_path(calendar: calendar), class: "btn btn-base", method: :post
               td
-                = link_to "同期中止", class: "btn btn-warning"
+                = form_for calendar do |f|
+                  - if calendar.sync?
+                    = f.hidden_field :status, value: :stop
+                    = f.submit "同期中止", class: "btn btn-warning"
+                  - else
+                    = f.hidden_field :status, value: :sync
+                    = f.submit "同期開始", class: "btn btn-warning"
+              td
                 = link_to "削除", google_calendar_path(calendar), method: :delete, class: "btn btn-danger"
