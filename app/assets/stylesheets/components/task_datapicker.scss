@@ -1,0 +1,11 @@
+@import "settings/variables/_position.scss";
+
+#task-update{
+	position: absolute;
+	width: $deadline-datapicker-width;
+	height: $deadline-datapicker-height;
+	box-shadow:1px 1px 1px 1px #454545;
+	right: 0px;
+	top: 20px;
+	z-index: 3;
+}

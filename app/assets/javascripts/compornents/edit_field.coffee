@@ -43,6 +43,12 @@ $(document).ready ->
         $(".notify-modal.done").fadeIn()
         $(".undo-link").data("task", taskId)
 
+  updateTask = (scope) ->
+    task_id = $(scope).data("task")
+    field = $(scope).parent().find(".datepicker")
+    field.show()
+
+
   undoTask = (scope) ->
     taskId = $(scope).data("task")
     taskRow = $(scope).parents(".task-row")
@@ -73,6 +79,10 @@ $(document).ready ->
     $(this).find(".done-button").hide()
   $(document).on "click", ".task-done", ->
     doneTask(this)
+  $(document).on "click", ".task-deadline_at-value", ->
+    updateTask(this)
+  $(document).on "click", ".task-deadline_at-value", ->
+    hideDatapicker(this)
   $(document).on "click", "span.modal-hide", ->
     hideModal()
   $(document).on "click", ".undo-link", ->

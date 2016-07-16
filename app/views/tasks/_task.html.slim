@@ -15,6 +15,7 @@
           = text_field_tag :title, task.title
     .deadline_at
       .task-deadline_at-value[data-task="#{task.id}"]
+        .datepicker#task-update style="display: none"
         /= l task.deadline_at, format: :short
         = task.deadline_at_to_s
       .task-deadline_at-field[data-task="#{task.id}" style="display: none"]
