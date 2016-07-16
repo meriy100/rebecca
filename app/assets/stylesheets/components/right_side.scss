@@ -62,11 +62,29 @@
       margin-top: 0px;
       padding-left: 0px;
       li{
-        height: $task-row-height;
         background-color: $gray-2;
         list-style-type: none;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
+        padding: 8px 8px;
         @include box-shadow(1px, 1px, 8px, 1px, rgba($black, 0.5));
+        .date{
+          text-align: right;
+          span.date{
+            color: $gray-1;
+            font-size: $task-row-deadline-fs;
+          }
+        }
+        .summary{
+          span.summary{
+            font-size: 18px;
+          }
+        }
+        .calendar{
+          text-align: right;
+          span.calendar{
+            color: $gray-1;
+          }
+        }
       }
     }
   }
