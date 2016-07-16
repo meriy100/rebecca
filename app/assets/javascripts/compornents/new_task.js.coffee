@@ -6,9 +6,10 @@ $(document).on "ready page:load", ->
       previous: "fa fa-arrow-left",
       next: "fa fa-arrow-right"
     },
-    minDate: moment()
+    minDate: moment(),
+    defaultDate: $("#task_deadline_at").val()
   })
-  $('#task_deadline_at').val($('.datepicker').data("DateTimePicker").date())
+  # $('#task_deadline_at').val($('.datepicker').data("DateTimePicker").date())
   $('.datepicker').on 'dp.change', (ev)->
     $('#task_deadline_at').val(ev.date.toDate())
   $('.datepicker-days .picker-switch').removeAttr('title').on 'click', (ev) ->

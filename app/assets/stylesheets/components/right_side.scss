@@ -43,4 +43,65 @@
       display: block;
     }
   }
+
+  .events-manager{
+    @include box-shadow-inset(1px, 1px, 8px, 1px, rgba($black, 0.5));
+    width: $new-task-form-width;
+    padding-left: $new-task-form-pl;
+    padding-right: $new-task-form-pr;
+    background-color: $background-color;
+    margin-top: 20px;
+    height: 50%;
+    overflow: scroll;
+    h3 {
+      padding-top: 20px;
+      margin-top: 0px;
+      text-align: center;
+    }
+    ul.events-list{
+      margin-top: 0px;
+      padding-left: 0px;
+      li{
+        background-color: $gray-2;
+        list-style-type: none;
+        margin-bottom: 8px;
+        padding: 8px 8px;
+        position: relative;
+        @include box-shadow(1px, 1px, 8px, 1px, rgba($black, 0.5));
+        .date{
+          text-align: right;
+          span.date{
+            color: $gray-1;
+            font-size: $task-row-deadline-fs;
+          }
+        }
+        .summary{
+          span.summary{
+            font-size: 18px;
+            color: $black;
+          }
+        }
+        .calendar{
+          text-align: right;
+          span.calendar{
+            color: $gray-1;
+          }
+        }
+        &.active{
+          background-color: $sub-color + 100;
+        }
+        &:hover {
+          background-color: $sub-color + 120;
+        }
+        .event-destroy{
+          background-color: transparent;
+          border: 0px;
+          color: $gray-1;
+          top: -2px;
+          right: -2px;
+          position: absolute;
+        }
+      }
+    }
+  }
 }

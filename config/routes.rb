@@ -36,5 +36,23 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :setting, only: [:show, :update]
+  resources :events, only: [:update] do
+    collection do
+      post :import
+    end
+    resources :tasks, only: [:index], module: :events
+  end
+
+  resources :google_accounts, only: [:update, :destroy] do
+    collection do
+      get "google_callback"
+    end
+  end
+
+  resources :google_calendars, only: [:update, :destroy]
+
+  resource :setting, only: [:show, :update] do
+    get "oath"
+    get "google_callback"
+  end
 end

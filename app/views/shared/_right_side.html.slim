@@ -1,0 +1,22 @@
+.right-side
+  .right-side-content
+    == render "tasks/new_task_form", task: task
+    .events-manager
+      h3 スケジュール
+      ul.events-list
+        - if @events.present?
+          - @events.each do |event|
+            li[class="#{'active' if event == @event}"]
+              = form_for event do |f|
+                = f.hidden_field :status, value: :hidden
+                = f.button type: :submit, class: "event-destroy" do
+                  i.fa.fa-close
+              = link_to event_tasks_path(event) do
+                .summary
+                  span.summary = event.summary
+                .date
+                  span.date = event.date_to_s
+                .calendar
+                  span.calendar = event.google_calendar.summary
+        - else
+          = link_to "google カレンダーと連携", oath_setting_path(oath_name: "google_calendar"), class: "btn btn-primary"

@@ -32,4 +32,36 @@ class ApplicationController < ActionController::Base
     User.reset_current_user
     reset_session
   end
+
+  def set_events
+    @events = Event.on_user.show.order(date: :asc).limit(10)
+  end
+
+  def set_new_task
+    @task = Task.new
+  end
+
+  def set_search
+    @search = Task.search(params[:q])
+  end
+
+  def check_events
+    current_user.google_accounts.each do |account|
+      account.google_calendars.sync.each do |google_calendar|
+        if google_calendar.updated_at < Time.zone.yesterday
+          events_imported = OauthOtherService::GoogleCalendar.import(google_calendar)
+          if events_imported
+            events_imported.each do |event_imported|
+              if (event = google_calendar.events.find_by(sync_token: event_imported[:sync_token]))
+                event.update(event_imported)
+              else
+                google_calendar.events.create(event_imported)
+              end
+            end
+            google_calendar.update(updated_at: Time.zone.now)
+          end
+        end
+      end
+    end
+  end
 end

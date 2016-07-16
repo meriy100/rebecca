@@ -154,6 +154,30 @@
       }
     }
   }
+
+  .task-event-tag{
+    left: 5px;
+    top: 5px;
+    padding: 2px 4px;
+    color: $white;
+    display: inline-block;
+    background-color: $sub-color;
+    position: absolute;
+    height: 18px;
+    font-size: 10px;
+    line-height: 14px;
+    &:before{
+      z-index: 0;
+      position: absolute;
+      content: "";
+      right: -18px;
+      left: auto;
+      top: 0;
+      height: 18px;
+      border: 9px solid $sub-color;
+      border-color: transparent transparent transparent $sub-color ;
+    }
+  }
 }
 
 .trello-shadow{

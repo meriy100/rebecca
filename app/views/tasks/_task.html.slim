@@ -1,9 +1,11 @@
 .trello-shadow[id="task-#{task.id}"]
   .task-row.task-row-doing
-    .task-done[data-task="#{task.id}"]
-      .task-done-view
-    /.light-btn.done-button[style="display: none"]
-    /  button.light-btn.task-done[data-task="#{task.id}"]
+    .task-header
+      .task-done[data-task="#{task.id}"]
+        .task-done-view
+      - if task.event.present?
+        .task-event-tag
+          = task.event.try :summary
     .task-info
       .task-name
         .task-name-value[data-task="#{task.id}"]

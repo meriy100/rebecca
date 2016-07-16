@@ -1,0 +1,7 @@
+== render partial: "shared/right_side", locals: { task: @task }
+.content-tasks
+  h2.title = @event.summary
+  ul.list-group#tasks-doing-list
+    == render partial: "tasks/task", collection: @tasks
+
+  == render "tasks/done_modal"

@@ -6,7 +6,7 @@ $(document).ready ->
     value_span = $(scope).parent().find(".task-name-value")
     value_span.show()
     $.ajax
-      url: "tasks/#{task_id}"
+      url: "/tasks/#{task_id}"
       type: "PATCH"
       dataType: "html"
       data: {

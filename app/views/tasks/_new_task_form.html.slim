@@ -4,16 +4,18 @@
       button.close.task-new-form-cancel[ type="button"]
         i.fa.fa-close
     = f.hidden_field :user_id
+    = f.hidden_field :event_id
     = f.hidden_field :is_done
     = f.hidden_field :deadline_at
 
     = f.text_field :title, placeholder: "日曜に彼氏とデート♡ ", class: "form-control title-input", id: "title-input"
     .datepicker
 
-    = f.text_field :weight, class: "slider", data: {slider_min: 0.5, slider_max: 1.5, slider_step: 0.5, slider_tooltip: "hide", slider_value: 1}
+    /= f.text_field :weight, class: "slider", data: {slider_min: 0.5, slider_max: 1.5, slider_step: 0.5, slider_tooltip: "hide", slider_value: 1}
     .footer
-      .actions
-        #new-task-submit-ice.ice-button.sub-color.trans.ice-submit.disabled
-          | 登録する
-          = f.submit "", id: "new-task-submit", class: "create-submit", disabled: true
+      = f.submit "登録する", id: "new-task-submit", class: "btn btn-sub create-submit", disabled: true
+      /.actions
+      /  #new-task-submit-ice.ice-button.sub-color.trans.ice-submit.disabled
+      /    | 登録する
+      /    = f.submit "", id: "new-task-submit", class: "create-submit", disabled: true
 
