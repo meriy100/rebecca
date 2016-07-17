@@ -15,9 +15,13 @@
           = text_field_tag :title, task.title
     .deadline_at
       .task-deadline_at-value[data-task="#{task.id}"]
-        .datepicker#task-update style="display: none"
-        /= l task.deadline_at, format: :short
         = task.deadline_at_to_s
+      .datatable style="display: none"
+        = button_tag type: :button, class: "closetable" do
+          i.fa.fa-times
+        .datepicker.task-update
+        /= l task.deadline_at, format: :short
+        
       .task-deadline_at-field[data-task="#{task.id}" style="display: none"]
         = datetime_field_tag :deadline_at, task.title
     .progress.task-content

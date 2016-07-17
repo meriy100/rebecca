@@ -43,10 +43,31 @@ $(document).ready ->
         $(".notify-modal.done").fadeIn()
         $(".undo-link").data("task", taskId)
 
-  updateTask = (scope) ->
+  apperDatepicker = (scope) ->
     task_id = $(scope).data("task")
-    field = $(scope).parent().find(".datepicker")
+    field = $(scope).parent().find(".datatable")
     field.show()
+    table_day = $(scope).find("td.day")
+    $.each(table_day,  -> 
+        $(this).on "click", -> 
+          result = $(this).data("day").match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/)
+          $.ajax
+            url: "/tasks/#{task_id}"
+            type: "PATCH"
+            dataType: "json"
+            data: {
+              task: {
+                deadline_at: "#{result[3]}/#{result[1]}/#{result[2]}"
+              }
+            }
+            success: (results) ->
+              field.hide()
+              $(scope).html(results["deadline_at_to_s"])
+      )
+
+
+
+
 
 
   undoTask = (scope) ->
@@ -79,10 +100,13 @@ $(document).ready ->
     $(this).find(".done-button").hide()
   $(document).on "click", ".task-done", ->
     doneTask(this)
+
   $(document).on "click", ".task-deadline_at-value", ->
-    updateTask(this)
-  $(document).on "click", ".task-deadline_at-value", ->
-    hideDatapicker(this)
+    apperDatepicker(this)
+  $(document).on "click", ".closetable", ->
+    $(this).parent(".datatable").hide()
+
+
   $(document).on "click", "span.modal-hide", ->
     hideModal()
   $(document).on "click", ".undo-link", ->

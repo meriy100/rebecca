@@ -1,10 +1,16 @@
 @import "settings/variables/_position.scss";
 
-#task-update{
-	position: absolute;
+.datepicker.task-update{
 	width: $deadline-datapicker-width;
 	height: $deadline-datapicker-height;
+	right: 0px;
+	top: 40px;
+	z-index: 3;
 	box-shadow:1px 1px 1px 1px #454545;
+
+}
+.closetable {
+	position: relative;
 	right: 0px;
 	top: 20px;
 	z-index: 3;
