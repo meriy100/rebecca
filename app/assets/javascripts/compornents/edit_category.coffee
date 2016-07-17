@@ -6,3 +6,6 @@ $(document).ready ->
     $("#category_icon_id").val($(this).find("i").attr("value"))
   $(document).on "click", ".color-cand", ->
     $("#category_color_id").val($(this).find("font").attr("value"))
+  $(document).on "click", ".new-category-form-cancel", ->
+    console.log("clicked")
+    $(".new-category-form").hide()

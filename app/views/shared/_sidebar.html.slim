@@ -4,8 +4,6 @@
 -count_all = Task.on_user.doings.count
 -category = Category.new
 -category_list = Category.all
--category_colors = Color.all
--category_icons = Icon.all
 
 .side-content-col
   .side-content
@@ -34,21 +32,10 @@
           - category_list.each do |c|
             li
               i[class="fa fa-fw #{c.icon.class_name}", style="color:#{c.color.code}"]
-                span[style="color:$white"] #{c.name}
+                span[style="color:$white"]
+                  | #{c.name}
           li.new-category
             | + 新しいカテゴリ
-            .new-category-form
-              = form_for(category, remote: true) do |f|
-                = f.hidden_field :user_id
-                = f.hidden_field :color_id
-                = f.hidden_field :icon_id
-                = f.text_field :name, placeholder: "カテゴリ名", class: "form-control"
-                = f.collection_select :icon_id, category_icons, :id, :class_name
-                = f.select :color_id, options_for_select(Color.all.map { |color| [color.name, color.id, {style:"background-color:#{color.code}"} ] } )
-                .actions
-                  .ice-button.sub-color.trans.ice-submit
-                    | 作成する
-                    = f.submit "", class: "create-submit"
 
 /javascript:
 /  $(document).click(".new-category", function(){
