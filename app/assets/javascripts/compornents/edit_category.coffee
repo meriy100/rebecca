@@ -1,11 +1,12 @@
 $(document).ready ->
   $(document).on "click", ".new-category", ->
     $(".new-category-form").show()
-  $(document).on "click", ".icon-cand", ->
-    console.log($(this).find(".fa").attr("value"))
-    $("#category_icon_id").val($(this).find("i").attr("value"))
-  $(document).on "click", ".color-cand", ->
-    $("#category_color_id").val($(this).find("font").attr("value"))
+    $("input[type='radio']").val(['1'])
+    $("input[type='radio']").parent(".btn").removeClass("btn-selected")
+    $("input[type='radio']:checked").parent(".btn").addClass("btn-selected")
   $(document).on "click", ".new-category-form-cancel", ->
-    console.log("clicked")
     $(".new-category-form").hide()
+  $(document).on "change", "input[type='radio']", ->
+    console.log("changed")
+    $("input[type='radio']").parent(".btn").removeClass("btn-selected")
+    $("input[type='radio']:checked").parent(".btn").addClass("btn-selected")
