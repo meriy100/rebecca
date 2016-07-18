@@ -31,7 +31,7 @@
         ul.side-list
           - category_list.each do |c|
             li
-              i[class="fa fa-fw #{c.icon.class_name}", style="color:#{c.color.code}"]
+              i[class="fa fa-ul #{c.icon.class_name}", style="color:#{c.color.code}"]
                 span[style="color:$white"]
                   | #{c.name}
           li.new-category

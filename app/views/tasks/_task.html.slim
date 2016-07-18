@@ -8,7 +8,7 @@
           = task.event.try :summary
     .task-info
       .task-name
-        i[class="fa fa-fw #{task.category.icon.class_name}", style="color:#{task.category.color.code}"]
+        i[class="fa fa-fw #{task.category.icon.class_name}" style="color:#{task.category.color.code}"]
         span.task-name-value[data-task="#{task.id}"]
           = task.title
         span.task-name-field[data-task="#{task.id}" style="display: none"]

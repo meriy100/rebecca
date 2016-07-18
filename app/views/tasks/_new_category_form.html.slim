@@ -1,31 +1,32 @@
 -category_colors = Color.all
 -category_icons = Icon.all
-.new-category-form
-    = form_for(category, remote: true) do |f|
-      .form-header
-        button.close.new-category-form-cancel{ type="button"}
-          i.fa.fa-close
-      = f.hidden_field :user_id
-      = f.hidden_field :color_id
-      = f.hidden_field :icon_id
+.modal-background
+  .new-category-form
+      = form_for(category) do |f|
+        .form-header
+          button.close.new-category-form-cancel{ type="button"}
+            i.fa.fa-close
+        = f.hidden_field :user_id
+        = f.hidden_field :color_id
+        = f.hidden_field :icon_id
 
-      = f.text_field :name, placeholder: "カテゴリ名", class: "form-control", id: "category-name-input"
-      .colors
-        .form-title
-          | 色を選択
-        - category_colors.each do |cc|
-          .btn.color-select-button[style="background-color:#{cc.code}"]
-            = f.radio_button :color_id, cc.id
-            = f.label :color_id, cc.name, value: cc.id
-      .icons
-        .form-title
-          | アイコンを選択
-        - category_icons.each do |ci|
-          .btn.icon-select-button
-              = f.radio_button :icon_id, ci.id
-              = f.label :icon_id, value: ci.id
-                i[class="fa fa-2x #{ci.class_name}"]
-      .actions
-        #new-category-submit-ice.ice-button.sub-color.trans.ice-submit.disabled
-          | 作成する
-          = f.submit "", id: "new-category-submit", class: "create-submit", disabled: true
+        = f.text_field :name, placeholder: "カテゴリ名", class: "form-control", id: "category-name-input"
+        .colors
+          .form-title
+            | 色を選択
+          - category_colors.each do |cc|
+            .btn.color-select-button[style="background-color:#{cc.code}"]
+              = f.radio_button :color_id, cc.id
+              = f.label :color_id, cc.name, value: cc.id
+        .icons
+          .form-title
+            | アイコンを選択
+          - category_icons.each do |ci|
+            .btn.icon-select-button
+                = f.radio_button :icon_id, ci.id
+                = f.label :icon_id, value: ci.id
+                  i[class="fa fa-2x #{ci.class_name}"]
+        .actions
+          #new-category-submit-ice.ice-button.sub-color.trans.ice-submit.disabled
+            | 作成する
+            = f.submit "", id: "new-category-submit", class: "create-submit", disabled: true

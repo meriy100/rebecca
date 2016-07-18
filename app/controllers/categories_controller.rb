@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     @category.save
-    render nothing: true
+    redirect_to tasks_path
   end
 
   private
