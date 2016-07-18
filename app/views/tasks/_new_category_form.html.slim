@@ -9,7 +9,7 @@
       = f.hidden_field :color_id
       = f.hidden_field :icon_id
 
-      = f.text_field :name, placeholder: "カテゴリ名", class: "form-control"
+      = f.text_field :name, placeholder: "カテゴリ名", class: "form-control", id: "category-name-input"
       .colors
         .form-title
           | 色を選択
@@ -26,6 +26,6 @@
               = f.label :icon_id, value: ci.id
                 i[class="fa fa-2x #{ci.class_name}"]
       .actions
-        .ice-button.sub-color.trans.ice-submit
+        #new-category-submit-ice.ice-button.sub-color.trans.ice-submit.disabled
           | 作成する
-          = f.submit "", class: "create-submit"
+          = f.submit "", id: "new-category-submit", class: "create-submit", disabled: true
