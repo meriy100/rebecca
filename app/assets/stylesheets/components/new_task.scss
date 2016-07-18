@@ -1,9 +1,10 @@
 @import "settings/variables/_variables.scss";
 @import "settings/mixins/_mixins.scss";
 
+
 .form-header{
   visibility: hidden;
-  @include max-screen($breakpoint-small){
+    @include max-screen($breakpoint-small){
     visibility: visible;
     height: 25px;
     button{

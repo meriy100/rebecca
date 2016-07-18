@@ -6,9 +6,10 @@
   /  button.light-btn.task-done[data-task="#{completed_task.id}"]
   .task-info
     .task-name
-      .task-name-value-fixed[data-task="#{completed_task.id}"]
+      i[class="fa fa-fw #{completed_task.category.icon.class_name}" style="color:#{completed_task.category.color.code}"]
+      span.task-name-value-fixed[data-task="#{completed_task.id}"]
         = completed_task.title
-      .task-name-field[data-task="#{completed_task.id}" style="display: none"]
+      span.task-name-field[data-task="#{completed_task.id}" style="display: none"]
         = text_field_tag :title, completed_task.title
   .deadline_at
     .task-deadline_at-value-fixed[data-task="#{completed_task.id}"]

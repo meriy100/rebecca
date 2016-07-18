@@ -75,10 +75,22 @@
       }
     }
   }
+  .categories{
+    span{
+      color: $white;
+    }
+    .fa-ul{
+      margin-left: 0;
+    }
+  }
 }
 
 .side-content{
   margin-bottom: 30px;
+}
+
+.side-list{
+  padding-left: 0;
 }
 
 .underbar{

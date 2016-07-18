@@ -1,0 +1,104 @@
+@import "settings/variables/_variables.scss";
+@import "settings/mixins/_mixins.scss";
+.modal-background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($black, 0.6);
+  z-index: 3;
+  display: none;
+}
+.new-category-form {
+  width: $new-task-form-width-sm + 5px;
+  @include center_beside_block;
+  position: fixed;
+  left: 0;
+  top: 100px;
+  transition: 0.5s;
+  z-index: 100;
+  .form-header{
+    height: 25px;
+  }
+  form{
+    margin-top: $new-task-form-form-mt;
+    margin-left: $new-task-form-form-mlr;
+    margin-right: $new-task-form-form-mlr;
+    background-color: $white;
+    padding: 5% 7%;
+    padding-bottom: $new-task-form-form-pb;
+    border: 1px solid $white;
+    border-radius: 4px;
+  }
+  .actions{
+    display: inline;
+    position: relative;
+  }
+  .ice-button{
+    margin: 0;
+  }
+  .ice-button.ice-submit{
+    padding-left: 20px;
+    padding-right: 20px;
+    .create-submit{
+      border: 0px;
+      background: transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    &:active{
+      @include box-shadow-inset(0, 3px, 5px, 0, $shadow);
+      @include box-shadow(0, 0, 0, 0, none);
+    }
+  }
+  .ice-button.disabled{
+    background-color: $completed-color;
+    border-color: $gray-1;
+    transition: 0.7s;
+    color: $gray-1;
+  }
+  ul{
+    color: $black;
+  }
+  input[type="radio"]{
+    -webkit-appearance: none;
+  }
+  .btn{
+    position: relative;
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0;
+    margin: 2px;
+    &.btn-selected{
+      @include box-shadow-inset(0, 3px, 5px, 0, #585858)
+    }
+    label{
+      margin: 0;
+      width: 80px;
+      height: 40px;
+      line-height: 30px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    &.color-select-button{
+      label{
+        color: Transparent;
+      }
+    }
+    &.icon-select-button{
+      i{
+        position:absolute;
+        top:50%;;
+        left:50%;
+        display:inline-block;
+        width:auto;
+        transform:translate(-50%, -50%);
+      }
+    }
+  }
+}

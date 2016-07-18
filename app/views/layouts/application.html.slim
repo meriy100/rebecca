@@ -15,6 +15,7 @@ html
       - flash.each do |key, value|
         = content_tag :div, value, class: "alert alert-success", role: "alert"
       = yield
+      == render "tasks/new_category_form", category: Category.new
     .sidebar
       == render "shared/sidebar"
     .header

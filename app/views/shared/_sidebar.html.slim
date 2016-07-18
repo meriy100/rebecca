@@ -1,4 +1,10 @@
 -counts = Task.doing_counts
+-count_today = Task.on_user.doings.todays.count
+-count_weekly = Task.on_user.doings.weeklys.count
+-count_all = Task.on_user.doings.count
+-category = Category.new
+-category_list = Category.all
+
 .side-content-col
   .side-content
     ul
@@ -20,14 +26,19 @@
   .categories
     ul
       li.no-hover
-        .underbar カテゴリ
+        .underbar
+          | カテゴリ
         ul.side-list
-          li
-            | 個人
-          li
-            | 仕事
-          li
-            | 見たい映画
-          li
-            | 買い物
+          - category_list.each do |c|
+            li
+              i[class="fa fa-ul #{c.icon.class_name}", style="color:#{c.color.code}"]
+                span[style="color:$white"]
+                  | #{c.name}
+          li.new-category
+            | + 新しいカテゴリ
+
+/javascript:
+/  $(document).click(".new-category", function(){
+/    $(".new-category-form").show();
+/  });
 

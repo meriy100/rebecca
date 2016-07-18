@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe TasksController, type: :controller do
   let(:valid_session) { { user_id: 1 } }
   let(:user) { create(:user) }
+  let(:category) { create :category }
   before do
     user
+    category
   end
 
   describe "GET #index" do

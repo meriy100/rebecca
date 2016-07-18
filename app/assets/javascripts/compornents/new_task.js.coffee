@@ -27,7 +27,7 @@ $(document).on "ready page:load", ->
 # 新規追加フォームがよく見えるようにスクロール
 # $("html,body").animate({scrollTop:$('#new-task').offset().top})
 # $("#title-input").focus()
-chageTitleInput = (scope) ->
+changeTitleInput = (scope) ->
   if isBlank($(scope).val())
     $("#new-task-submit").prop('disabled', true)
     $("#new-task-submit-ice").addClass("disabled")
@@ -36,11 +36,11 @@ chageTitleInput = (scope) ->
     $("#new-task-submit-ice").removeClass("disabled")
 
 $(document).on "change", "#title-input", ->
-  chageTitleInput(this)
+  changeTitleInput(this)
 $(document).on "keypress", "#title-input", ->
-  chageTitleInput(this)
+  changeTitleInput(this)
 $(document).on "keyup", "#title-input", ->
-  chageTitleInput(this)
+  changeTitleInput(this)
 
 $(document).on "submit", "form.new_task", ->
   $("input[name='commit']").prop('disabled', true)

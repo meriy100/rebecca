@@ -13,6 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20160709144851) do
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "row_order",  limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "color_id",   limit: 4
+    t.integer  "icon_id",    limit: 4
+    t.string   "sync_token", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer  "user_id",            limit: 4
     t.integer  "google_calendar_id", limit: 4
@@ -70,6 +81,7 @@ ActiveRecord::Schema.define(version: 20160709144851) do
     t.datetime "deadline_at"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "category_id", limit: 4,   null: false
     t.integer  "event_id",    limit: 4
   end
 
