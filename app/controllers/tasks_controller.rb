@@ -68,7 +68,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      render json: @task.to_json, status: 200
+      render json: @task.to_json(methods: :deadline_at_to_s), status: 200
     else
       render json: @task.to_json, status: 501
     end

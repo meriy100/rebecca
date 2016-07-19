@@ -1,0 +1,21 @@
+@import "settings/variables/_position.scss";
+
+.datatable{
+	position: absolute;
+	right: 0px;
+	background-color: white;
+	z-index: 3;
+	padding: 10px;
+	box-shadow:0px 0px 10px;
+}
+
+.datepicker.task-update{
+	position: relative;
+	right: 0px;
+	z-index: 3;
+}
+.closetable {
+	position: relative;
+	right: 0px;
+	z-index: 4;
+}
