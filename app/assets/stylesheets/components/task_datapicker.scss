@@ -1,22 +1,21 @@
 @import "settings/variables/_position.scss";
 
-.data-table{
-	position: relative;
+.datatable{
+	position: absolute;
+	right: 0px;
+	background-color: white;
+	z-index: 3;
+	padding: 10px;
+	box-shadow:0px 0px 10px;
 }
 
 .datepicker.task-update{
-	position: absolute;
-	width: $deadline-datapicker-width;
-	height: $deadline-datapicker-height;
+	position: relative;
 	right: 0px;
-	top: 40px;
 	z-index: 3;
-	box-shadow:1px 1px 1px 1px #454545;
-
 }
 .closetable {
 	position: relative;
 	right: 0px;
-	top: 20px;
 	z-index: 4;
 }
