@@ -1,6 +1,11 @@
 @import "settings/variables/_position.scss";
 
+.data-table{
+	position: relative;
+}
+
 .datepicker.task-update{
+	position: absolute;
 	width: $deadline-datapicker-width;
 	height: $deadline-datapicker-height;
 	right: 0px;
@@ -13,5 +18,5 @@
 	position: relative;
 	right: 0px;
 	top: 20px;
-	z-index: 3;
+	z-index: 4;
 }
