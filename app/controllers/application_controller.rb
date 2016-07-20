@@ -45,6 +45,10 @@ class ApplicationController < ActionController::Base
     @search = Task.search(params[:q])
   end
 
+  def set_category
+    @category = Category.on_user.all
+  end
+
   def check_events
     current_user.google_accounts.each do |account|
       account.google_calendars.sync.each do |google_calendar|

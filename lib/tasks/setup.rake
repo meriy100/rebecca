@@ -16,9 +16,9 @@ namespace :categories do
     User.all.each do |user|
       next if user.categories.present?
       category = user.categories.create name: "勉強", color_id: 1, icon_id: 1
-      user.tasks.each do |tasuk|
-        tasuk.category = category
-        tasuk.update
+      user.tasks.each do |task|
+        task.category = category
+        task.update
       end
     end
   end
