@@ -2,7 +2,7 @@
 -category_icons = Icon.all
 .modal-background
   .new-category-form
-      = form_for(category) do |f|
+      = form_for(@category) do |f|
         .form-header
           button.close.new-category-form-cancel{ type="button"}
             i.fa.fa-close

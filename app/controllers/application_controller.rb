@@ -45,8 +45,12 @@ class ApplicationController < ActionController::Base
     @search = Task.search(params[:q])
   end
 
-  def set_category
-    @category = Category.on_user.all
+  def set_new_category
+    @category = Category.new
+  end
+
+  def set_category_list
+    @categories = Category.on_user.all
   end
 
   def check_events
