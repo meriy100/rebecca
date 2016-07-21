@@ -1,5 +1,12 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:update, :destroy]
+  before_action :set_categories, only: [:index]
+  before_action :set_new_category, only: [:index]
+
+  def index
+    @tasks = @search.result.on_user.doings.where(category_id: params[:q]).sort_by(&:least_time_per)
+    render :filter
+  end
 
   def create
     @category = Category.new(category_params)

@@ -1,0 +1,23 @@
+.trello-shadow[id="task-#{task.id}"]
+  .task-row.task-row-doing
+    .task-header
+      .task-done[data-task="#{task.id}"]
+        .task-done-view
+      - if task.event.present?
+        .task-event-tag
+          = task.event.try :summary
+    .task-info
+      .task-name
+        i[class="fa fa-fw #{task.category.icon.class_name}" style="color:#{task.category.color.code}"]
+        span.task-name-value[data-task="#{task.id}"]
+          = task.title
+        span.task-name-field[data-task="#{task.id}" style="display: none"]
+          = text_field_tag :title, task.title
+    .deadline_at
+      .task-deadline_at-value[data-task="#{task.id}"]
+        /= l task.deadline_at, format: :short
+        = task.deadline_at_to_s
+      .task-deadline_at-field[data-task="#{task.id}" style="display: none"]
+        = datetime_field_tag :deadline_at, task.title
+    .progress.task-content
+      .progress-bar[class="progress-bar-#{task.progress_color}" role="progressbar" aria-valuenow="#{task.least_time.to_i}" aria-valuemin="0" aria-valuemax="100" style="width: #{task.least_time_per}%;"]

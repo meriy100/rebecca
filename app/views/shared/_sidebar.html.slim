@@ -29,9 +29,10 @@
         ul.side-list
           - @categories.each do |c|
             li
-              i[class="fa fa-ul #{c.icon.class_name}", style="color:#{c.color.code}"]
-                span[style="color:$white"]
-                  | #{c.name}
+              = link_to category_tasks_path(c.id) do
+                i[class="fa fa-ul #{c.icon.class_name}", style="color:#{c.color.code}"]
+                  span[style="color:$white"]
+                    | #{c.name}
           li.new-category
             | + 新しいカテゴリ
 

@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
     @category = Category.new
   end
 
-  def set_category_list
+  def set_categories
     @categories = Category.on_user.all
   end
 

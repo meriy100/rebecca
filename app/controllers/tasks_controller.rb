@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   before_action :set_search, only: [:index, :completed, :today, :weekly]
   before_action :check_events, only: :index
   before_action :set_new_category, only: [:index, :completed, :today, :weekly]
-  before_action :set_category_list, only: [:index, :completed, :today, :weekly]
+  before_action :set_categories, only: [:index, :completed, :today, :weekly]
 
   def index
     @tasks = @search.result.on_user.doings.sort_by(&:least_time_per)
